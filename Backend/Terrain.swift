@@ -1,0 +1,130 @@
+//
+//  Terrain.swift
+//  Tanks
+//
+//  Created by Alessandro Vinciguerra on 24/07/2017.
+//	<alesvinciguerra@gmail.com>
+//Copyright (C) 2017 Arc676/Alessandro Vinciguerra
+
+//This program is free software: you can redistribute it and/or modify
+//it under the terms of the GNU General Public License as published by
+//the Free Software Foundation, either version 3 of the License, or
+//(at your option) any later version.
+
+//This program is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//GNU General Public License for more details.
+
+//You should have received a copy of the GNU General Public License
+//along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//See README and LICENSE for more details
+
+import Cocoa
+
+enum TerrainType : UInt32 {
+	case DESERT
+	case FLATLAND
+	case HILLS
+	case RANDOM
+}
+
+class Terrain : NSView {
+
+	let pointCount = 41 //40 + 1 (dividing a width into N pieces requires N+1 points because edges)
+	var terrainBounds: NSRect?
+	let skyColor = NSColor(red: 0.84, green: 0.92, blue: 1, alpha: 1)
+
+	var terrainControlHeights: [CGFloat] = []
+	var terrainWidth: Int = 0
+	var chunkSize = 0
+	var terrainPath: NSBezierPath?
+
+	var terrainType: TerrainType = .DESERT
+	var windAcceleration: Float = 0
+
+	func generateNewTerrain(_ type: TerrainType, height: UInt32, width: Int) {
+		if (type == .RANDOM) {
+			generateNewTerrain(TerrainType(rawValue: arc4random_uniform(TerrainType.RANDOM.rawValue))!, height: height, width: width)
+			return
+		}
+		terrainControlHeights = [CGFloat](repeating: 0, count: pointCount)
+		terrainControlHeights[0] = CGFloat(arc4random_uniform(height / 4) + height / 4)
+
+		terrainWidth = width
+		terrainType = type
+
+		terrainBounds = NSMakeRect(0, 0, CGFloat(width), CGFloat(height))
+
+		chunkSize = terrainWidth / (pointCount - 1)
+
+		for i in 1..<pointCount {
+			let deviation = deviationForTerrain(terrainType)
+			var newHeight = terrainControlHeights[i - 1] + CGFloat(
+				Int(arc4random_uniform(UInt32(deviation))) - deviation / 2
+			)
+			newHeight = min(max(newHeight, 0), CGFloat(height) * 0.75)
+			terrainControlHeights[i] = newHeight
+		}
+
+		newWindSpeed()
+	}
+
+	func newWindSpeed() {
+		windAcceleration = Float(arc4random_uniform(1000)) / 500
+		if arc4random_uniform(100) < 50 {
+			windAcceleration *= -1
+		}
+	}
+
+	func deform(radius: CGFloat, xPos: Int) {
+		let coord = xPos / chunkSize
+
+		terrainControlHeights[coord] -= radius
+		if (xPos % chunkSize > chunkSize / 2) {
+			terrainControlHeights[coord + 1] -= radius
+		}
+	}
+
+	private func deviationForTerrain(_ type: TerrainType) -> Int {
+		switch type {
+		case .DESERT:
+			return 10
+		case .FLATLAND:
+			return 5
+		case .HILLS:
+			return 100
+		default:
+			return -1
+		}
+	}
+
+	private func colorForTerrain(_ type: TerrainType) -> NSColor {
+		switch type {
+		case .DESERT:
+			return NSColor.yellow
+		case .FLATLAND:
+			return NSColor.green
+		case .HILLS:
+			return NSColor.green
+		default:
+			return NSColor.white
+		}
+	}
+
+	override func draw(_ rect: NSRect) {
+		skyColor.set()
+		NSRectFill(rect)
+		
+		terrainPath = NSBezierPath()
+		terrainPath?.move(to: NSMakePoint(0, 0))
+		for x in 0..<pointCount {
+			terrainPath?.line(to: NSMakePoint(CGFloat(x * chunkSize), terrainControlHeights[x]))
+		}
+		terrainPath?.line(to: NSMakePoint(CGFloat(terrainWidth), 0))
+
+		colorForTerrain(terrainType).set()
+		terrainPath?.fill()
+	}
+
+}
