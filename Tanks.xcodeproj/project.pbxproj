@@ -11,6 +11,8 @@
 		7121000D1F279C9E00EB48D8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000C1F279C9E00EB48D8 /* Player.swift */; };
 		7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000E1F279CCD00EB48D8 /* CCTank.swift */; };
 		712100111F27CB4200EB48D8 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712100101F27CB4200EB48D8 /* Projectile.swift */; };
+		714926CC1F3890F9008ECF36 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 714926CA1F3890F9008ECF36 /* LICENSE */; };
+		714926CD1F3890F9008ECF36 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 714926CB1F3890F9008ECF36 /* README */; };
 		71B0847D1F2E2F1E008F690D /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847C1F2E2F1E008F690D /* Terrain.swift */; };
 		71B084801F2E2F4D008F690D /* GameMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847F1F2E2F4D008F690D /* GameMgr.swift */; };
 		71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7B0211F2A36B600B93124 /* Extensions.swift */; };
@@ -28,6 +30,8 @@
 		7121000C1F279C9E00EB48D8 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7121000E1F279CCD00EB48D8 /* CCTank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTank.swift; sourceTree = "<group>"; };
 		712100101F27CB4200EB48D8 /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
+		714926CA1F3890F9008ECF36 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		714926CB1F3890F9008ECF36 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		71B0847C1F2E2F1E008F690D /* Terrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Terrain.swift; path = Backend/Terrain.swift; sourceTree = "<group>"; };
 		71B0847F1F2E2F4D008F690D /* GameMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameMgr.swift; path = Backend/GameMgr.swift; sourceTree = "<group>"; };
 		71D7B0211F2A36B600B93124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Backend/Extensions.swift; sourceTree = "<group>"; };
@@ -53,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		714926C91F3890EC008ECF36 /* Meta */ = {
+			isa = PBXGroup;
+			children = (
+				714926CA1F3890F9008ECF36 /* LICENSE */,
+				714926CB1F3890F9008ECF36 /* README */,
+			);
+			name = Meta;
+			sourceTree = "<group>";
+		};
 		71B0847A1F2E2EA1008F690D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +91,7 @@
 		71F061BD1F2670A8004F0EF5 = {
 			isa = PBXGroup;
 			children = (
+				714926C91F3890EC008ECF36 /* Meta */,
 				71B0847A1F2E2EA1008F690D /* Entities */,
 				71D7B0201F2A36A700B93124 /* Backend */,
 				71F061D01F2671ED004F0EF5 /* Tanks Mac */,
@@ -166,8 +180,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				714926CD1F3890F9008ECF36 /* README in Resources */,
 				71F061D61F2671ED004F0EF5 /* Assets.xcassets in Resources */,
 				71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */,
+				714926CC1F3890F9008ECF36 /* LICENSE in Resources */,
 				71F061D91F2671ED004F0EF5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
