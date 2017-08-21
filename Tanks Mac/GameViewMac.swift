@@ -29,6 +29,7 @@ class GameViewMac : GameMgr {
 			NSAttributedString(string: "Firepower") : NSMakePoint(40, bounds.height - 70),
 			NSAttributedString(string: "Wind") 		: NSMakePoint(210, bounds.height - 40)
 		]
+		super.initialize(terrainType: terrainType, players: players)
 	}
 
 	override func draw(_ rect: NSRect) {
