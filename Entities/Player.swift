@@ -41,6 +41,11 @@ class Player : Tank {
 		if keys[GameMgr.spaceBar]! {
 			fireProjectile()
 		}
+		if keys[GameMgr.rightArrow]! {
+			move(1)
+		} else if keys[GameMgr.leftArrow]! {
+			move(-1)
+		}
 	}
 
 }

@@ -36,11 +36,13 @@ class Tank : NSObject {
 
 	//firing properties
 	var firepower = 50
+	var cannonAngle: Float = 0
 
 	//tank state
-	var cannonAngle: Float = 0
 	var position: NSPoint = NSMakePoint(0, 0)
 	var lastY: CGFloat = 0
+
+	//turn properties
 	var turnEnded = false
 	var hasFired = false
 
@@ -49,6 +51,7 @@ class Tank : NSObject {
 	var tankColor: NSColor?
 	var playerNum = 0
 	var projectile: Projectile?
+	var maxHillClimb: CGFloat = 1
 
 	//environment
 	var terrain: Terrain?
@@ -126,6 +129,19 @@ class Tank : NSObject {
 		}
 		projectile?.update()
 		passiveUpdate()
+	}
+
+	func move(_ vector: CGFloat) {
+		let pos = position.x / CGFloat(terrain!.chunkSize)
+		let x1 = Int(floor(pos))
+		let x2 = x1 + (vector < 0 ? -1 : 1)
+		let y1 = terrain!.terrainControlHeights[x1]
+		let y2 = terrain!.terrainControlHeights[x2]
+		let gradient = (y2 - y1) / CGFloat(abs(x2 - x1) * terrain!.chunkSize)
+		if gradient < maxHillClimb {
+			position.x += vector
+			position.y += gradient * vector
+		}
 	}
 
 }
