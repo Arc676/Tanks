@@ -115,10 +115,8 @@ class Tank : NSObject {
 		if position.y <= 0 {
 			hp = 0
 		}
-		if let impact = projectile?.hasImpacted {
-			if impact {
-				endTurn()
-			}
+		if projectile?.hasImpacted ?? false {
+			endTurn()
 		}
 	}
 
@@ -132,12 +130,19 @@ class Tank : NSObject {
 	}
 
 	func move(_ vector: CGFloat) {
-		let pos = position.x / CGFloat(terrain!.chunkSize)
-		let x1 = Int(floor(pos))
-		let x2 = x1 + (vector < 0 ? -1 : 1)
-		let y1 = terrain!.terrainControlHeights[x1]
-		let y2 = terrain!.terrainControlHeights[x2]
-		let gradient = (y2 - y1) / CGFloat(abs(x2 - x1) * terrain!.chunkSize)
+		let direction: CGFloat = vector < 0 ? -1 : 1
+		if position.x + direction <= 0 || position.x + direction >= CGFloat(terrain!.terrainWidth) {
+			return
+		}
+		var x: Int
+		if direction < 0 {
+			x = Int(ceil(position.x / CGFloat(terrain!.chunkSize)))
+		} else {
+			x = Int(floor(position.x / CGFloat(terrain!.chunkSize)))
+		}
+		let y1 = terrain!.terrainControlHeights[x]
+		let y2 = terrain!.terrainControlHeights[x + Int(direction)]
+		let gradient = (y2 - y1) / CGFloat(terrain!.chunkSize)
 		if gradient < maxHillClimb {
 			position.x += vector
 			position.y += gradient * vector
