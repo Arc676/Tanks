@@ -19,6 +19,14 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //See README and LICENSE for more details
 
+#if os(OSX)
+	import Cocoa
+	typealias View = NSView
+#elseif os(iOS)
+	import UIKit
+	typealias View = UIView
+#endif
+
 import Foundation
 
 //custom operators for physics
