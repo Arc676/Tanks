@@ -27,7 +27,8 @@ class GameViewMac : GameMgr {
 		uiMarks = [
 			NSAttributedString(string: "HP") 		: NSMakePoint(80, bounds.height - 50),
 			NSAttributedString(string: "Firepower") : NSMakePoint(40, bounds.height - 70),
-			NSAttributedString(string: "Wind") 		: NSMakePoint(210, bounds.height - 40)
+			NSAttributedString(string: "Wind") 		: NSMakePoint(210, bounds.height - 40),
+			NSAttributedString(string: "Fuel")		: NSMakePoint(210, bounds.height - 70)
 		]
 		super.initialize(terrainType: terrainType, players: players)
 	}
@@ -71,6 +72,13 @@ class GameViewMac : GameMgr {
 		NSColor.black.set()
 		NSRectFill(NSMakeRect(259, bounds.height - 55, 2, 20))
 
+		//draw fuel bar (since color is already black)
+		rect = NSMakeRect(210, bounds.height - 85, 100, 10)
+		NSFrameRect(rect!)
+		rect?.size.width = CGFloat(active.fuel / active.startingFuel * 100)
+		NSRectFill(rect!)
+
+		//fill the wind bar
 		NSColor.blue.set()
 		rect = NSMakeRect(210, bounds.height - 50, 100, 10)
 		NSFrameRect(rect!)

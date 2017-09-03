@@ -41,6 +41,7 @@ class Tank : NSObject {
 	//tank state
 	var position: NSPoint = NSMakePoint(0, 0)
 	var lastY: CGFloat = 0
+	var fuel: Float = 100
 
 	//turn properties
 	var turnEnded = false
@@ -52,6 +53,8 @@ class Tank : NSObject {
 	var playerNum = 0
 	var projectile: Projectile?
 	var maxHillClimb: CGFloat = 1
+	var engineEfficiency: Float = 1
+	var startingFuel: Float = 100
 
 	//environment
 	var terrain: Terrain?
@@ -131,7 +134,9 @@ class Tank : NSObject {
 
 	func move(_ vector: CGFloat) {
 		let direction: CGFloat = vector < 0 ? -1 : 1
-		if position.x + direction <= 0 || position.x + direction >= CGFloat(terrain!.terrainWidth) {
+		if position.x + direction <= 0 ||
+			position.x + direction >= CGFloat(terrain!.terrainWidth) ||
+			fuel <= 0 {
 			return
 		}
 		var x: Int
@@ -144,6 +149,7 @@ class Tank : NSObject {
 		let y2 = terrain!.terrainControlHeights[x + Int(direction)]
 		let gradient = (y2 - y1) / CGFloat(terrain!.chunkSize)
 		if gradient < maxHillClimb {
+			fuel -= Float(abs(vector)) * engineEfficiency
 			position.x += vector
 			position.y += gradient * vector
 		}
