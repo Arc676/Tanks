@@ -27,7 +27,29 @@
 class Store: View {
 
 	let storeItems: [Item] = [
-		//
+		Ammo("Missile", price: 10, radius: 20, damage: 30),
+		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 100),
+		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 200)
 	]
+
+	var players: [Tank]?
+
+	func initialize(_ players: [Tank]) {
+		self.players = players
+	}
+
+	override func draw(_ rect: NSRect) {
+		var y = bounds.height - 50
+		var x: CGFloat = 100
+		for item in storeItems {
+			let text = NSAttributedString(string: item.name)
+			text.draw(at: NSMakePoint(x, y))
+			y += 20
+			if (y < 80) {
+				x += 300
+				y = bounds.height - 50
+			}
+		}
+	}
 
 }

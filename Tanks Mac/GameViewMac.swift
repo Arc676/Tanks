@@ -23,14 +23,14 @@ import Cocoa
 
 class GameViewMac : GameMgr {
 
-	override func initialize(terrainType: TerrainType, players: [Tank]) {
+	override func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {
 		uiMarks = [
 			NSAttributedString(string: "HP") 		: NSMakePoint(80, bounds.height - 50),
 			NSAttributedString(string: "Firepower") : NSMakePoint(40, bounds.height - 70),
 			NSAttributedString(string: "Wind") 		: NSMakePoint(210, bounds.height - 40),
 			NSAttributedString(string: "Fuel")		: NSMakePoint(210, bounds.height - 70)
 		]
-		super.initialize(terrainType: terrainType, players: players)
+		super.initialize(terrainType: terrainType, players: players, controller: controller)
 	}
 
 	override func draw(_ rect: NSRect) {

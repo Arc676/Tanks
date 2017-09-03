@@ -63,10 +63,12 @@ class GameMgr: View {
 	var keyStates: [UInt16: Bool] = [:]
 
 	var gameTimer: Timer?
+	var viewController: ViewController?
 
-	func initialize(terrainType: TerrainType, players: [Tank]) {
+	func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {
 		terrain.generateNewTerrain(terrainType, height: UInt32(bounds.height), width: Int(bounds.width))
 		self.players = players
+		viewController = controller
 
 		var i = 0
 		for player in self.players {
