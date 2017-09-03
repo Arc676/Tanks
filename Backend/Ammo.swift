@@ -1,5 +1,5 @@
 //
-//  Store.swift
+//  Ammo.swift
 //  Tanks
 //
 //  Created by Alessandro Vinciguerra on 03/09/2017.
@@ -18,16 +18,17 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //See README and LICENSE for more details
 
-#if os(OSX)
-	import Cocoa
-#elseif os(iOS)
-	import UIKit
-#endif
+import Foundation
 
-class Store: View {
+class Ammo: Item {
 
-	let storeItems: [Item] = [
-		//
-	]
+	var blastRadius: CGFloat
+	var damage: Int
+
+	init(_ name: String, price: Int, radius: CGFloat, damage: Int) {
+		blastRadius = radius
+		self.damage = damage
+		super.init(name, price: price)
+	}
 
 }

@@ -42,6 +42,7 @@ class Tank : NSObject {
 	var position: NSPoint = NSMakePoint(0, 0)
 	var lastY: CGFloat = 0
 	var fuel: Float = 100
+	var money: Int = 0
 
 	//turn properties
 	var turnEnded = false

@@ -12,6 +12,8 @@
 		7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000E1F279CCD00EB48D8 /* CCTank.swift */; };
 		712100111F27CB4200EB48D8 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712100101F27CB4200EB48D8 /* Projectile.swift */; };
 		713D1DB11F5BF1BC00FE576D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB01F5BF1BC00FE576D /* Store.swift */; };
+		713D1DB31F5BF31600FE576D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB21F5BF31600FE576D /* Item.swift */; };
+		713D1DB51F5BF3AA00FE576D /* Ammo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB41F5BF3AA00FE576D /* Ammo.swift */; };
 		71B0847D1F2E2F1E008F690D /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847C1F2E2F1E008F690D /* Terrain.swift */; };
 		71B084801F2E2F4D008F690D /* GameMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847F1F2E2F4D008F690D /* GameMgr.swift */; };
 		71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7B0211F2A36B600B93124 /* Extensions.swift */; };
@@ -32,6 +34,8 @@
 		7121000E1F279CCD00EB48D8 /* CCTank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTank.swift; sourceTree = "<group>"; };
 		712100101F27CB4200EB48D8 /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		713D1DB01F5BF1BC00FE576D /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = Backend/Store.swift; sourceTree = "<group>"; };
+		713D1DB21F5BF31600FE576D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Backend/Item.swift; sourceTree = "<group>"; };
+		713D1DB41F5BF3AA00FE576D /* Ammo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ammo.swift; path = Backend/Ammo.swift; sourceTree = "<group>"; };
 		71B0847C1F2E2F1E008F690D /* Terrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Terrain.swift; path = Backend/Terrain.swift; sourceTree = "<group>"; };
 		71B0847F1F2E2F4D008F690D /* GameMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameMgr.swift; path = Backend/GameMgr.swift; sourceTree = "<group>"; };
 		71D7B0211F2A36B600B93124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Backend/Extensions.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				71D7B0231F2A3AA600B93124 /* Credits.rtf */,
 				71B0847F1F2E2F4D008F690D /* GameMgr.swift */,
 				713D1DB01F5BF1BC00FE576D /* Store.swift */,
+				713D1DB21F5BF31600FE576D /* Item.swift */,
+				713D1DB41F5BF3AA00FE576D /* Ammo.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -203,8 +209,10 @@
 				7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */,
 				713D1DB11F5BF1BC00FE576D /* Store.swift in Sources */,
 				71F061E31F269377004F0EF5 /* Tank.swift in Sources */,
+				713D1DB51F5BF3AA00FE576D /* Ammo.swift in Sources */,
 				71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */,
 				71B084801F2E2F4D008F690D /* GameMgr.swift in Sources */,
+				713D1DB31F5BF31600FE576D /* Item.swift in Sources */,
 				7121000D1F279C9E00EB48D8 /* Player.swift in Sources */,
 				712100111F27CB4200EB48D8 /* Projectile.swift in Sources */,
 				71B0847D1F2E2F1E008F690D /* Terrain.swift in Sources */,
