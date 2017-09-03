@@ -28,7 +28,7 @@ class GameViewController : NSViewController {
 	let delegate: AppDelegate = NSApp.delegate as! AppDelegate
 
 	var gameView: GameViewMac?
-	var gameInProgress: Bool = false
+	var storeView: StoreViewMac?
 
 	override func viewDidLoad() {
 		menuView.viewController = self
@@ -41,12 +41,19 @@ class GameViewController : NSViewController {
 
 	func startGame(terrainType: TerrainType, players: [Tank]) {
 		gameView = GameViewMac(frame: (NSApp.mainWindow?.frame)!)
+		storeView = StoreViewMac(frame: (NSApp.mainWindow?.frame)!)
 
 		view = gameView!
 		NSApp.mainWindow?.makeFirstResponder(gameView)
-		gameView!.initialize(terrainType: terrainType, players: players)
+		gameView!.initialize(terrainType: terrainType, players: players, controller: self)
 		gameView!.needsDisplay = true
-		gameInProgress = true
+	}
+
+	func goToStore() {
+		view = storeView!
+		NSApp.mainWindow?.makeFirstResponder(storeView)
+		storeView?.initialize(gameView!.players)
+		storeView?.needsDisplay = true
 	}
 
 	func quit(_ sender: Any) {

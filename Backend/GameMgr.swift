@@ -98,6 +98,7 @@ class GameMgr: View {
 
 	func terminate() {
 		gameTimer?.invalidate()
+		viewController?.goToStore()
 	}
 
 	func gameOver() -> Bool {
