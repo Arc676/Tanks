@@ -47,7 +47,7 @@ postfix operator --
 
 extension Int {
 
-	//since Swift is ditching the post- and pre-increment operator, just redefine then
+	//since Swift is ditching the increment/decrement operators, just redefine them
 	static postfix func ++ (int: inout Int) {
 		int += 1
 	}
