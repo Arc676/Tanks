@@ -43,6 +43,7 @@ class Tank : NSObject {
 	var lastY: CGFloat = 0
 	var fuel: Float = 100
 	var money: Int = 0
+	var score: Int = 0
 
 	//turn properties
 	var turnEnded = false
@@ -70,7 +71,8 @@ class Tank : NSObject {
 	func fireProjectile() {
 		let vx: CGFloat = CGFloat(Double(firepower) * cos(Double(cannonAngle)))
 		let vy: CGFloat = CGFloat(Double(firepower) * sin(Double(cannonAngle)))
-		projectile = Projectile(terrain: terrain!, entities: tanks!, vx: vx, vy: vy, pos: position)
+		projectile = Projectile(
+			terrain: terrain!, entities: tanks!, vx: vx, vy: vy, pos: position, src: playerNum)
 
 		hasFired = true
 	}

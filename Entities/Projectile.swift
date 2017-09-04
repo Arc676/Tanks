@@ -32,13 +32,15 @@ class Projectile : NSObject {
 
 	var terrain: Terrain?
 	var entities: [Tank]?
+	var sourcePlayer: Int?
 
-	init(terrain: Terrain, entities: [Tank], vx: CGFloat, vy: CGFloat, pos: NSPoint) {
+	init(terrain: Terrain, entities: [Tank], vx: CGFloat, vy: CGFloat, pos: NSPoint, src: Int) {
 		self.terrain = terrain
 		self.entities = entities
 		self.vx = vx
 		self.vy = vy
 		self.position = pos
+		sourcePlayer = src
 	}
 
 	func drawInRect(_ rect: NSRect) {
@@ -53,7 +55,15 @@ class Projectile : NSObject {
 	func impact() {
 		terrain?.deform(radius: blastRadius, xPos: Int(position.x))
 		for entity in entities! {
-			if hypot(entity.position.x - position.x, entity.position.y - position.y) <= blastRadius {
+			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
+			if distance <= blastRadius {
+				var score: Int = 50 * Int(blastRadius / distance)
+				if entity.playerNum == sourcePlayer {
+					score *= -1
+				} else {
+					entities![sourcePlayer!].money += score
+				}
+				entities![sourcePlayer!].score += 2 * score
 				entity.takeDamage(Int(blastRadius))
 			}
 		}
