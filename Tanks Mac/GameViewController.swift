@@ -30,6 +30,9 @@ class GameViewController : NSViewController {
 	var gameView: GameViewMac?
 	var storeView: StoreViewMac?
 
+	var chosenTerrain: TerrainType?
+	var players: [Tank]?
+
 	override func viewDidLoad() {
 		menuView.viewController = self
 	}
@@ -39,20 +42,29 @@ class GameViewController : NSViewController {
 		quit(NSNull())
 	}
 
-	func startGame(terrainType: TerrainType, players: [Tank]) {
+	func initialize(terrainType: TerrainType, players: [Tank]) {
 		gameView = GameViewMac(frame: (NSApp.mainWindow?.frame)!)
 		storeView = StoreViewMac(frame: (NSApp.mainWindow?.frame)!)
 
+		chosenTerrain = terrainType
+		self.players = players
+	}
+
+	func updatePlayers(_ players: [Tank]) {
+		self.players = players
+	}
+
+	func startGame() {
 		view = gameView!
 		NSApp.mainWindow?.makeFirstResponder(gameView)
-		gameView!.initialize(terrainType: terrainType, players: players, controller: self)
+		gameView!.initialize(terrainType: chosenTerrain!, players: players!, controller: self)
 		gameView!.needsDisplay = true
 	}
 
 	func goToStore() {
 		view = storeView!
 		NSApp.mainWindow?.makeFirstResponder(storeView)
-		storeView?.initialize(gameView!.players)
+		storeView?.initialize(gameView!.players, viewController: self)
 		storeView?.needsDisplay = true
 	}
 

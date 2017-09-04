@@ -27,6 +27,7 @@ class Projectile : NSObject {
 	var vx: CGFloat = 0
 	var vy: CGFloat = 0
 
+	var damage: Int = 20
 	var blastRadius: CGFloat = 20
 	var hasImpacted = false
 
@@ -58,11 +59,11 @@ class Projectile : NSObject {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
 			if distance <= blastRadius {
 				var score: Int = Int(50 * blastRadius / distance)
-				entity.takeDamage(Int(blastRadius))
+				entity.takeDamage(damage)
 				if entity.hp <= 0 {
 					score *= 2
 				}
-				if entity.playerNum == sourcePlayer {
+				if entity.playerNum == sourcePlayer! + 1 {
 					score *= -1
 				} else {
 					entities![sourcePlayer!].money += score

@@ -32,10 +32,15 @@ class Store: View {
 		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 200)
 	]
 
-	var players: [Tank]?
+	var viewController: ViewController?
 
-	func initialize(_ players: [Tank]) {
+	var players: [Tank]?
+	var currentPlayer = 0
+
+	func initialize(_ players: [Tank], viewController: ViewController) {
 		self.players = players
+		self.viewController = viewController
+		currentPlayer = 0
 	}
 
 }

@@ -33,6 +33,9 @@ class Tank : NSObject {
 
 	//gameplay properties
 	var hp = 100
+	var fuel: Float = 100
+	var money: Int = 0
+	var score: Int = 0
 
 	//firing properties
 	var firepower = 50
@@ -41,9 +44,6 @@ class Tank : NSObject {
 	//tank state
 	var position: NSPoint = NSMakePoint(0, 0)
 	var lastY: CGFloat = 0
-	var fuel: Float = 100
-	var money: Int = 0
-	var score: Int = 0
 
 	//turn properties
 	var turnEnded = false
@@ -66,6 +66,11 @@ class Tank : NSObject {
 		tankColor = color
 		playerNum = pNum
 		self.name = name
+	}
+
+	func reset() {
+		hp = 100
+		fuel = startingFuel
 	}
 
 	func fireProjectile() {

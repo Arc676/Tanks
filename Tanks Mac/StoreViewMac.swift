@@ -23,6 +23,8 @@ import Cocoa
 
 class StoreViewMac: Store {
 
+	let continueButton = NSMakeRect(300, 100, 100, 10)
+
 	override func draw(_ rect: NSRect) {
 		var y = bounds.height - 100
 		var x: CGFloat = 100
@@ -33,6 +35,23 @@ class StoreViewMac: Store {
 			if (y < 80) {
 				x += 300
 				y = bounds.height - 50
+			}
+		}
+
+		NSColor.white.set()
+		NSRectFill(continueButton)
+	}
+
+	override func mouseUp(with event: NSEvent) {
+		if continueButton.contains(event.locationInWindow) {
+			if currentPlayer + 1 >= players!.count {
+				viewController?.startGame()
+			} else {
+				currentPlayer += 1
+				if players![currentPlayer] is CCTank {
+					(players![currentPlayer] as! CCTank).makePurchases(storeItems)
+					mouseUp(with: event)
+				}
 			}
 		}
 	}

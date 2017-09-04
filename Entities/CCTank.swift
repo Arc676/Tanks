@@ -49,6 +49,8 @@ class CCTank : Tank {
 		}
 	}
 
+	func makePurchases(_ items: [Item]) {}
+
 	func chooseNewTarget() {
 		var possibleTargets: [Tank] = []
 		for tank in tanks! {

@@ -73,6 +73,7 @@ class GameMgr: View {
 		var i = 0
 		for player in self.players {
 			let pos = (i + 1) * 3
+			player.reset()
 			player.terrain = terrain
 			player.tanks = self.players
 			player.position = NSMakePoint(
@@ -98,6 +99,7 @@ class GameMgr: View {
 
 	func terminate() {
 		gameTimer?.invalidate()
+		viewController?.updatePlayers(players)
 		viewController?.goToStore()
 	}
 

@@ -99,7 +99,8 @@ class MenuView : NSView {
 		if (p4name.isEnabled) {
 			players.append(createTank(p4name.stringValue, p4color.color, 4, isCC: p4isAI, aiLvl: p4AILvl))
 		}
-		viewController?.startGame(terrainType: terrainType, players: players)
+		viewController?.initialize(terrainType: terrainType, players: players)
+		viewController?.startGame()
 	}
 
 	private func createTank(_ givenName: String, _ color: NSColor, _ pNum: Int, isCC: NSButton, aiLvl: NSSegmentedControl) -> Tank {

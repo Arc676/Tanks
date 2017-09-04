@@ -56,7 +56,7 @@ class GameViewMac : GameMgr {
 			text.draw(at: point)
 		}
 
-		var scoreY = bounds.height - 40
+		var scoreY = bounds.height - 30
 		for tank in players {
 			tank.tankColor?.set()
 			let text = NSAttributedString(string: "\(tank.name!): \(tank.score)")
