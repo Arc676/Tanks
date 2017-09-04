@@ -72,7 +72,7 @@ class Tank : NSObject {
 		let vx: CGFloat = CGFloat(Double(firepower) * cos(Double(cannonAngle)))
 		let vy: CGFloat = CGFloat(Double(firepower) * sin(Double(cannonAngle)))
 		projectile = Projectile(
-			terrain: terrain!, entities: tanks!, vx: vx, vy: vy, pos: position, src: playerNum)
+			terrain: terrain!, entities: tanks!, vx: vx, vy: vy, pos: position, src: playerNum - 1)
 
 		hasFired = true
 	}

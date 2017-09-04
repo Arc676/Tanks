@@ -44,14 +44,24 @@ class GameViewMac : GameMgr {
 		let bounds = terrain.terrainBounds!
 		NSRectFill(NSMakeRect(0, bounds.height - 100, bounds.width, 100))
 
+		//draw the little box indicating player color
 		let y = bounds.height - playerNames[activePlayer].size().height - 20
 		active.tankColor?.set()
 		NSRectFill(NSMakeRect(35, y, 10, 10))
 
+		//then draw the name
 		playerNames[activePlayer].draw(at: NSMakePoint(50, y))
 
 		for (text, point) in uiMarks! {
 			text.draw(at: point)
+		}
+
+		var scoreY = bounds.height - 40
+		for tank in players {
+			tank.tankColor?.set()
+			let text = NSAttributedString(string: "\(tank.name!): \(tank.score)")
+			text.draw(at: NSMakePoint(340, scoreY))
+			scoreY -= 20
 		}
 
 		NSColor.red.set()
@@ -73,7 +83,7 @@ class GameViewMac : GameMgr {
 		NSRectFill(NSMakeRect(259, bounds.height - 55, 2, 20))
 
 		//draw fuel bar (since color is already black)
-		rect = NSMakeRect(210, bounds.height - 85, 100, 10)
+		rect = NSMakeRect(210, bounds.height - 90, 100, 10)
 		NSFrameRect(rect!)
 		rect?.size.width = CGFloat(active.fuel / active.startingFuel * 100)
 		NSRectFill(rect!)

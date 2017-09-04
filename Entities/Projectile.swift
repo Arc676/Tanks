@@ -57,14 +57,17 @@ class Projectile : NSObject {
 		for entity in entities! {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
 			if distance <= blastRadius {
-				var score: Int = 50 * Int(blastRadius / distance)
+				var score: Int = Int(50 * blastRadius / distance)
+				entity.takeDamage(Int(blastRadius))
+				if entity.hp <= 0 {
+					score *= 2
+				}
 				if entity.playerNum == sourcePlayer {
 					score *= -1
 				} else {
 					entities![sourcePlayer!].money += score
 				}
 				entities![sourcePlayer!].score += 2 * score
-				entity.takeDamage(Int(blastRadius))
 			}
 		}
 		despawn()
