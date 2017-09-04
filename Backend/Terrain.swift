@@ -101,11 +101,11 @@ class Terrain : NSView {
 	private func colorForTerrain(_ type: TerrainType) -> NSColor {
 		switch type {
 		case .DESERT:
-			return NSColor.yellow
+			return NSColor(calibratedRed: 0.86, green: 0.77, blue: 0.26, alpha: 1)
 		case .FLATLAND:
-			return NSColor.green
+			return NSColor(calibratedRed: 0, green: 200.0/255, blue: 0, alpha: 1)
 		case .HILLS:
-			return NSColor.green
+			return NSColor(calibratedRed: 0, green: 171.0/255, blue: 0, alpha: 1)
 		default:
 			return NSColor.white
 		}
