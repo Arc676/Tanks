@@ -31,10 +31,10 @@ class StoreViewMac: Store {
 		for item in storeItems {
 			let text = NSAttributedString(string: item.name)
 			text.draw(at: NSMakePoint(x, y))
-			y += 20
+			y -= 20
 			if (y < 80) {
 				x += 300
-				y = bounds.height - 50
+				y = bounds.height - 100
 			}
 		}
 
@@ -44,15 +44,10 @@ class StoreViewMac: Store {
 
 	override func mouseUp(with event: NSEvent) {
 		if continueButton.contains(event.locationInWindow) {
-			if currentPlayer + 1 >= players!.count {
-				viewController?.startGame()
-			} else {
-				currentPlayer += 1
-				if players![currentPlayer] is CCTank {
-					(players![currentPlayer] as! CCTank).makePurchases(storeItems)
-					mouseUp(with: event)
-				}
-			}
+			nextPlayer()
+		} else {
+			let i = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
+			purchaseItem(i);
 		}
 	}
 	

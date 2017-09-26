@@ -35,12 +35,31 @@ class Store: View {
 	var viewController: ViewController?
 
 	var players: [Tank]?
-	var currentPlayer = 0
+	var currentPlayer = -1
 
 	func initialize(_ players: [Tank], viewController: ViewController) {
 		self.players = players
 		self.viewController = viewController
-		currentPlayer = 0
+		currentPlayer = -1
+		nextPlayer()
+	}
+
+	func purchaseItem(_ index: Int) {
+		if index < storeItems.count {
+			players![index].purchaseItem(storeItems[index])
+		}
+	}
+
+	func nextPlayer() {
+		if currentPlayer + 1 >= players!.count {
+			viewController?.startGame()
+		} else {
+			currentPlayer += 1
+			if players![currentPlayer] is CCTank {
+				(players![currentPlayer] as! CCTank).makePurchases(storeItems)
+				nextPlayer()
+			}
+		}
 	}
 
 }

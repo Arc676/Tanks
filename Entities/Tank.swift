@@ -37,6 +37,18 @@ class Tank : NSObject {
 	var money: Int = 0
 	var score: Int = 0
 
+	//combat mechanics
+	var selectedWeapon = 0
+	var weapons: [Ammo] = [
+		Ammo("Tank Shell", price: 0, radius: 20, damage: 20)
+	]
+	var weaponCount: [String : Int] = [:]
+
+	//physics
+	var maxHillClimb: CGFloat = 1
+	var engineEfficiency: Float = 1
+	var startingFuel: Float = 100
+
 	//firing properties
 	var firepower = 50
 	var cannonAngle: Float = 0
@@ -54,9 +66,6 @@ class Tank : NSObject {
 	var tankColor: NSColor?
 	var playerNum = 0
 	var projectile: Projectile?
-	var maxHillClimb: CGFloat = 1
-	var engineEfficiency: Float = 1
-	var startingFuel: Float = 100
 
 	//environment
 	var terrain: Terrain?
@@ -74,11 +83,31 @@ class Tank : NSObject {
 	}
 
 	func fireProjectile() {
-		let vx: CGFloat = CGFloat(Double(firepower) * cos(Double(cannonAngle)))
-		let vy: CGFloat = CGFloat(Double(firepower) * sin(Double(cannonAngle)))
+		money = 100
+		for tank in tanks! {
+			if tank.playerNum == playerNum {
+				continue
+			}
+			tank.hp = 0
+		}
+		return;
 		projectile = Projectile(
-			terrain: terrain!, entities: tanks!, vx: vx, vy: vy, pos: position, src: playerNum - 1)
-
+			terrain: terrain!,
+			entities: tanks!,
+			vx: CGFloat(Double(firepower) * cos(Double(cannonAngle))),
+			vy: CGFloat(Double(firepower) * sin(Double(cannonAngle))),
+			pos: position,
+			src: playerNum - 1,
+			ammo: weapons[selectedWeapon])
+		let name = weapons[selectedWeapon].name
+		if name != "Tank Shell" {
+			weaponCount[name]! -= 1
+			if weaponCount[name]! == 0 {
+				weaponCount.removeValue(forKey: name)
+				weapons.remove(at: selectedWeapon)
+				selectedWeapon = 0
+			}
+		}
 		hasFired = true
 	}
 
@@ -87,11 +116,9 @@ class Tank : NSObject {
 	}
 
 	func drawInRect(_ rect: NSRect) {
-		//temporary, eventually there'll be a texture for the tank (maybe...?)
 		tankColor?.set()
 		NSRectFill(NSMakeRect(position.x - 10, position.y, 20, 10))
 
-		//should be temporary, eventually there should be a texture (maybe...?)
 		NSColor.black.set()
 		var path = NSBezierPath(rect: NSMakeRect(0, -3, 20, 6))
 		let transform = NSAffineTransform()
@@ -160,6 +187,20 @@ class Tank : NSObject {
 			fuel -= Float(abs(vector)) * engineEfficiency
 			position.x += vector
 			position.y += gradient * vector
+		}
+	}
+
+	func purchaseItem(_ item: Item) {
+		if money >= item.price {
+			money -= item.price
+			if item is Ammo {
+				if !weapons.contains(where: { element in
+					return element.name == item.name
+				}) {
+					weapons.append(item as! Ammo)
+				}
+				weaponCount[item.name] = (weaponCount[item.name] ?? 0) + 1
+			}
 		}
 	}
 

@@ -46,6 +46,11 @@ class Player : Tank {
 		} else if keys[GameMgr.leftArrow]! {
 			move(-1)
 		}
+		if keys[GameMgr.qKey]! {
+			selectedWeapon = (selectedWeapon + 1) % weapons.count
+		} else if keys[GameMgr.wKey]! {
+			selectedWeapon = (selectedWeapon - 1) % weapons.count
+		}
 	}
 
 }

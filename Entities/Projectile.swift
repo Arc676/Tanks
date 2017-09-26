@@ -35,12 +35,15 @@ class Projectile : NSObject {
 	var entities: [Tank]?
 	var sourcePlayer: Int?
 
-	init(terrain: Terrain, entities: [Tank], vx: CGFloat, vy: CGFloat, pos: NSPoint, src: Int) {
+	init(terrain: Terrain, entities: [Tank], vx: CGFloat, vy: CGFloat, pos: NSPoint, src: Int, ammo: Ammo) {
 		self.terrain = terrain
 		self.entities = entities
 		self.vx = vx
 		self.vy = vy
 		self.position = pos
+
+		damage = ammo.damage
+		blastRadius = ammo.blastRadius
 		sourcePlayer = src
 	}
 
