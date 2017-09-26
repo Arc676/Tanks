@@ -20,8 +20,10 @@
 
 #if os(OSX)
 	import Cocoa
+	typealias View = NSView
 #elseif os(iOS)
 	import UIKit
+	typealias View = UIView
 #endif
 
 class GameMgr: View {
