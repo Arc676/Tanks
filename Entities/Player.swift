@@ -23,6 +23,8 @@ import Cocoa
 
 class Player : Tank {
 
+	var changedWeaponLastTick = false
+
 	override func update(keys: [UInt16 : Bool]) {
 		super.update(keys: keys)
 		if turnEnded || hasFired {
@@ -46,14 +48,20 @@ class Player : Tank {
 		} else if keys[GameMgr.leftArrow]! {
 			move(-1)
 		}
-		if keys[GameMgr.qKey]! {
-			selectedWeapon = (selectedWeapon + 1) % weapons.count
-		} else if keys[GameMgr.wKey]! {
-			selectedWeapon -= 1
-			if selectedWeapon < 0 {
-				selectedWeapon = weapons.count - 1
-			} else {
-				selectedWeapon %= weapons.count
+		if changedWeaponLastTick {
+			changedWeaponLastTick = keys[GameMgr.qKey]! || keys[GameMgr.wKey]!
+		} else {
+			if keys[GameMgr.qKey]! {
+				selectedWeapon = (selectedWeapon + 1) % weapons.count
+				changedWeaponLastTick = true
+			} else if keys[GameMgr.wKey]! {
+				selectedWeapon -= 1
+				if selectedWeapon < 0 {
+					selectedWeapon = weapons.count - 1
+				} else {
+					selectedWeapon %= weapons.count
+				}
+				changedWeaponLastTick = true
 			}
 		}
 	}
