@@ -49,7 +49,12 @@ class Player : Tank {
 		if keys[GameMgr.qKey]! {
 			selectedWeapon = (selectedWeapon + 1) % weapons.count
 		} else if keys[GameMgr.wKey]! {
-			selectedWeapon = (selectedWeapon - 1) % weapons.count
+			selectedWeapon -= 1
+			if selectedWeapon < 0 {
+				selectedWeapon = weapons.count - 1
+			} else {
+				selectedWeapon %= weapons.count
+			}
 		}
 	}
 

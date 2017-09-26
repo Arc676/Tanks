@@ -58,6 +58,9 @@ class CCTank : Tank {
 				possibleTargets.append(tank)
 			}
 		}
+		if possibleTargets.count == 0 {
+			return;
+		}
 		target = possibleTargets[Int(arc4random_uniform(UInt32(possibleTargets.count)))]
 
 		recalculate(tx: target!.position.x, ty: target!.position.y, a: CGFloat(terrain!.windAcceleration))

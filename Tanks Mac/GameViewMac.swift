@@ -28,7 +28,8 @@ class GameViewMac : GameMgr {
 			NSAttributedString(string: "HP") 		: NSMakePoint(80, bounds.height - 50),
 			NSAttributedString(string: "Firepower") : NSMakePoint(40, bounds.height - 70),
 			NSAttributedString(string: "Wind") 		: NSMakePoint(210, bounds.height - 40),
-			NSAttributedString(string: "Fuel")		: NSMakePoint(210, bounds.height - 70)
+			NSAttributedString(string: "Fuel")		: NSMakePoint(210, bounds.height - 70),
+			NSAttributedString(string: "Weapon")	: NSMakePoint(340, bounds.height - 40)
 		]
 		super.initialize(terrainType: terrainType, players: players, controller: controller)
 	}
@@ -55,12 +56,15 @@ class GameViewMac : GameMgr {
 		for (text, point) in uiMarks! {
 			text.draw(at: point)
 		}
+		let text = NSAttributedString(string:
+			"\(active.weapons[active.selectedWeapon].name) \(active.weaponCount[active.weapons[active.selectedWeapon].name] ?? 99)")
+		text.draw(at: NSMakePoint(340, bounds.height - 60))
 
 		var scoreY = bounds.height - 30
 		for tank in players {
 			tank.tankColor?.set()
 			let text = NSAttributedString(string: "\(tank.name!): \(tank.score)")
-			text.draw(at: NSMakePoint(340, scoreY))
+			text.draw(at: NSMakePoint(470, scoreY))
 			scoreY -= 20
 		}
 
