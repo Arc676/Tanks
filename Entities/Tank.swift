@@ -83,14 +83,6 @@ class Tank : NSObject {
 	}
 
 	func fireProjectile() {
-		money = 100
-		for tank in tanks! {
-			if tank.playerNum == playerNum {
-				continue
-			}
-			tank.hp = 0
-		}
-		return;
 		projectile = Projectile(
 			terrain: terrain!,
 			entities: tanks!,

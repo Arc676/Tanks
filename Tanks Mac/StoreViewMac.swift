@@ -26,10 +26,14 @@ class StoreViewMac: Store {
 	let continueButton = NSMakeRect(300, 100, 100, 10)
 
 	override func draw(_ rect: NSRect) {
+		let player = players![currentPlayer]
+		let text = NSAttributedString(string: "\(player.name!) ($\(player.money))")
+		text.draw(at: NSMakePoint(80, bounds.height - 50))
 		var y = bounds.height - 100
 		var x: CGFloat = 100
 		for item in storeItems {
-			let text = NSAttributedString(string: item.name)
+			let text = NSAttributedString(string:
+				"\(item.name) (\(item.price)) (\(player.weaponCount[item.name] ?? 0) owned)")
 			text.draw(at: NSMakePoint(x, y))
 			y -= 20
 			if (y < 80) {
@@ -49,6 +53,7 @@ class StoreViewMac: Store {
 			let i = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
 			purchaseItem(i);
 		}
+		needsDisplay = true;
 	}
 	
 }

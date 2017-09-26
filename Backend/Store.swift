@@ -45,8 +45,8 @@ class Store: View {
 	}
 
 	func purchaseItem(_ index: Int) {
-		if index < storeItems.count {
-			players![index].purchaseItem(storeItems[index])
+		if 0 <= index && index < storeItems.count {
+			players![currentPlayer].purchaseItem(storeItems[index])
 		}
 	}
 
