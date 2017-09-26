@@ -21,6 +21,7 @@
 #if os(OSX)
 	import Cocoa
 	typealias View = NSView
+	typealias ViewController = GameViewController
 #elseif os(iOS)
 	import UIKit
 	typealias View = UIView
