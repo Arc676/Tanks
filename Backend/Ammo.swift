@@ -23,9 +23,9 @@ import Foundation
 class Ammo: Item {
 
 	var blastRadius: CGFloat
-	var damage: Int
+	var damage: CGFloat
 
-	init(_ name: String, price: Int, radius: CGFloat, damage: Int) {
+	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat) {
 		blastRadius = radius
 		self.damage = damage
 		super.init(name, price: price)

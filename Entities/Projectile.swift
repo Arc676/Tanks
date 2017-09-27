@@ -27,8 +27,8 @@ class Projectile : NSObject {
 	var vx: CGFloat = 0
 	var vy: CGFloat = 0
 
-	var damage: Int = 20
-	var blastRadius: CGFloat = 20
+	var ammo: Ammo?
+
 	var hasImpacted = false
 
 	var terrain: Terrain?
@@ -42,8 +42,7 @@ class Projectile : NSObject {
 		self.vy = vy
 		self.position = pos
 
-		damage = ammo.damage
-		blastRadius = ammo.blastRadius
+		self.ammo = ammo
 		sourcePlayer = src
 	}
 
@@ -57,12 +56,13 @@ class Projectile : NSObject {
 	}
 
 	func impact() {
-		terrain?.deform(radius: blastRadius, xPos: Int(position.x))
+		let radius = ammo!.blastRadius
+		terrain?.deform(radius: radius, xPos: Int(position.x))
 		for entity in entities! {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
-			if distance <= blastRadius {
-				var score: Int = distance > 0 ? Int(50 * blastRadius / distance) : Int(50 * blastRadius)
-				entity.takeDamage(damage)
+			if distance <= radius {
+				var score: Int = distance > 0 ? Int(50 * radius / distance) : Int(50 * radius)
+				entity.takeDamage(ammo!.damage)
 				if entity.hp <= 0 {
 					score *= 2
 				}

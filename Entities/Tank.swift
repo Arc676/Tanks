@@ -32,7 +32,7 @@ class Tank : NSObject {
 	static let radian: Float = 0.0174532925
 
 	//gameplay properties
-	var hp = 100
+	var hp: CGFloat = 100
 	var fuel: Float = 100
 	var money: Int = 0
 	var score: Int = 0
@@ -48,6 +48,7 @@ class Tank : NSObject {
 	var maxHillClimb: CGFloat = 1
 	var engineEfficiency: Float = 1
 	var startingFuel: Float = 100
+	var armor: CGFloat = 1
 
 	//firing properties
 	var firepower = 50
@@ -103,8 +104,8 @@ class Tank : NSObject {
 		hasFired = true
 	}
 
-	func takeDamage(_ dmg: Int) {
-		hp -= dmg
+	func takeDamage(_ dmg: CGFloat) {
+		hp -= dmg / armor
 	}
 
 	func drawInRect(_ rect: NSRect) {

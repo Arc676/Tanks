@@ -73,7 +73,7 @@ class GameViewMac : GameMgr {
 		//draw HP bar
 		rect = NSMakeRect(100, bounds.height - 50, 100, 10)
 		NSFrameRect(rect!)
-		rect?.size.width = CGFloat(active.hp)
+		rect?.size.width = active.hp
 		NSRectFill(rect!)
 
 		//draw firepower bar
