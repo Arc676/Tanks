@@ -27,7 +27,7 @@ class StoreViewMac: Store {
 
 	override func draw(_ rect: NSRect) {
 		let player = players![currentPlayer]
-		let text = NSAttributedString(string: "\(player.name!) ($\(player.money))")
+		let text = NSAttributedString(string: "\(player.name!) (\(player.money) credits)")
 		text.draw(at: NSMakePoint(80, bounds.height - 50))
 		var y = bounds.height - 100
 		var x: CGFloat = 100
