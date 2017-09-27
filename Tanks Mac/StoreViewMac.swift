@@ -32,9 +32,20 @@ class StoreViewMac: Store {
 		var y = bounds.height - 100
 		var x: CGFloat = 100
 		for item in storeItems {
+			var count = 0
+			var color: NSColor?
+			if item is Ammo {
+				color = NSColor.red
+				count = player.weaponCount[item.name] ?? 0
+			} else if item is Upgrade {
+				color = NSColor.blue
+				count = player.upgradeCount[(item as! Upgrade).type.rawValue]
+			}
 			let text = NSAttributedString(string:
-				"\(item.name) (\(item.price)) (\(player.weaponCount[item.name] ?? 0) owned)")
+				"\(item.name) (\(item.price)) (\(count) owned)")
 			text.draw(at: NSMakePoint(x, y))
+			color?.set()
+			NSFrameRect(NSMakeRect(x - 2, y - 2, text.size().width + 4, text.size().height + 4))
 			y -= 20
 			if (y < 80) {
 				x += 300

@@ -27,13 +27,20 @@ enum AILevel: Int {
 	case HIGH
 }
 
+enum UpgradeType: Int {
+	case HILL_CLIMB
+	case ENGINE
+	case START_FUEL
+	case ARMOR
+}
+
 class Tank : NSObject {
 
 	static let radian: Float = 0.0174532925
 
 	//gameplay properties
 	var hp: CGFloat = 100
-	var fuel: Float = 100
+	var fuel: CGFloat = 100
 	var money: Int = 0
 	var score: Int = 0
 
@@ -43,11 +50,12 @@ class Tank : NSObject {
 		Ammo("Tank Shell", price: 0, radius: 20, damage: 20)
 	]
 	var weaponCount: [String : Int] = [:]
+	var upgradeCount: [Int] = [Int](repeating: 0, count: 4)
 
 	//physics
 	var maxHillClimb: CGFloat = 1
-	var engineEfficiency: Float = 1
-	var startingFuel: Float = 100
+	var engineEfficiency: CGFloat = 1
+	var startingFuel: CGFloat = 100
 	var armor: CGFloat = 1
 
 	//firing properties
@@ -177,7 +185,7 @@ class Tank : NSObject {
 		let y2 = terrain!.terrainControlHeights[x + Int(direction)]
 		let gradient = (y2 - y1) / CGFloat(terrain!.chunkSize)
 		if gradient < maxHillClimb {
-			fuel -= Float(abs(vector)) * engineEfficiency
+			fuel -= CGFloat(abs(vector)) * engineEfficiency
 			position.x += vector
 			position.y += gradient * abs(vector)
 		}
@@ -193,6 +201,19 @@ class Tank : NSObject {
 					weapons.append(item as! Ammo)
 				}
 				weaponCount[item.name] = (weaponCount[item.name] ?? 0) + 1
+			} else if item is Upgrade {
+				let upgrade = item as! Upgrade
+				switch upgrade.type {
+				case .ARMOR:
+					armor *= upgrade.upgradeQty
+				case .ENGINE:
+					engineEfficiency *= upgrade.upgradeQty
+				case .HILL_CLIMB:
+					maxHillClimb *= upgrade.upgradeQty
+				case .START_FUEL:
+					startingFuel += upgrade.upgradeQty
+				}
+				upgradeCount[upgrade.type.rawValue] += 1
 			}
 		}
 	}

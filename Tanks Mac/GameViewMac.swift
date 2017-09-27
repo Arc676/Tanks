@@ -89,7 +89,7 @@ class GameViewMac : GameMgr {
 		//draw fuel bar (since color is already black)
 		rect = NSMakeRect(210, bounds.height - 90, 100, 10)
 		NSFrameRect(rect!)
-		rect?.size.width = CGFloat(active.fuel / active.startingFuel * 100)
+		rect?.size.width = active.fuel / active.startingFuel * 100
 		NSRectFill(rect!)
 
 		//fill the wind bar

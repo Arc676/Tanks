@@ -25,6 +25,7 @@
 		71F061D91F2671ED004F0EF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F061D71F2671ED004F0EF5 /* Main.storyboard */; };
 		71F061DF1F267360004F0EF5 /* GameViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F061DE1F267360004F0EF5 /* GameViewMac.swift */; };
 		71F061E31F269377004F0EF5 /* Tank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F061E21F269377004F0EF5 /* Tank.swift */; };
+		71FA92891F7B9781006CDC14 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA92881F7B9781006CDC14 /* Upgrade.swift */; };
 		71FE08C41F39F40E00E708F7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 71FE08C11F39F40E00E708F7 /* LICENSE */; };
 		71FE08C51F39F40E00E708F7 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 71FE08C21F39F40E00E708F7 /* README */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		71F061DA1F2671ED004F0EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71F061DE1F267360004F0EF5 /* GameViewMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewMac.swift; sourceTree = "<group>"; };
 		71F061E21F269377004F0EF5 /* Tank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tank.swift; sourceTree = "<group>"; };
+		71FA92881F7B9781006CDC14 /* Upgrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Upgrade.swift; path = Backend/Upgrade.swift; sourceTree = "<group>"; };
 		71FE08C11F39F40E00E708F7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		71FE08C21F39F40E00E708F7 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 				713D1DB01F5BF1BC00FE576D /* Store.swift */,
 				713D1DB21F5BF31600FE576D /* Item.swift */,
 				713D1DB41F5BF3AA00FE576D /* Ammo.swift */,
+				71FA92881F7B9781006CDC14 /* Upgrade.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71FA92891F7B9781006CDC14 /* Upgrade.swift in Sources */,
 				71F061D41F2671ED004F0EF5 /* GameViewController.swift in Sources */,
 				712100041F27861D00EB48D8 /* MenuView.swift in Sources */,
 				7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */,

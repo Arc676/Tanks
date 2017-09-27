@@ -29,7 +29,11 @@ class Store: View {
 	let storeItems: [Item] = [
 		Ammo("Missile", price: 10, radius: 20, damage: 30),
 		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 100),
-		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 200)
+		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 200),
+		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
+		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
+		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),
+		Upgrade("Hill Climbing", 1.2, price: 500, type: .HILL_CLIMB)
 	]
 
 	var viewController: ViewController?
