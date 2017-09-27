@@ -178,7 +178,7 @@ class Tank : NSObject {
 		if gradient < maxHillClimb {
 			fuel -= Float(abs(vector)) * engineEfficiency
 			position.x += vector
-			position.y += gradient * vector
+			position.y += gradient * abs(vector)
 		}
 	}
 
