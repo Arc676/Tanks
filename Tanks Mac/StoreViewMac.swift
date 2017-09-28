@@ -23,11 +23,11 @@ import Cocoa
 
 class StoreViewMac: Store {
 
-	let continueButton = NSMakeRect(300, 100, 100, 10)
+	let continueButton = NSMakeRect(300, 100, 100, 30)
 
 	override func draw(_ rect: NSRect) {
 		let player = players![currentPlayer]
-		let text = NSAttributedString(string: "\(player.name!) (\(player.money) credits)")
+		var text = NSAttributedString(string: "\(player.name!) (\(player.money) credits)")
 		text.draw(at: NSMakePoint(80, bounds.height - 50))
 		var y = bounds.height - 100
 		var x: CGFloat = 100
@@ -55,6 +55,9 @@ class StoreViewMac: Store {
 
 		NSColor.white.set()
 		NSRectFill(continueButton)
+
+		text = NSAttributedString(string: "Continue");
+		text.draw(at: NSMakePoint(continueButton.origin.x + 1, continueButton.origin.y + 1))
 	}
 
 	override func mouseUp(with event: NSEvent) {

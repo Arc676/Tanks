@@ -27,7 +27,7 @@
 		71F061E31F269377004F0EF5 /* Tank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F061E21F269377004F0EF5 /* Tank.swift */; };
 		71FA92891F7B9781006CDC14 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA92881F7B9781006CDC14 /* Upgrade.swift */; };
 		71FE08C41F39F40E00E708F7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 71FE08C11F39F40E00E708F7 /* LICENSE */; };
-		71FE08C51F39F40E00E708F7 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 71FE08C21F39F40E00E708F7 /* README */; };
+		71FE08C51F39F40E00E708F7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 71FE08C21F39F40E00E708F7 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +53,7 @@
 		71F061E21F269377004F0EF5 /* Tank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tank.swift; sourceTree = "<group>"; };
 		71FA92881F7B9781006CDC14 /* Upgrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Upgrade.swift; path = Backend/Upgrade.swift; sourceTree = "<group>"; };
 		71FE08C11F39F40E00E708F7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		71FE08C21F39F40E00E708F7 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		71FE08C21F39F40E00E708F7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				71FE08C11F39F40E00E708F7 /* LICENSE */,
-				71FE08C21F39F40E00E708F7 /* README */,
+				71FE08C21F39F40E00E708F7 /* README.md */,
 			);
 			name = Git;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71FE08C51F39F40E00E708F7 /* README in Resources */,
+				71FE08C51F39F40E00E708F7 /* README.md in Resources */,
 				71F061D61F2671ED004F0EF5 /* Assets.xcassets in Resources */,
 				71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */,
 				71F061D91F2671ED004F0EF5 /* Main.storyboard in Resources */,
