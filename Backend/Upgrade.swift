@@ -31,4 +31,16 @@ class Upgrade: Item {
 		super.init(name, price: price)
 	}
 
+	override func encode(with aCoder: NSCoder) {
+		super.encode(with: aCoder)
+		aCoder.encode(type, forKey: "Type")
+		aCoder.encode(upgradeQty, forKey: "Qty")
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		type = aDecoder.decodeObject(forKey: "Type") as! UpgradeType
+		upgradeQty = aDecoder.decodeObject(forKey: "Qty") as! CGFloat
+		super.init(coder: aDecoder)
+	}
+
 }

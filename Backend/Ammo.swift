@@ -31,4 +31,16 @@ class Ammo: Item {
 		super.init(name, price: price)
 	}
 
+	override func encode(with aCoder: NSCoder) {
+		super.encode(with: aCoder)
+		aCoder.encode(blastRadius, forKey: "BlastRadius");
+		aCoder.encode(damage, forKey: "Dmg")
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		blastRadius = aDecoder.decodeObject(forKey: "BlastRadius") as! CGFloat
+		damage = aDecoder.decodeObject(forKey: "Dmg") as! CGFloat
+		super.init(coder: aDecoder)
+	}
+
 }

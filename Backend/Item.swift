@@ -20,7 +20,7 @@
 
 import Foundation
 
-class Item: NSObject {
+class Item: NSObject, NSCoding {
 
 	var price: Int
 	var name: String
@@ -28,6 +28,16 @@ class Item: NSObject {
 	init(_ name: String, price: Int) {
 		self.name = name
 		self.price = price
+	}
+
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(price, forKey: "Price")
+		aCoder.encode(name, forKey: "Name")
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		price = aDecoder.decodeObject(forKey: "Price") as! Int
+		name = aDecoder.decodeObject(forKey: "Name") as! String
 	}
 
 }
