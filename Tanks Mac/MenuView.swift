@@ -106,15 +106,15 @@ class MenuView : NSView {
 			do {
 				let data = try Data(contentsOf: panel.url!)
 				if let tank = NSKeyedUnarchiver.unarchiveObject(with: data) as? Tank {
-					if sender == p1Unload {
+					if sender == p1Load {
 						players[0] = tank
 						p1Unload.isEnabled = true
 						p1Load.isEnabled = false
-					} else if sender == p2Unload {
+					} else if sender == p2Load {
 						players[1] = tank
 						p2Unload.isEnabled = true
 						p2Load.isEnabled = false
-					} else if sender == p3Unload {
+					} else if sender == p3Load {
 						players[2] = tank
 						p3Unload.isEnabled = true
 						p3Load.isEnabled = false

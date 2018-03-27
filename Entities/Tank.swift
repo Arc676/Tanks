@@ -101,8 +101,8 @@ class Tank : NSObject, NSCoding {
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		money = aDecoder.decodeObject(forKey: "Money") as! Int
-		score = aDecoder.decodeObject(forKey: "Score") as! Int
+		money = aDecoder.decodeInteger(forKey: "Money")
+		score = aDecoder.decodeInteger(forKey: "Score")
 		weapons = aDecoder.decodeObject(forKey: "Weapons") as! [Ammo]
 		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as! [String : Int]
 		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as! [Int]

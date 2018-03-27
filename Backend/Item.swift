@@ -36,7 +36,7 @@ class Item: NSObject, NSCoding {
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		price = aDecoder.decodeObject(forKey: "Price") as! Int
+		price = aDecoder.decodeInteger(forKey: "Price")
 		name = aDecoder.decodeObject(forKey: "Name") as! String
 	}
 
