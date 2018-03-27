@@ -45,7 +45,7 @@ class StoreViewMac: Store {
 				"\(item.name) (\(item.price)) (\(count) owned)")
 			text.draw(at: NSMakePoint(x, y))
 			color?.set()
-			NSFrameRect(NSMakeRect(x - 2, y - 2, text.size().width + 4, text.size().height + 4))
+			NSMakeRect(x - 2, y - 2, text.size().width + 4, text.size().height + 4).frame()
 			y -= 20
 			if (y < 80) {
 				x += 300
@@ -54,7 +54,7 @@ class StoreViewMac: Store {
 		}
 
 		NSColor.white.set()
-		NSRectFill(continueButton)
+		continueButton.fill()
 	}
 
 	override func mouseUp(with event: NSEvent) {

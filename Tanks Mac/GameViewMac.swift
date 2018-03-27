@@ -43,12 +43,12 @@ class GameViewMac : GameMgr {
 		//draw UI
 		NSColor(calibratedWhite: 0.9, alpha: 1).set()
 		let bounds = terrain.terrainBounds!
-		NSRectFill(NSMakeRect(0, bounds.height - 100, bounds.width, 100))
+		NSMakeRect(0, bounds.height - 100, bounds.width, 100).fill()
 
 		//draw the little box indicating player color
 		let y = bounds.height - playerNames[activePlayer].size().height - 20
 		active.tankColor?.set()
-		NSRectFill(NSMakeRect(35, y, 10, 10))
+		NSMakeRect(35, y, 10, 10).fill()
 
 		//then draw the name
 		playerNames[activePlayer].draw(at: NSMakePoint(50, y))
@@ -72,30 +72,30 @@ class GameViewMac : GameMgr {
 
 		//draw HP bar
 		rect = NSMakeRect(100, bounds.height - 50, 100, 10)
-		NSFrameRect(rect!)
+		rect!.frame()
 		rect?.size.width = active.hp
-		NSRectFill(rect!)
+		rect!.fill()
 
 		//draw firepower bar
 		rect = NSMakeRect(100, bounds.height - 70, 100, 10)
-		NSFrameRect(rect!)
+		rect!.frame()
 		rect?.size.width = CGFloat(active.firepower)
-		NSRectFill(rect!)
+		rect!.fill()
 
 		//draw wind speed bar
 		NSColor.black.set()
-		NSRectFill(NSMakeRect(259, bounds.height - 55, 2, 20))
+		NSMakeRect(259, bounds.height - 55, 2, 20).fill()
 
 		//draw fuel bar (since color is already black)
 		rect = NSMakeRect(210, bounds.height - 90, 100, 10)
-		NSFrameRect(rect!)
+		rect!.frame()
 		rect?.size.width = active.fuel / active.startingFuel * 100
-		NSRectFill(rect!)
+		rect!.fill()
 
 		//fill the wind bar
 		NSColor.blue.set()
 		rect = NSMakeRect(210, bounds.height - 50, 100, 10)
-		NSFrameRect(rect!)
+		rect!.frame()
 		if terrain.windAcceleration < 0 {
 			rect = NSMakeRect(
 				CGFloat(260 + terrain.windAcceleration * 10), bounds.height - 50,
@@ -105,7 +105,7 @@ class GameViewMac : GameMgr {
 				260, bounds.height - 50,
 				CGFloat(terrain.windAcceleration * 10), 10)
 		}
-		NSRectFill(rect!)
+		rect!.fill()
 	}
 
 	override func keyDown(with event: NSEvent) {

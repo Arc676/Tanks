@@ -113,7 +113,7 @@ class Terrain : NSView {
 
 	override func draw(_ rect: NSRect) {
 		skyColor.set()
-		NSRectFill(rect)
+		rect.fill()
 		
 		terrainPath = NSBezierPath()
 		terrainPath?.move(to: NSMakePoint(0, 0))

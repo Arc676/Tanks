@@ -118,7 +118,7 @@ class Tank : NSObject {
 
 	func drawInRect(_ rect: NSRect) {
 		tankColor?.set()
-		NSRectFill(NSMakeRect(position.x - 10, position.y, 20, 10))
+		NSMakeRect(position.x - 10, position.y, 20, 10).fill()
 
 		NSColor.black.set()
 		var path = NSBezierPath(rect: NSMakeRect(0, -3, 20, 6))
