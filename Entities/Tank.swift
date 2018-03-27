@@ -34,7 +34,7 @@ enum UpgradeType: Int {
 	case ARMOR
 }
 
-class Tank : NSObject {
+class Tank : NSObject, NSCoding {
 
 	static let radian: Float = 0.0174532925
 
@@ -84,6 +84,34 @@ class Tank : NSObject {
 		tankColor = color
 		playerNum = pNum
 		self.name = name
+	}
+
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(money, forKey: "Money")
+		aCoder.encode(score, forKey: "Score")
+		aCoder.encode(weapons, forKey: "Weapons")
+		aCoder.encode(weaponCount, forKey: "WeaponCount")
+		aCoder.encode(upgradeCount, forKey: "UpgradeCount")
+		aCoder.encode(maxHillClimb, forKey: "MaxHillClimb")
+		aCoder.encode(engineEfficiency, forKey: "EngineEfficiency")
+		aCoder.encode(startingFuel, forKey: "StartingFuel")
+		aCoder.encode(armor, forKey: "Armor")
+		aCoder.encode(name, forKey: "Name")
+		aCoder.encode(tankColor, forKey: "Color")
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		money = aDecoder.decodeObject(forKey: "Money") as! Int
+		score = aDecoder.decodeObject(forKey: "Score") as! Int
+		weapons = aDecoder.decodeObject(forKey: "Weapons") as! [Ammo]
+		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as! [String : Int]
+		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as! [Int]
+		maxHillClimb = aDecoder.decodeObject(forKey: "MaxHillClimb") as! CGFloat
+		engineEfficiency = aDecoder.decodeObject(forKey: "EngineEfficiency") as! CGFloat
+		startingFuel = aDecoder.decodeObject(forKey: "StartingFuel") as! CGFloat
+		armor = aDecoder.decodeObject(forKey: "Armor") as! CGFloat
+		name = aDecoder.decodeObject(forKey: "Name") as? String
+		tankColor = aDecoder.decodeObject(forKey: "Color") as? NSColor
 	}
 
 	func reset() {
