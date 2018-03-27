@@ -108,18 +108,22 @@ class MenuView : NSView {
 				if let tank = NSKeyedUnarchiver.unarchiveObject(with: data) as? Tank {
 					if sender == p1Load {
 						players[0] = tank
+						p1name.stringValue = "(Player to be loaded from file)"
 						p1Unload.isEnabled = true
 						p1Load.isEnabled = false
 					} else if sender == p2Load {
 						players[1] = tank
+						p2name.stringValue = "(Player to be loaded from file)"
 						p2Unload.isEnabled = true
 						p2Load.isEnabled = false
 					} else if sender == p3Load {
 						players[2] = tank
+						p3name.stringValue = "(Player to be loaded from file)"
 						p3Unload.isEnabled = true
 						p3Load.isEnabled = false
 					} else {
 						players[3] = tank
+						p4name.stringValue = "(Player to be loaded from file)"
 						p4Unload.isEnabled = true
 						p4Load.isEnabled = false
 					}
@@ -140,18 +144,22 @@ class MenuView : NSView {
 	@IBAction func unloadFile(_ sender: NSButton) {
 		if sender == p1Unload {
 			players[0] = nil
+			p1name.stringValue = ""
 			p1Unload.isEnabled = false
 			p1Load.isEnabled = true
 		} else if sender == p2Unload {
 			players[1] = nil
+			p2name.stringValue = ""
 			p2Unload.isEnabled = false
 			p2Load.isEnabled = true
 		} else if sender == p3Unload {
 			players[2] = nil
+			p3name.stringValue = ""
 			p3Unload.isEnabled = false
 			p3Load.isEnabled = true
 		} else {
 			players[3] = nil
+			p4name.stringValue = ""
 			p4Unload.isEnabled = false
 			p4Load.isEnabled = true
 		}
