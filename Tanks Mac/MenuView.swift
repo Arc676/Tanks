@@ -47,6 +47,7 @@ class MenuView : NSView {
 	@IBOutlet weak var p2Unload: NSButton!
 
 	//player 3
+	@IBOutlet weak var enableP3: NSButton!
 	@IBOutlet weak var p3name: NSTextField!
 	@IBOutlet weak var p3color: NSColorWell!
 	@IBOutlet weak var p3isAI: NSButton!
@@ -56,6 +57,7 @@ class MenuView : NSView {
 	@IBOutlet weak var p3Unload: NSButton!
 
 	//player 4
+	@IBOutlet weak var enableP4: NSButton!
 	@IBOutlet weak var p4name: NSTextField!
 	@IBOutlet weak var p4color: NSColorWell!
 	@IBOutlet weak var p4isAI: NSButton!
@@ -64,26 +66,25 @@ class MenuView : NSView {
 	@IBOutlet weak var p4Load: NSButton!
 	@IBOutlet weak var p4Unload: NSButton!
 
-	@IBAction func toggleP3(_ sender: NSButton) {
-		let state = sender.state == NSControl.StateValue.on
-		p3name.isEnabled = state
-		p3color.isEnabled = state
-		p3isAI.isEnabled = state
-	}
-
 	@IBAction func toggleP3AI(_ sender: NSButton) {
 		p3AILvl.isEnabled = sender.state == NSControl.StateValue.on
 	}
 
-	@IBAction func toggleP4(_ sender: NSButton) {
-		let state = sender.state == NSControl.StateValue.on
-		p4name.isEnabled = state
-		p4color.isEnabled = state
-		p4isAI.isEnabled = state
-	}
-
 	@IBAction func toggleP4AI(_ sender: NSButton) {
 		p4AILvl.isEnabled = sender.state == NSControl.StateValue.on
+	}
+
+	@IBAction func togglePlayer(_ sender: NSButton) {
+		let state = sender.state == NSControl.StateValue.on
+		if sender == enableP3 {
+			p3name.isEnabled = state
+			p3color.isEnabled = state
+			p3isAI.isEnabled = state
+		} else {
+			p4name.isEnabled = state
+			p4color.isEnabled = state
+			p4isAI.isEnabled = state
+		}
 	}
 
 	@IBAction func loadFromFile(_ sender: NSButton) {

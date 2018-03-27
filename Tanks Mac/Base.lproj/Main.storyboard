@@ -547,7 +547,7 @@
                                             <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="1RX-ls-qPH">
                                                 <font key="font" metaFont="system"/>
                                                 <url key="url" string="file://localhost/Applications/"/>
-                                                <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                                             </pathCell>
                                         </pathControl>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBL-vz-Y1i">
@@ -649,7 +649,7 @@
                                             <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="t9g-zk-X64">
                                                 <font key="font" metaFont="system"/>
                                                 <url key="url" string="file://localhost/Applications/"/>
-                                                <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                                             </pathCell>
                                         </pathControl>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HgW-LB-SN2">
@@ -692,7 +692,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="toggleP3:" target="ph1-Dh-Baf" id="0Ja-7U-uTU"/>
+                                                <action selector="togglePlayer:" target="ph1-Dh-Baf" id="cQ1-kJ-m12"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K0v-ud-PKk">
@@ -765,7 +765,7 @@
                                             <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="oqf-C4-P8Q">
                                                 <font key="font" metaFont="system"/>
                                                 <url key="url" string="file://localhost/Applications/"/>
-                                                <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                                             </pathCell>
                                         </pathControl>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAi-fv-aoT">
@@ -808,7 +808,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="toggleP4:" target="ph1-Dh-Baf" id="YRy-Lb-fbT"/>
+                                                <action selector="togglePlayer:" target="ph1-Dh-Baf" id="hIP-gU-FDU"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdb-Du-1wL">
@@ -881,7 +881,7 @@
                                             <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="0jB-gI-sXj">
                                                 <font key="font" metaFont="system"/>
                                                 <url key="url" string="file://localhost/Applications/"/>
-                                                <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                                             </pathCell>
                                         </pathControl>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFS-2s-SKb">
@@ -911,6 +911,8 @@
                             </box>
                         </subviews>
                         <connections>
+                            <outlet property="enableP3" destination="Q5z-yG-Pcz" id="54d-Nt-uTJ"/>
+                            <outlet property="enableP4" destination="KQu-Sa-WbZ" id="PhP-Ym-nYB"/>
                             <outlet property="p1AILvl" destination="zD1-Oq-Dhi" id="DMu-Mh-DOe"/>
                             <outlet property="p1Load" destination="UBL-vz-Y1i" id="6QD-oz-WUN"/>
                             <outlet property="p1Path" destination="fAW-XK-NCZ" id="FJY-Cq-M9N"/>
