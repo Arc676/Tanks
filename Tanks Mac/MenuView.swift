@@ -33,45 +33,65 @@ class MenuView : NSView {
 	@IBOutlet weak var p1color: NSColorWell!
 	@IBOutlet weak var p1isAI: NSButton!
 	@IBOutlet weak var p1AILvl: NSSegmentedControl!
+	@IBOutlet weak var p1Path: NSPathControl!
+	@IBOutlet weak var p1Load: NSButton!
+	@IBOutlet weak var p1Unload: NSButton!
 
 	//player 2
 	@IBOutlet weak var p2name: NSTextField!
 	@IBOutlet weak var p2color: NSColorWell!
 	@IBOutlet weak var p2isAI: NSButton!
 	@IBOutlet weak var p2AILvl: NSSegmentedControl!
+	@IBOutlet weak var p2Path: NSPathControl!
+	@IBOutlet weak var p2Load: NSButton!
+	@IBOutlet weak var p2Unload: NSButton!
 
 	//player 3
 	@IBOutlet weak var p3name: NSTextField!
 	@IBOutlet weak var p3color: NSColorWell!
 	@IBOutlet weak var p3isAI: NSButton!
 	@IBOutlet weak var p3AILvl: NSSegmentedControl!
+	@IBOutlet weak var p3Path: NSPathControl!
+	@IBOutlet weak var p3Load: NSButton!
+	@IBOutlet weak var p3Unload: NSButton!
 
 	//player 4
 	@IBOutlet weak var p4name: NSTextField!
 	@IBOutlet weak var p4color: NSColorWell!
 	@IBOutlet weak var p4isAI: NSButton!
 	@IBOutlet weak var p4AILvl: NSSegmentedControl!
+	@IBOutlet weak var p4Path: NSPathControl!
+	@IBOutlet weak var p4Load: NSButton!
+	@IBOutlet weak var p4Unload: NSButton!
 
 	@IBAction func toggleP3(_ sender: NSButton) {
-		let state = sender.state == NSOnState
+		let state = sender.state == NSControl.StateValue.on
 		p3name.isEnabled = state
 		p3color.isEnabled = state
 		p3isAI.isEnabled = state
 	}
 
 	@IBAction func toggleP3AI(_ sender: NSButton) {
-		p3AILvl.isEnabled = sender.state == NSOnState
+		p3AILvl.isEnabled = sender.state == NSControl.StateValue.on
 	}
 
 	@IBAction func toggleP4(_ sender: NSButton) {
-		let state = sender.state == NSOnState
+		let state = sender.state == NSControl.StateValue.on
 		p4name.isEnabled = state
 		p4color.isEnabled = state
 		p4isAI.isEnabled = state
 	}
 
 	@IBAction func toggleP4AI(_ sender: NSButton) {
-		p4AILvl.isEnabled = sender.state == NSOnState
+		p4AILvl.isEnabled = sender.state == NSControl.StateValue.on
+	}
+
+	@IBAction func loadFromFile(_ sender: NSButton) {
+		//
+	}
+
+	@IBAction func unloadFile(_ sender: NSButton) {
+		//
 	}
 
 	@IBAction func selectTerrain(_ sender: NSButton) {
@@ -105,7 +125,7 @@ class MenuView : NSView {
 
 	private func createTank(_ givenName: String, _ color: NSColor, _ pNum: Int, isCC: NSButton, aiLvl: NSSegmentedControl) -> Tank {
 		let name = givenName == "" ? "Player \(pNum)" : givenName
-		if (isCC.state == NSOnState) {
+		if (isCC.state == NSControl.StateValue.on) {
 			return CCTank(color: color, pNum: pNum, lvl: AILevel(rawValue: aiLvl.selectedSegment)!, name: name)
 		} else {
 			return Player(color: color, pNum: pNum, name: name)
