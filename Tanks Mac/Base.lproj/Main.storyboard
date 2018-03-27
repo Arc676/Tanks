@@ -519,6 +519,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="toggleAI:" target="ph1-Dh-Baf" id="doL-Kv-dBN"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lTS-4R-CJm">
                                             <rect key="frame" x="18" y="50" width="52" height="17"/>
@@ -532,7 +535,7 @@
                                         <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zD1-Oq-Dhi">
                                             <rect key="frame" x="74" y="45" width="171" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="I9r-c4-cU6">
+                                            <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="I9r-c4-cU6">
                                                 <font key="font" metaFont="system"/>
                                                 <segments>
                                                     <segment label="Low"/>
@@ -621,6 +624,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="toggleAI:" target="ph1-Dh-Baf" id="drY-dY-kmt"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJX-m8-3qP">
                                             <rect key="frame" x="20" y="50" width="52" height="17"/>
@@ -632,9 +638,9 @@
                                             </textFieldCell>
                                         </textField>
                                         <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgt-om-MAL">
-                                            <rect key="frame" x="76" y="45" width="171" height="24"/>
+                                            <rect key="frame" x="76" y="45" width="182" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="W5w-9H-fkT">
+                                            <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="W5w-9H-fkT">
                                                 <font key="font" metaFont="system"/>
                                                 <segments>
                                                     <segment label="Low"/>
@@ -735,7 +741,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="toggleP3AI:" target="ph1-Dh-Baf" id="8dT-BG-XRZ"/>
+                                                <action selector="toggleAI:" target="ph1-Dh-Baf" id="EhS-re-5b3"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNb-Ia-QUY">
@@ -851,7 +857,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="toggleP4AI:" target="ph1-Dh-Baf" id="sAI-7y-RY8"/>
+                                                <action selector="toggleAI:" target="ph1-Dh-Baf" id="1my-v1-4OC"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joz-sr-Bdr">

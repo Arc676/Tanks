@@ -66,14 +66,6 @@ class MenuView : NSView {
 	@IBOutlet weak var p4Load: NSButton!
 	@IBOutlet weak var p4Unload: NSButton!
 
-	@IBAction func toggleP3AI(_ sender: NSButton) {
-		p3AILvl.isEnabled = sender.state == NSControl.StateValue.on
-	}
-
-	@IBAction func toggleP4AI(_ sender: NSButton) {
-		p4AILvl.isEnabled = sender.state == NSControl.StateValue.on
-	}
-
 	@IBAction func togglePlayer(_ sender: NSButton) {
 		let state = sender.state == NSControl.StateValue.on
 		if sender == enableP3 {
@@ -87,6 +79,19 @@ class MenuView : NSView {
 		}
 	}
 
+	@IBAction func toggleAI(_ sender: NSButton) {
+		let state = sender.state == NSControl.StateValue.on
+		if sender == p1isAI {
+			p1AILvl.isEnabled = state
+		} else if sender == p2isAI {
+			p2AILvl.isEnabled = state
+		} else if sender == p3isAI {
+			p3AILvl.isEnabled = state
+		} else {
+			p4AILvl.isEnabled = state
+		}
+	}
+	
 	@IBAction func loadFromFile(_ sender: NSButton) {
 		//
 	}

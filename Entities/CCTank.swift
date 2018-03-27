@@ -37,6 +37,10 @@ class CCTank : Tank {
 		super.init(color: color, pNum: pNum, name: name)
 	}
 
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+
 	private static func uncertaintyForLevel(_ lvl: AILevel, rad: Bool) -> Float {
 		let k = rad ? Tank.radian : 1
 		switch lvl {
