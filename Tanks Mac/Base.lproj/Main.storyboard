@@ -532,18 +532,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zD1-Oq-Dhi">
-                                            <rect key="frame" x="74" y="45" width="171" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="I9r-c4-cU6">
-                                                <font key="font" metaFont="system"/>
-                                                <segments>
-                                                    <segment label="Low"/>
-                                                    <segment label="Medium" selected="YES" tag="1"/>
-                                                    <segment label="High"/>
-                                                </segments>
-                                            </segmentedCell>
-                                        </segmentedControl>
                                         <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAW-XK-NCZ">
                                             <rect key="frame" x="20" y="20" width="137" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -575,6 +563,18 @@
                                                 <action selector="unloadFile:" target="ph1-Dh-Baf" id="55K-1T-kfc"/>
                                             </connections>
                                         </button>
+                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ofk-1I-HHl">
+                                            <rect key="frame" x="74" y="46" width="182" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="PhV-dp-jEi">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="Low"/>
+                                                    <segment label="Medium" selected="YES" tag="1"/>
+                                                    <segment label="High"/>
+                                                </segments>
+                                            </segmentedCell>
+                                        </segmentedControl>
                                     </subviews>
                                 </view>
                             </box>
@@ -637,18 +637,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgt-om-MAL">
-                                            <rect key="frame" x="76" y="45" width="182" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="W5w-9H-fkT">
-                                                <font key="font" metaFont="system"/>
-                                                <segments>
-                                                    <segment label="Low"/>
-                                                    <segment label="Medium" selected="YES" tag="1"/>
-                                                    <segment label="High"/>
-                                                </segments>
-                                            </segmentedCell>
-                                        </segmentedControl>
                                         <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fGN-BI-NRk">
                                             <rect key="frame" x="20" y="20" width="137" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -680,6 +668,18 @@
                                                 <action selector="unloadFile:" target="ph1-Dh-Baf" id="eac-hT-b1e"/>
                                             </connections>
                                         </button>
+                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgt-om-MAL">
+                                            <rect key="frame" x="76" y="46" width="182" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="W5w-9H-fkT">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="Low"/>
+                                                    <segment label="Medium" selected="YES" tag="1"/>
+                                                    <segment label="High"/>
+                                                </segments>
+                                            </segmentedCell>
+                                        </segmentedControl>
                                     </subviews>
                                 </view>
                             </box>
@@ -753,18 +753,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xUp-9R-dMv">
-                                            <rect key="frame" x="74" y="48" width="171" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="MAj-UF-WmB">
-                                                <font key="font" metaFont="system"/>
-                                                <segments>
-                                                    <segment label="Low"/>
-                                                    <segment label="Medium" selected="YES" tag="1"/>
-                                                    <segment label="High"/>
-                                                </segments>
-                                            </segmentedCell>
-                                        </segmentedControl>
                                         <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QvM-l5-UZb">
                                             <rect key="frame" x="20" y="20" width="137" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -796,6 +784,18 @@
                                                 <action selector="unloadFile:" target="ph1-Dh-Baf" id="lAs-n8-OvI"/>
                                             </connections>
                                         </button>
+                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="amO-As-743">
+                                            <rect key="frame" x="74" y="49" width="182" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="avR-eF-mDj">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="Low"/>
+                                                    <segment label="Medium" selected="YES" tag="1"/>
+                                                    <segment label="High"/>
+                                                </segments>
+                                            </segmentedCell>
+                                        </segmentedControl>
                                     </subviews>
                                 </view>
                             </box>
@@ -869,18 +869,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-XM-IHs">
-                                            <rect key="frame" x="74" y="45" width="171" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bZH-FU-Z9m">
-                                                <font key="font" metaFont="system"/>
-                                                <segments>
-                                                    <segment label="Low"/>
-                                                    <segment label="Medium" selected="YES" tag="1"/>
-                                                    <segment label="High"/>
-                                                </segments>
-                                            </segmentedCell>
-                                        </segmentedControl>
                                         <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PgZ-YJ-fpT">
                                             <rect key="frame" x="20" y="20" width="137" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -912,6 +900,18 @@
                                                 <action selector="unloadFile:" target="ph1-Dh-Baf" id="vP4-rQ-bXx"/>
                                             </connections>
                                         </button>
+                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NW0-Kb-K2J">
+                                            <rect key="frame" x="74" y="46" width="182" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Coc-F8-TGq">
+                                                <font key="font" metaFont="system"/>
+                                                <segments>
+                                                    <segment label="Low"/>
+                                                    <segment label="Medium" selected="YES" tag="1"/>
+                                                    <segment label="High"/>
+                                                </segments>
+                                            </segmentedCell>
+                                        </segmentedControl>
                                     </subviews>
                                 </view>
                             </box>
@@ -919,7 +919,7 @@
                         <connections>
                             <outlet property="enableP3" destination="Q5z-yG-Pcz" id="54d-Nt-uTJ"/>
                             <outlet property="enableP4" destination="KQu-Sa-WbZ" id="PhP-Ym-nYB"/>
-                            <outlet property="p1AILvl" destination="zD1-Oq-Dhi" id="DMu-Mh-DOe"/>
+                            <outlet property="p1AILvl" destination="ofk-1I-HHl" id="2md-2d-5GZ"/>
                             <outlet property="p1Load" destination="UBL-vz-Y1i" id="6QD-oz-WUN"/>
                             <outlet property="p1Path" destination="fAW-XK-NCZ" id="FJY-Cq-M9N"/>
                             <outlet property="p1Unload" destination="bBv-1A-Ac6" id="WXJ-sK-9Fu"/>
@@ -933,14 +933,14 @@
                             <outlet property="p2color" destination="QNc-0O-bxa" id="ol4-2x-2p8"/>
                             <outlet property="p2isAI" destination="3yY-kg-ctw" id="kDh-zj-3Bw"/>
                             <outlet property="p2name" destination="kWL-jM-1m2" id="LXu-JL-9Rw"/>
-                            <outlet property="p3AILvl" destination="xUp-9R-dMv" id="OKj-3r-NLa"/>
+                            <outlet property="p3AILvl" destination="amO-As-743" id="AjX-lJ-KFW"/>
                             <outlet property="p3Load" destination="VAi-fv-aoT" id="jvu-5N-ajm"/>
                             <outlet property="p3Path" destination="QvM-l5-UZb" id="UG3-eJ-ZU9"/>
                             <outlet property="p3Unload" destination="TCL-cy-MlY" id="zbj-h7-Oqc"/>
                             <outlet property="p3color" destination="J3T-hb-n9j" id="LuE-mL-o7S"/>
                             <outlet property="p3isAI" destination="odH-bM-My6" id="njz-yO-P76"/>
                             <outlet property="p3name" destination="bfg-Ye-8va" id="ZVs-pS-pP6"/>
-                            <outlet property="p4AILvl" destination="FE3-XM-IHs" id="ZgO-s8-4zs"/>
+                            <outlet property="p4AILvl" destination="NW0-Kb-K2J" id="ZCx-Ld-wob"/>
                             <outlet property="p4Load" destination="ZFS-2s-SKb" id="umW-wu-Vhg"/>
                             <outlet property="p4Path" destination="PgZ-YJ-fpT" id="JUl-qe-mHc"/>
                             <outlet property="p4Unload" destination="mAO-mF-lWP" id="jQ2-Ec-PYj"/>

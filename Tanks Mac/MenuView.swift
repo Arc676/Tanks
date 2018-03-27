@@ -72,10 +72,16 @@ class MenuView : NSView {
 			p3name.isEnabled = state
 			p3color.isEnabled = state
 			p3isAI.isEnabled = state
+			p3AILvl.isEnabled = state
+			p3Load.isEnabled = state
+			p3Unload.isEnabled = state
 		} else {
 			p4name.isEnabled = state
 			p4color.isEnabled = state
 			p4isAI.isEnabled = state
+			p4AILvl.isEnabled = state
+			p4Load.isEnabled = state
+			p4Unload.isEnabled = state
 		}
 	}
 
