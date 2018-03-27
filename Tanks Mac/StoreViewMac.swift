@@ -24,6 +24,7 @@ import Cocoa
 class StoreViewMac: Store {
 
 	let continueButton = NSMakeRect(300, 100, 100, 10)
+	let saveButton = NSMakeRect(500, 100, 100, 10)
 
 	override func draw(_ rect: NSRect) {
 		let player = players![currentPlayer]
@@ -55,16 +56,35 @@ class StoreViewMac: Store {
 
 		NSColor.white.set()
 		continueButton.fill()
+		saveButton.fill()
 	}
 
 	override func mouseUp(with event: NSEvent) {
 		if continueButton.contains(event.locationInWindow) {
 			nextPlayer()
+		} else if saveButton.contains(event.locationInWindow) {
+			savePlayer()
 		} else {
 			let i = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
 			purchaseItem(i);
 		}
 		needsDisplay = true;
+	}
+
+	func savePlayer() {
+		let panel = NSSavePanel()
+		if panel.runModal() == NSApplication.ModalResponse.OK {
+			let data = NSKeyedArchiver.archivedData(withRootObject: players![currentPlayer])
+			var res = true
+			do {
+				try data.write(to: panel.url!)
+			} catch {
+				res = false
+			}
+			let alert = NSAlert()
+			alert.messageText = res ? "Saved" : "Save failed"
+			alert.runModal()
+		}
 	}
 	
 }
