@@ -1,5 +1,5 @@
 # Tanks
-Tanks is an online flash game originally hosted on 2dplay.com. It does not appear to be hosted there anymore. Simply searching for "Tanks flash game" will give many results. This is a game based on that game.
+Tanks is an online flash game originally hosted on 2dplay.com. It does not appear to be hosted there anymore. Simply searching for "Tanks flash game" will give many results. This is a game based on that game but is not affiliated with the original in any way.
 
 ### Gameplay
 Between 2 and 4 players (any number of which can be computer controlled) control tanks of any color and must destroy all other tanks. Successful attacks on other players earn money that can be used to purchase better ammunition and tank upgrades.
@@ -9,3 +9,9 @@ Between 2 and 4 players (any number of which can be computer controlled) control
 - Left/Right to move tank
 - Space to fire
 - PgUp/PgDn to increase/decrease firepower (Fn+Up/Fn+Down if you don't have an extended keyboard)
+
+### Other features
+- You can save your Tank data to continue from a previously saved state between sessions
+
+### Legal
+Project available under GPLv3 with the exception that linking proprietary Apple libraries (Foundation, Cocoa, etc) is allowed to the extent to which this is necessary for compilation.
