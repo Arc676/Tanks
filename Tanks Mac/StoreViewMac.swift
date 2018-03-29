@@ -23,8 +23,11 @@ import Cocoa
 
 class StoreViewMac: Store {
 
-	let continueButton = NSMakeRect(300, 100, 100, 10)
-	let saveButton = NSMakeRect(500, 100, 100, 10)
+	let continueRect = NSMakeRect(300, 100, 100, 50)
+	let saveRect = NSMakeRect(500, 100, 100, 50)
+
+	let continueButton = NSImage(named: NSImage.Name(rawValue: "Next.png"))
+	let saveButton = NSImage(named: NSImage.Name(rawValue: "Save.png"))
 
 	override func draw(_ rect: NSRect) {
 		let player = players![currentPlayer]
@@ -54,15 +57,14 @@ class StoreViewMac: Store {
 			}
 		}
 
-		NSColor.white.set()
-		continueButton.fill()
-		saveButton.fill()
+		continueButton?.draw(in: continueRect)
+		saveButton?.draw(in: saveRect)
 	}
 
 	override func mouseUp(with event: NSEvent) {
-		if continueButton.contains(event.locationInWindow) {
+		if continueRect.contains(event.locationInWindow) {
 			nextPlayer()
-		} else if saveButton.contains(event.locationInWindow) {
+		} else if saveRect.contains(event.locationInWindow) {
 			savePlayer()
 		} else {
 			let i = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
