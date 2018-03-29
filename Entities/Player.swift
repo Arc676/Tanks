@@ -21,6 +21,9 @@
 
 import Cocoa
 
+/**
+Player controlled tank object
+*/
 class Player : Tank {
 
 	var changedWeaponLastTick = false

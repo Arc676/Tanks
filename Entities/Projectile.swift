@@ -21,6 +21,10 @@
 
 import Cocoa
 
+/**
+Basic representation of projectiles with properties
+based on what ammunition is being fired
+*/
 class Projectile : NSObject {
 
 	var position = NSMakePoint(0, 0)
@@ -35,6 +39,18 @@ class Projectile : NSObject {
 	var entities: [Tank]?
 	var sourcePlayer: Int?
 
+	/**
+	Create a new projectile
+
+	- parameters:
+		- terrain: The terrain of the map
+		- entities: A list of entities currently on the map
+		- vx: The horizontal component of the projectile's initial velocity
+		- vy: The vertical component of the projectile's initial velocity
+		- pos: The projectile's spawn position
+		- src: The player number of the tank that fired the projectile
+		- ammo: The type of ammunition being fired
+	*/
 	init(terrain: Terrain, entities: [Tank], vx: CGFloat, vy: CGFloat, pos: NSPoint, src: Int, ammo: Ammo) {
 		self.terrain = terrain
 		self.entities = entities
@@ -51,10 +67,17 @@ class Projectile : NSObject {
 		NSBezierPath(ovalIn: NSMakeRect(position.x, position.y, 5, 5)).fill()
 	}
 
+	/**
+	Indicate that the projectile should despawn
+	*/
 	func despawn() {
 		hasImpacted = true
 	}
 
+	/**
+	Indicate that the projectile has impacted and cause
+	damage to terrain and entities accordingly
+	*/
 	func impact() {
 		let radius = ammo.blastRadius
 		terrain?.deform(radius: radius, xPos: Int(position.x))
@@ -77,6 +100,11 @@ class Projectile : NSObject {
 		despawn()
 	}
 
+	/**
+	Update the projectile's position and velocity based on
+	the environment and call appropriate methods to destroy
+	the projectile if necessary
+	*/
 	func update() {
 		//update position
 		position.x +/= vx

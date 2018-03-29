@@ -34,6 +34,10 @@ enum UpgradeType: Int {
 	case ARMOR
 }
 
+/**
+Tank representation that can be archived and
+written to disk
+*/
 class Tank : NSObject, NSCoding {
 
 	static let radian: Float = 0.0174532925
@@ -80,6 +84,14 @@ class Tank : NSObject, NSCoding {
 	var terrain: Terrain?
 	var tanks: [Tank]?
 
+	/**
+	Create a new Tank object
+
+	- parameters:
+		- color: Color of tank
+		- pNum: The player number assigned to the tank
+		- name: The name assigned to the tank
+	*/
 	init(color: NSColor, pNum: Int, name: String) {
 		tankColor = color
 		playerNum = pNum
@@ -114,11 +126,18 @@ class Tank : NSObject, NSCoding {
 		tankColor = aDecoder.decodeObject(forKey: "Color") as? NSColor
 	}
 
+	/**
+	 Reset the tank to it's pre-game state
+	 */
 	func reset() {
 		hp = 100
 		fuel = startingFuel
 	}
 
+	/**
+	 Fires the currently selected weapon using the current
+	 firing properties
+	 */
 	func fireProjectile() {
 		projectile = Projectile(
 			terrain: terrain!,
@@ -140,6 +159,13 @@ class Tank : NSObject, NSCoding {
 		hasFired = true
 	}
 
+	/**
+	Reduce HP by damage taken, reduced by a factor equal
+	to the tank's armor
+
+	- parameters:
+		- dmg: Damage dealt by ammunition
+	*/
 	func takeDamage(_ dmg: CGFloat) {
 		hp -= dmg / armor
 	}
@@ -160,16 +186,26 @@ class Tank : NSObject, NSCoding {
 		projectile?.drawInRect(rect)
 	}
 
+	/**
+	Indicate that the tank's turn has ended
+	*/
 	func endTurn() {
 		turnEnded = true
 		projectile = nil
 	}
 
+	/**
+	Reset the tank to it's pre-turn state
+	*/
 	func resetState() {
 		turnEnded = false
 		hasFired = false
 	}
 
+	/**
+	Update the tank based on the environment while the tank
+	cannot modify its state
+	*/
 	func passiveUpdate() {
 		if hp <= 0 {
 			endTurn()
@@ -187,6 +223,13 @@ class Tank : NSObject, NSCoding {
 		}
 	}
 
+	/**
+	Update the tank based on user input while the tank
+	is allowed to alter its state
+
+	- parameters:
+		- keys: A dictionary indicating which keys are pressed
+	*/
 	func update(keys: [UInt16: Bool]) {
 		if hp <= 0 {
 			endTurn()
@@ -196,6 +239,12 @@ class Tank : NSObject, NSCoding {
 		passiveUpdate()
 	}
 
+	/**
+	Move the tank by the given distance
+
+	- parameters:
+		- vector: Distance to move
+	*/
 	func move(_ vector: CGFloat) {
 		let direction: CGFloat = vector < 0 ? -1 : 1
 		if position.x + direction <= 0 ||
@@ -219,6 +268,12 @@ class Tank : NSObject, NSCoding {
 		}
 	}
 
+	/**
+	Attempt to purchase an item
+
+	- parameters:
+		- item: The Item object to purchase
+	*/
 	func purchaseItem(_ item: Item) {
 		if money >= item.price {
 			money -= item.price

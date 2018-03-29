@@ -21,6 +21,9 @@
 
 import Cocoa
 
+/**
+Computer controlled tank object
+*/
 class CCTank : Tank {
 
 	var aiLevel: AILevel! = .LOW
@@ -32,6 +35,15 @@ class CCTank : Tank {
 
 	var needsRecalc = true
 
+	/**
+	Create a new computer controlled tank
+
+	- parameters:
+		- color: Color of tank
+		- pNum: Player number assigned to tank
+		- lvl: Level of AI to control this tank
+		- name: Name assigned to tank
+	*/
 	init(color: NSColor, pNum: Int, lvl: AILevel, name: String) {
 		aiLevel = lvl
 		super.init(color: color, pNum: pNum, name: name)
@@ -41,6 +53,17 @@ class CCTank : Tank {
 		super.init(coder: aDecoder)
 	}
 
+	/**
+	Return the uncertainty in aiming angle based on the
+	desired level of difficulty for the AI
+
+	- parameters:
+		- lvl: The AI level
+		- rad: Whether the result should be in radians
+
+	- returns:
+	The corresponding uncertainty in firing angle for the AI level
+	*/
 	private static func uncertaintyForLevel(_ lvl: AILevel, rad: Bool) -> Float {
 		let k = rad ? Tank.radian : 1
 		switch lvl {
@@ -53,8 +76,19 @@ class CCTank : Tank {
 		}
 	}
 
+	/**
+	Have the computer decide which items to purchase
+	given a selection of items
+
+	- parameters:
+		- items: The available items for purchase
+	*/
 	func makePurchases(_ items: [Item]) {}
 
+	/**
+	Choose a new target to the tank to fire at. This should be called
+	when the tank doesn't have a target or when the target dies.
+	*/
 	func chooseNewTarget() {
 		var possibleTargets: [Tank] = []
 		for tank in tanks! {
@@ -70,6 +104,15 @@ class CCTank : Tank {
 		recalculate(tx: target!.position.x, ty: target!.position.y, a: CGFloat(terrain!.windAcceleration))
 	}
 
+	/**
+	Recalculate the required firing angle and firepower to hit the
+	target location on the map
+
+	- parameters:
+		- tx: X coordinate of target
+		- ty: Y coordinate of target
+		- a: Wind acceleration
+	*/
 	private func recalculate(tx: CGFloat, ty: CGFloat, a: CGFloat) {
 		let x = tx - position.x
 		let y = ty - position.y
