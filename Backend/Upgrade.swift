@@ -20,11 +20,24 @@
 
 import Foundation
 
+/**
+Representation of tank upgrades
+*/
 class Upgrade: Item {
 
 	var type: UpgradeType
 	var upgradeQty: CGFloat
 
+	/**
+	Create a new Upgrade object
+
+	- parameters:
+		- name: Name of the upgrade
+		- qty: The amount or factor by which the relevant tank
+		property is increased
+		- price: The price of the upgrade
+		- type: The upgrade type
+	*/
 	init(_ name: String, _ qty: CGFloat, price: Int, type: UpgradeType) {
 		self.type = type
 		self.upgradeQty = qty

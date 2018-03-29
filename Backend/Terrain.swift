@@ -21,6 +21,9 @@
 
 import Cocoa
 
+/**
+Represents different types of terrain
+*/
 enum TerrainType : UInt32 {
 	case DESERT
 	case FLATLAND
@@ -28,6 +31,9 @@ enum TerrainType : UInt32 {
 	case RANDOM
 }
 
+/**
+Representation of the map terrain and environment
+*/
 class Terrain : NSView {
 
 	let pointCount = 41 //40 + 1 (dividing a width into N pieces requires N+1 points because edges)
@@ -42,6 +48,14 @@ class Terrain : NSView {
 	var terrainType: TerrainType = .DESERT
 	var windAcceleration: Float = 0
 
+	/**
+	Generate a new map with the desired properties
+
+	- parameters:
+		- type: The desired terrain type
+		- height: The height of the map
+		- width: The width of the map
+	*/
 	func generateNewTerrain(_ type: TerrainType, height: UInt32, width: Int) {
 		if (type == .RANDOM) {
 			generateNewTerrain(TerrainType(rawValue: arc4random_uniform(TerrainType.RANDOM.rawValue))!, height: height, width: width)
@@ -69,6 +83,9 @@ class Terrain : NSView {
 		newWindSpeed()
 	}
 
+	/**
+	Set the wind speed to a new random value
+	*/
 	func newWindSpeed() {
 		windAcceleration = Float(arc4random_uniform(1000)) / 500
 		if arc4random_uniform(100) < 50 {
@@ -76,6 +93,13 @@ class Terrain : NSView {
 		}
 	}
 
+	/**
+	Deform the terrain with the specified data
+
+	- parameters:
+		- radius: The radius of the crater to form
+		- xPos: The X coordinate of the impact point
+	*/
 	func deform(radius: CGFloat, xPos: Int) {
 		let coord = xPos / chunkSize
 
@@ -85,6 +109,17 @@ class Terrain : NSView {
 		}
 	}
 
+	/**
+	Determine the maximum height deviation between chunk heights
+	for the specified terrain type. Used to generate random maps.
+
+	- parameters:
+		- type: The relevant terrain type
+
+	- returns:
+	The maximum height difference between adjacent chunks for the
+	terrain type
+	*/
 	private func deviationForTerrain(_ type: TerrainType) -> Int {
 		switch type {
 		case .DESERT:
@@ -98,6 +133,16 @@ class Terrain : NSView {
 		}
 	}
 
+	/**
+	Determine the color of the ground for the given terrain. Used
+	when drawing the terrain.
+
+	- parameters:
+		- type: The terrain type
+
+	- returns:
+	The color to be used when drawing the terrain
+	*/
 	private func colorForTerrain(_ type: TerrainType) -> NSColor {
 		switch type {
 		case .DESERT:

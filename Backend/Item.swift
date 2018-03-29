@@ -20,11 +20,22 @@
 
 import Foundation
 
+/**
+Representation of purchasable items
+that can be archived and written to disk
+*/
 class Item: NSObject, NSCoding {
 
 	var price: Int
 	var name: String
 
+	/**
+	Create a new item
+
+	- parameters:
+		- name: Name of item
+		- price: Price of item
+	*/
 	init(_ name: String, price: Int) {
 		self.name = name
 		self.price = price

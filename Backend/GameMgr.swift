@@ -27,6 +27,10 @@
 	typealias View = UIView
 #endif
 
+/**
+Platform independent backend manager for
+tracking game data
+*/
 class GameMgr: View {
 
 	//physics
@@ -68,6 +72,14 @@ class GameMgr: View {
 	var gameTimer: Timer?
 	var viewController: ViewController?
 
+	/**
+	Initialize a new game with the given properties
+
+	- parameters:
+		- terrainType: The type of terrain for the map in the new game
+		- players: The tanks involved in the game
+		- controller: The view controller for the game
+	*/
 	func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {
 		terrain.generateNewTerrain(terrainType, height: UInt32(bounds.height), width: Int(bounds.width))
 		self.players = players
@@ -100,12 +112,22 @@ class GameMgr: View {
 			repeats: true)
 	}
 
+	/**
+	End the game
+	*/
 	func terminate() {
 		gameTimer?.invalidate()
 		viewController?.updatePlayers(players)
 		viewController?.goToStore()
 	}
 
+	/**
+	Check whether the game has ended
+
+	- returns:
+	Whether the game is over i.e. less than two players remain
+	(maybe everyone died)
+	*/
 	func gameOver() -> Bool {
 		var stillAlive = 0
 		for tank in players {
@@ -113,10 +135,13 @@ class GameMgr: View {
 				stillAlive++
 			}
 		}
-		//if less than two players remain, the game is over (maybe everyone died)
 		return stillAlive < 2
 	}
 
+	/**
+	Update all entities in the game and check if the game
+	is over
+	*/
 	@objc func update() {
 		var i = 0
 		for tank in players {

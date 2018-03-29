@@ -24,6 +24,10 @@
 	import UIKit
 #endif
 
+/**
+Platform independent backend manager
+for store data
+*/
 class Store: View {
 
 	let storeItems: [Item] = [
@@ -41,6 +45,14 @@ class Store: View {
 	var players: [Tank]?
 	var currentPlayer = -1
 
+	/**
+	Initialize the store view with the given game
+	properties
+
+	- parameters:
+		- players: The entities in the game
+		- viewController: The view controller for the game
+	*/
 	func initialize(_ players: [Tank], viewController: ViewController) {
 		self.players = players
 		self.viewController = viewController
@@ -48,12 +60,23 @@ class Store: View {
 		nextPlayer()
 	}
 
+	/**
+	Have a tank purchase an item at the given index (index is
+	validated before allowing purchase)
+
+	- parameters:
+		- index: Index of the desired item to buy
+	*/
 	func purchaseItem(_ index: Int) {
 		if 0 <= index && index < storeItems.count {
 			players![currentPlayer].purchaseItem(storeItems[index])
 		}
 	}
 
+	/**
+	Prepares the view for the next player or starts the next
+	game is all players have made their purchases
+	*/
 	func nextPlayer() {
 		if currentPlayer + 1 >= players!.count {
 			viewController?.startGame()

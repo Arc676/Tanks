@@ -20,11 +20,23 @@
 
 import Foundation
 
+/**
+Representation of different kinds of ammunition
+*/
 class Ammo: Item {
 
 	var blastRadius: CGFloat
 	var damage: CGFloat
 
+	/**
+	Create a new Ammo object
+
+	- parameters:
+		- name: Name of ammunition type
+		- price: Price of the ammunition
+		- radius: Blast radius for this type of ammunition
+		- damage: Damage dealt by the ammunition at zero range
+	*/
 	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat) {
 		blastRadius = radius
 		self.damage = damage

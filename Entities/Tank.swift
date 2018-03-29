@@ -21,12 +21,19 @@
 
 import Cocoa
 
+/**
+Represents the AI "intelligence" level
+*/
 enum AILevel: Int {
 	case LOW
 	case MED
 	case HIGH
 }
 
+/**
+Represents the property that will be
+affected by an upgrade
+*/
 enum UpgradeType: Int {
 	case HILL_CLIMB
 	case ENGINE
@@ -128,7 +135,7 @@ class Tank : NSObject, NSCoding {
 
 	/**
 	 Reset the tank to it's pre-game state
-	 */
+	*/
 	func reset() {
 		hp = 100
 		fuel = startingFuel
@@ -137,7 +144,7 @@ class Tank : NSObject, NSCoding {
 	/**
 	 Fires the currently selected weapon using the current
 	 firing properties
-	 */
+	*/
 	func fireProjectile() {
 		projectile = Projectile(
 			terrain: terrain!,
