@@ -21,6 +21,9 @@
 
 import Cocoa
 
+/**
+View controller for the game on Mac
+*/
 class GameViewController : NSViewController {
 
 	@IBOutlet var menuView: MenuView!
@@ -42,6 +45,13 @@ class GameViewController : NSViewController {
 		quit(NSNull())
 	}
 
+	/**
+	Initialize the game with the given properties
+
+	- parameters:
+		- terrainType: The desired terrain type
+		- players: The entities to be in the game
+	*/
 	func initialize(terrainType: TerrainType, players: [Tank]) {
 		gameView = GameViewMac(frame: (NSApp.mainWindow?.frame)!)
 		storeView = StoreViewMac(frame: (NSApp.mainWindow?.frame)!)
@@ -50,10 +60,19 @@ class GameViewController : NSViewController {
 		self.players = players
 	}
 
+	/**
+	Update the entities stored by the view controller
+
+	- parameters:
+		- players: The relevant entities
+	*/
 	func updatePlayers(_ players: [Tank]) {
 		self.players = players
 	}
 
+	/**
+	Start the game
+	*/
 	func startGame() {
 		view = gameView!
 		NSApp.mainWindow?.makeFirstResponder(gameView)
@@ -61,6 +80,9 @@ class GameViewController : NSViewController {
 		gameView!.needsDisplay = true
 	}
 
+	/**
+	Switch to the store view
+	*/
 	func goToStore() {
 		view = storeView!
 		NSApp.mainWindow?.makeFirstResponder(storeView)
@@ -68,6 +90,12 @@ class GameViewController : NSViewController {
 		storeView?.needsDisplay = true
 	}
 
+	/**
+	Quit the game and the app
+
+	- parameters:
+		- sender: The object that sent the request
+	*/
 	func quit(_ sender: Any) {
 		gameView?.terminate()
 		delegate.terminate(sender)

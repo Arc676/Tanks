@@ -24,6 +24,12 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+	/**
+	Terminate the program
+
+	- parameters:
+		- sender: The object that sent the request
+	*/
 	func terminate(_ sender:Any) {
 		NSApp.terminate(sender)
 	}

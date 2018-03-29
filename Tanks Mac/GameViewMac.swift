@@ -21,6 +21,9 @@
 
 import Cocoa
 
+/**
+Drawing view for the game on Mac
+*/
 class GameViewMac : GameMgr {
 
 	override func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {

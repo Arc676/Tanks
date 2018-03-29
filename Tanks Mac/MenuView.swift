@@ -21,6 +21,9 @@
 
 import Cocoa
 
+/**
+View for the main menu of the game
+*/
 class MenuView : NSView {
 
 	var viewController: GameViewController?
@@ -65,6 +68,13 @@ class MenuView : NSView {
 	@IBOutlet weak var p4Load: NSButton!
 	@IBOutlet weak var p4Unload: NSButton!
 
+	/**
+	Toggle whether a player is enabled and enable or
+	disable the corresponding UI elements accordingly
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func togglePlayer(_ sender: NSButton) {
 		let state = sender.state == NSControl.StateValue.on
 		if sender == enableP3 {
@@ -86,6 +96,13 @@ class MenuView : NSView {
 		}
 	}
 
+	/**
+	Toggle whether a player should be computer controlled
+	and enable or disable UI elements accordingly
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func toggleAI(_ sender: NSButton) {
 		let state = sender.state == NSControl.StateValue.on
 		if sender == p1isAI {
@@ -98,7 +115,16 @@ class MenuView : NSView {
 			p4AILvl.isEnabled = state
 		}
 	}
-	
+
+	/**
+	Indicate that a tank should be loaded from a
+	file when the game starts, ask for the file from
+	which the player should be loaded, and disable UI
+	elements accordingly
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func loadFromFile(_ sender: NSButton) {
 		var failed = false
 		let panel = NSOpenPanel()
@@ -141,6 +167,14 @@ class MenuView : NSView {
 		}
 	}
 
+	/**
+	Indicate that a tank previously designated to be
+	loaded from a file should not be loaded from a file
+	and enable UI elements accordingly
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func unloadFile(_ sender: NSButton) {
 		if sender == p1Unload {
 			players[0] = nil
@@ -165,6 +199,12 @@ class MenuView : NSView {
 		}
 	}
 
+	/**
+	Change the desired terrain type for the game
+
+	- parameters:
+		- sender: Radio button clicked
+	*/
 	@IBAction func selectTerrain(_ sender: NSButton) {
 		switch sender.title {
 		case "Desert":
@@ -180,6 +220,12 @@ class MenuView : NSView {
 		}
 	}
 
+	/**
+	Start the game
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func startGame(_ sender: Any) {
 		if players[0] == nil {
 			players[0] = createTank(p1name.stringValue, p1color.color, 1, isCC: p1isAI, aiLvl: p1AILvl)
@@ -205,6 +251,21 @@ class MenuView : NSView {
 		viewController?.startGame()
 	}
 
+	/**
+	Create a new tank with the given properties and data
+	from UI elements
+
+	- parameters:
+		- givenName: The name to assign to the tank
+		- color: The color of the tank
+		- pNum: The player number to assign to the tank
+		- isCC: The checkbox indicating whether the tank is to be computer controlled
+		- aiLvl: The segmented control indicating the desired AI level if the tank is
+		to be computer controlled
+
+	- returns:
+	A tank with the specified properties
+	*/
 	private func createTank(_ givenName: String, _ color: NSColor, _ pNum: Int, isCC: NSButton, aiLvl: NSSegmentedControl) -> Tank {
 		let name = givenName == "" ? "Player \(pNum)" : givenName
 		if (isCC.state == NSControl.StateValue.on) {
@@ -214,6 +275,12 @@ class MenuView : NSView {
 		}
 	}
 
+	/**
+	Quit the application
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func quitGame(_ sender: Any) {
 		viewController?.quit(sender)
 	}

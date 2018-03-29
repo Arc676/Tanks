@@ -21,6 +21,9 @@
 
 import Cocoa
 
+/**
+View for store control on Mac
+*/
 class StoreViewMac: Store {
 
 	let continueRect = NSMakeRect(300, 100, 100, 50)
@@ -78,6 +81,9 @@ class StoreViewMac: Store {
 		needsDisplay = true;
 	}
 
+	/**
+	Save the current player to disk
+	*/
 	func savePlayer() {
 		let panel = NSSavePanel()
 		if panel.runModal() == NSApplication.ModalResponse.OK {
