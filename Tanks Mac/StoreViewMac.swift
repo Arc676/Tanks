@@ -49,9 +49,9 @@ class StoreViewMac: Store {
 				"\(item.name) (\(item.price)) (\(count) owned)")
 			text.draw(at: NSMakePoint(x, y))
 			color?.set()
-			NSMakeRect(x - 2, y - 2, text.size().width + 4, text.size().height + 4).frame()
+			NSMakeRect(x - 2, y - 2, 290, text.size().height + 4).frame()
 			y -= 20
-			if (y < 80) {
+			if (y < 160) {
 				x += 300
 				y = bounds.height - 100
 			}
@@ -67,8 +67,13 @@ class StoreViewMac: Store {
 		} else if saveRect.contains(event.locationInWindow) {
 			savePlayer()
 		} else {
-			let i = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
-			purchaseItem(i);
+			let y = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
+			if y >= 0 && y < 22 {
+				let x = Int((event.locationInWindow.x - 100) / 300)
+				if x >= 0 {
+					purchaseItem(x * 22 + y);
+				}
+			}
 		}
 		needsDisplay = true;
 	}
