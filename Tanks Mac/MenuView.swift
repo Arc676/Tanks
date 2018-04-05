@@ -247,7 +247,7 @@ class MenuView : NSView {
 		} else {
 			players[3] = nil
 		}
-		viewController?.initialize(terrainType: terrainType, players: players.flatMap{ $0 })
+		viewController?.initialize(terrainType: terrainType, players: players.compactMap{ $0 })
 		viewController?.startGame()
 	}
 
