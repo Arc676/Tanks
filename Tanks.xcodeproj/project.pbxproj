@@ -19,6 +19,7 @@
 		713D1DB71F5BF94500FE576D /* StoreViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB61F5BF94500FE576D /* StoreViewMac.swift */; };
 		71B0847D1F2E2F1E008F690D /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847C1F2E2F1E008F690D /* Terrain.swift */; };
 		71B084801F2E2F4D008F690D /* GameMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847F1F2E2F4D008F690D /* GameMgr.swift */; };
+		71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFE7162077B92100D6DB89 /* WindowController.swift */; };
 		71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7B0211F2A36B600B93124 /* Extensions.swift */; };
 		71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 71D7B0231F2A3AA600B93124 /* Credits.rtf */; };
 		71F061D21F2671ED004F0EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F061D11F2671ED004F0EF5 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 		713D1DB61F5BF94500FE576D /* StoreViewMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewMac.swift; sourceTree = "<group>"; };
 		71B0847C1F2E2F1E008F690D /* Terrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Terrain.swift; path = Backend/Terrain.swift; sourceTree = "<group>"; };
 		71B0847F1F2E2F4D008F690D /* GameMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameMgr.swift; path = Backend/GameMgr.swift; sourceTree = "<group>"; };
+		71CFE7162077B92100D6DB89 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		71D7B0211F2A36B600B93124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Backend/Extensions.swift; sourceTree = "<group>"; };
 		71D7B0231F2A3AA600B93124 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = Backend/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		71F061CE1F2671ED004F0EF5 /* Tanks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 				71F061DA1F2671ED004F0EF5 /* Info.plist */,
 				712100031F27861D00EB48D8 /* MenuView.swift */,
 				713D1DB61F5BF94500FE576D /* StoreViewMac.swift */,
+				71CFE7162077B92100D6DB89 /* WindowController.swift */,
 			);
 			path = "Tanks Mac";
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				713D1DB31F5BF31600FE576D /* Item.swift in Sources */,
 				7121000D1F279C9E00EB48D8 /* Player.swift in Sources */,
 				712100111F27CB4200EB48D8 /* Projectile.swift in Sources */,
+				71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */,
 				713D1DB71F5BF94500FE576D /* StoreViewMac.swift in Sources */,
 				71B0847D1F2E2F1E008F690D /* Terrain.swift in Sources */,
 				71F061DF1F267360004F0EF5 /* GameViewMac.swift in Sources */,
@@ -370,7 +374,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Tanks Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Arc676.Tanks;
@@ -423,7 +427,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Tanks Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = Arc676.Tanks;
 				PRODUCT_NAME = "$(TARGET_NAME)";

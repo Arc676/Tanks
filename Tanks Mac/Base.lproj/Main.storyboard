@@ -373,7 +373,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="Tanks" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Tanks" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -394,6 +394,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="touchBarPrevWeapon:" target="B8D-0N-5wS" id="klA-Dm-Crz"/>
+                                        </connections>
                                     </button>
                                 </viewController>
                                 <size key="designTimeSize" width="72" height="30"/>
@@ -407,6 +410,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="touchBarNextWeapon:" target="B8D-0N-5wS" id="1rF-l9-Na8"/>
+                                        </connections>
                                     </button>
                                 </viewController>
                                 <size key="designTimeSize" width="72" height="30"/>
@@ -418,9 +424,15 @@
                                 <sliderAccessory key="maximumValueAccessory" id="umO-pS-g5d">
                                     <sliderAccessoryBehavior key="behavior" id="OAL-CF-UH4"/>
                                 </sliderAccessory>
-                                <slider key="slider" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EK7-E4-kbg">
-                                    <rect key="frame" x="0.0" y="0.0" width="96" height="21"/>
+                                <slider key="slider" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EK7-E4-kbg">
+                                    <rect key="frame" x="-6" y="0.0" width="96" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="HYa-a1-LNN"/>
+                                    </constraints>
                                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="rrl-22-Js0"/>
+                                    <connections>
+                                        <action selector="touchBarChangeAngle:" target="B8D-0N-5wS" id="Jp8-Kq-Ojy"/>
+                                    </connections>
                                 </slider>
                             </sliderTouchBarItem>
                             <sliderTouchBarItem id="70p-2u-wHu">
@@ -430,9 +442,15 @@
                                 <sliderAccessory key="maximumValueAccessory" id="jLH-hP-5fP">
                                     <sliderAccessoryBehavior key="behavior" id="YVk-L6-hlM"/>
                                 </sliderAccessory>
-                                <slider key="slider" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKX-ok-AMj">
-                                    <rect key="frame" x="0.0" y="0.0" width="96" height="21"/>
+                                <slider key="slider" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mKX-ok-AMj">
+                                    <rect key="frame" x="-6" y="0.0" width="96" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="jhG-Fi-77X"/>
+                                    </constraints>
                                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="xIL-hR-kV7"/>
+                                    <connections>
+                                        <action selector="touchBarChangeFirepower:" target="B8D-0N-5wS" id="1Fj-ET-4dk"/>
+                                    </connections>
                                 </slider>
                             </sliderTouchBarItem>
                             <touchBarItem id="cjI-1l-5mk">
@@ -444,6 +462,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="touchBarMoveLeft:" target="B8D-0N-5wS" id="fDG-x9-y1E"/>
+                                        </connections>
                                     </button>
                                 </viewController>
                                 <size key="designTimeSize" width="72" height="30"/>
@@ -457,6 +478,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="touchBarMoveRight:" target="B8D-0N-5wS" id="BvB-rs-d2E"/>
+                                        </connections>
                                     </button>
                                 </viewController>
                                 <size key="designTimeSize" width="72" height="30"/>
