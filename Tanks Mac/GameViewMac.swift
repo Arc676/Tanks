@@ -26,6 +26,8 @@ Drawing view for the game on Mac
 */
 class GameViewMac : GameMgr {
 
+	var touchBarRequestedFire: Bool = false
+
 	override func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {
 		uiMarks = [
 			NSAttributedString(string: "HP") 		: NSMakePoint(80, bounds.height - 50),
@@ -127,6 +129,17 @@ class GameViewMac : GameMgr {
 		}
 	}
 
+	override func update() {
+		if touchBarRequestedFire {
+			keyStates[GameMgr.spaceBar] = true
+		}
+		super.update()
+		if touchBarRequestedFire {
+			keyStates[GameMgr.spaceBar] = false
+			touchBarRequestedFire = false
+		}
+	}
+
 	func touchBarChangeWeapon(_ dir: Int) {
 		if players[activePlayer] is Player {
 			if dir == 1 {
@@ -150,7 +163,7 @@ class GameViewMac : GameMgr {
 	}
 
 	func touchBarFire() {
-		//
+		touchBarRequestedFire = true
 	}
 	
 }
