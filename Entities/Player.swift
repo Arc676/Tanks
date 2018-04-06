@@ -64,17 +64,4 @@ class Player : Tank {
 		}
 	}
 
-	func selectPreviousWeapon() {
-		selectedWeapon -= 1
-		if selectedWeapon < 0 {
-			selectedWeapon = weapons.count - 1
-		} else {
-			selectedWeapon %= weapons.count
-		}
-	}
-
-	func selectNextWeapon() {
-		selectedWeapon = (selectedWeapon + 1) % weapons.count
-	}
-
 }

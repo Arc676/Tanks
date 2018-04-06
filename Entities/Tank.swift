@@ -175,6 +175,25 @@ class Tank : NSObject, NSCoding {
 	}
 
 	/**
+	Selects the previous available weapon, looping back if necessary
+	*/
+	func selectPreviousWeapon() {
+		selectedWeapon -= 1
+		if selectedWeapon < 0 {
+			selectedWeapon = weapons.count - 1
+		} else {
+			selectedWeapon %= weapons.count
+		}
+	}
+
+	/**
+	Selects the next available weapon, looping back if necessary
+	*/
+	func selectNextWeapon() {
+		selectedWeapon = (selectedWeapon + 1) % weapons.count
+	}
+
+	/**
 	Reduce HP by damage taken, reduced by a factor equal
 	to the tank's armor
 
