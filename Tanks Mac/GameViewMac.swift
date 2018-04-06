@@ -128,7 +128,13 @@ class GameViewMac : GameMgr {
 	}
 
 	func touchBarChangeWeapon(_ dir: Int) {
-		//
+		if players[activePlayer] is Player {
+			if dir == 1 {
+				(players[activePlayer] as? Player)?.selectNextWeapon()
+			} else {
+				(players[activePlayer] as? Player)?.selectPreviousWeapon()
+			}
+		}
 	}
 
 	func touchBarSetAngle(_ angle: Float) {

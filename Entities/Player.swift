@@ -55,18 +55,26 @@ class Player : Tank {
 			changedWeaponLastTick = keys[GameMgr.qKey]! || keys[GameMgr.wKey]!
 		} else {
 			if keys[GameMgr.qKey]! {
-				selectedWeapon = (selectedWeapon + 1) % weapons.count
+				selectNextWeapon()
 				changedWeaponLastTick = true
 			} else if keys[GameMgr.wKey]! {
-				selectedWeapon -= 1
-				if selectedWeapon < 0 {
-					selectedWeapon = weapons.count - 1
-				} else {
-					selectedWeapon %= weapons.count
-				}
+				selectPreviousWeapon()
 				changedWeaponLastTick = true
 			}
 		}
+	}
+
+	func selectPreviousWeapon() {
+		selectedWeapon -= 1
+		if selectedWeapon < 0 {
+			selectedWeapon = weapons.count - 1
+		} else {
+			selectedWeapon %= weapons.count
+		}
+	}
+
+	func selectNextWeapon() {
+		selectedWeapon = (selectedWeapon + 1) % weapons.count
 	}
 
 }
