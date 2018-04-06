@@ -23,28 +23,34 @@ import Cocoa
 
 class WindowController: NSWindowController {
 
+	var viewController: GameViewController?
+
+	override func awakeFromNib() {
+		viewController = contentViewController as? GameViewController
+	}
+
 	@IBAction func touchBarPrevWeapon(_ sender: NSButton) {
-		Swift.print("Prev weapon")
+		viewController?.gameView?.touchBarChangeWeapon(-1)
 	}
 
 	@IBAction func touchBarNextWeapon(_ sender: NSButton) {
-		Swift.print("Next weapon")
+		viewController?.gameView?.touchBarChangeWeapon(1)
 	}
 
-	@IBAction func touchBarChangeAngle(_ sender: NSSliderTouchBarItem) {
-		Swift.print("Angle changed")
+	@IBAction func touchBarChangeAngle(_ sender: NSSlider) {
+		viewController?.gameView?.touchBarSetAngle(CGFloat(sender.floatValue))
 	}
 
-	@IBAction func touchBarChangeFirepower(_ sender: NSSliderTouchBarItem) {
-		Swift.print("Firepower changed")
+	@IBAction func touchBarChangeFirepower(_ sender: NSSlider) {
+		viewController?.gameView?.touchBarSetFirepower(sender.integerValue)
 	}
 
 	@IBAction func touchBarMoveLeft(_ sender: NSButton) {
-		Swift.print("Move left")
+		viewController?.gameView?.touchBarMove(-1)
 	}
 
 	@IBAction func touchBarMoveRight(_ sender: NSButton) {
-		Swift.print("Move right")
+		viewController?.gameView?.touchBarMove(1)
 	}
 	
 }

@@ -429,7 +429,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="HYa-a1-LNN"/>
                                     </constraints>
-                                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="rrl-22-Js0"/>
+                                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="rrl-22-Js0"/>
                                     <connections>
                                         <action selector="touchBarChangeAngle:" target="B8D-0N-5wS" id="Jp8-Kq-Ojy"/>
                                     </connections>
@@ -447,7 +447,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="jhG-Fi-77X"/>
                                     </constraints>
-                                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="xIL-hR-kV7"/>
+                                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="xIL-hR-kV7"/>
                                     <connections>
                                         <action selector="touchBarChangeFirepower:" target="B8D-0N-5wS" id="1Fj-ET-4dk"/>
                                     </connections>

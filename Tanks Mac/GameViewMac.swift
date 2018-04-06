@@ -126,5 +126,21 @@ class GameViewMac : GameMgr {
 			super.keyUp(with: event)
 		}
 	}
+
+	func touchBarChangeWeapon(_ dir: Int) {
+		//
+	}
+
+	func touchBarSetAngle(_ angle: CGFloat) {
+		//
+	}
+
+	func touchBarSetFirepower(_ firepower: Int) {
+		//
+	}
+
+	func touchBarMove(_ dir: Int) {
+		//
+	}
 	
 }
