@@ -131,12 +131,16 @@ class GameViewMac : GameMgr {
 		//
 	}
 
-	func touchBarSetAngle(_ angle: CGFloat) {
-		//
+	func touchBarSetAngle(_ angle: Float) {
+		if players[activePlayer] is Player {
+			players[activePlayer].cannonAngle = angle * Float.pi
+		}
 	}
 
 	func touchBarSetFirepower(_ firepower: Int) {
-		//
+		if players[activePlayer] is Player {
+			players[activePlayer].firepower = firepower
+		}
 	}
 
 	func touchBarFire() {

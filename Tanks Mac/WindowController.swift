@@ -38,7 +38,7 @@ class WindowController: NSWindowController {
 	}
 
 	@IBAction func touchBarChangeAngle(_ sender: NSSlider) {
-		viewController?.gameView?.touchBarSetAngle(CGFloat(sender.floatValue))
+		viewController?.gameView?.touchBarSetAngle(1 - sender.floatValue)
 	}
 
 	@IBAction func touchBarChangeFirepower(_ sender: NSSlider) {
