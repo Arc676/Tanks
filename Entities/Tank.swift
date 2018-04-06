@@ -146,14 +146,22 @@ class Tank : NSObject, NSCoding {
 	 firing properties
 	*/
 	func fireProjectile() {
+		let c = CGFloat(cos(Double(cannonAngle)))
+		let s = CGFloat(sin(Double(cannonAngle)))
+
+		let vx = CGFloat(firepower) * c
+		let vy = CGFloat(firepower) * s
+		let pos = NSMakePoint(position.x + 20 * c, position.y + 5 + 20 * s)
+
 		projectile = Projectile(
 			terrain: terrain!,
 			entities: tanks!,
-			vx: CGFloat(Double(firepower) * cos(Double(cannonAngle))),
-			vy: CGFloat(Double(firepower) * sin(Double(cannonAngle))),
-			pos: position,
+			vx: vx,
+			vy: vy,
+			pos: pos,
 			src: playerNum - 1,
 			ammo: weapons[selectedWeapon])
+
 		let name = weapons[selectedWeapon].name
 		if name != "Tank Shell" {
 			weaponCount[name]! -= 1
@@ -177,11 +185,21 @@ class Tank : NSObject, NSCoding {
 		hp -= dmg / armor
 	}
 
+	/**
+	Draws the tank given the rectangle of the view
+
+	- parameters:
+		- rect: The view rectangle
+	*/
 	func drawInRect(_ rect: NSRect) {
 		tankColor?.set()
-		NSMakeRect(position.x - 10, position.y, 20, 10).fill()
+		tankRect().fill()
 
 		NSColor.black.set()
+
+		// the origin of the rectangle is set so that the rotation
+		// transformation causes the barrel to rotate about its
+		// supposed mount point on the tank
 		var path = NSBezierPath(rect: NSMakeRect(0, -3, 20, 6))
 		let transform = NSAffineTransform()
 		transform.translateX(by: position.x, yBy: position.y + 8)
@@ -191,6 +209,30 @@ class Tank : NSObject, NSCoding {
 
 		//draw projectile, if present (optional types ftw :P)
 		projectile?.drawInRect(rect)
+	}
+
+	/**
+	Create an NSRect representing the bounds of the tank where the
+	position of the tank corresponds to the center of the bottom edge
+	of the rectangle
+
+	- returns:
+	The NSRect object whose size and position corresponds
+	to the tank in the world
+	*/
+	private func tankRect() -> NSRect {
+		return NSMakeRect(position.x - 10, position.y, 20, 10)
+	}
+
+	/**
+	Determine whether a given point is within the tank
+	(for collision detection)
+
+	- parameters:
+	- point: The relevant point
+	*/
+	func hitTank(_ point: NSPoint) -> Bool {
+		return NSPointInRect(point, tankRect())
 	}
 
 	/**

@@ -114,7 +114,17 @@ class Projectile : NSObject {
 		vx +/= CGFloat((terrain?.windAcceleration)!)
 		vy +/= -9.81
 
-		if (terrain?.terrainPath?.contains(position))! {
+		var hasImpacted = terrain!.terrainPath!.contains(position)
+		if !hasImpacted {
+			for tank in entities! {
+				if tank.hitTank(position) {
+					hasImpacted = true
+					break
+				}
+			}
+		}
+
+		if hasImpacted {
 			impact()
 		} else if position.x < 0 || position.x > (terrain?.terrainBounds?.width)! {
 			despawn()
