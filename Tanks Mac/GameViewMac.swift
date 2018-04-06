@@ -139,7 +139,7 @@ class GameViewMac : GameMgr {
 		//
 	}
 
-	func touchBarMove(_ dir: Int) {
+	func touchBarFire() {
 		//
 	}
 	

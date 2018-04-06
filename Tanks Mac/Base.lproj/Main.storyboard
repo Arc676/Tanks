@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14019"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -425,7 +424,7 @@
                                     <sliderAccessoryBehavior key="behavior" id="OAL-CF-UH4"/>
                                 </sliderAccessory>
                                 <slider key="slider" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EK7-E4-kbg">
-                                    <rect key="frame" x="-6" y="0.0" width="96" height="21"/>
+                                    <rect key="frame" x="-6" y="0.0" width="219" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="HYa-a1-LNN"/>
                                     </constraints>
@@ -443,7 +442,7 @@
                                     <sliderAccessoryBehavior key="behavior" id="YVk-L6-hlM"/>
                                 </sliderAccessory>
                                 <slider key="slider" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mKX-ok-AMj">
-                                    <rect key="frame" x="-6" y="0.0" width="96" height="21"/>
+                                    <rect key="frame" x="-6" y="0.0" width="219" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="jhG-Fi-77X"/>
                                     </constraints>
@@ -453,33 +452,17 @@
                                     </connections>
                                 </slider>
                             </sliderTouchBarItem>
-                            <touchBarItem id="cjI-1l-5mk">
-                                <viewController key="viewController" id="IkN-Et-WhB">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-24-PPu">
+                            <touchBarItem id="alG-6d-QQG">
+                                <viewController key="viewController" id="eYC-e1-hDq">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dD1-kk-WQA">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XTb-74-EL8">
+                                        <buttonCell key="cell" type="push" title="Fire" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bof-Xv-muQ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="touchBarMoveLeft:" target="B8D-0N-5wS" id="fDG-x9-y1E"/>
-                                        </connections>
-                                    </button>
-                                </viewController>
-                                <size key="designTimeSize" width="72" height="30"/>
-                            </touchBarItem>
-                            <touchBarItem id="y4W-Hr-0TT">
-                                <viewController key="viewController" id="n0j-gg-iBb">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Lj-1h-Dgn">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h9H-DK-M4b">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="touchBarMoveRight:" target="B8D-0N-5wS" id="BvB-rs-d2E"/>
+                                            <action selector="touchBarFire:" target="B8D-0N-5wS" id="FMI-Lt-AsT"/>
                                         </connections>
                                     </button>
                                 </viewController>

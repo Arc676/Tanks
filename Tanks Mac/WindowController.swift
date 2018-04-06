@@ -45,12 +45,8 @@ class WindowController: NSWindowController {
 		viewController?.gameView?.touchBarSetFirepower(sender.integerValue)
 	}
 
-	@IBAction func touchBarMoveLeft(_ sender: NSButton) {
-		viewController?.gameView?.touchBarMove(-1)
-	}
-
-	@IBAction func touchBarMoveRight(_ sender: NSButton) {
-		viewController?.gameView?.touchBarMove(1)
+	@IBAction func touchBarFire(_ sender: NSButton) {
+		viewController?.gameView?.touchBarFire()
 	}
 	
 }
