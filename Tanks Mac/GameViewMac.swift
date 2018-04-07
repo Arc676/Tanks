@@ -26,7 +26,10 @@ Drawing view for the game on Mac
 */
 class GameViewMac : GameMgr {
 
+	// Touch Bar controls
 	var touchBarRequestedFire: Bool = false
+	var touchBarAngleSlider: NSSlider?
+	var touchBarFirepowerSlider: NSSlider?
 
 	override func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {
 		uiMarks = [
@@ -134,12 +137,22 @@ class GameViewMac : GameMgr {
 			keyStates[GameMgr.spaceBar] = true
 		}
 		super.update()
+		if players[activePlayer] is Player {
+			touchBarAngleSlider?.floatValue = 1 - players[activePlayer].cannonAngle / Float.pi
+			touchBarFirepowerSlider?.integerValue = players[activePlayer].firepower
+		}
 		if touchBarRequestedFire {
 			keyStates[GameMgr.spaceBar] = false
 			touchBarRequestedFire = false
 		}
 	}
 
+	/**
+	Change the current player's weapon via Touch Bar
+
+	- parameters:
+		- dir: 1 to select the next weapon, anything else (-1 for consistency) to select previous weapon
+	*/
 	func touchBarChangeWeapon(_ dir: Int) {
 		if players[activePlayer] is Player {
 			if dir == 1 {
@@ -150,18 +163,33 @@ class GameViewMac : GameMgr {
 		}
 	}
 
+	/**
+	Set the current player's firing angle via Touch Bar
+
+	- parameters:
+		- angle: The coefficient by which π should be multiplied to get the new firing angle
+	*/
 	func touchBarSetAngle(_ angle: Float) {
 		if players[activePlayer] is Player {
 			players[activePlayer].cannonAngle = angle * Float.pi
 		}
 	}
 
+	/**
+	Set the current player's firepower via Touch Bar
+
+	- parameters:
+		- firepower: The firepower level to set
+	*/
 	func touchBarSetFirepower(_ firepower: Int) {
 		if players[activePlayer] is Player {
 			players[activePlayer].firepower = firepower
 		}
 	}
 
+	/**
+	Indicate that the current player should fire as requested by Touch Bar input
+	*/
 	func touchBarFire() {
 		touchBarRequestedFire = true
 	}

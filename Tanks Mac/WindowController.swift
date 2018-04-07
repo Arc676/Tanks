@@ -27,9 +27,10 @@ class WindowController: NSWindowController {
 
 	@IBOutlet weak var touchBarAngleSlider: NSSlider!
 	@IBOutlet weak var touchBarFirepowerSlider: NSSlider!
-	
+
 	override func awakeFromNib() {
 		viewController = contentViewController as? GameViewController
+		viewController?.windowController = self
 	}
 
 	/**

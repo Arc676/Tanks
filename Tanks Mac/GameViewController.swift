@@ -30,6 +30,8 @@ class GameViewController : NSViewController {
 
 	let delegate: AppDelegate = NSApp.delegate as! AppDelegate
 
+	var windowController: WindowController?
+
 	var gameView: GameViewMac?
 	var storeView: StoreViewMac?
 
@@ -78,6 +80,9 @@ class GameViewController : NSViewController {
 		NSApp.mainWindow?.makeFirstResponder(gameView)
 		gameView!.initialize(terrainType: chosenTerrain!, players: players!, controller: self)
 		gameView!.needsDisplay = true
+
+		gameView?.touchBarAngleSlider = windowController?.touchBarAngleSlider
+		gameView?.touchBarFirepowerSlider = windowController?.touchBarFirepowerSlider
 	}
 
 	/**
