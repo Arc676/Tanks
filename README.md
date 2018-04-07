@@ -14,4 +14,4 @@ Between 2 and 4 players (any number of which can be computer controlled) control
 - You can save your Tank data to continue from a previously saved state between sessions
 
 ### Legal
-Project available under GPLv3 with the exception that linking proprietary Apple libraries (Foundation, Cocoa, etc) is allowed to the extent to which this is necessary for compilation. See `Tanks Mac/Credits.rtf` for details regarding assets and `LICENSE` for full GPL text.
+Project available under GPLv3 with the exception that linking proprietary Apple libraries (Foundation, Cocoa, etc) is allowed to the extent to which this is necessary for compilation. See `CREDITS` for details regarding assets and `LICENSE` for full GPL text.
