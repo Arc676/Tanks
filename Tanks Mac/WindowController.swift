@@ -25,26 +25,59 @@ class WindowController: NSWindowController {
 
 	var viewController: GameViewController?
 
+	@IBOutlet weak var touchBarAngleSlider: NSSlider!
+	@IBOutlet weak var touchBarFirepowerSlider: NSSlider!
+	
 	override func awakeFromNib() {
 		viewController = contentViewController as? GameViewController
 	}
 
+	/**
+	Select the previous weapon via Touch Bar
+
+	- parameters:
+		- sender: The touch bar item that sent the request
+	*/
 	@IBAction func touchBarPrevWeapon(_ sender: NSButton) {
 		viewController?.gameView?.touchBarChangeWeapon(-1)
 	}
 
+	/**
+	Select the next weapon via Touch Bar
+
+	- parameters:
+		- sender: The touch bar item that sent the request
+	*/
 	@IBAction func touchBarNextWeapon(_ sender: NSButton) {
 		viewController?.gameView?.touchBarChangeWeapon(1)
 	}
 
+	/**
+	Change the firing angle via Touch Bar
+
+	- parameters:
+		- sender: The touch bar item that sent the request
+	*/
 	@IBAction func touchBarChangeAngle(_ sender: NSSlider) {
 		viewController?.gameView?.touchBarSetAngle(1 - sender.floatValue)
 	}
 
+	/**
+	Change the firepower via Touch Bar
+
+	- parameters:
+		- sender: The touch bar item that sent the request
+	*/
 	@IBAction func touchBarChangeFirepower(_ sender: NSSlider) {
 		viewController?.gameView?.touchBarSetFirepower(sender.integerValue)
 	}
 
+	/**
+	Fire via Touch Bar
+
+	- parameters:
+		- sender: The touch bar item that sent the request
+	*/
 	@IBAction func touchBarFire(_ sender: NSButton) {
 		viewController?.gameView?.touchBarFire()
 	}

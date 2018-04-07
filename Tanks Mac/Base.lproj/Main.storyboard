@@ -471,6 +471,8 @@
                         </touchBarItems>
                     </touchBar>
                     <connections>
+                        <outlet property="touchBarAngleSlider" destination="EK7-E4-kbg" id="yNj-dA-Xy2"/>
+                        <outlet property="touchBarFirepowerSlider" destination="mKX-ok-AMj" id="v93-2Y-M3z"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
