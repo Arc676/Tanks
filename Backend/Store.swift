@@ -81,7 +81,7 @@ class Store: View {
 		if currentPlayer + 1 >= players!.count {
 			viewController?.startGame()
 		} else {
-			currentPlayer += 1
+			currentPlayer++
 			if players![currentPlayer] is CCTank {
 				(players![currentPlayer] as! CCTank).makePurchases(storeItems)
 				nextPlayer()

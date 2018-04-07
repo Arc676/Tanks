@@ -228,26 +228,32 @@ class MenuView : NSView {
 	*/
 	@IBAction func startGame(_ sender: Any) {
 		if players[0] == nil {
-			players[0] = createTank(p1name.stringValue, p1color.color, 1, isCC: p1isAI, aiLvl: p1AILvl)
+			players[0] = createTank(p1name.stringValue, p1color.color, isCC: p1isAI, aiLvl: p1AILvl)
 		}
 		if players[1] == nil {
-			players[1] = createTank(p2name.stringValue, p2color.color, 2, isCC: p2isAI, aiLvl: p2AILvl)
+			players[1] = createTank(p2name.stringValue, p2color.color, isCC: p2isAI, aiLvl: p2AILvl)
 		}
 		if p3name.isEnabled {
 			if players[2] == nil {
-				players[2] = createTank(p3name.stringValue, p3color.color, 3, isCC: p3isAI, aiLvl: p3AILvl)
+				players[2] = createTank(p3name.stringValue, p3color.color, isCC: p3isAI, aiLvl: p3AILvl)
 			}
 		} else {
 			players[2] = nil
 		}
 		if p4name.isEnabled {
 			if players[3] == nil {
-				players[3] = createTank(p4name.stringValue, p4color.color, 4, isCC: p4isAI, aiLvl: p4AILvl)
+				players[3] = createTank(p4name.stringValue, p4color.color, isCC: p4isAI, aiLvl: p4AILvl)
 			}
 		} else {
 			players[3] = nil
 		}
-		viewController?.initialize(terrainType: terrainType, players: players.compactMap{ $0 })
+		let compacted = players.compactMap{ $0 }
+		var pNum = 1
+		for tank in compacted {
+			tank.playerNum = pNum
+			pNum++
+		}
+		viewController?.initialize(terrainType: terrainType, players: compacted)
 		viewController?.startGame()
 	}
 
@@ -266,12 +272,12 @@ class MenuView : NSView {
 	- returns:
 	A tank with the specified properties
 	*/
-	private func createTank(_ givenName: String, _ color: NSColor, _ pNum: Int, isCC: NSButton, aiLvl: NSSegmentedControl) -> Tank {
-		let name = givenName == "" ? "Player \(pNum)" : givenName
+	private func createTank(_ givenName: String, _ color: NSColor, isCC: NSButton, aiLvl: NSSegmentedControl) -> Tank {
+		let name = givenName == "" ? "Tank" : givenName
 		if (isCC.state == NSControl.StateValue.on) {
-			return CCTank(color: color, pNum: pNum, lvl: AILevel(rawValue: aiLvl.selectedSegment)!, name: name)
+			return CCTank(color: color, pNum: 0, lvl: AILevel(rawValue: aiLvl.selectedSegment)!, name: name)
 		} else {
-			return Player(color: color, pNum: pNum, name: name)
+			return Player(color: color, pNum: 0, name: name)
 		}
 	}
 

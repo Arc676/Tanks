@@ -364,7 +364,7 @@ class Tank : NSObject, NSCoding {
 				case .START_FUEL:
 					startingFuel += upgrade.upgradeQty
 				}
-				upgradeCount[upgrade.type.rawValue] += 1
+				upgradeCount[upgrade.type.rawValue]++
 			}
 		}
 	}
