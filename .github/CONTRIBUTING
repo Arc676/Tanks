@@ -1,0 +1,16 @@
+Thank you for your interest in contributing to Tanks! Please take a moment to read the following guidelines.
+
+### Code contributions
+
+When contributing to code, please maintain consistency with the existing code formatting conventions and styles.
+
+- Variable names should be in camel casing
+- Functions should be commented using `/**` notation
+- Braces for blocks should be on the same line as the block introduction
+- Parentheses for things such as conditions in `if` blocks should be avoided where possible
+
+Additionally, remember that the project is available under the terms of the GPL license (version 3) with the exception that linking proprietary Apple libraries is allowed. As per the license terms, please add a copyright to the top of any source files that you modify.
+
+### Asset contributions
+
+As the game is fully open source, all assets should be freely available. Please ensure that you either own any assets you add or have the right to redistribute them under a Creative Commons license. Please add appropriate attribution for all assets to `Tanks Mac/Credits.rtf` including the license under which the asset is available, the creator, and a link to the asset.
