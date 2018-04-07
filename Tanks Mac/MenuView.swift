@@ -68,6 +68,39 @@ class MenuView : NSView {
 	@IBOutlet weak var p4Load: NSButton!
 	@IBOutlet weak var p4Unload: NSButton!
 
+	// Military code words for letters
+	// (random names if not provided)
+	static let nameCount = 26
+	let names = [
+		"Alpha",
+		"Bravo",
+		"Charlie",
+		"Delta",
+		"Echo",
+		"Foxtrot",
+		"Golf",
+		"Hotel",
+		"India",
+		"Juliet",
+		"Kilo",
+		"Lima",
+		"Mike",
+		"November",
+		"Oscar",
+		"Papa",
+		"Quebec",
+		"Romeo",
+		"Sierra",
+		"Tango",
+		"Uniform",
+		"Victor",
+		"Whiskey",
+		"X-ray",
+		"Yankee",
+		"Zulu"
+	]
+	var nameUsed = [Bool](repeating: false, count: MenuView.nameCount)
+
 	/**
 	Toggle whether a player is enabled and enable or
 	disable the corresponding UI elements accordingly
@@ -273,12 +306,24 @@ class MenuView : NSView {
 	A tank with the specified properties
 	*/
 	private func createTank(_ givenName: String, _ color: NSColor, isCC: NSButton, aiLvl: NSSegmentedControl) -> Tank {
-		let name = givenName == "" ? "Tank" : givenName
+		let name = givenName == "" ? getRandomName() : givenName
 		if (isCC.state == NSControl.StateValue.on) {
 			return CCTank(color: color, pNum: 0, lvl: AILevel(rawValue: aiLvl.selectedSegment)!, name: name)
 		} else {
 			return Player(color: color, pNum: 0, name: name)
 		}
+	}
+
+	/**
+	Pick a random name that hasn't already been used by another tank
+	*/
+	private func getRandomName() -> String {
+		var keyIndex = Int(arc4random_uniform(UInt32(MenuView.nameCount)))
+		while nameUsed[keyIndex] {
+			keyIndex = (keyIndex + 1) % MenuView.nameCount
+		}
+		nameUsed[keyIndex] = true
+		return names[keyIndex]
 	}
 
 	/**
