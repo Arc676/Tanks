@@ -85,7 +85,8 @@ class Projectile : NSObject {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
 			if distance <= radius {
 				var score: Int = distance > 0 ? Int(50 * radius / distance) : Int(50 * radius)
-				entity.takeDamage(ammo.damage)
+				let dmg = distance > 10 ? ammo.damage / pow(distance / 10, 2) : ammo.damage * 1.5
+				entity.takeDamage(dmg)
 				if entity.hp <= 0 {
 					score *= 2
 				}
