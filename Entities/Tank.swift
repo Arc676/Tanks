@@ -49,6 +49,8 @@ class Tank : NSObject, NSCoding {
 
 	static let radian: Float = 0.0174532925
 
+	static let firingSound = NSSound(named: NSSound.Name("firing.mp3"))!
+
 	//gameplay properties
 	var hp: CGFloat = 100
 	var fuel: CGFloat = 100
@@ -58,7 +60,8 @@ class Tank : NSObject, NSCoding {
 	//combat mechanics
 	var selectedWeapon = 0
 	var weapons: [Ammo] = [
-		Ammo("Tank Shell", price: 0, radius: 20, damage: 50)
+		Ammo("Tank Shell", price: 0, radius: 20, damage: 50,
+			 sound: NSSound(named: NSSound.Name("ex_small.wav"))!)
 	]
 	var weaponCount: [String : Int] = [:]
 	var upgradeCount: [Int] = [Int](repeating: 0, count: 4)
@@ -161,6 +164,8 @@ class Tank : NSObject, NSCoding {
 			pos: pos,
 			src: playerNum - 1,
 			ammo: weapons[selectedWeapon])
+
+		Tank.firingSound.play()
 
 		let name = weapons[selectedWeapon].name
 		if name != "Tank Shell" {

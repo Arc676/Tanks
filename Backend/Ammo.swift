@@ -19,6 +19,7 @@
 //See README and LICENSE for more details
 
 import Foundation
+import AppKit
 
 /**
 Representation of different kinds of ammunition
@@ -28,6 +29,8 @@ class Ammo: Item {
 	var blastRadius: CGFloat
 	var damage: CGFloat
 
+	var soundFile: NSSound
+
 	/**
 	Create a new Ammo object
 
@@ -36,22 +39,26 @@ class Ammo: Item {
 		- price: Price of the ammunition
 		- radius: Blast radius for this type of ammunition
 		- damage: Damage dealt by the ammunition at zero range
+		- sound: The sound file to be played on impact
 	*/
-	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat) {
+	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat, sound: NSSound) {
 		blastRadius = radius
 		self.damage = damage
+		soundFile = sound
 		super.init(name, price: price)
 	}
 
 	override func encode(with aCoder: NSCoder) {
 		super.encode(with: aCoder)
-		aCoder.encode(blastRadius, forKey: "BlastRadius");
+		aCoder.encode(blastRadius, forKey: "BlastRadius")
 		aCoder.encode(damage, forKey: "Dmg")
+		aCoder.encode(soundFile, forKey: "Sound")
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		blastRadius = aDecoder.decodeObject(forKey: "BlastRadius") as! CGFloat
 		damage = aDecoder.decodeObject(forKey: "Dmg") as! CGFloat
+		soundFile = aDecoder.decodeObject(forKey: "Sound") as! NSSound
 		super.init(coder: aDecoder)
 	}
 

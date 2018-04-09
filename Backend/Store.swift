@@ -31,9 +31,12 @@ for store data
 class Store: View {
 
 	let storeItems: [Item] = [
-		Ammo("Missile", price: 10, radius: 20, damage: 80),
-		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000),
-		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 2000),
+		Ammo("Missile", price: 10, radius: 20, damage: 80,
+			 sound: NSSound(named: NSSound.Name("ex_small.wav"))!),
+		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000,
+			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
+		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 2000,
+			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
 		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),
