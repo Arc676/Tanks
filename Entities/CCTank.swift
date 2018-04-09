@@ -197,9 +197,9 @@ class CCTank : Tank {
 			}
 		} else {
 			if cannonAngle < targetAngle {
-				cannonAngle += Tank.radian / 2
+				rotate(Tank.radian / 2)
 			} else {
-				cannonAngle -= Tank.radian / 2
+				rotate(-Tank.radian / 2)
 			}
 		}
 	}

@@ -50,6 +50,7 @@ class Tank : NSObject, NSCoding {
 	static let radian: Float = 0.0174532925
 
 	static let firingSound = NSSound(named: NSSound.Name("firing.mp3"))!
+	static let rotateSound = NSSound(named: NSSound.Name("rotate.wav"))!
 
 	//gameplay properties
 	var hp: CGFloat = 100
@@ -339,6 +340,19 @@ class Tank : NSObject, NSCoding {
 			position.x += vector
 			position.y += gradient * abs(vector)
 		}
+	}
+
+	/**
+	Rotate the tank cannon by the given angle
+
+	- parameters:
+		- angle: Angle by which to rotate (in degrees)
+	*/
+	func rotate(_ angle: Float) {
+		if !Tank.rotateSound.isPlaying {
+			Tank.rotateSound.play()
+		}
+		cannonAngle += angle
 	}
 
 	/**
