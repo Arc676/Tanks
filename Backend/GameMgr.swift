@@ -120,7 +120,6 @@ class GameMgr: View {
 	*/
 	func terminate() {
 		gameTimer?.invalidate()
-		viewController?.updatePlayers(players)
 		viewController?.goToStore()
 	}
 

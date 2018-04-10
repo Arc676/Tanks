@@ -62,16 +62,6 @@ class GameViewController : NSViewController {
 	}
 
 	/**
-	Update the entities stored by the view controller
-
-	- parameters:
-		- players: The relevant entities
-	*/
-	func updatePlayers(_ players: [Tank]) {
-		self.players = players
-	}
-
-	/**
 	Start the game
 	*/
 	func startGame(_ players: [Tank]?) {
