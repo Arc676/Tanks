@@ -31,7 +31,7 @@ class GameViewMac : GameMgr {
 	var touchBarAngleSlider: NSSlider?
 	var touchBarFirepowerSlider: NSSlider?
 
-	override func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {
+	override func initialize(terrainType: TerrainType, players: [Tank]?, controller: ViewController) {
 		uiMarks = [
 			NSAttributedString(string: "HP") 		: NSMakePoint(80, bounds.height - 50),
 			NSAttributedString(string: "Firepower") : NSMakePoint(40, bounds.height - 70),

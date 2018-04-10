@@ -54,12 +54,11 @@ class GameViewController : NSViewController {
 		- terrainType: The desired terrain type
 		- players: The entities to be in the game
 	*/
-	func initialize(terrainType: TerrainType, players: [Tank]) {
+	func initialize(terrainType: TerrainType) {
 		gameView = GameViewMac(frame: (NSApp.mainWindow?.frame)!)
 		storeView = StoreViewMac(frame: (NSApp.mainWindow?.frame)!)
 
 		chosenTerrain = terrainType
-		self.players = players
 	}
 
 	/**
@@ -75,14 +74,21 @@ class GameViewController : NSViewController {
 	/**
 	Start the game
 	*/
-	func startGame() {
+	func startGame(_ players: [Tank]?) {
 		view = gameView!
 		NSApp.mainWindow?.makeFirstResponder(gameView)
-		gameView!.initialize(terrainType: chosenTerrain!, players: players!, controller: self)
+		gameView!.initialize(terrainType: chosenTerrain!, players: players, controller: self)
 		gameView!.needsDisplay = true
 
 		gameView?.touchBarAngleSlider = windowController?.touchBarAngleSlider
 		gameView?.touchBarFirepowerSlider = windowController?.touchBarFirepowerSlider
+	}
+
+	/**
+	Start the game with the current set of players
+	*/
+	func startGame() {
+		startGame(nil)
 	}
 
 	/**

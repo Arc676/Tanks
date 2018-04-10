@@ -286,8 +286,8 @@ class MenuView : NSView {
 			tank.playerNum = pNum
 			pNum++
 		}
-		viewController?.initialize(terrainType: terrainType, players: compacted)
-		viewController?.startGame()
+		viewController?.initialize(terrainType: terrainType)
+		viewController?.startGame(compacted)
 	}
 
 	/**

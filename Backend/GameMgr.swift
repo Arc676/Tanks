@@ -80,10 +80,13 @@ class GameMgr: View {
 		- players: The tanks involved in the game
 		- controller: The view controller for the game
 	*/
-	func initialize(terrainType: TerrainType, players: [Tank], controller: ViewController) {
+	func initialize(terrainType: TerrainType, players: [Tank]?, controller: ViewController) {
 		terrain.generateNewTerrain(terrainType, height: UInt32(bounds.height), width: Int(bounds.width))
-		self.players = players
 		viewController = controller
+
+		if players != nil {
+			self.players = players!
+		}
 
 		var i = 0
 		for player in self.players {
