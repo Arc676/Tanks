@@ -60,7 +60,7 @@
 		71B0847F1F2E2F4D008F690D /* GameMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameMgr.swift; path = Backend/GameMgr.swift; sourceTree = "<group>"; };
 		71CFE7162077B92100D6DB89 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		71D7B0211F2A36B600B93124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Backend/Extensions.swift; sourceTree = "<group>"; };
-		71D7B0231F2A3AA600B93124 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = Backend/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		71D7B0231F2A3AA600B93124 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Tanks Mac/Credits.rtf"; sourceTree = SOURCE_ROOT; };
 		71F061CE1F2671ED004F0EF5 /* Tanks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F061D11F2671ED004F0EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71F061D31F2671ED004F0EF5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +122,6 @@
 			children = (
 				71B0847C1F2E2F1E008F690D /* Terrain.swift */,
 				71D7B0211F2A36B600B93124 /* Extensions.swift */,
-				71D7B0231F2A3AA600B93124 /* Credits.rtf */,
 				71B0847F1F2E2F4D008F690D /* GameMgr.swift */,
 				713D1DB01F5BF1BC00FE576D /* Store.swift */,
 				713D1DB21F5BF31600FE576D /* Item.swift */,
@@ -156,6 +155,7 @@
 		71F061D01F2671ED004F0EF5 /* Tanks Mac */ = {
 			isa = PBXGroup;
 			children = (
+				71D7B0231F2A3AA600B93124 /* Credits.rtf */,
 				71F061D11F2671ED004F0EF5 /* AppDelegate.swift */,
 				71F061D31F2671ED004F0EF5 /* GameViewController.swift */,
 				71F061DE1F267360004F0EF5 /* GameViewMac.swift */,
