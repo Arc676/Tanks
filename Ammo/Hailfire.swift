@@ -37,7 +37,7 @@ class Hailfire: Ammo {
 				terrain: terrain,
 				entities: tanks,
 				vx: vx + dv,
-				vy: vy + dv,
+				vy: vy,
 				pos: pos,
 				src: src,
 				ammo: self)

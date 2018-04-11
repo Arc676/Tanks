@@ -37,6 +37,8 @@ class Store: View {
 			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
 		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 2000,
 			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
+		Hailfire("Hailfire", price: 100000, radius: 20, damage: 100,
+				 sound: NSSound(named: NSSound.Name("ex_small.wav"))!),
 		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),

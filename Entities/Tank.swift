@@ -329,7 +329,7 @@ class Tank : NSObject, NSCoding {
 		let y2 = terrain!.terrainControlHeights[x + Int(direction)]
 		let gradient = (y2 - y1) / CGFloat(terrain!.chunkSize)
 		if gradient < maxHillClimb {
-			fuel -= CGFloat(abs(vector)) * engineEfficiency
+			fuel -= CGFloat(abs(vector)) / engineEfficiency
 			position.x += vector
 			position.y += gradient * abs(vector)
 		}
