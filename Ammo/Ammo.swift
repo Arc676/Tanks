@@ -64,12 +64,29 @@ class Ammo: Item {
 		super.init(coder: aDecoder)
 	}
 
+	/**
+	Draws the projectiles associated with the ammunition given the rectangle of the view
+
+	- parameters:
+		- rect: The view rectangle
+	*/
 	func drawInRect(_ rect: NSRect) {
 		for projectile in projectiles {
 			projectile.drawInRect(rect)
 		}
 	}
 
+	/**
+	Starts the firing process for the ammunition
+
+	- parameters:
+		- angle: The cannon angle upon firing
+		- firepower: The firepower used when firing
+		- position: The position of the firing tank
+		- terrain: The current terrain
+		- tanks: A list of the entities on the battlefield
+		- src: The player number of the firing tank
+	*/
 	func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
 		let c = CGFloat(cos(Double(angle)))
 		let s = CGFloat(sin(Double(angle)))
@@ -89,6 +106,13 @@ class Ammo: Item {
 		projectiles.append(projectile)
 	}
 
+	/**
+	Determine if the all projectiles associated with the ammunition are invalidated
+
+	- returns:
+	Whether all projectiles have been invalidated and thus the ammunition has
+	been invalidated
+	*/
 	func invalidated() -> Bool {
 		for projectile in projectiles {
 			if !projectile.invalidated {
@@ -98,12 +122,18 @@ class Ammo: Item {
 		return true
 	}
 
+	/**
+	Updates all projectiles associated with the ammunition
+	*/
 	func update() {
 		for projectile in projectiles {
 			projectile.update()
 		}
 	}
 
+	/**
+	Resets the ammunition's state
+	*/
 	func reset() {
 		projectiles.removeAll()
 	}

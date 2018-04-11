@@ -62,6 +62,12 @@ class Projectile : NSObject {
 		sourcePlayer = src
 	}
 
+	/**
+	Draws the projectile given the rectangle of the view
+
+	- parameters:
+		- rect: The view rectangle
+	*/
 	func drawInRect(_ rect: NSRect) {
 		// Do nothing if projectile is no longer valid
 		if invalidated {

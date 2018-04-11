@@ -25,6 +25,17 @@ class Hailfire: Ammo {
 
 	var projCount = 0
 
+	/**
+	Create a new Hailfire object
+
+	- parameters:
+		- name: Name of ammunition type
+		- price: Price of the ammunition
+		- radius: Blast radius for this type of ammunition
+		- damage: Damage dealt by the ammunition at zero range
+		- sound: The sound file to be played on impact
+		- projCount: The number of sub-projectiles to spawn when firing
+	*/
 	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat, sound: NSSound, projCount: Int) {
 		self.projCount = projCount
 		super.init(name, price: price, radius: radius, damage: damage, sound: sound)
