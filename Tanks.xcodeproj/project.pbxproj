@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710F24F1207DDF32009AE1EE /* Target.png in Resources */ = {isa = PBXBuildFile; fileRef = 710F24F0207DDF32009AE1EE /* Target.png */; };
 		712100041F27861D00EB48D8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712100031F27861D00EB48D8 /* MenuView.swift */; };
 		7121000D1F279C9E00EB48D8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000C1F279C9E00EB48D8 /* Player.swift */; };
 		7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000E1F279CCD00EB48D8 /* CCTank.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		710F24F0207DDF32009AE1EE /* Target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Target.png; sourceTree = "<group>"; };
 		712100031F27861D00EB48D8 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		7121000C1F279C9E00EB48D8 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7121000E1F279CCD00EB48D8 /* CCTank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTank.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				710F24F0207DDF32009AE1EE /* Target.png */,
 				7122E014206C906C00105C05 /* Next.png */,
 				7122E015206C906C00105C05 /* Save.png */,
 			);
@@ -246,6 +249,7 @@
 				71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */,
 				71840221207B13D700B1C61C /* rotate.wav in Resources */,
 				717381FD207891BC0090213A /* CREDITS in Resources */,
+				710F24F1207DDF32009AE1EE /* Target.png in Resources */,
 				71F061D91F2671ED004F0EF5 /* Main.storyboard in Resources */,
 				71FE08C41F39F40E00E708F7 /* LICENSE in Resources */,
 			);
