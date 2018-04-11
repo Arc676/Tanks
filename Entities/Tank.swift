@@ -89,7 +89,7 @@ class Tank : NSObject, NSCoding {
 	var name: String?
 	var tankColor: NSColor?
 	var playerNum = 0
-	var projectile: Projectile?
+	var selectedAmmo: Ammo?
 
 	//environment
 	var terrain: Terrain?
@@ -150,25 +150,15 @@ class Tank : NSObject, NSCoding {
 	 firing properties
 	*/
 	func fireProjectile() {
-		let c = CGFloat(cos(Double(cannonAngle)))
-		let s = CGFloat(sin(Double(cannonAngle)))
+		selectedAmmo = weapons[selectedWeapon]
+		selectedAmmo?.fire(angle: cannonAngle,
+						 firepower: firepower,
+						 position: position,
+						 terrain: terrain!,
+						 tanks: tanks!,
+						 src: playerNum - 1)
 
-		let vx = CGFloat(firepower) * c
-		let vy = CGFloat(firepower) * s
-		let pos = NSMakePoint(position.x + 20 * c, position.y + 5 + 20 * s)
-
-		projectile = Projectile(
-			terrain: terrain!,
-			entities: tanks!,
-			vx: vx,
-			vy: vy,
-			pos: pos,
-			src: playerNum - 1,
-			ammo: weapons[selectedWeapon])
-
-		Tank.firingSound.play()
-
-		let name = weapons[selectedWeapon].name
+		let name = selectedAmmo!.name
 		if name != "Tank Shell" {
 			weaponCount[name]! -= 1
 			if weaponCount[name]! == 0 {
@@ -232,8 +222,8 @@ class Tank : NSObject, NSCoding {
 		path = transform.transform(path)
 		path.fill()
 
-		//draw projectile, if present (optional types ftw :P)
-		projectile?.drawInRect(rect)
+		//draw projectiles, if present
+		selectedAmmo?.drawInRect(rect)
 	}
 
 	/**
@@ -265,7 +255,7 @@ class Tank : NSObject, NSCoding {
 	*/
 	func endTurn() {
 		turnEnded = true
-		projectile = nil
+		selectedAmmo?.reset()
 	}
 
 	/**
@@ -292,7 +282,7 @@ class Tank : NSObject, NSCoding {
 		if position.y <= 0 {
 			hp = 0
 		}
-		if projectile?.hasImpacted ?? false {
+		if selectedAmmo?.hasImpacted() ?? false {
 			endTurn()
 		}
 	}
@@ -309,7 +299,7 @@ class Tank : NSObject, NSCoding {
 			endTurn()
 			return
 		}
-		projectile?.update()
+		selectedAmmo?.update()
 		passiveUpdate()
 	}
 

@@ -31,6 +31,8 @@ class Ammo: Item {
 
 	var soundFile: NSSound
 
+	var projectiles: [Projectile] = []
+
 	/**
 	Create a new Ammo object
 
@@ -60,6 +62,52 @@ class Ammo: Item {
 		damage = aDecoder.decodeObject(forKey: "Dmg") as! CGFloat
 		soundFile = aDecoder.decodeObject(forKey: "Sound") as! NSSound
 		super.init(coder: aDecoder)
+	}
+
+	func drawInRect(_ rect: NSRect) {
+		for projectile in projectiles {
+			projectile.drawInRect(rect)
+		}
+	}
+
+	func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
+		let c = CGFloat(cos(Double(angle)))
+		let s = CGFloat(sin(Double(angle)))
+
+		let vx = CGFloat(firepower) * c
+		let vy = CGFloat(firepower) * s
+		let pos = NSMakePoint(position.x + 20 * c, position.y + 5 + 20 * s)
+
+		let projectile = Projectile(
+			terrain: terrain,
+			entities: tanks,
+			vx: vx,
+			vy: vy,
+			pos: pos,
+			src: src,
+			ammo: self)
+		projectiles.append(projectile)
+
+		Tank.firingSound.play()
+	}
+
+	func hasImpacted() -> Bool {
+		for projectile in projectiles {
+			if projectile.hasImpacted {
+				return true
+			}
+		}
+		return false
+	}
+
+	func update() {
+		for projectile in projectiles {
+			projectile.update()
+		}
+	}
+
+	func reset() {
+		projectiles.removeAll()
 	}
 
 }
