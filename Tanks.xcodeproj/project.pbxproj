@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		710F24F1207DDF32009AE1EE /* Target.png in Resources */ = {isa = PBXBuildFile; fileRef = 710F24F0207DDF32009AE1EE /* Target.png */; };
+		710F24F4207DE60C009AE1EE /* Hailfire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F24F3207DE60C009AE1EE /* Hailfire.swift */; };
 		712100041F27861D00EB48D8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712100031F27861D00EB48D8 /* MenuView.swift */; };
 		7121000D1F279C9E00EB48D8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000C1F279C9E00EB48D8 /* Player.swift */; };
 		7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000E1F279CCD00EB48D8 /* CCTank.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		710F24F0207DDF32009AE1EE /* Target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Target.png; sourceTree = "<group>"; };
+		710F24F3207DE60C009AE1EE /* Hailfire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hailfire.swift; sourceTree = "<group>"; };
 		712100031F27861D00EB48D8 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		7121000C1F279C9E00EB48D8 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7121000E1F279CCD00EB48D8 /* CCTank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTank.swift; sourceTree = "<group>"; };
@@ -49,7 +51,7 @@
 		7122E015206C906C00105C05 /* Save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Save.png; sourceTree = "<group>"; };
 		713D1DB01F5BF1BC00FE576D /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = Backend/Store.swift; sourceTree = "<group>"; };
 		713D1DB21F5BF31600FE576D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Backend/Item.swift; sourceTree = "<group>"; };
-		713D1DB41F5BF3AA00FE576D /* Ammo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ammo.swift; path = Backend/Ammo.swift; sourceTree = "<group>"; };
+		713D1DB41F5BF3AA00FE576D /* Ammo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ammo.swift; sourceTree = "<group>"; };
 		713D1DB61F5BF94500FE576D /* StoreViewMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewMac.swift; sourceTree = "<group>"; };
 		717381FC207891BC0090213A /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		7184021D207B13D700B1C61C /* rotate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rotate.wav; sourceTree = "<group>"; };
@@ -85,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710F24F2207DE5F8009AE1EE /* Ammo */ = {
+			isa = PBXGroup;
+			children = (
+				713D1DB41F5BF3AA00FE576D /* Ammo.swift */,
+				710F24F3207DE60C009AE1EE /* Hailfire.swift */,
+			);
+			path = Ammo;
+			sourceTree = "<group>";
+		};
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +136,6 @@
 				71B0847F1F2E2F4D008F690D /* GameMgr.swift */,
 				713D1DB01F5BF1BC00FE576D /* Store.swift */,
 				713D1DB21F5BF31600FE576D /* Item.swift */,
-				713D1DB41F5BF3AA00FE576D /* Ammo.swift */,
 				71FA92881F7B9781006CDC14 /* Upgrade.swift */,
 			);
 			name = Backend;
@@ -138,6 +148,7 @@
 				7122E013206C906C00105C05 /* Sprites */,
 				71FE08BF1F39F3FF00E708F7 /* Git */,
 				71B0847A1F2E2EA1008F690D /* Entities */,
+				710F24F2207DE5F8009AE1EE /* Ammo */,
 				71D7B0201F2A36A700B93124 /* Backend */,
 				71F061D01F2671ED004F0EF5 /* Tanks Mac */,
 				71F061CF1F2671ED004F0EF5 /* Products */,
@@ -269,6 +280,7 @@
 				713D1DB11F5BF1BC00FE576D /* Store.swift in Sources */,
 				71F061E31F269377004F0EF5 /* Tank.swift in Sources */,
 				713D1DB51F5BF3AA00FE576D /* Ammo.swift in Sources */,
+				710F24F4207DE60C009AE1EE /* Hailfire.swift in Sources */,
 				71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */,
 				71B084801F2E2F4D008F690D /* GameMgr.swift in Sources */,
 				713D1DB31F5BF31600FE576D /* Item.swift in Sources */,

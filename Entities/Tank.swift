@@ -158,6 +158,8 @@ class Tank : NSObject, NSCoding {
 						 tanks: tanks!,
 						 src: playerNum - 1)
 
+		Tank.firingSound.play()
+
 		let name = selectedAmmo!.name
 		if name != "Tank Shell" {
 			weaponCount[name]! -= 1
@@ -262,6 +264,7 @@ class Tank : NSObject, NSCoding {
 	Reset the tank to it's pre-turn state
 	*/
 	func resetState() {
+		selectedAmmo = nil
 		turnEnded = false
 		hasFired = false
 	}

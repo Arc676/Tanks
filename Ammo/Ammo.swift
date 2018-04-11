@@ -87,17 +87,15 @@ class Ammo: Item {
 			src: src,
 			ammo: self)
 		projectiles.append(projectile)
-
-		Tank.firingSound.play()
 	}
 
 	func hasImpacted() -> Bool {
 		for projectile in projectiles {
-			if projectile.hasImpacted {
-				return true
+			if !projectile.hasImpacted {
+				return false
 			}
 		}
-		return false
+		return true
 	}
 
 	func update() {
