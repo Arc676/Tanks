@@ -23,6 +23,23 @@ import AppKit
 
 class Hailfire: Ammo {
 
+	var projCount = 0
+
+	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat, sound: NSSound, projCount: Int) {
+		self.projCount = projCount
+		super.init(name, price: price, radius: radius, damage: damage, sound: sound)
+	}
+
+	override func encode(with aCoder: NSCoder) {
+		aCoder.encode(projCount, forKey: "ProjCount")
+		super.encode(with: aCoder)
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		projCount = aDecoder.decodeInteger(forKey: "ProjCount")
+		super.init(coder: aDecoder)
+	}
+
 	override func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
 		let c = CGFloat(cos(Double(angle)))
 		let s = CGFloat(sin(Double(angle)))
@@ -30,7 +47,7 @@ class Hailfire: Ammo {
 		let vx = CGFloat(firepower) * c
 		let vy = CGFloat(firepower) * s
 
-		for i in 0...5 {
+		for i in 0..<projCount {
 			let pos = NSMakePoint(position.x + 20 * c, position.y + 5 + 20 * s)
 			let dv = CGFloat(2 * i)
 			let projectile = Projectile(
