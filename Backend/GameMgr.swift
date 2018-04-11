@@ -145,11 +145,13 @@ class GameMgr: View {
 	is over
 	*/
 	@objc func update() {
+		var turnEnded = false
 		var i = 0
 		for tank in players {
 			if i == activePlayer {
 				tank.update(keys: keyStates)
 				if tank.turnEnded {
+					turnEnded = true
 					tank.resetState()
 					activePlayer = (activePlayer + 1) % players.count
 					terrain.newWindSpeed()
@@ -160,7 +162,7 @@ class GameMgr: View {
 			i++
 		}
 		needsDisplay = true
-		if gameOver() {
+		if turnEnded && gameOver() {
 			terminate()
 		}
 	}

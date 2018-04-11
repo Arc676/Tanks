@@ -285,7 +285,7 @@ class Tank : NSObject, NSCoding {
 		if position.y <= 0 {
 			hp = 0
 		}
-		if selectedAmmo?.hasImpacted() ?? false {
+		if selectedAmmo?.invalidated() ?? false {
 			endTurn()
 		}
 	}

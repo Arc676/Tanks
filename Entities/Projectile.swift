@@ -33,7 +33,7 @@ class Projectile : NSObject {
 
 	var ammo: Ammo
 
-	var hasImpacted = false
+	var invalidated = false
 
 	var terrain: Terrain?
 	var entities: [Tank]?
@@ -63,6 +63,10 @@ class Projectile : NSObject {
 	}
 
 	func drawInRect(_ rect: NSRect) {
+		// Do nothing if projectile is no longer valid
+		if invalidated {
+			return
+		}
 		NSColor.black.set()
 		NSBezierPath(ovalIn: NSMakeRect(position.x, position.y, 5, 5)).fill()
 	}
@@ -71,7 +75,7 @@ class Projectile : NSObject {
 	Indicate that the projectile should despawn
 	*/
 	func despawn() {
-		hasImpacted = true
+		invalidated = true
 	}
 
 	/**
@@ -108,6 +112,11 @@ class Projectile : NSObject {
 	the projectile if necessary
 	*/
 	func update() {
+		// Do nothing if projectile is no longer valid
+		if invalidated {
+			return
+		}
+
 		//update position
 		position.x +/= vx
 		position.y +/= vy

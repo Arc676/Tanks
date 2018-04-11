@@ -89,9 +89,9 @@ class Ammo: Item {
 		projectiles.append(projectile)
 	}
 
-	func hasImpacted() -> Bool {
+	func invalidated() -> Bool {
 		for projectile in projectiles {
-			if !projectile.hasImpacted {
+			if !projectile.invalidated {
 				return false
 			}
 		}
