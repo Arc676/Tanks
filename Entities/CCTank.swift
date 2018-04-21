@@ -50,7 +50,13 @@ class CCTank : Tank {
 	}
 
 	required init?(coder aDecoder: NSCoder) {
+		aiLevel = aDecoder.decodeObject(forKey: "AILvl") as! AILevel
 		super.init(coder: aDecoder)
+	}
+
+	override func encode(with aCoder: NSCoder) {
+		aCoder.encode(aiLevel, forKey: "AILvl")
+		super.encode(with: aCoder)
 	}
 
 	/**
