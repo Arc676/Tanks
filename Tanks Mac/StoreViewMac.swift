@@ -28,9 +28,13 @@ class StoreViewMac: Store {
 
 	let continueRect = NSMakeRect(300, 100, 100, 50)
 	let saveRect = NSMakeRect(500, 100, 100, 50)
+	let saveAIsRect = NSMakeRect(700, 100, 100, 50)
 
 	let continueButton = NSImage(named: NSImage.Name(rawValue: "Next.png"))
 	let saveButton = NSImage(named: NSImage.Name(rawValue: "Save.png"))
+
+	let saveAIsOff = NSImage(named: NSImage.Name(rawValue: "SaveAIsOff.png"))
+	let saveAIsOn = NSImage(named: NSImage.Name(rawValue: "SaveAIsOn.png"))
 
 	override func draw(_ rect: NSRect) {
 		let player = players![currentPlayer]
@@ -62,6 +66,11 @@ class StoreViewMac: Store {
 
 		continueButton?.draw(in: continueRect)
 		saveButton?.draw(in: saveRect)
+		if saveAIs {
+			saveAIsOn?.draw(in: saveAIsRect)
+		} else {
+			saveAIsOff?.draw(in: saveAIsRect)
+		}
 	}
 
 	override func mouseUp(with event: NSEvent) {
@@ -69,6 +78,8 @@ class StoreViewMac: Store {
 			nextPlayer()
 		} else if saveRect.contains(event.locationInWindow) {
 			savePlayer()
+		} else if saveAIsRect.contains(event.locationInWindow) {
+			saveAIs = !saveAIs
 		} else {
 			let y = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
 			if y >= 0 && y < 22 {
@@ -81,11 +92,9 @@ class StoreViewMac: Store {
 		needsDisplay = true;
 	}
 
-	/**
-	Save the current player to disk
-	*/
-	func savePlayer() {
+	override func savePlayer() {
 		let panel = NSSavePanel()
+		panel.message = "Select save location for Player \(currentPlayer + 1)"
 		if panel.runModal() == NSApplication.ModalResponse.OK {
 			let data = NSKeyedArchiver.archivedData(withRootObject: players![currentPlayer])
 			var res = true

@@ -55,6 +55,7 @@ class Store: View {
 
 	var players: [Tank]?
 	var currentPlayer = -1
+	var saveAIs = false
 
 	/**
 	Initialize the store view with the given game
@@ -85,6 +86,11 @@ class Store: View {
 	}
 
 	/**
+	Save the current player to disk. To be overriden for each platform.
+	*/
+	func savePlayer() {}
+
+	/**
 	Prepares the view for the next player or starts the next
 	game is all players have made their purchases
 	*/
@@ -95,6 +101,9 @@ class Store: View {
 			currentPlayer++
 			if players![currentPlayer] is CCTank {
 				(players![currentPlayer] as! CCTank).makePurchases(storeItems)
+				if saveAIs {
+					savePlayer()
+				}
 				nextPlayer()
 			}
 		}
