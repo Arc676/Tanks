@@ -26,7 +26,7 @@ Representation of different kinds of ammunition
 */
 class Ammo: Item {
 
-	var blastRadius: CGFloat
+	var blastRadius: Int
 	var damage: CGFloat
 
 	var soundFile: NSSound
@@ -43,7 +43,7 @@ class Ammo: Item {
 		- damage: Damage dealt by the ammunition at zero range
 		- sound: The sound file to be played on impact
 	*/
-	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat, sound: NSSound) {
+	init(_ name: String, price: Int, radius: Int, damage: CGFloat, sound: NSSound) {
 		blastRadius = radius
 		self.damage = damage
 		soundFile = sound
@@ -58,7 +58,7 @@ class Ammo: Item {
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		blastRadius = aDecoder.decodeObject(forKey: "BlastRadius") as! CGFloat
+		blastRadius = aDecoder.decodeInteger(forKey: "BlastRadius")
 		damage = aDecoder.decodeObject(forKey: "Dmg") as! CGFloat
 		soundFile = aDecoder.decodeObject(forKey: "Sound") as! NSSound
 		super.init(coder: aDecoder)

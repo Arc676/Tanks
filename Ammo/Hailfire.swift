@@ -36,7 +36,7 @@ class Hailfire: Ammo {
 		- sound: The sound file to be played on impact
 		- projCount: The number of sub-projectiles to spawn when firing
 	*/
-	init(_ name: String, price: Int, radius: CGFloat, damage: CGFloat, sound: NSSound, projCount: Int) {
+	init(_ name: String, price: Int, radius: Int, damage: CGFloat, sound: NSSound, projCount: Int) {
 		self.projCount = projCount
 		super.init(name, price: price, radius: radius, damage: damage, sound: sound)
 	}

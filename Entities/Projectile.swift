@@ -90,8 +90,8 @@ class Projectile : NSObject {
 	*/
 	func impact() {
 		ammo.soundFile.play()
-		let radius = ammo.blastRadius
-		terrain?.deform(radius: radius, xPos: Int(position.x))
+		let radius = CGFloat(ammo.blastRadius)
+		terrain?.deform(radius: ammo.blastRadius, xPos: Int(position.x))
 		for entity in entities! {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
 			if distance <= radius {
