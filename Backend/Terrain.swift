@@ -100,12 +100,20 @@ class Terrain : NSView {
 		- radius: The radius of the crater to form
 		- xPos: The X coordinate of the impact point
 	*/
-	func deform(radius: CGFloat, xPos: Int) {
-		let coord = xPos / chunkSize
+	func deform(radius: Int, xPos: Int) {
+		let min = (xPos - radius) / chunkSize
+		let max = (xPos + radius) / chunkSize
+		let radiusf2 = pow(CGFloat(radius), 2)
 
-		terrainControlHeights[coord] -= radius
-		if (xPos % chunkSize > chunkSize / 2) {
-			terrainControlHeights[coord + 1] -= radius
+		var dx = min - xPos / chunkSize
+		for block in min...max {
+			if block >= 0 && block < pointCount {
+				let opp2 = pow(CGFloat(dx * chunkSize), 2)
+				if opp2 < radiusf2 {
+					terrainControlHeights[block] -= sqrt(radiusf2 - opp2)
+				}
+			}
+			dx++
 		}
 	}
 
