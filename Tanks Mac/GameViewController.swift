@@ -55,8 +55,8 @@ class GameViewController : NSViewController {
 		- players: The entities to be in the game
 	*/
 	func initialize(terrainType: TerrainType) {
-		gameView = GameViewMac(frame: (NSApp.mainWindow?.frame)!)
-		storeView = StoreViewMac(frame: (NSApp.mainWindow?.frame)!)
+		gameView = GameViewMac(frame: view.frame)
+		storeView = StoreViewMac(frame: view.frame)
 
 		chosenTerrain = terrainType
 	}

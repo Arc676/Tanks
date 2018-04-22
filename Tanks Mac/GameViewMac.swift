@@ -29,6 +29,7 @@ class GameViewMac : GameMgr {
 	// Game controls
 	let sfxOn = NSImage(named: NSImage.Name(rawValue: "SFXOn.png"))
 	let sfxOff = NSImage(named: NSImage.Name(rawValue: "SFXOff.png"))
+	// if the size of the view ever changes, this rectangle needs to change
 	let sfxRect = NSMakeRect(800, 625, 100, 50)
 
 	// Touch Bar controls
