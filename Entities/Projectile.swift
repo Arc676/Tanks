@@ -89,7 +89,7 @@ class Projectile : NSObject {
 	damage to terrain and entities accordingly
 	*/
 	func impact() {
-		ammo.soundFile.play()
+		GameMgr.playSound(ammo.soundFile)
 		let radius = CGFloat(ammo.blastRadius)
 		terrain?.deform(radius: ammo.blastRadius, xPos: Int(position.x))
 		for entity in entities! {

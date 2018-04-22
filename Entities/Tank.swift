@@ -158,7 +158,7 @@ class Tank : NSObject, NSCoding {
 						 tanks: tanks!,
 						 src: playerNum - 1)
 
-		Tank.firingSound.play()
+		GameMgr.playSound(Tank.firingSound)
 
 		let name = selectedAmmo!.name
 		if name != "Tank Shell" {
@@ -343,7 +343,7 @@ class Tank : NSObject, NSCoding {
 	*/
 	func rotate(_ angle: Float) {
 		if !Tank.rotateSound.isPlaying {
-			Tank.rotateSound.play()
+			GameMgr.playSound(Tank.rotateSound)
 		}
 		cannonAngle += angle
 	}

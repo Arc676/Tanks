@@ -72,6 +72,9 @@ class GameMgr: View {
 	var gameTimer: Timer?
 	var viewController: ViewController?
 
+	//Game settings
+	static var enableSFX = true
+
 	/**
 	Initialize a new game with the given properties
 
@@ -164,6 +167,12 @@ class GameMgr: View {
 		needsDisplay = true
 		if turnEnded && gameOver() {
 			terminate()
+		}
+	}
+
+	static func playSound(_ sound: NSSound) {
+		if GameMgr.enableSFX {
+			sound.play()
 		}
 	}
 
