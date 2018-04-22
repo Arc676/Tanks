@@ -26,6 +26,11 @@ Drawing view for the game on Mac
 */
 class GameViewMac : GameMgr {
 
+	// Game controls
+	let sfxOn = NSImage(named: NSImage.Name(rawValue: "SFXOn.png"))
+	let sfxOff = NSImage(named: NSImage.Name(rawValue: "SFXOff.png"))
+	let sfxRect = NSMakeRect(800, 625, 100, 50)
+
 	// Touch Bar controls
 	var touchBarRequestedFire: Bool = false
 	var touchBarAngleSlider: NSSlider?
@@ -114,6 +119,20 @@ class GameViewMac : GameMgr {
 				CGFloat(terrain.windAcceleration * 10), 10)
 		}
 		rect!.fill()
+
+		if GameMgr.enableSFX {
+			sfxOn?.draw(in: sfxRect)
+		} else {
+			sfxOff?.draw(in: sfxRect)
+		}
+	}
+
+	override func mouseUp(with event: NSEvent) {
+		if sfxRect.contains(event.locationInWindow) {
+			GameMgr.enableSFX = !GameMgr.enableSFX
+		} else {
+			super.mouseUp(with: event)
+		}
 	}
 
 	override func keyDown(with event: NSEvent) {

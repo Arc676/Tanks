@@ -170,6 +170,13 @@ class GameMgr: View {
 		}
 	}
 
+	/**
+	Utility function for playing sounds; only plays sound
+	if sound effects are enabled
+
+	- parameters:
+		- sound: The sound to play
+	*/
 	static func playSound(_ sound: NSSound) {
 		if GameMgr.enableSFX {
 			sound.play()
