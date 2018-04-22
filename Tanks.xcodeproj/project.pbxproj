@@ -31,6 +31,8 @@
 		71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFE7162077B92100D6DB89 /* WindowController.swift */; };
 		71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7B0211F2A36B600B93124 /* Extensions.swift */; };
 		71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 71D7B0231F2A3AA600B93124 /* Credits.rtf */; };
+		71D7D415208C242700D67D50 /* SFXOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D7D413208C242700D67D50 /* SFXOn.png */; };
+		71D7D416208C242700D67D50 /* SFXOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D7D414208C242700D67D50 /* SFXOff.png */; };
 		71F061D21F2671ED004F0EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F061D11F2671ED004F0EF5 /* AppDelegate.swift */; };
 		71F061D41F2671ED004F0EF5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F061D31F2671ED004F0EF5 /* GameViewController.swift */; };
 		71F061D61F2671ED004F0EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71F061D51F2671ED004F0EF5 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		71CFE7162077B92100D6DB89 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		71D7B0211F2A36B600B93124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Backend/Extensions.swift; sourceTree = "<group>"; };
 		71D7B0231F2A3AA600B93124 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Tanks Mac/Credits.rtf"; sourceTree = SOURCE_ROOT; };
+		71D7D413208C242700D67D50 /* SFXOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SFXOn.png; sourceTree = "<group>"; };
+		71D7D414208C242700D67D50 /* SFXOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SFXOff.png; sourceTree = "<group>"; };
 		71F061CE1F2671ED004F0EF5 /* Tanks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F061D11F2671ED004F0EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71F061D31F2671ED004F0EF5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				71D7D414208C242700D67D50 /* SFXOff.png */,
+				71D7D413208C242700D67D50 /* SFXOn.png */,
 				710F24F0207DDF32009AE1EE /* Target.png */,
 				7122E014206C906C00105C05 /* Next.png */,
 				7122E015206C906C00105C05 /* Save.png */,
@@ -264,8 +270,10 @@
 				71F061D61F2671ED004F0EF5 /* Assets.xcassets in Resources */,
 				71840222207B13D700B1C61C /* ex_small.wav in Resources */,
 				71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */,
+				71D7D416208C242700D67D50 /* SFXOff.png in Resources */,
 				71CAA509208AED3700592AC0 /* SaveAIsOff.png in Resources */,
 				71840221207B13D700B1C61C /* rotate.wav in Resources */,
+				71D7D415208C242700D67D50 /* SFXOn.png in Resources */,
 				71CAA50A208AED3700592AC0 /* SaveAIsOn.png in Resources */,
 				717381FD207891BC0090213A /* CREDITS in Resources */,
 				710F24F1207DDF32009AE1EE /* Target.png in Resources */,
