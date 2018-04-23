@@ -23,6 +23,8 @@ import AppKit
 
 class Airstrike : Ammo {
 
+	override var isTargeted: Bool { return true }
+
 	override func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
 		for i in -2...2 {
 			let pos = NSMakePoint(position.x + CGFloat(i * 20), 700)

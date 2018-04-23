@@ -45,6 +45,8 @@ class Store: View {
 				 sound: NSSound(named: NSSound.Name("ex_large.wav"))!, projCount: 6),
 		Hailfire("Hailfire IV", price: 300000, radius: 50, damage: 500,
 				 sound: NSSound(named: NSSound.Name("ex_large.wav"))!, projCount: 10),
+		Airstrike("Airstrike", price: 500000, radius: 30, damage: 400,
+				  sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
 		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),

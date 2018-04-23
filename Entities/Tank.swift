@@ -177,8 +177,7 @@ class Tank : NSObject, NSCoding {
 	weapons
 	*/
 	func fireProjectile() {
-		selectedAmmo = weapons[selectedWeapon]
-		if selectedAmmo!.isTargeted {
+		if weapons[selectedWeapon].isTargeted {
 			isTargeting = true
 		} else {
 			fireProjectile(at: position)
