@@ -23,9 +23,12 @@ import AppKit
 
 class Airstrike : Ammo {
 
+	let planeSound = NSSound(named: NSSound.Name("bomber.wav"))!
+
 	override var isTargeted: Bool { return true }
 
 	override func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
+		GameMgr.playSound(planeSound)
 		for i in -2...2 {
 			let pos = NSMakePoint(position.x + CGFloat(i * 20), 700)
 			let projectile = Projectile(
