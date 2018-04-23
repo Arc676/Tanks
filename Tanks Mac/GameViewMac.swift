@@ -31,6 +31,8 @@ class GameViewMac : GameMgr {
 	let sfxOff = NSImage(named: NSImage.Name(rawValue: "SFXOff.png"))
 	// if the size of the view ever changes, this rectangle needs to change
 	let sfxRect = NSMakeRect(800, 625, 100, 50)
+	let targetSprite = NSImage(named: NSImage.Name(rawValue: "Target.png"))
+	var mouseLocation = NSMakePoint(0, 0)
 
 	// Touch Bar controls
 	var touchBarRequestedFire: Bool = false
@@ -126,11 +128,17 @@ class GameViewMac : GameMgr {
 		} else {
 			sfxOff?.draw(in: sfxRect)
 		}
+
+		if active is Player && active.isTargeting {
+			targetSprite?.draw(at: mouseLocation, from: NSZeroRect, operation: .sourceOver, fraction: 1.0)
+		}
 	}
 
 	override func mouseUp(with event: NSEvent) {
 		if sfxRect.contains(event.locationInWindow) {
 			GameMgr.enableSFX = !GameMgr.enableSFX
+		} else if players[activePlayer].isTargeting && event.locationInWindow.y < 600 {
+			players[activePlayer].fireProjectile(at: event.locationInWindow)
 		} else {
 			super.mouseUp(with: event)
 		}
@@ -150,6 +158,12 @@ class GameViewMac : GameMgr {
 		} else {
 			super.keyUp(with: event)
 		}
+	}
+
+	override func mouseMoved(with event: NSEvent) {
+		mouseLocation = event.locationInWindow
+		mouseLocation.x -= 20
+		mouseLocation.y -= 20
 	}
 
 	override func update() {

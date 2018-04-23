@@ -29,6 +29,7 @@ class WindowController: NSWindowController {
 	@IBOutlet weak var touchBarFirepowerSlider: NSSlider!
 
 	override func awakeFromNib() {
+		window?.acceptsMouseMovedEvents = true
 		viewController = contentViewController as? GameViewController
 		viewController?.windowController = self
 	}

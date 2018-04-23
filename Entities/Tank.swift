@@ -80,10 +80,9 @@ class Tank : NSObject, NSCoding {
 	//tank state
 	var position: NSPoint = NSMakePoint(0, 0)
 	var lastY: CGFloat = 0
-
-	//turn properties
 	var turnEnded = false
 	var hasFired = false
+	var isTargeting = false
 
 	//tank properties
 	var name: String?
@@ -138,7 +137,7 @@ class Tank : NSObject, NSCoding {
 	}
 
 	/**
-	 Reset the tank to it's pre-game state
+	Reset the tank to it's pre-game state
 	*/
 	func reset() {
 		hp = 100
@@ -146,14 +145,14 @@ class Tank : NSObject, NSCoding {
 	}
 
 	/**
-	 Fires the currently selected weapon using the current
-	 firing properties
+	Fires the currently selected weapon using the current
+	firing properties
 	*/
-	func fireProjectile() {
+	func fireProjectile(at target: NSPoint) {
 		selectedAmmo = weapons[selectedWeapon]
 		selectedAmmo?.fire(angle: cannonAngle,
 						 firepower: firepower,
-						 position: position,
+						 position: target,
 						 terrain: terrain!,
 						 tanks: tanks!,
 						 src: playerNum - 1)
@@ -170,6 +169,20 @@ class Tank : NSObject, NSCoding {
 			}
 		}
 		hasFired = true
+		isTargeting = false
+	}
+
+	/**
+	Utility function for fireProjectile for firing non-targetable
+	weapons
+	*/
+	func fireProjectile() {
+		selectedAmmo = weapons[selectedWeapon]
+		if selectedAmmo!.isTargeted {
+			isTargeting = true
+		} else {
+			fireProjectile(at: position)
+		}
 	}
 
 	/**
