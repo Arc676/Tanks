@@ -26,6 +26,8 @@ Representation of different kinds of ammunition
 */
 class Ammo: Item {
 
+	var isTargeted = false
+
 	var blastRadius: Int
 	var damage: CGFloat
 
