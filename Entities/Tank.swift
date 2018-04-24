@@ -251,7 +251,7 @@ class Tank : NSObject, NSCoding {
 	The NSRect object whose size and position corresponds
 	to the tank in the world
 	*/
-	private func tankRect() -> NSRect {
+	func tankRect() -> NSRect {
 		return NSMakeRect(position.x - 10, position.y, 20, 10)
 	}
 
