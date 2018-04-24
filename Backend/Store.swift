@@ -20,8 +20,10 @@
 
 #if os(OSX)
 	import Cocoa
+	typealias Color = NSColor
 #elseif os(iOS)
 	import UIKit
+	typealias Color = UIColor
 #endif
 
 /**
@@ -33,20 +35,22 @@ class Store: View {
 	let storeItems: [Item] = [
 		Ammo("Missile", price: 10, radius: 20, damage: 80,
 			 sound: NSSound(named: NSSound.Name("ex_small.wav"))!),
-		Hailfire("Hailfire I", price: 800, radius: 15, damage: 60,
+		Hailfire("Hailfire I", price: 500, radius: 15, damage: 60,
 				 sound: NSSound(named: NSSound.Name("ex_small.wav"))!, projCount: 3),
 		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000,
 			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
-		Hailfire("Hailfire II", price: 2000, radius: 20, damage: 80,
+		Hailfire("Hailfire II", price: 1500, radius: 20, damage: 80,
 				 sound: NSSound(named: NSSound.Name("ex_small.wav"))!, projCount: 4),
-		Ammo("Hydrogen Bomb", price: 50000, radius: 120, damage: 2000,
+		Ammo("Hydrogen Bomb", price: 5000, radius: 120, damage: 2000,
 			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
-		Hailfire("Hailfire III", price: 100000, radius: 30, damage: 100,
+		Hailfire("Hailfire III", price: 7000, radius: 30, damage: 100,
 				 sound: NSSound(named: NSSound.Name("ex_large.wav"))!, projCount: 6),
-		Hailfire("Hailfire IV", price: 300000, radius: 50, damage: 500,
+		Hailfire("Hailfire IV", price: 12000, radius: 50, damage: 500,
 				 sound: NSSound(named: NSSound.Name("ex_large.wav"))!, projCount: 10),
-		Airstrike("Airstrike", price: 500000, radius: 30, damage: 400,
+		Airstrike("Airstrike", price: 9000, radius: 30, damage: 400,
 				  sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
+		LaserStrike("Space Laser", price: 10000, radius: 40, damage: 1000,
+					sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
 		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),
@@ -58,6 +62,10 @@ class Store: View {
 	var players: [Tank]?
 	var currentPlayer = -1
 	var saveAIs = false
+
+	static let upgradeColor = Color.blue
+	static let targetedColor = Color.red
+	static let untargetedColor = Color(red:0.00, green:0.51, blue:0.21, alpha:1.00)
 
 	/**
 	Initialize the store view with the given game

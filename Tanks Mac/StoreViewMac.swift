@@ -46,10 +46,10 @@ class StoreViewMac: Store {
 			var count = 0
 			var color: NSColor?
 			if item is Ammo {
-				color = NSColor.red
+				color = (item as! Ammo).isTargeted ? Store.targetedColor : Store.untargetedColor
 				count = player.weaponCount[item.name] ?? 0
 			} else if item is Upgrade {
-				color = NSColor.blue
+				color = Store.upgradeColor
 				count = player.upgradeCount[(item as! Upgrade).type.rawValue]
 			}
 			let text = NSAttributedString(string:
