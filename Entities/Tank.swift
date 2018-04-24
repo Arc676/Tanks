@@ -157,7 +157,9 @@ class Tank : NSObject, NSCoding {
 						 tanks: tanks!,
 						 src: playerNum - 1)
 
-		GameMgr.playSound(Tank.firingSound)
+		if !selectedAmmo!.hasSound {
+			GameMgr.playSound(Tank.firingSound)
+		}
 
 		let name = selectedAmmo!.name
 		if name != "Tank Shell" {

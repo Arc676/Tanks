@@ -27,6 +27,7 @@ Representation of different kinds of ammunition
 class Ammo: Item {
 
 	var isTargeted: Bool { return false }
+	var hasSound: Bool { return false }
 
 	var blastRadius: Int
 	var damage: CGFloat
