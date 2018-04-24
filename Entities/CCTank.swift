@@ -96,12 +96,7 @@ class CCTank : Tank {
 	when the tank doesn't have a target or when the target dies.
 	*/
 	func chooseNewTarget() {
-		var possibleTargets: [Tank] = []
-		for tank in tanks! {
-			if tank.hp > 0 && tank.playerNum != playerNum {
-				possibleTargets.append(tank)
-			}
-		}
+		var possibleTargets = tanks!.filter { $0.hp > 0 && $0.playerNum != playerNum }
 		if possibleTargets.count == 0 {
 			return;
 		}

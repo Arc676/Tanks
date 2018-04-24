@@ -134,13 +134,7 @@ class GameMgr: View {
 	(maybe everyone died)
 	*/
 	func gameOver() -> Bool {
-		var stillAlive = 0
-		for tank in players {
-			if tank.hp > 0 {
-				stillAlive++
-			}
-		}
-		return stillAlive < 2
+		return players.filter{ $0.hp > 0 }.count < 2
 	}
 
 	/**
@@ -186,10 +180,7 @@ class GameMgr: View {
 	override func draw(_ rect: NSRect) {
 		terrain.draw(rect)
 
-		for tank in players {
-			if tank.hp <= 0 {
-				continue
-			}
+		for tank in players.filter({ $0.hp > 0 }) {
 			tank.drawInRect(rect)
 		}
 	}

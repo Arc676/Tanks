@@ -92,7 +92,7 @@ class Projectile : NSObject {
 		GameMgr.playSound(ammo.soundFile)
 		let radius = CGFloat(ammo.blastRadius)
 		terrain?.deform(radius: ammo.blastRadius, xPos: Int(position.x))
-		for entity in entities! {
+		for entity in entities!.filter({ $0.hp > 0 }) {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
 			if distance <= radius {
 				var score: Int = distance > 0 ? Int(50 * radius / distance) : Int(50 * radius)
@@ -133,7 +133,7 @@ class Projectile : NSObject {
 
 		var hasImpacted = terrain!.terrainPath!.contains(position)
 		if !hasImpacted {
-			for tank in entities! {
+			for tank in entities!.filter({ $0.hp > 0 }) {
 				if tank.hitTank(position) {
 					hasImpacted = true
 					break
