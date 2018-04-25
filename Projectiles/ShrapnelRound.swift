@@ -31,6 +31,17 @@ class ShrapnelRound: Projectile {
 	var subProjectiles: [Projectile] = []
 	var primaryImpactDone = false
 
+	init(copyOf projectile: Projectile) {
+		super.init(
+			terrain: projectile.terrain!,
+			entities: projectile.entities!,
+			vx: projectile.vx,
+			vy: projectile.vy,
+			pos: projectile.position,
+			src: projectile.sourcePlayer!,
+			ammo: projectile.ammo)
+	}
+
 	override func drawInRect(_ rect: NSRect) {
 		if primaryImpactDone {
 			for projectile in subProjectiles {

@@ -35,6 +35,7 @@
 		71CAA50A208AED3700592AC0 /* SaveAIsOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CAA508208AED3700592AC0 /* SaveAIsOn.png */; };
 		71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFE7162077B92100D6DB89 /* WindowController.swift */; };
 		71D388AC20900C0400014BAB /* ShrapnelRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D388AB20900C0400014BAB /* ShrapnelRound.swift */; };
+		71D388AE2090181100014BAB /* ShrapnelShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D388AD2090181100014BAB /* ShrapnelShot.swift */; };
 		71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7B0211F2A36B600B93124 /* Extensions.swift */; };
 		71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 71D7B0231F2A3AA600B93124 /* Credits.rtf */; };
 		71D7D415208C242700D67D50 /* SFXOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D7D413208C242700D67D50 /* SFXOn.png */; };
@@ -81,6 +82,7 @@
 		71CAA508208AED3700592AC0 /* SaveAIsOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAIsOn.png; sourceTree = "<group>"; };
 		71CFE7162077B92100D6DB89 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		71D388AB20900C0400014BAB /* ShrapnelRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrapnelRound.swift; sourceTree = "<group>"; };
+		71D388AD2090181100014BAB /* ShrapnelShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrapnelShot.swift; sourceTree = "<group>"; };
 		71D7B0211F2A36B600B93124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Backend/Extensions.swift; sourceTree = "<group>"; };
 		71D7B0231F2A3AA600B93124 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Tanks Mac/Credits.rtf"; sourceTree = SOURCE_ROOT; };
 		71D7D413208C242700D67D50 /* SFXOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SFXOn.png; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				71FCE3F8208F2BAA008CEA24 /* LaserWeapon.swift */,
 				71BC8577208F3065006D3C5D /* LaserStrike.swift */,
 				71FCE3FA208F2FC4008CEA24 /* LaserBeam.swift */,
+				71D388AD2090181100014BAB /* ShrapnelShot.swift */,
 			);
 			path = Ammo;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				713D1DB11F5BF1BC00FE576D /* Store.swift in Sources */,
 				7112ABB1208D782000FBDB1F /* Airstrike.swift in Sources */,
 				71F061E31F269377004F0EF5 /* Tank.swift in Sources */,
+				71D388AE2090181100014BAB /* ShrapnelShot.swift in Sources */,
 				713D1DB51F5BF3AA00FE576D /* Ammo.swift in Sources */,
 				710F24F4207DE60C009AE1EE /* Hailfire.swift in Sources */,
 				71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */,
