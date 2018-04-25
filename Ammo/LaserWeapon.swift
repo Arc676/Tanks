@@ -33,6 +33,10 @@ class LaserWeapon: Ammo {
 	var ticksSinceFiring = 0
 	var tickLimit: Int { return 0 }
 
+	var terrain: Terrain?
+	var entities: [Tank]?
+	var sourcePlayer = 0
+
 	/**
 	Determine if the time for which the laser has been fired
 	exceeds its time limit and thus has been invalidated
@@ -52,6 +56,12 @@ class LaserWeapon: Ammo {
 			GameMgr.playSound(laserSound)
 		}
 		ticksSinceFiring++
+	}
+
+	override func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
+		self.terrain = terrain
+		entities = tanks
+		sourcePlayer = src
 	}
 
 	override func reset() {

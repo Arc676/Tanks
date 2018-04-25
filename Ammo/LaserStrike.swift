@@ -33,10 +33,6 @@ class LaserStrike: LaserWeapon {
 
 	override var tickLimit: Int { return 60 }
 
-	var terrain: Terrain?
-	var entities: [Tank]?
-	var sourcePlayer = 0
-
 	var xPos: CGFloat = 0
 	var laserRect: NSRect?
 
@@ -47,10 +43,14 @@ class LaserStrike: LaserWeapon {
 	}
 
 	override func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
-		self.terrain = terrain
-		entities = tanks
+		super.fire(
+			angle: angle,
+			firepower: firepower,
+			position: position,
+			terrain: terrain,
+			tanks: tanks,
+			src: src)
 		xPos = position.x
-		sourcePlayer = src
 		laserRect = NSMakeRect(xPos - 20, 0, 40, 700)
 	}
 
