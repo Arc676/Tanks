@@ -61,8 +61,7 @@ class Tank : NSObject, NSCoding {
 	//combat mechanics
 	var selectedWeapon = 0
 	var weapons: [Ammo] = [
-		Ammo("Tank Shell", price: 0, radius: 20, damage: 50,
-			 sound: NSSound(named: NSSound.Name("ex_small.wav"))!)
+		Ammo("Tank Shell", price: 0, radius: 20, damage: 50, sound: Store.smallEx)
 	]
 	var weaponCount: [String : Int] = [:]
 	var upgradeCount: [Int] = [Int](repeating: 0, count: 4)
