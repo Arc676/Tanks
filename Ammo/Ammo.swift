@@ -63,7 +63,7 @@ class Ammo: Item {
 	required init?(coder aDecoder: NSCoder) {
 		blastRadius = aDecoder.decodeInteger(forKey: "BlastRadius")
 		damage = aDecoder.decodeObject(forKey: "Dmg") as! CGFloat
-		soundFile = aDecoder.decodeObject(forKey: "Sound") as! NSSound
+		soundFile = aDecoder.decodeObject(forKey: "Sound") as? NSSound ?? Store.noSound
 		super.init(coder: aDecoder)
 	}
 
