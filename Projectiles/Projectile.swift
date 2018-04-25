@@ -28,6 +28,11 @@ determined by the ammo type
 */
 class Projectile : NSObject {
 
+	let explosionSprite = NSImage(named: NSImage.Name("Explosion.png"))!
+	var explosionRect: NSRect?
+	var explosionTicks = 0
+	var explosionLimit = 0
+
 	var position = NSMakePoint(0, 0)
 	var vx: CGFloat = 0
 	var vy: CGFloat = 0
@@ -35,6 +40,7 @@ class Projectile : NSObject {
 	var ammo: Ammo
 
 	var invalidated = false
+	var impacted = false
 
 	var terrain: Terrain?
 	var entities: [Tank]?
@@ -60,6 +66,7 @@ class Projectile : NSObject {
 		self.position = pos
 
 		self.ammo = ammo
+		explosionLimit = ammo.blastRadius
 		sourcePlayer = src
 	}
 
@@ -74,8 +81,12 @@ class Projectile : NSObject {
 		if invalidated {
 			return
 		}
-		NSColor.black.set()
-		NSBezierPath(ovalIn: NSMakeRect(position.x, position.y, 5, 5)).fill()
+		if impacted && explosionRect != nil {
+			explosionSprite.draw(in: explosionRect!)
+		} else {
+			NSColor.black.set()
+			NSBezierPath(ovalIn: NSMakeRect(position.x, position.y, 5, 5)).fill()
+		}
 	}
 
 	/**
@@ -110,7 +121,7 @@ class Projectile : NSObject {
 				entities![sourcePlayer!].score += 2 * score
 			}
 		}
-		despawn()
+		impacted = true
 	}
 
 	/**
@@ -124,28 +135,41 @@ class Projectile : NSObject {
 			return
 		}
 
-		//update position
-		position.x +/= vx
-		position.y +/= vy
+		if impacted {
+			explosionTicks++
+			if explosionTicks > explosionLimit {
+				despawn()
+			} else {
+				let ds = explosionTicks > explosionLimit / 2 ?
+					CGFloat(2 * (explosionLimit - explosionTicks)) :
+					CGFloat(2 * explosionTicks)
+				let size = 2 * ds
+				explosionRect = NSMakeRect(position.x - ds, position.y - ds, size, size)
+			}
+		} else {
+			//update position
+			position.x +/= vx
+			position.y +/= vy
 
-		//update velocity vectors
-		vx +/= CGFloat((terrain?.windAcceleration)!)
-		vy +/= -9.81
+			//update velocity vectors
+			vx +/= CGFloat((terrain?.windAcceleration)!)
+			vy +/= -9.81
 
-		var hasImpacted = terrain!.terrainPath!.contains(position)
-		if !hasImpacted {
-			for tank in entities!.filter({ $0.hp > 0 }) {
-				if tank.hitTank(position) {
-					hasImpacted = true
-					break
+			var hasImpacted = terrain!.terrainPath!.contains(position)
+			if !hasImpacted {
+				for tank in entities!.filter({ $0.hp > 0 }) {
+					if tank.hitTank(position) {
+						hasImpacted = true
+						break
+					}
 				}
 			}
-		}
 
-		if hasImpacted {
-			impact()
-		} else if position.x < 0 || position.x > (terrain?.terrainBounds?.width)! {
-			despawn()
+			if hasImpacted {
+				impact()
+			} else if position.x < 0 || position.x > (terrain?.terrainBounds?.width)! {
+				despawn()
+			}
 		}
 	}
 
