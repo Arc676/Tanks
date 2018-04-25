@@ -43,6 +43,7 @@ class Store: View {
 		Hailfire("Hailfire I", price: 500, radius: 15, damage: 60, sound: Store.smallEx, projCount: 3),
 		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000, sound: Store.largeEx),
 		Hailfire("Hailfire II", price: 1500, radius: 20, damage: 80, sound: Store.smallEx, projCount: 4),
+		LaserBeam("Laser Beam", price: 1300, radius: 40, damage: 800, sound: Store.noSound),
 		Ammo("Hydrogen Bomb", price: 5000, radius: 120, damage: 2000, sound: Store.largeEx),
 		Hailfire("Hailfire III", price: 7000, radius: 30, damage: 100, sound: Store.largeEx, projCount: 6),
 		Hailfire("Hailfire IV", price: 12000, radius: 50, damage: 500, sound: Store.largeEx, projCount: 10),

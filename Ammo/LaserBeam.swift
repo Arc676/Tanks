@@ -29,12 +29,13 @@ class LaserBeam: LaserWeapon {
 
 	var transform = NSAffineTransform()
 	var inverse = NSAffineTransform()
-	var nozzlePos: NSPoint?
+
+	var laserRect: NSRect?
 
 	override func drawInRect(_ rect: NSRect) {
 		if !invalidated() {
 			transform.concat()
-			laserSprite?.draw(in: NSMakeRect(nozzlePos!.x, nozzlePos!.y, 500, 7))
+			laserSprite?.draw(in: laserRect!)
 			inverse.concat()
 		}
 	}
@@ -46,7 +47,8 @@ class LaserBeam: LaserWeapon {
 		transform.rotate(byRadians: CGFloat(angle))
 		inverse = transform.copy() as! NSAffineTransform
 		inverse.invert()
-		nozzlePos = inverse.transform(NSMakePoint(position.x + 20 * c, position.y + 5 + 20 * s))
+		let nozzlePos = inverse.transform(Ammo.getNozzlePosition(position, cos: c, sin: s, dy: -3.5))
+		laserRect = NSMakeRect(nozzlePos.x, nozzlePos.y, 500, 7)
 	}
 
 	override func reset() {

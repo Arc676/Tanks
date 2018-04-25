@@ -62,8 +62,9 @@ class Hailfire: Ammo {
 		let vx = CGFloat(firepower) * c
 		let vy = CGFloat(firepower) * s
 
+		let pos = Ammo.getNozzlePosition(position, cos: c, sin: s)
+
 		for i in 0..<projCount {
-			let pos = NSMakePoint(position.x + 20 * c, position.y + 5 + 20 * s)
 			let dv = CGFloat(2 * i)
 			let projectile = Projectile(
 				terrain: terrain,

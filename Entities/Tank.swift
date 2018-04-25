@@ -232,6 +232,8 @@ class Tank : NSObject, NSCoding {
 		// supposed mount point on the tank
 		var path = NSBezierPath(rect: NSMakeRect(0, -3, 20, 6))
 		let transform = NSAffineTransform()
+		// the Y coordinate is translated by 8 and not 10 for
+		// aesthetic reasons
 		transform.translateX(by: position.x, yBy: position.y + 8)
 		transform.rotate(byRadians: CGFloat(cannonAngle))
 		path = transform.transform(path)
