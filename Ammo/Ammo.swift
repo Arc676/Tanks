@@ -102,26 +102,10 @@ class Ammo: Item {
 			entities: tanks,
 			vx: vx,
 			vy: vy,
-			pos: Ammo.getNozzlePosition(position, cos: c, sin: s),
+			pos: tanks[src].getNozzlePosition(),
 			src: src,
 			ammo: self)
 		projectiles.append(projectile)
-	}
-
-	/**
-	Calculates the spawn point of the fired projectile based on the current firing angle
-
-	- parameters:
-		- pos: Tank position
-		- c: Cosine of the firing angle
-		- s: Sine of the firing angle
-		- dy: Half the height of the projectile texture (to account for off-centering) (defaults to 0)
-
-	- returns:
-	The spawn point of a projectile, accounting for firing angle and texture height
-	*/
-	static func getNozzlePosition(_ pos: NSPoint, cos c: CGFloat, sin s: CGFloat, dy: CGFloat = 0) -> NSPoint {
-		return NSMakePoint(pos.x + 20 * c - dy * s, pos.y + 8 + dy * c + 20 * s)
 	}
 
 	/**

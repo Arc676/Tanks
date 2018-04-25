@@ -58,7 +58,6 @@ class LaserBeam: LaserWeapon {
 			src: src)
 
 		cosine = CGFloat(cos(Double(angle)))
-		let s = CGFloat(sin(Double(angle)))
 
 		if cosine != 0 {
 			grad = CGFloat(tan(angle))
@@ -68,7 +67,7 @@ class LaserBeam: LaserWeapon {
 		inverse = transform.copy() as! NSAffineTransform
 		inverse.invert()
 
-		basisNozzlePos = Ammo.getNozzlePosition(position, cos: cosine, sin: s, dy: -3.5)
+		basisNozzlePos = tanks[src].getNozzlePosition(dy: -3.5)
 
 		let nozzlePos = inverse.transform(basisNozzlePos!)
 		laserRect = NSMakeRect(nozzlePos.x, nozzlePos.y, 1000, 7)

@@ -62,7 +62,7 @@ class Hailfire: Ammo {
 		let vx = CGFloat(firepower) * c
 		let vy = CGFloat(firepower) * s
 
-		let pos = Ammo.getNozzlePosition(position, cos: c, sin: s)
+		let pos = tanks[src].getNozzlePosition()
 
 		for i in 0..<projCount {
 			let dv = CGFloat(2 * i)

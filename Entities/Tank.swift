@@ -257,6 +257,21 @@ class Tank : NSObject, NSCoding {
 	}
 
 	/**
+	Calculates the spawn point of the fired projectile based on the current firing angle
+
+	- parameters:
+		- dy: Half the height of the projectile texture (to account for off-centering) (defaults to 0)
+
+	- returns:
+	The spawn point of a projectile, accounting for firing angle and texture height
+	*/
+	func getNozzlePosition(dy: CGFloat = 0) -> NSPoint {
+		let c = CGFloat(cos(cannonAngle))
+		let s = CGFloat(sin(cannonAngle))
+		return NSMakePoint(position.x + 20 * c - dy * s, position.y + 8 + dy * c + 20 * s)
+	}
+
+	/**
 	Determine whether a given point is within the tank
 	(for collision detection)
 
