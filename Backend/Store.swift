@@ -32,25 +32,22 @@ for store data
 */
 class Store: View {
 
+	static let smallEx = NSSound(named: NSSound.Name("ex_small.wav"))!
+	static let largeEx = NSSound(named: NSSound.Name("ex_large.wav"))!
+	static let noSound = NSSound()
+
 	let storeItems: [Item] = [
-		Ammo("Missile", price: 10, radius: 20, damage: 80,
-			 sound: NSSound(named: NSSound.Name("ex_small.wav"))!),
-		Hailfire("Hailfire I", price: 500, radius: 15, damage: 60,
-				 sound: NSSound(named: NSSound.Name("ex_small.wav"))!, projCount: 3),
-		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000,
-			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
-		Hailfire("Hailfire II", price: 1500, radius: 20, damage: 80,
-				 sound: NSSound(named: NSSound.Name("ex_small.wav"))!, projCount: 4),
-		Ammo("Hydrogen Bomb", price: 5000, radius: 120, damage: 2000,
-			 sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
-		Hailfire("Hailfire III", price: 7000, radius: 30, damage: 100,
-				 sound: NSSound(named: NSSound.Name("ex_large.wav"))!, projCount: 6),
-		Hailfire("Hailfire IV", price: 12000, radius: 50, damage: 500,
-				 sound: NSSound(named: NSSound.Name("ex_large.wav"))!, projCount: 10),
-		Airstrike("Airstrike", price: 9000, radius: 30, damage: 400,
-				  sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
-		LaserStrike("Space Laser", price: 10000, radius: 40, damage: 1000,
-					sound: NSSound(named: NSSound.Name("ex_large.wav"))!),
+		Ammo("Missile", price: 10, radius: 20, damage: 80, sound: Store.smallEx),
+		Ammo("Armor Piercing Shell", price: 40, radius: 20, damage: 180, sound: Store.smallEx),
+		ShrapnelShot("Shrapnel Round", price: 80, radius: 30, damage: 50, sound: Store.smallEx),
+		Hailfire("Hailfire I", price: 500, radius: 15, damage: 60, sound: Store.smallEx, projCount: 3),
+		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000, sound: Store.largeEx),
+		Hailfire("Hailfire II", price: 1500, radius: 20, damage: 80, sound: Store.smallEx, projCount: 4),
+		Ammo("Hydrogen Bomb", price: 5000, radius: 120, damage: 2000, sound: Store.largeEx),
+		Hailfire("Hailfire III", price: 7000, radius: 30, damage: 100, sound: Store.largeEx, projCount: 6),
+		Hailfire("Hailfire IV", price: 12000, radius: 50, damage: 500, sound: Store.largeEx, projCount: 10),
+		Airstrike("Airstrike", price: 9000, radius: 30, damage: 400, sound: Store.largeEx),
+		LaserStrike("Space Laser", price: 10000, radius: 40, damage: 1000, sound: Store.noSound),
 		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),
