@@ -31,6 +31,7 @@ class LaserBeam: LaserWeapon {
 	var inverse = NSAffineTransform()
 
 	var laserRect: NSRect?
+	var hits: [Tank] = []
 
 	override func drawInRect(_ rect: NSRect) {
 		if !invalidated() {
@@ -41,6 +42,13 @@ class LaserBeam: LaserWeapon {
 	}
 
 	override func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
+		super.fire(
+			angle: angle,
+			firepower: firepower,
+			position: position,
+			terrain: terrain,
+			tanks: tanks,
+			src: src)
 		let c = CGFloat(cos(Double(angle)))
 		let s = CGFloat(sin(Double(angle)))
 
@@ -49,11 +57,42 @@ class LaserBeam: LaserWeapon {
 		inverse.invert()
 		let nozzlePos = inverse.transform(Ammo.getNozzlePosition(position, cos: c, sin: s, dy: -3.5))
 		laserRect = NSMakeRect(nozzlePos.x, nozzlePos.y, 500, 7)
+
+		if cos(angle) != 0 {
+			let x0 = entities![sourcePlayer].position.x
+			let y0 = entities![sourcePlayer].position.y
+			let grad = CGFloat(tan(angle))
+			for entity in entities!.filter({ $0.hp > 0 }) {
+				if entity.playerNum != sourcePlayer + 1 {
+					let y = (entity.position.x - x0) * grad + y0
+					if abs(entity.position.y - y) < 4 {
+						hits.append(entity)
+					}
+				}
+			}
+		}
+	}
+
+	override func update() {
+		super.update()
+		if !invalidated() {
+//			terrain?.deform(radius: blastRadius, xPos: Int(xPos))
+			for entity in hits {
+				var score: Int = 40
+				entity.takeDamage(damage)
+				if entity.hp <= 0 {
+					score *= 2
+				}
+				entities![sourcePlayer].money += score
+				entities![sourcePlayer].score += 2 * score
+			}
+		}
 	}
 
 	override func reset() {
 		super.reset()
 		transform = NSAffineTransform()
+		hits.removeAll()
 	}
 	
 }
