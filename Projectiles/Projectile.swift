@@ -19,11 +19,12 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //See README and LICENSE for more details
 
-import Cocoa
+import Foundation
+import AppKit
 
 /**
-Basic representation of projectiles with properties
-based on what ammunition is being fired
+Represents individual projectiles with properties
+determined by the ammo type
 */
 class Projectile : NSObject {
 
