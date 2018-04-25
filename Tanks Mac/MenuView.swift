@@ -111,21 +111,21 @@ class MenuView : NSView {
 	@IBAction func togglePlayer(_ sender: NSButton) {
 		let state = sender.state == NSControl.StateValue.on
 		if sender == enableP3 {
-			let loadState = players[2] == nil
-			p3name.isEnabled = state
+			let isLoaded = players[2] != nil
+			p3name.isEnabled = state && !isLoaded
 			p3color.isEnabled = state
 			p3isAI.isEnabled = state
 			p3AILvl.isEnabled = state && p3isAI.state == NSControl.StateValue.on
-			p3Load.isEnabled = state && loadState
-			p3Unload.isEnabled = state && !loadState
+			p3Load.isEnabled = state && !isLoaded
+			p3Unload.isEnabled = state && isLoaded
 		} else {
-			let loadState = players[3] == nil
-			p4name.isEnabled = state
+			let isLoaded = players[3] != nil
+			p4name.isEnabled = state && !isLoaded
 			p4color.isEnabled = state
 			p4isAI.isEnabled = state
 			p4AILvl.isEnabled = state && p4isAI.state == NSControl.StateValue.on
-			p4Load.isEnabled = state && loadState
-			p4Unload.isEnabled = state && !loadState
+			p4Load.isEnabled = state && !isLoaded
+			p4Unload.isEnabled = state && isLoaded
 		}
 	}
 
@@ -168,21 +168,25 @@ class MenuView : NSView {
 					if sender == p1Load {
 						players[0] = tank
 						p1name.stringValue = "(Player to be loaded from file)"
+						p1name.isEnabled = false
 						p1Unload.isEnabled = true
 						p1Load.isEnabled = false
 					} else if sender == p2Load {
 						players[1] = tank
 						p2name.stringValue = "(Player to be loaded from file)"
+						p2name.isEnabled = false
 						p2Unload.isEnabled = true
 						p2Load.isEnabled = false
 					} else if sender == p3Load {
 						players[2] = tank
 						p3name.stringValue = "(Player to be loaded from file)"
+						p3name.isEnabled = false
 						p3Unload.isEnabled = true
 						p3Load.isEnabled = false
 					} else {
 						players[3] = tank
 						p4name.stringValue = "(Player to be loaded from file)"
+						p4name.isEnabled = false
 						p4Unload.isEnabled = true
 						p4Load.isEnabled = false
 					}
@@ -212,21 +216,25 @@ class MenuView : NSView {
 		if sender == p1Unload {
 			players[0] = nil
 			p1name.stringValue = ""
+			p1name.isEnabled = true
 			p1Unload.isEnabled = false
 			p1Load.isEnabled = true
 		} else if sender == p2Unload {
 			players[1] = nil
 			p2name.stringValue = ""
+			p2name.isEnabled = true
 			p2Unload.isEnabled = false
 			p2Load.isEnabled = true
 		} else if sender == p3Unload {
 			players[2] = nil
 			p3name.stringValue = ""
+			p3name.isEnabled = true
 			p3Unload.isEnabled = false
 			p3Load.isEnabled = true
 		} else {
 			players[3] = nil
 			p4name.stringValue = ""
+			p4name.isEnabled = true
 			p4Unload.isEnabled = false
 			p4Load.isEnabled = true
 		}

@@ -84,6 +84,11 @@ class LaserBeam: LaserWeapon {
 					beamRaycast()
 				}
 			}
+			let point = entities![sourcePlayer].getNozzlePosition(dy: -3.5)
+			if point != basisNozzlePos {
+				basisNozzlePos = point
+				beamRaycast()
+			}
 			for entity in hits.filter({ $0.hp > 0 }) {
 				var score: Int = 40
 				entity.takeDamage(damage)
@@ -144,7 +149,10 @@ class LaserBeam: LaserWeapon {
 			}
 		}
 		// resize the rectangle representing the beam for drawing
-		laserRect?.size.width = terrainHitPos > 0 ? dx / cosine : 1000
+		let nozzlePos = inverse.transform(basisNozzlePos!)
+		laserRect = NSMakeRect(
+			nozzlePos.x, nozzlePos.y,
+			terrainHitPos > 0 ? dx / cosine : 1000, 7)
 	}
 
 	override func reset() {
