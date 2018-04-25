@@ -32,7 +32,13 @@ class LaserBeam: LaserWeapon {
 
 	var laserRect: NSRect?
 	var hits: [Tank] = []
+
 	var terrainHitPos = 0
+	var reqHeight: CGFloat = 0
+	
+	var basisNozzlePos: NSPoint?
+	var grad: CGFloat = 0
+	var cosine: CGFloat = 0
 
 	override func drawInRect(_ rect: NSRect) {
 		if !invalidated() {
@@ -50,40 +56,24 @@ class LaserBeam: LaserWeapon {
 			terrain: terrain,
 			tanks: tanks,
 			src: src)
-		let c = CGFloat(cos(Double(angle)))
+
+		cosine = CGFloat(cos(Double(angle)))
 		let s = CGFloat(sin(Double(angle)))
+
+		if cosine != 0 {
+			grad = CGFloat(tan(angle))
+		}
 
 		transform.rotate(byRadians: CGFloat(angle))
 		inverse = transform.copy() as! NSAffineTransform
 		inverse.invert()
-		let nozzlePos = inverse.transform(Ammo.getNozzlePosition(position, cos: c, sin: s, dy: -3.5))
-		laserRect = NSMakeRect(nozzlePos.x, nozzlePos.y, 500, 7)
 
-		if cos(angle) != 0 {
-			let x0 = entities![sourcePlayer].position.x
-			let y0 = entities![sourcePlayer].position.y
-			let grad = CGFloat(tan(angle))
-			for entity in entities!.filter({ $0.hp > 0 }) {
-				if entity.playerNum != sourcePlayer + 1 {
-					let y = (entity.position.x - x0) * grad + y0
-					if abs(entity.position.y - y) < 4 {
-						hits.append(entity)
-					}
-				}
-			}
-			var x = 0
-			for height in terrain.terrainControlHeights {
-				let dx = (CGFloat(x) - x0)
-				if dx.sign == grad.sign {
-					let y = dx * grad + y0
-					if height > y {
-						terrainHitPos = x
-						break
-					}
-				}
-				x += terrain.chunkSize
-			}
-		}
+		basisNozzlePos = Ammo.getNozzlePosition(position, cos: cosine, sin: s, dy: -3.5)
+
+		let nozzlePos = inverse.transform(basisNozzlePos!)
+		laserRect = NSMakeRect(nozzlePos.x, nozzlePos.y, 1000, 7)
+
+		beamRaycast()
 	}
 
 	override func update() {
@@ -91,8 +81,11 @@ class LaserBeam: LaserWeapon {
 		if !invalidated() {
 			if terrainHitPos > 0 {
 				terrain?.deform(radius: blastRadius, xPos: terrainHitPos)
+				if terrain!.terrainControlHeights[terrainHitPos / terrain!.chunkSize] < reqHeight {
+					beamRaycast()
+				}
 			}
-			for entity in hits {
+			for entity in hits.filter({ $0.hp > 0 }) {
 				var score: Int = 40
 				entity.takeDamage(damage)
 				if entity.hp <= 0 {
@@ -102,6 +95,57 @@ class LaserBeam: LaserWeapon {
 				entities![sourcePlayer].score += 2 * score
 			}
 		}
+	}
+
+	/**
+	Perform a raycast-like operation to determine where the laser
+	will first collide with the terrain and which entities will be
+	hit by the beam
+	*/
+	func beamRaycast() {
+		// reset data points
+		terrainHitPos = -1
+		hits.removeAll()
+
+		var dx: CGFloat = 0
+		// only perform raycast if the beam isn't going straight up
+		if cosine != 0 {
+			var x = 0
+			for height in terrain!.terrainControlHeights {
+				dx = (CGFloat(x) - basisNozzlePos!.x)
+				// the beam only goes upward relative to the firing tank;
+				// sgn(dx) ≠ sgn(grad) implies that we are looking at the part
+				// behind the nozzle rather than ahead
+				if dx.sign == grad.sign {
+					let y = dx * grad + basisNozzlePos!.y
+					// if the terrain is higher than the beam at this point, collide
+					if height > y {
+						terrainHitPos = x
+						reqHeight = y
+						break
+					}
+				}
+				x += terrain!.chunkSize
+			}
+
+			// search living entities for those that would be hit by the beam
+			for entity in entities!.filter({ $0.hp > 0 }) {
+				// ignore firing player
+				if entity.playerNum != sourcePlayer + 1 {
+					// if the beam hits the terrain, ignore entities placed after
+					// the collision point with the terrain
+					if terrainHitPos < 0 || entity.position.x <= CGFloat(terrainHitPos) {
+						let y = (entity.position.x - basisNozzlePos!.x) * grad + basisNozzlePos!.y
+						// allow a deviation of 10 for collision
+						if abs(entity.position.y - y) < 10 {
+							hits.append(entity)
+						}
+					}
+				}
+			}
+		}
+		// resize the rectangle representing the beam for drawing
+		laserRect?.size.width = terrainHitPos > 0 ? dx / cosine : 1000
 	}
 
 	override func reset() {
