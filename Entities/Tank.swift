@@ -361,6 +361,11 @@ class Tank : NSObject, NSCoding {
 			GameMgr.playSound(Tank.rotateSound)
 		}
 		cannonAngle += angle
+		if cannonAngle < 0 {
+			cannonAngle = 0
+		} else if cannonAngle > Float.pi {
+			cannonAngle = Float.pi
+		}
 	}
 
 	/**

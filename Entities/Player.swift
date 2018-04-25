@@ -33,9 +33,9 @@ class Player : Tank {
 		if turnEnded || hasFired {
 			return
 		}
-		if keys[GameMgr.upArrow]! && cannonAngle > 0 {
+		if keys[GameMgr.upArrow]! {
 			rotate(-Tank.radian)
-		} else if keys[GameMgr.downArrow]! && cannonAngle < Float.pi {
+		} else if keys[GameMgr.downArrow]! {
 			rotate(Tank.radian)
 		}
 		if keys[GameMgr.pgUpKey]! && firepower < 100 {

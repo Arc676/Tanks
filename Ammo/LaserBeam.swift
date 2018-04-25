@@ -32,6 +32,7 @@ class LaserBeam: LaserWeapon {
 
 	var laserRect: NSRect?
 	var hits: [Tank] = []
+	var terrainHitPos = 0
 
 	override func drawInRect(_ rect: NSRect) {
 		if !invalidated() {
@@ -70,13 +71,27 @@ class LaserBeam: LaserWeapon {
 					}
 				}
 			}
+			var x = 0
+			for height in terrain.terrainControlHeights {
+				let dx = (CGFloat(x) - x0)
+				if dx.sign == grad.sign {
+					let y = dx * grad + y0
+					if height > y {
+						terrainHitPos = x
+						break
+					}
+				}
+				x += terrain.chunkSize
+			}
 		}
 	}
 
 	override func update() {
 		super.update()
 		if !invalidated() {
-//			terrain?.deform(radius: blastRadius, xPos: Int(xPos))
+			if terrainHitPos > 0 {
+				terrain?.deform(radius: blastRadius, xPos: terrainHitPos)
+			}
 			for entity in hits {
 				var score: Int = 40
 				entity.takeDamage(damage)
@@ -93,6 +108,7 @@ class LaserBeam: LaserWeapon {
 		super.reset()
 		transform = NSAffineTransform()
 		hits.removeAll()
+		terrainHitPos = -1
 	}
 	
 }
