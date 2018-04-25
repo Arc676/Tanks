@@ -23,7 +23,7 @@ import AppKit
 
 class LaserBeam: LaserWeapon {
 
-	let laserSprite = NSImage(named: NSImage.Name("LaserBeam.png"))
+	let laserSprite = NSImage(named: NSImage.Name("LaserBeam.png"))!
 
 	override var tickLimit: Int { return 30 }
 
@@ -35,7 +35,7 @@ class LaserBeam: LaserWeapon {
 	override func drawInRect(_ rect: NSRect) {
 		if !invalidated() {
 			transform.concat()
-			laserSprite?.draw(in: laserRect!)
+			laserSprite.draw(in: laserRect!)
 			inverse.concat()
 		}
 	}

@@ -33,6 +33,13 @@ class LaserWeapon: Ammo {
 	var ticksSinceFiring = 0
 	var tickLimit: Int { return 0 }
 
+	/**
+	Determine if the time for which the laser has been fired
+	exceeds its time limit and thus has been invalidated
+
+	- returns:
+	Whether the laser has finished firing
+	*/
 	override func invalidated() -> Bool {
 		return ticksSinceFiring > tickLimit
 	}

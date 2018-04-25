@@ -115,12 +115,12 @@ class Ammo: Item {
 		- pos: Tank position
 		- c: Cosine of the firing angle
 		- s: Sine of the firing angle
-		- dy: Half the height of the projectile texture (to account for off-centering) (defaults to -2.5)
+		- dy: Half the height of the projectile texture (to account for off-centering) (defaults to 0)
 
 	- returns:
 	The spawn point of a projectile, accounting for firing angle and texture height
 	*/
-	static func getNozzlePosition(_ pos: NSPoint, cos c: CGFloat, sin s: CGFloat, dy: CGFloat = -2.5) -> NSPoint {
+	static func getNozzlePosition(_ pos: NSPoint, cos c: CGFloat, sin s: CGFloat, dy: CGFloat = 0) -> NSPoint {
 		return NSMakePoint(pos.x + 20 * c - dy * s, pos.y + 8 + dy * c + 20 * s)
 	}
 
