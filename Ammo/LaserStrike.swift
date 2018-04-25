@@ -21,6 +21,10 @@
 import Foundation
 import AppKit
 
+/**
+Fires a laser from the sky that destroys the terrain at
+a target point chosen by the user
+*/
 class LaserStrike: LaserWeapon {
 
 	let laserSprite = NSImage(named: NSImage.Name(rawValue: "LaserStrike.png"))!

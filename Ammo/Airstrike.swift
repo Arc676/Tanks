@@ -21,6 +21,10 @@
 import Foundation
 import AppKit
 
+/**
+Drops projectiles from the sky to land around a
+target point on the map chosen by the user
+*/
 class Airstrike : Ammo {
 
 	let planeSound = NSSound(named: NSSound.Name("bomber.wav"))!

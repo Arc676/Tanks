@@ -21,6 +21,9 @@
 import Foundation
 import AppKit
 
+/**
+Basic representation of any laser based weapon
+*/
 class LaserWeapon: Ammo {
 
 	let laserSound = NSSound(named: NSSound.Name("laser.wav"))!
@@ -34,6 +37,9 @@ class LaserWeapon: Ammo {
 		return ticksSinceFiring > tickLimit
 	}
 
+	/**
+	Update the laser firing time
+	*/
 	override func update() {
 		if !laserSound.isPlaying {
 			GameMgr.playSound(laserSound)

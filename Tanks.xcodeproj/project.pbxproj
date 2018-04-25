@@ -34,6 +34,7 @@
 		71CAA509208AED3700592AC0 /* SaveAIsOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CAA507208AED3700592AC0 /* SaveAIsOff.png */; };
 		71CAA50A208AED3700592AC0 /* SaveAIsOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CAA508208AED3700592AC0 /* SaveAIsOn.png */; };
 		71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFE7162077B92100D6DB89 /* WindowController.swift */; };
+		71D388AC20900C0400014BAB /* ShrapnelRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D388AB20900C0400014BAB /* ShrapnelRound.swift */; };
 		71D7B0221F2A36B600B93124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7B0211F2A36B600B93124 /* Extensions.swift */; };
 		71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 71D7B0231F2A3AA600B93124 /* Credits.rtf */; };
 		71D7D415208C242700D67D50 /* SFXOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 71D7D413208C242700D67D50 /* SFXOn.png */; };
@@ -79,6 +80,7 @@
 		71CAA507208AED3700592AC0 /* SaveAIsOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAIsOff.png; sourceTree = "<group>"; };
 		71CAA508208AED3700592AC0 /* SaveAIsOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAIsOn.png; sourceTree = "<group>"; };
 		71CFE7162077B92100D6DB89 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		71D388AB20900C0400014BAB /* ShrapnelRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrapnelRound.swift; sourceTree = "<group>"; };
 		71D7B0211F2A36B600B93124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Backend/Extensions.swift; sourceTree = "<group>"; };
 		71D7B0231F2A3AA600B93124 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Tanks Mac/Credits.rtf"; sourceTree = SOURCE_ROOT; };
 		71D7D413208C242700D67D50 /* SFXOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SFXOn.png; sourceTree = "<group>"; };
@@ -156,9 +158,17 @@
 				71F061E21F269377004F0EF5 /* Tank.swift */,
 				7121000C1F279C9E00EB48D8 /* Player.swift */,
 				7121000E1F279CCD00EB48D8 /* CCTank.swift */,
-				712100101F27CB4200EB48D8 /* Projectile.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		71D388AA20900BD200014BAB /* Projectiles */ = {
+			isa = PBXGroup;
+			children = (
+				712100101F27CB4200EB48D8 /* Projectile.swift */,
+				71D388AB20900C0400014BAB /* ShrapnelRound.swift */,
+			);
+			path = Projectiles;
 			sourceTree = "<group>";
 		};
 		71D7B0201F2A36A700B93124 /* Backend */ = {
@@ -181,6 +191,7 @@
 				7122E013206C906C00105C05 /* Sprites */,
 				71FE08BF1F39F3FF00E708F7 /* Git */,
 				71B0847A1F2E2EA1008F690D /* Entities */,
+				71D388AA20900BD200014BAB /* Projectiles */,
 				710F24F2207DE5F8009AE1EE /* Ammo */,
 				71D7B0201F2A36A700B93124 /* Backend */,
 				71F061D01F2671ED004F0EF5 /* Tanks Mac */,
@@ -317,6 +328,7 @@
 				71F061D41F2671ED004F0EF5 /* GameViewController.swift in Sources */,
 				712100041F27861D00EB48D8 /* MenuView.swift in Sources */,
 				7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */,
+				71D388AC20900C0400014BAB /* ShrapnelRound.swift in Sources */,
 				713D1DB11F5BF1BC00FE576D /* Store.swift in Sources */,
 				7112ABB1208D782000FBDB1F /* Airstrike.swift in Sources */,
 				71F061E31F269377004F0EF5 /* Tank.swift in Sources */,

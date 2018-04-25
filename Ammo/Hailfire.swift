@@ -21,6 +21,10 @@
 import Foundation
 import AppKit
 
+/**
+Ammunition that separates into multiple smaller
+projectiles while traveling through the air
+*/
 class Hailfire: Ammo {
 
 	var projCount = 0
