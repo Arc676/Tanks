@@ -171,9 +171,13 @@ class GameMgr: View {
 	- parameters:
 		- sound: The sound to play
 	*/
-	static func playSound(_ sound: NSSound) {
+	static func playSound(_ sound: NSSound, copy: Bool = false) {
 		if GameMgr.enableSFX {
-			sound.play()
+			if copy {
+				(sound.copy() as! NSSound).play()
+			} else {
+				sound.play()
+			}
 		}
 	}
 
