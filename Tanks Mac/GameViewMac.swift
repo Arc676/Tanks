@@ -73,7 +73,7 @@ class GameViewMac : GameMgr {
 			text.draw(at: point)
 		}
 		let text = NSAttributedString(string:
-			"\(active.weapons[active.selectedWeapon].name) \(active.weaponCount[active.weapons[active.selectedWeapon].name] ?? 99)")
+			"\(active.weapons[active.selectedWeapon].name) (\(active.weaponCount[active.weapons[active.selectedWeapon].name] ?? 99))")
 		text.draw(at: NSMakePoint(340, bounds.height - 60))
 
 		var scoreY = bounds.height - 30

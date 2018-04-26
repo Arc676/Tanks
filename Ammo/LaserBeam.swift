@@ -80,15 +80,9 @@ class LaserBeam: LaserWeapon {
 		if !invalidated() {
 			if terrainHitPos > 0 {
 				terrain?.deform(radius: blastRadius, xPos: terrainHitPos)
-				if terrain!.terrainControlHeights[terrainHitPos / terrain!.chunkSize] < reqHeight {
-					beamRaycast()
-				}
 			}
-			let point = entities![sourcePlayer].getNozzlePosition(dy: -3.5)
-			if point != basisNozzlePos {
-				basisNozzlePos = point
-				beamRaycast()
-			}
+			basisNozzlePos = entities![sourcePlayer].getNozzlePosition(dy: -3.5)
+			beamRaycast()
 			for entity in hits.filter({ $0.hp > 0 }) {
 				var score: Int = 40
 				entity.takeDamage(damage)
