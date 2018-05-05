@@ -30,8 +30,8 @@ class Projectile : NSObject {
 
 	let explosionSprite = NSImage(named: NSImage.Name("Explosion.png"))!
 	var explosionRect: NSRect?
-	var explosionTicks = 0
-	var explosionLimit = 0
+	var explosionTicks: Float = 0
+	var explosionLimit: Float = 0
 
 	var position = NSMakePoint(0, 0)
 	var vx: CGFloat = 0
@@ -66,7 +66,7 @@ class Projectile : NSObject {
 		self.position = pos
 
 		self.ammo = ammo
-		explosionLimit = ammo.blastRadius
+		explosionLimit = Float(ammo.blastRadius)
 		sourcePlayer = src
 	}
 
@@ -103,7 +103,7 @@ class Projectile : NSObject {
 	func impact() {
 		GameMgr.playSound(ammo.soundFile, copy: true)
 		let radius = CGFloat(ammo.blastRadius)
-		terrain?.deform(radius: ammo.blastRadius, xPos: Int(position.x))
+		terrain?.deform(radius: Int(ammo.blastRadius), xPos: Int(position.x))
 		for entity in entities!.filter({ $0.hp > 0 }) {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
 			if distance <= radius {
@@ -136,7 +136,7 @@ class Projectile : NSObject {
 		}
 
 		if impacted {
-			explosionTicks++
+			explosionTicks += explosionLimit / 30
 			if explosionTicks > explosionLimit {
 				despawn()
 			} else {
