@@ -53,17 +53,21 @@ class ShrapnelRound: Projectile {
 	}
 
 	override func despawn() {
-		primaryImpactDone = true
-		for _ in 0...4 {
-			let projectile = Projectile(
-				terrain: terrain!,
-				entities: entities!,
-				vx: CGFloat(arc4random_uniform(20)),
-				vy: CGFloat(arc4random_uniform(20)),
-				pos: NSMakePoint(position.x, position.y + 5),
-				src: sourcePlayer!,
-				ammo: ammo)
-			subProjectiles.append(projectile)
+		if isOutOfBounds() {
+			invalidated = true
+		} else {
+			primaryImpactDone = true
+			for _ in 0...4 {
+				let projectile = Projectile(
+					terrain: terrain!,
+					entities: entities!,
+					vx: CGFloat(arc4random_uniform(20)),
+					vy: CGFloat(arc4random_uniform(20)),
+					pos: NSMakePoint(position.x, position.y + 5),
+					src: sourcePlayer!,
+					ammo: ammo)
+				subProjectiles.append(projectile)
+			}
 		}
 	}
 

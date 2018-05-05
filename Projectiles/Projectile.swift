@@ -125,6 +125,13 @@ class Projectile : NSObject {
 	}
 
 	/**
+	Check whether the projectile is outside of the map bounds (either horizontally or Y < 0)
+	*/
+	func isOutOfBounds() -> Bool {
+		return position.x < 0 || position.x > (terrain?.terrainBounds?.width)! || position.y < 0
+	}
+
+	/**
 	Update the projectile's position and velocity based on
 	the environment and call appropriate methods to destroy
 	the projectile if necessary
@@ -155,7 +162,7 @@ class Projectile : NSObject {
 			vx +/= CGFloat((terrain?.windAcceleration)!)
 			vy +/= -9.81
 
-			if position.x < 0 || position.x > (terrain?.terrainBounds?.width)! || position.y < 0 {
+			if isOutOfBounds() {
 				despawn()
 			} else {
 				var hasImpacted = terrain!.terrainPath!.contains(position)

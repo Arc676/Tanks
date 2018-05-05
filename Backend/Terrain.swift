@@ -121,6 +121,9 @@ class Terrain : NSView {
 		generateCurrentTerrain()
 	}
 
+	/**
+	Recreate the Bezier path representing the terrain from scratch
+	*/
 	func generateCurrentTerrain() {
 		terrainPath = NSBezierPath()
 		terrainPath?.move(to: NSMakePoint(0, 0))
