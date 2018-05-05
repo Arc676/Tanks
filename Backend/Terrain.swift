@@ -80,6 +80,8 @@ class Terrain : NSView {
 			terrainControlHeights[i] = newHeight
 		}
 
+		generateCurrentTerrain()
+
 		newWindSpeed()
 	}
 
@@ -115,6 +117,17 @@ class Terrain : NSView {
 			}
 			dx++
 		}
+		
+		generateCurrentTerrain()
+	}
+
+	func generateCurrentTerrain() {
+		terrainPath = NSBezierPath()
+		terrainPath?.move(to: NSMakePoint(0, 0))
+		for x in 0..<pointCount {
+			terrainPath?.line(to: NSMakePoint(CGFloat(x * chunkSize), terrainControlHeights[x]))
+		}
+		terrainPath?.line(to: NSMakePoint(CGFloat(terrainWidth), 0))
 	}
 
 	/**
@@ -167,13 +180,6 @@ class Terrain : NSView {
 	override func draw(_ rect: NSRect) {
 		skyColor.set()
 		rect.fill()
-		
-		terrainPath = NSBezierPath()
-		terrainPath?.move(to: NSMakePoint(0, 0))
-		for x in 0..<pointCount {
-			terrainPath?.line(to: NSMakePoint(CGFloat(x * chunkSize), terrainControlHeights[x]))
-		}
-		terrainPath?.line(to: NSMakePoint(CGFloat(terrainWidth), 0))
 
 		colorForTerrain(terrainType).set()
 		terrainPath?.fill()
