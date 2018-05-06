@@ -22,6 +22,7 @@
 import Cocoa
 
 class TankCreator: NSView {
+	
 	@IBOutlet weak var tankDesignBox: NSBox!
 
 	@IBOutlet weak var enablePlayer: NSButton!
@@ -35,16 +36,116 @@ class TankCreator: NSView {
 	@IBOutlet weak var loadButton: NSButton!
 	@IBOutlet weak var unloadButton: NSButton!
 
+	private var tank: Tank?
+
+	/**
+	Toggle whether a player is enabled and enable or
+	disable the corresponding UI elements accordingly
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func togglePlayerEnabled(_ sender: NSButton) {
+		let state = sender.state == NSControl.StateValue.on
+		let isLoaded = tank != nil
+		tankName.isEnabled = state && !isLoaded
+		tankColor.isEnabled = state
+		isCCTank.isEnabled = state
+		tankAILevel.isEnabled = state && isCCTank.state == NSControl.StateValue.on
+		loadButton.isEnabled = state && !isLoaded
+		unloadButton.isEnabled = state && isLoaded
 	}
 
+	/**
+	Toggle whether a player should be computer controlled
+	and enable or disable UI elements accordingly
+
+	- parameters:
+	- sender: Button clicked
+	*/
 	@IBAction func toggleCC(_ sender: NSButton) {
+		let state = sender.state == NSControl.StateValue.on
+		tankAILevel.isEnabled = state
 	}
 
+	/**
+	Indicate that a tank should be loaded from a
+	file when the game starts, ask for the file from
+	which the player should be loaded, and disable UI
+	elements accordingly
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func loadTank(_ sender: Any) {
+		var failed = true
+		let panel = NSOpenPanel()
+		if panel.runModal() == NSApplication.ModalResponse.OK {
+			do {
+				let data = try Data(contentsOf: panel.url!)
+				if let tank = NSKeyedUnarchiver.unarchiveObject(with: data) as? Tank {
+					self.tank = tank
+					tankName.stringValue = "(Player to be loaded from file)"
+					tankName.isEnabled = false
+					unloadButton.isEnabled = true
+					loadButton.isEnabled = false
+					failed = false
+				}
+			} catch {}
+			if failed {
+				let alert = NSAlert()
+				alert.messageText = "Failed to load tank data"
+				alert.runModal()
+			}
+		}
 	}
 
+	/**
+	Indicate that a tank previously designated to be
+	loaded from a file should not be loaded from a file
+	and enable UI elements accordingly
+
+	- parameters:
+		- sender: Button clicked
+	*/
 	@IBAction func unloadTank(_ sender: Any) {
+		tank = nil
+		tankName.stringValue = ""
+		tankName.isEnabled = true
+		unloadButton.isEnabled = false
+		loadButton.isEnabled = true
+	}
+
+	/**
+	Gets the tank loaded from disk or creates a new tank with
+	the given properties
+
+	- returns:
+	The loaded or newly created tank
+	*/
+	func getTank() -> Tank? {
+		// if player is disabled, return nothing
+		if enablePlayer.state == NSControl.StateValue.off {
+			return nil
+		}
+		// if tank has been loaded from file, return loaded tank
+		if tank != nil {
+			return tank
+		}
+		// otherwise create a new tank with the given properties
+		let name = tankName.stringValue == "" ? MenuView.getRandomName() : tankName.stringValue
+		if (isCCTank.state == NSControl.StateValue.on) {
+			return CCTank(
+				color: tankColor.color,
+				pNum: 0,
+				lvl: AILevel(rawValue: tankAILevel.selectedSegment)!,
+				name: name)
+		} else {
+			return Player(
+				color: tankColor.color,
+				pNum: 0,
+				name: name)
+		}
 	}
 	
 }
