@@ -31,6 +31,11 @@ class MenuView : NSView {
 	@IBOutlet weak var terrainSelection: NSButton!
 	var terrainType: TerrainType = .RANDOM
 
+	@IBOutlet weak var player1: TankCreator!
+	@IBOutlet weak var player2: TankCreator!
+	@IBOutlet weak var player3: TankCreator!
+	@IBOutlet weak var player4: TankCreator!
+	
 	// Military code words for letters
 	// (random names if not provided)
 	static let nameCount = 26
@@ -93,7 +98,10 @@ class MenuView : NSView {
 	*/
 	@IBAction func startGame(_ sender: Any) {
 		let players = [
-			//
+			player1.getTank(),
+			player2.getTank(),
+			player3.getTank(),
+			player4.getTank()
 			].compactMap{ $0 }
 		var pNum = 1
 		for tank in players {

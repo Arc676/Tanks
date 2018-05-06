@@ -21,6 +21,8 @@
 
 import Cocoa
 
+@IBDesignable
+
 class TankCreator: NSView {
 	
 	@IBOutlet weak var tankDesignBox: NSBox!
@@ -37,6 +39,27 @@ class TankCreator: NSView {
 	@IBOutlet weak var unloadButton: NSButton!
 
 	private var tank: Tank?
+
+	@IBOutlet weak var contentView: NSView?
+
+	required init?(coder decoder: NSCoder) {
+		super.init(coder: decoder)
+		xibSetup()
+	}
+
+	override init(frame frameRect: NSRect) {
+		super.init(frame: frameRect)
+		xibSetup()
+	}
+
+	/**
+	Load the view from the XIB file
+	*/
+	func xibSetup() {
+		Bundle.main.loadNibNamed(NSNib.Name("TankCreator"), owner: self, topLevelObjects: nil)
+		addSubview(contentView!)
+		contentView?.frame = self.bounds
+	}
 
 	/**
 	Toggle whether a player is enabled and enable or

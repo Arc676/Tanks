@@ -7,10 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="TankCreator" customModule="Tanks" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="c22-O7-iKe" id="xfn-ij-HXu"/>
+                <outlet property="enablePlayer" destination="Xya-it-tJ8" id="5MA-Hh-70w"/>
+                <outlet property="isCCTank" destination="PJf-j3-teB" id="3NE-mO-pjQ"/>
+                <outlet property="loadButton" destination="dzF-If-ApW" id="7f4-dF-IsT"/>
+                <outlet property="tankAILevel" destination="n0q-7b-B4c" id="nGz-fn-uwE"/>
+                <outlet property="tankColor" destination="iS3-S7-Ejh" id="C3W-q9-Bjz"/>
+                <outlet property="tankDesignBox" destination="Vt6-Gf-427" id="s3q-D8-Tve"/>
+                <outlet property="tankName" destination="WFR-0c-GxU" id="clf-MW-snk"/>
+                <outlet property="unloadButton" destination="wPT-ek-Gmc" id="lJg-F1-z4p"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="TankCreator" customModule="Tanks" customModuleProvider="target">
+        <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -61,7 +73,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="toggleCC:" target="c22-O7-iKe" id="10W-x3-wvf"/>
+                                    <action selector="toggleCC:" target="-2" id="cX2-Fe-Yyk"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-lg-L7H">
@@ -93,7 +105,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="loadTank:" target="c22-O7-iKe" id="0yy-UG-2rM"/>
+                                    <action selector="loadTank:" target="-2" id="acd-wB-m87"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wPT-ek-Gmc">
@@ -104,7 +116,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="unloadTank:" target="c22-O7-iKe" id="VZp-sd-vim"/>
+                                    <action selector="unloadTank:" target="-2" id="Zos-4W-14h"/>
                                 </connections>
                             </button>
                             <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xya-it-tJ8">
@@ -115,23 +127,13 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="togglePlayerEnabled:" target="c22-O7-iKe" id="UvC-lz-ZTO"/>
+                                    <action selector="togglePlayerEnabled:" target="-2" id="N6Z-c2-pZx"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
                 </box>
             </subviews>
-            <connections>
-                <outlet property="enablePlayer" destination="Xya-it-tJ8" id="NF4-yF-Ztu"/>
-                <outlet property="isCCTank" destination="PJf-j3-teB" id="aUG-ov-b9f"/>
-                <outlet property="loadButton" destination="dzF-If-ApW" id="yl0-By-nx8"/>
-                <outlet property="tankAILevel" destination="n0q-7b-B4c" id="0jg-P2-B9c"/>
-                <outlet property="tankColor" destination="iS3-S7-Ejh" id="snN-hM-DNV"/>
-                <outlet property="tankDesignBox" destination="Vt6-Gf-427" id="ekx-BN-bau"/>
-                <outlet property="tankName" destination="WFR-0c-GxU" id="yDt-fV-s1M"/>
-                <outlet property="unloadButton" destination="wPT-ek-Gmc" id="k0F-Lq-aMa"/>
-            </connections>
         </customView>
     </objects>
 </document>
