@@ -69,6 +69,15 @@ class MenuView : NSView {
 	]
 	static var nameUsed = [Bool](repeating: false, count: MenuView.nameCount)
 
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		// initialize tank setup UI
+		// default configuration is for Player 1, so skip P1
+		player2.setState("Player 2", color: NSColor.red, canDisable: false)
+		player3.setState("Player 3", color: NSColor.green, canDisable: true)
+		player4.setState("Player 4", color: NSColor.yellow, canDisable: true)
+	}
+
 	/**
 	Change the desired terrain type for the game
 

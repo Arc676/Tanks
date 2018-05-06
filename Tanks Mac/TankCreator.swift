@@ -62,6 +62,15 @@ class TankCreator: NSView {
 	}
 
 	/**
+	Set values for tank properties
+	*/
+	func setState(_ name: String, color: NSColor, canDisable: Bool) {
+		tankDesignBox.title = name
+		tankColor.color = color
+		enablePlayer.isHidden = !canDisable
+	}
+
+	/**
 	Toggle whether a player is enabled and enable or
 	disable the corresponding UI elements accordingly
 
