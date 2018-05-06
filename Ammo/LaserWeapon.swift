@@ -28,6 +28,7 @@ class LaserWeapon: Ammo {
 
 	let laserSound = NSSound(named: NSSound.Name("laser.wav"))!
 
+	override var isProjectile: Bool { return false }
 	override var hasSound: Bool { return true }
 
 	var ticksSinceFiring = 0

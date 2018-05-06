@@ -26,6 +26,7 @@ Representation of different kinds of ammunition
 */
 class Ammo: Item {
 
+	var isProjectile: Bool { return true }
 	var isTargeted: Bool { return false }
 	var hasSound: Bool { return false }
 

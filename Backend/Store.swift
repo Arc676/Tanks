@@ -36,6 +36,10 @@ class Store: View {
 	static let largeEx = NSSound(named: NSSound.Name("ex_large.wav"))!
 	static let noSound = NSSound()
 
+	// indices of various items to be purchased by computer controlled tanks
+	let armorIndex = 14
+	let targetingWeapons = 11
+
 	let storeItems: [Item] = [
 		Ammo("Missile", price: 10, radius: 20, damage: 80, sound: Store.smallEx),
 		Ammo("Armor Piercing Shell", price: 40, radius: 20, damage: 180, sound: Store.smallEx),
@@ -109,7 +113,7 @@ class Store: View {
 		} else {
 			currentPlayer++
 			if players![currentPlayer] is CCTank {
-				(players![currentPlayer] as! CCTank).makePurchases(storeItems)
+				(players![currentPlayer] as! CCTank).makePurchases(self)
 				if saveAIs {
 					savePlayer()
 				}

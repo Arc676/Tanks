@@ -31,6 +31,14 @@ enum AILevel: Int {
 }
 
 /**
+Represents the AI "personality" and strategy
+*/
+enum AIStyle {
+	case DEFENSIVE
+	case AGGRESSIVE
+}
+
+/**
 Represents the property that will be
 affected by an upgrade
 */

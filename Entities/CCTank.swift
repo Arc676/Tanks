@@ -27,6 +27,7 @@ Computer controlled tank object
 class CCTank : Tank {
 
 	var aiLevel: AILevel! = .LOW
+	var aiStyle: AIStyle! = .DEFENSIVE
 
 	var target: Tank?
 
@@ -51,11 +52,13 @@ class CCTank : Tank {
 
 	required init?(coder aDecoder: NSCoder) {
 		aiLevel = aDecoder.decodeObject(forKey: "AILvl") as! AILevel
+		aiStyle = aDecoder.decodeObject(forKey: "AIStyle") as! AIStyle
 		super.init(coder: aDecoder)
 	}
 
 	override func encode(with aCoder: NSCoder) {
 		aCoder.encode(aiLevel, forKey: "AILvl")
+		aCoder.encode(aiStyle, forKey: "AIStyle")
 		super.encode(with: aCoder)
 	}
 
@@ -78,7 +81,7 @@ class CCTank : Tank {
 		case .MED:
 			return 5 * k
 		case .HIGH:
-			return k
+			return 0
 		}
 	}
 
@@ -89,7 +92,30 @@ class CCTank : Tank {
 	- parameters:
 		- items: The available items for purchase
 	*/
-	func makePurchases(_ items: [Item]) {}
+	func makePurchases(_ store: Store) {
+		// AIs on LOW don't buy items
+		if aiLevel.rawValue > AILevel.LOW.rawValue {
+			// only HIGH level DEFENSIVE AIs buy armor upgrades
+			if aiLevel == .HIGH &&
+				aiStyle == .DEFENSIVE {
+				purchaseItem(store.storeItems[store.armorIndex])
+			}
+			// AGGRESSIVE AIs buy all the top projectile-based weapons
+			if aiStyle == .AGGRESSIVE {
+				for i in (0..<store.targetingWeapons).reversed() {
+					let item = store.storeItems[i] as! Ammo
+					if !item.isProjectile {
+						continue
+					}
+					while money > item.price {
+						purchaseItem(item)
+					}
+				}
+			} else {
+				//
+			}
+		}
+	}
 
 	/**
 	Choose a new target to the tank to fire at. This should be called
