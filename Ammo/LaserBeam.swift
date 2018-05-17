@@ -34,7 +34,6 @@ class LaserBeam: LaserWeapon {
 	var hits: [Tank] = []
 
 	var terrainHitPos = 0
-	var reqHeight: CGFloat = 0
 	
 	var basisNozzlePos: NSPoint?
 	var grad: CGFloat = 0
@@ -78,7 +77,7 @@ class LaserBeam: LaserWeapon {
 	override func update() {
 		super.update()
 		if !invalidated() {
-			if terrainHitPos > 0 {
+			if terrainHitPos >= 0 {
 				terrain?.deform(radius: blastRadius, xPos: terrainHitPos)
 			}
 			basisNozzlePos = entities![sourcePlayer].getNozzlePosition(dy: -3.5)
@@ -109,32 +108,39 @@ class LaserBeam: LaserWeapon {
 		// only perform raycast if the beam isn't going straight up
 		if cosine != 0 {
 			var x = 0
-			for height in terrain!.terrainControlHeights {
+			var delta = terrain!.chunkSize
+			var heights = terrain!.terrainControlHeights
+			if cosine.sign == .minus {
+				heights = heights.reversed()
+				x = terrain!.terrainWidth
+				delta = -delta
+			}
+			for height in heights {
 				dx = (CGFloat(x) - basisNozzlePos!.x)
 				// the beam only goes upward relative to the firing tank;
-				// sgn(dx) ≠ sgn(grad) implies that we are looking at the part
+				// sgn(dx) ≠ sgn(cos(firing angle)) implies that we are looking at the part
 				// behind the nozzle rather than ahead
-				if dx.sign == grad.sign {
+				if dx.sign == cosine.sign {
 					let y = dx * grad + basisNozzlePos!.y
 					// if the terrain is higher than the beam at this point, collide
 					if height > y {
 						terrainHitPos = x
-						reqHeight = y
 						break
 					}
 				}
-				x += terrain!.chunkSize
+				x += delta
 			}
 
 			// search living entities for those that would be hit by the beam
 			for entity in entities!.filter({ $0.hp > 0 }) {
 				// ignore firing player
 				if entity.playerNum != sourcePlayer + 1 {
-					// if the beam hits the terrain, ignore entities placed after
-					// the collision point with the terrain
-					if terrainHitPos < 0 || entity.position.x <= CGFloat(terrainHitPos) {
+					// in order to hit a tank, it must be on the correct side
+					// of the firing tank; sgn(dx) = sgn(cos(firing angle)) implies
+					// that the tank is in the direction of the beam
+					if (entity.position.x - basisNozzlePos!.x).sign == cosine.sign {
 						let y = (entity.position.x - basisNozzlePos!.x) * grad + basisNozzlePos!.y
-						// allow a deviation of 10 for collision
+						// allow a deviation of 10 for damage
 						if abs(entity.position.y - y) < 10 {
 							hits.append(entity)
 						}
