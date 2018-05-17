@@ -73,7 +73,8 @@ class GameMgr: View {
 	var viewController: ViewController?
 
 	//Game settings
-	static var enableSFX = true
+	static var enableSFX = true //static for access within GameMgr.playSound
+	var drawDeclared = false
 
 	/**
 	Initialize a new game with the given properties
@@ -84,6 +85,7 @@ class GameMgr: View {
 		- controller: The view controller for the game
 	*/
 	func initialize(terrainType: TerrainType, players: [Tank]?, controller: ViewController) {
+		drawDeclared = false
 		terrain.generateNewTerrain(terrainType, height: UInt32(bounds.height), width: Int(bounds.width))
 		viewController = controller
 
@@ -127,14 +129,15 @@ class GameMgr: View {
 	}
 
 	/**
-	Check whether the game has ended
+	Check whether the game has ended by checking if less
+	than two players remain (maybe everyone died) or if
+	a draw has been declared by the user
 
 	- returns:
-	Whether the game is over i.e. less than two players remain
-	(maybe everyone died)
+	Whether the game is over
 	*/
 	func gameOver() -> Bool {
-		return players.filter{ $0.hp > 0 }.count < 2
+		return drawDeclared || players.filter{ $0.hp > 0 }.count < 2
 	}
 
 	/**

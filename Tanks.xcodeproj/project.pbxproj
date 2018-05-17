@@ -25,6 +25,7 @@
 		713D1DB31F5BF31600FE576D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB21F5BF31600FE576D /* Item.swift */; };
 		713D1DB51F5BF3AA00FE576D /* Ammo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB41F5BF3AA00FE576D /* Ammo.swift */; };
 		713D1DB71F5BF94500FE576D /* StoreViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB61F5BF94500FE576D /* StoreViewMac.swift */; };
+		7167117C20ADC4EA00FE0339 /* Draw.png in Resources */ = {isa = PBXBuildFile; fileRef = 7167117B20ADC4EA00FE0339 /* Draw.png */; };
 		717381FD207891BC0090213A /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 717381FC207891BC0090213A /* CREDITS */; };
 		71840221207B13D700B1C61C /* rotate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021D207B13D700B1C61C /* rotate.wav */; };
 		71840222207B13D700B1C61C /* ex_small.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021E207B13D700B1C61C /* ex_small.wav */; };
@@ -76,6 +77,7 @@
 		713D1DB21F5BF31600FE576D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Backend/Item.swift; sourceTree = "<group>"; };
 		713D1DB41F5BF3AA00FE576D /* Ammo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ammo.swift; sourceTree = "<group>"; };
 		713D1DB61F5BF94500FE576D /* StoreViewMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewMac.swift; sourceTree = "<group>"; };
+		7167117B20ADC4EA00FE0339 /* Draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Draw.png; sourceTree = "<group>"; };
 		717381FC207891BC0090213A /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		7184021D207B13D700B1C61C /* rotate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rotate.wav; sourceTree = "<group>"; };
 		7184021E207B13D700B1C61C /* ex_small.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ex_small.wav; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				7167117B20ADC4EA00FE0339 /* Draw.png */,
 				712F42A520908A3B00E63AD7 /* Explosion.png */,
 				712F42A3209056DB00E63AD7 /* LaserBeam.png */,
 				71BC857B208F3BFD006D3C5D /* LaserStrike.png */,
@@ -318,6 +321,7 @@
 				71840227207B159700B1C61C /* firing.mp3 in Resources */,
 				71840223207B13D700B1C61C /* ex_large.wav in Resources */,
 				71F061D61F2671ED004F0EF5 /* Assets.xcassets in Resources */,
+				7167117C20ADC4EA00FE0339 /* Draw.png in Resources */,
 				71840222207B13D700B1C61C /* ex_small.wav in Resources */,
 				71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */,
 				71D7D416208C242700D67D50 /* SFXOff.png in Resources */,

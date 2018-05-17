@@ -29,8 +29,12 @@ class GameViewMac : GameMgr {
 	// Game controls
 	let sfxOn = NSImage(named: NSImage.Name(rawValue: "SFXOn.png"))
 	let sfxOff = NSImage(named: NSImage.Name(rawValue: "SFXOff.png"))
-	// if the size of the view ever changes, this rectangle needs to change
+	let drawButton = NSImage(named: NSImage.Name(rawValue: "Draw.png"))
+	// if the size of the view ever changes, these rectangles need to change
 	let sfxRect = NSMakeRect(800, 625, 100, 50)
+	let drawRect = NSMakeRect(650, 625, 100, 50)
+
+	// assets for targeted weapons
 	let targetSprite = NSImage(named: NSImage.Name(rawValue: "Target.png"))
 	var mouseLocation = NSMakePoint(0, 0)
 
@@ -123,6 +127,7 @@ class GameViewMac : GameMgr {
 		}
 		rect!.fill()
 
+		drawButton?.draw(in: drawRect)
 		if GameMgr.enableSFX {
 			sfxOn?.draw(in: sfxRect)
 		} else {
@@ -137,6 +142,16 @@ class GameViewMac : GameMgr {
 	override func mouseUp(with event: NSEvent) {
 		if sfxRect.contains(event.locationInWindow) {
 			GameMgr.enableSFX = !GameMgr.enableSFX
+		} else if drawRect.contains(event.locationInWindow) {
+			let alert = NSAlert()
+			alert.messageText = "Confirm draw"
+			alert.informativeText = "Immediately declare this game to be a draw?"
+			alert.addButton(withTitle: "No")
+			alert.addButton(withTitle: "Yes")
+			if alert.runModal() == NSApplication.ModalResponse.alertSecondButtonReturn {
+				players[activePlayer].endTurn()
+				drawDeclared = true
+			}
 		} else if players[activePlayer].isTargeting && event.locationInWindow.y < 600 {
 			players[activePlayer].fireProjectile(at: event.locationInWindow)
 		} else {
