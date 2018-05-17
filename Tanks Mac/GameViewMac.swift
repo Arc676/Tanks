@@ -34,6 +34,8 @@ class GameViewMac : GameMgr {
 	let sfxRect = NSMakeRect(800, 625, 100, 50)
 	let drawRect = NSMakeRect(650, 625, 100, 50)
 
+	let drawAlert = NSAlert()
+
 	// assets for targeted weapons
 	let targetSprite = NSImage(named: NSImage.Name(rawValue: "Target.png"))
 	var mouseLocation = NSMakePoint(0, 0)
@@ -51,6 +53,10 @@ class GameViewMac : GameMgr {
 			NSAttributedString(string: "Fuel")		: NSMakePoint(210, bounds.height - 70),
 			NSAttributedString(string: "Weapon")	: NSMakePoint(340, bounds.height - 40)
 		]
+		drawAlert.messageText = "Confirm draw"
+		drawAlert.informativeText = "Immediately declare this game to be a draw?"
+		drawAlert.addButton(withTitle: "No")
+		drawAlert.addButton(withTitle: "Yes")
 		super.initialize(terrainType: terrainType, players: players, controller: controller)
 	}
 
@@ -143,14 +149,8 @@ class GameViewMac : GameMgr {
 		if sfxRect.contains(event.locationInWindow) {
 			GameMgr.enableSFX = !GameMgr.enableSFX
 		} else if drawRect.contains(event.locationInWindow) {
-			let alert = NSAlert()
-			alert.messageText = "Confirm draw"
-			alert.informativeText = "Immediately declare this game to be a draw?"
-			alert.addButton(withTitle: "No")
-			alert.addButton(withTitle: "Yes")
-			if alert.runModal() == NSApplication.ModalResponse.alertSecondButtonReturn {
-				players[activePlayer].endTurn()
-				drawDeclared = true
+			if drawAlert.runModal() == NSApplication.ModalResponse.alertSecondButtonReturn {
+				drawGame()
 			}
 		} else if players[activePlayer].isTargeting && event.locationInWindow.y < 600 {
 			players[activePlayer].fireProjectile(at: event.locationInWindow)

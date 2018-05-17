@@ -141,6 +141,19 @@ class GameMgr: View {
 	}
 
 	/**
+	Declares the current game to be a draw and ends the
+	current tank's turn
+	*/
+	func drawGame() {
+		drawDeclared = true
+		players[activePlayer].endTurn()
+		for player in players.filter({ $0.hp > 0}) {
+			player.score += 100;
+			player.money += 100;
+		}
+	}
+
+	/**
 	Update all entities in the game and check if the game
 	is over
 	*/
