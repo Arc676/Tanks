@@ -87,6 +87,7 @@ class Tank : NSObject, NSCoding {
 	//tank state
 	var position: NSPoint = NSMakePoint(0, 0)
 	var lastY: CGFloat = 0
+	var isFalling = false
 	var turnEnded = false
 	var hasFired = false
 	var isTargeting = false
@@ -326,6 +327,7 @@ class Tank : NSObject, NSCoding {
 		if selectedAmmo?.invalidated() ?? false {
 			endTurn()
 		}
+		isFalling = lastY != position.y
 	}
 
 	/**

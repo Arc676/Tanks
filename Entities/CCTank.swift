@@ -198,9 +198,15 @@ class CCTank : Tank {
 
 	override func update(keys: [UInt16 : Bool]) {
 		super.update(keys: keys)
-		//skip update if tank is falling, the turn is over, or a shot has already been taken
-		if lastY != position.y || turnEnded || hasFired {
+		//skip update if the turn is over, or a shot has already been taken
+		if turnEnded || hasFired {
 			return
+		} else if !hasFired {
+			//if the tank has not yet fired, wait
+			//for all surviving tanks to stop falling
+			if tanks!.filter({ $0.hp > 0 && $0.isFalling }).count > 0 {
+				return
+			}
 		}
 		//if no target chosen or previous target is dead, retarget
 		if target == nil || target!.hp <= 0 {
