@@ -148,17 +148,21 @@ class CCTank : Tank {
 		var a1: CGFloat = 0.01
 
 		var range: CountableClosedRange<Int>?
-		if x < 0 {
-			range = (Int(tx) / terrain!.chunkSize + 1)...(Int(position.x) / terrain!.chunkSize - 1)
-		} else {
-			range = (Int(position.x) / terrain!.chunkSize + 1)...(Int(tx) / terrain!.chunkSize - 1)
-		}
+		let posChunk = Int(position.x) / terrain!.chunkSize
+		let targetChunk = Int(tx) / terrain!.chunkSize
+		if abs(posChunk - targetChunk) >= 2 {
+			if x < 0 {
+				range = (targetChunk + 1)...(posChunk - 1)
+			} else {
+				range = (posChunk + 1)...(targetChunk - 1)
+			}
 
-		for i in range! {
-			let xc = CGFloat(i * terrain!.chunkSize) - position.x
-			let h = terrain!.terrainControlHeights[i] - position.y
-			if -a1 * xc * (xc + b) < h {
-				a1 = -(h + 10) / (xc * (xc + b))
+			for i in range! {
+				let xc = CGFloat(i * terrain!.chunkSize) - position.x
+				let h = terrain!.terrainControlHeights[i] - position.y
+				if -a1 * xc * (xc + b) < h {
+					a1 = -(h + 10) / (xc * (xc + b))
+				}
 			}
 		}
 
@@ -183,9 +187,13 @@ class CCTank : Tank {
 		targetAngle += Float(arc4random_uniform(1000)) / 1000 * CCTank.uncertaintyForLevel(aiLevel, rad: true)
 		targetFirepower += Int(arc4random_uniform(UInt32(CCTank.uncertaintyForLevel(aiLevel, rad: false))))
 
-		assert(targetAngle >= 0 && targetAngle <= .pi)
+		if targetAngle < 0 {
+			targetAngle = 0
+		} else if targetAngle > .pi {
+			targetAngle = .pi
+		}
 		if targetFirepower > 100 {
-			Swift.print(targetFirepower)
+			targetFirepower = 100
 		}
 
 		needsRecalc = false
