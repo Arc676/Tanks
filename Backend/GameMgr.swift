@@ -95,7 +95,7 @@ class GameMgr: View {
 
 		var i = 0
 		for player in self.players {
-			let pos = (i + 1) * 3
+			let pos = (i + 1) * terrain.pointCount / (self.players.count + 1)
 			player.reset()
 			player.terrain = terrain
 			player.tanks = self.players

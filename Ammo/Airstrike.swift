@@ -25,7 +25,7 @@ import AppKit
 Drops projectiles from the sky to land around a
 target point on the map chosen by the user
 */
-class Airstrike : Ammo {
+class Airstrike : SeparationWeapon {
 
 	let planeSound = NSSound(named: NSSound.Name("bomber.wav"))!
 
@@ -34,7 +34,7 @@ class Airstrike : Ammo {
 
 	override func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
 		GameMgr.playSound(planeSound)
-		for i in -2...2 {
+		for i in (-self.projCount / 2)...(self.projCount / 2) {
 			let pos = NSMakePoint(position.x + CGFloat(i * 20), 700)
 			let projectile = Projectile(
 				terrain: terrain,

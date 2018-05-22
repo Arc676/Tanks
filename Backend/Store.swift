@@ -37,7 +37,7 @@ class Store: View {
 	static let noSound = NSSound()
 
 	// indices of various items to be purchased by computer controlled tanks
-	let armorIndex = 14
+	let armorIndex = 15
 	let targetingWeapons = 11
 
 	let storeItems: [Item] = [
@@ -52,7 +52,8 @@ class Store: View {
 		Hailfire("Hailfire III", price: 7000, radius: 30, damage: 100, sound: Store.largeEx, projCount: 6),
 		LaserBeam("Laser Beam II", price: 2600, radius: 30, damage: 1000, sound: Store.noSound),
 		Hailfire("Hailfire IV", price: 12000, radius: 50, damage: 500, sound: Store.largeEx, projCount: 10),
-		Airstrike("Airstrike", price: 9000, radius: 30, damage: 400, sound: Store.largeEx),
+		Airstrike("Airstrike I", price: 9000, radius: 30, damage: 400, sound: Store.largeEx, projCount: 5),
+		Airstrike("Airstrike II", price: 15000, radius: 50, damage: 800, sound: Store.largeEx, projCount: 11),
 		LaserStrike("Space Laser", price: 10000, radius: 40, damage: 1000, sound: Store.noSound),
 		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),

@@ -38,6 +38,7 @@
 		71BC857C208F3BFD006D3C5D /* LaserStrike.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BC857B208F3BFD006D3C5D /* LaserStrike.png */; };
 		71CAA509208AED3700592AC0 /* SaveAIsOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CAA507208AED3700592AC0 /* SaveAIsOff.png */; };
 		71CAA50A208AED3700592AC0 /* SaveAIsOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CAA508208AED3700592AC0 /* SaveAIsOn.png */; };
+		71CB0B4D20B40739000B21EE /* SeparationWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB0B4C20B40739000B21EE /* SeparationWeapon.swift */; };
 		71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFE7162077B92100D6DB89 /* WindowController.swift */; };
 		71D388AC20900C0400014BAB /* ShrapnelRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D388AB20900C0400014BAB /* ShrapnelRound.swift */; };
 		71D388AE2090181100014BAB /* ShrapnelShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D388AD2090181100014BAB /* ShrapnelShot.swift */; };
@@ -90,6 +91,7 @@
 		71BC857B208F3BFD006D3C5D /* LaserStrike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaserStrike.png; sourceTree = "<group>"; };
 		71CAA507208AED3700592AC0 /* SaveAIsOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAIsOff.png; sourceTree = "<group>"; };
 		71CAA508208AED3700592AC0 /* SaveAIsOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAIsOn.png; sourceTree = "<group>"; };
+		71CB0B4C20B40739000B21EE /* SeparationWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparationWeapon.swift; sourceTree = "<group>"; };
 		71CFE7162077B92100D6DB89 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		71D388AB20900C0400014BAB /* ShrapnelRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrapnelRound.swift; sourceTree = "<group>"; };
 		71D388AD2090181100014BAB /* ShrapnelShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrapnelShot.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				71BC8577208F3065006D3C5D /* LaserStrike.swift */,
 				71FCE3FA208F2FC4008CEA24 /* LaserBeam.swift */,
 				71D388AD2090181100014BAB /* ShrapnelShot.swift */,
+				71CB0B4C20B40739000B21EE /* SeparationWeapon.swift */,
 			);
 			path = Ammo;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71FA92891F7B9781006CDC14 /* Upgrade.swift in Sources */,
+				71CB0B4D20B40739000B21EE /* SeparationWeapon.swift in Sources */,
 				71F061D41F2671ED004F0EF5 /* GameViewController.swift in Sources */,
 				712100041F27861D00EB48D8 /* MenuView.swift in Sources */,
 				7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */,
