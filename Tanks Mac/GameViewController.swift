@@ -75,6 +75,14 @@ class GameViewController : NSViewController {
 	}
 
 	/**
+	Returns to the main menu
+	*/
+	func exitToMain() {
+		view = menuView
+		NSApp.mainWindow?.makeFirstResponder(menuView)
+	}
+
+	/**
 	Start the game with the current set of players
 	*/
 	func startGame() {

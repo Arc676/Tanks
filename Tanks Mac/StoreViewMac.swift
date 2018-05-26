@@ -29,12 +29,15 @@ class StoreViewMac: Store {
 	let continueRect = NSMakeRect(300, 100, 100, 50)
 	let saveRect = NSMakeRect(500, 100, 100, 50)
 	let saveAIsRect = NSMakeRect(700, 100, 100, 50)
+	let exitRect = NSMakeRect(900, 100, 100, 50)
 
 	let continueButton = NSImage(named: NSImage.Name(rawValue: "Next.png"))
 	let saveButton = NSImage(named: NSImage.Name(rawValue: "Save.png"))
 
 	let saveAIsOff = NSImage(named: NSImage.Name(rawValue: "SaveAIsOff.png"))
 	let saveAIsOn = NSImage(named: NSImage.Name(rawValue: "SaveAIsOn.png"))
+
+	let exitButton = NSImage(named: NSImage.Name(rawValue: "Exit.png"))
 
 	override func draw(_ rect: NSRect) {
 		let player = players![currentPlayer]
@@ -71,6 +74,7 @@ class StoreViewMac: Store {
 		} else {
 			saveAIsOff?.draw(in: saveAIsRect)
 		}
+		exitButton?.draw(in: exitRect)
 	}
 
 	override func mouseUp(with event: NSEvent) {
@@ -80,6 +84,8 @@ class StoreViewMac: Store {
 			savePlayer()
 		} else if saveAIsRect.contains(event.locationInWindow) {
 			saveAIs = !saveAIs
+		} else if exitRect.contains(event.locationInWindow) {
+			viewController?.exitToMain()
 		} else {
 			let y = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
 			if y >= 0 && y < 22 {
