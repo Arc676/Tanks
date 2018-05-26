@@ -26,10 +26,10 @@ View for store control on Mac
 */
 class StoreViewMac: Store {
 
-	let continueRect = NSMakeRect(300, 100, 100, 50)
-	let saveRect = NSMakeRect(500, 100, 100, 50)
-	let saveAIsRect = NSMakeRect(700, 100, 100, 50)
-	let exitRect = NSMakeRect(900, 100, 100, 50)
+	let continueRect = NSMakeRect(100, 100, 100, 50)
+	let saveRect = NSMakeRect(300, 100, 100, 50)
+	let saveAIsRect = NSMakeRect(500, 100, 100, 50)
+	let exitRect = NSMakeRect(700, 100, 100, 50)
 
 	let continueButton = NSImage(named: NSImage.Name(rawValue: "Next.png"))
 	let saveButton = NSImage(named: NSImage.Name(rawValue: "Save.png"))

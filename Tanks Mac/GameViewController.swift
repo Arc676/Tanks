@@ -62,11 +62,21 @@ class GameViewController : NSViewController {
 	}
 
 	/**
+	Utility function for setting the view of the window
+
+	- parameters:
+		- newView: The new view to show in the main window
+	*/
+	func setView(_ newView: NSView) {
+		view = newView
+		NSApp.mainWindow?.makeFirstResponder(newView)
+	}
+
+	/**
 	Start the game
 	*/
 	func startGame(_ players: [Tank]?) {
-		view = gameView!
-		NSApp.mainWindow?.makeFirstResponder(gameView)
+		setView(gameView!)
 		gameView!.initialize(terrainType: chosenTerrain!, players: players, controller: self)
 		gameView!.needsDisplay = true
 
@@ -78,8 +88,7 @@ class GameViewController : NSViewController {
 	Returns to the main menu
 	*/
 	func exitToMain() {
-		view = menuView
-		NSApp.mainWindow?.makeFirstResponder(menuView)
+		setView(menuView)
 	}
 
 	/**
@@ -93,8 +102,7 @@ class GameViewController : NSViewController {
 	Switch to the store view
 	*/
 	func goToStore() {
-		view = storeView!
-		NSApp.mainWindow?.makeFirstResponder(storeView)
+		setView(storeView!)
 		storeView?.initialize(gameView!.players, viewController: self)
 		storeView?.needsDisplay = true
 	}
