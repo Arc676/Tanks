@@ -45,7 +45,8 @@ class GameViewMac : GameMgr {
 	var touchBarAngleSlider: NSSlider?
 	var touchBarFirepowerSlider: NSSlider?
 
-	override func initialize(terrainType: TerrainType, players: [Tank]?, controller: ViewController) {
+	override init(frame frameRect: NSRect) {
+		super.init(frame: frameRect)
 		uiMarks = [
 			NSAttributedString(string: "HP") 		: NSMakePoint(80, bounds.height - 50),
 			NSAttributedString(string: "Firepower") : NSMakePoint(40, bounds.height - 70),
@@ -57,7 +58,10 @@ class GameViewMac : GameMgr {
 		drawAlert.informativeText = "Immediately declare this game to be a draw?"
 		drawAlert.addButton(withTitle: "No")
 		drawAlert.addButton(withTitle: "Yes")
-		super.initialize(terrainType: terrainType, players: players, controller: controller)
+	}
+
+	required init?(coder decoder: NSCoder) {
+		super.init(coder: decoder)
 	}
 
 	override func draw(_ rect: NSRect) {

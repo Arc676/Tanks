@@ -138,7 +138,14 @@ class LaserBeam: LaserWeapon {
 					// in order to hit a tank, it must be on the correct side
 					// of the firing tank; sgn(dx) = sgn(cos(firing angle)) implies
 					// that the tank is in the direction of the beam
-					if (entity.position.x - basisNozzlePos!.x).sign == cosine.sign {
+					let correctDir = (entity.position.x - basisNozzlePos!.x).sign == cosine.sign
+
+					// if the beam hits the terrain, the tank must also be on the
+					// correct side of the impact point; sgn(impact point - tank position) = sgn(cos(angle))
+					// implies that moving from the tank to the impact point is in the same
+					// direction as the beam, thus the tank is hit by the beam before the terrain
+					let notBlocked = (CGFloat(terrainHitPos) - entity.position.x).sign == cosine.sign
+					if correctDir && notBlocked {
 						let y = (entity.position.x - basisNozzlePos!.x) * grad + basisNozzlePos!.y
 						// allow a deviation of 10 for damage
 						if abs(entity.position.y - y) < 10 {
