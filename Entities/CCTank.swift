@@ -45,20 +45,24 @@ class CCTank : Tank {
 		- lvl: Level of AI to control this tank
 		- name: Name assigned to tank
 	*/
-	init(color: NSColor, pNum: Int, lvl: AILevel, name: String) {
+	init(color: NSColor, pNum: Int, lvl: AILevel, style: AIStyle, name: String) {
 		aiLevel = lvl
+		aiStyle = style
+		if style == .RANDOM {
+			aiStyle = AIStyle(rawValue: arc4random_uniform(AIStyle.RANDOM.rawValue))!
+		}
 		super.init(color: color, pNum: pNum, name: name)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		aiLevel = aDecoder.decodeObject(forKey: "AILvl") as! AILevel
-		aiStyle = aDecoder.decodeObject(forKey: "AIStyle") as! AIStyle
+		aiLevel = AILevel(rawValue: aDecoder.decodeInteger(forKey: "AILvl"))
+		aiStyle = AIStyle(rawValue: UInt32(aDecoder.decodeInteger(forKey: "AIStyle")))
 		super.init(coder: aDecoder)
 	}
 
 	override func encode(with aCoder: NSCoder) {
-		aCoder.encode(aiLevel, forKey: "AILvl")
-		aCoder.encode(aiStyle, forKey: "AIStyle")
+		aCoder.encode(aiLevel.rawValue, forKey: "AILvl")
+		aCoder.encode(aiStyle.rawValue, forKey: "AIStyle")
 		super.encode(with: aCoder)
 	}
 
@@ -195,6 +199,8 @@ class CCTank : Tank {
 		if targetFirepower > 100 {
 			targetFirepower = 100
 		}
+
+		selectedWeapon = weapons.count - 1;
 
 		needsRecalc = false
 	}

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,7 @@
                 <outlet property="isCCTank" destination="PJf-j3-teB" id="3NE-mO-pjQ"/>
                 <outlet property="loadButton" destination="dzF-If-ApW" id="7f4-dF-IsT"/>
                 <outlet property="tankAILevel" destination="n0q-7b-B4c" id="nGz-fn-uwE"/>
+                <outlet property="tankAIStyle" destination="fqo-Zb-iBV" id="NIA-BW-Rg6"/>
                 <outlet property="tankColor" destination="iS3-S7-Ejh" id="C3W-q9-Bjz"/>
                 <outlet property="tankDesignBox" destination="Vt6-Gf-427" id="s3q-D8-Tve"/>
                 <outlet property="tankName" destination="WFR-0c-GxU" id="clf-MW-snk"/>
@@ -66,9 +67,9 @@
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PJf-j3-teB">
-                                <rect key="frame" x="18" y="73" width="147" height="18"/>
+                                <rect key="frame" x="18" y="71" width="83" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Computer controlled" bezelStyle="regularSquare" imagePosition="left" inset="2" id="QdE-f3-uY8">
+                                <buttonCell key="cell" type="check" title="Computer" bezelStyle="regularSquare" imagePosition="left" inset="2" id="QdE-f3-uY8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -76,27 +77,6 @@
                                     <action selector="toggleCC:" target="-2" id="cX2-Fe-Yyk"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-lg-L7H">
-                                <rect key="frame" x="18" y="50" width="52" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="AI Level" id="Jtt-i6-e1t">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0q-7b-B4c">
-                                <rect key="frame" x="74" y="46" width="182" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="rbm-Ww-Aig">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment label="Low"/>
-                                        <segment label="Medium" selected="YES" tag="1"/>
-                                        <segment label="High"/>
-                                    </segments>
-                                </segmentedCell>
-                            </segmentedControl>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzF-If-ApW">
                                 <rect key="frame" x="14" y="13" width="155" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -130,6 +110,30 @@
                                     <action selector="togglePlayerEnabled:" target="-2" id="N6Z-c2-pZx"/>
                                 </connections>
                             </button>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0q-7b-B4c">
+                                <rect key="frame" x="121" y="67" width="187" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="rbm-Ww-Aig">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Easy"/>
+                                        <segment label="Medium" selected="YES" tag="1"/>
+                                        <segment label="Hard"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqo-Zb-iBV">
+                                <rect key="frame" x="52" y="42" width="256" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="tnX-Fz-deo">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Defensive"/>
+                                        <segment label="Aggressive" tag="1"/>
+                                        <segment label="Random" selected="YES"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
                         </subviews>
                     </view>
                 </box>

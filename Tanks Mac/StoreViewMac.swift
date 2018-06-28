@@ -100,11 +100,12 @@ class StoreViewMac: Store {
 
 	override func savePlayer() {
 		let panel = NSSavePanel()
+		panel.allowedFileTypes = ["plist"]
 		panel.message = "Select save location for Player \(currentPlayer + 1)"
 		if panel.runModal() == NSApplication.ModalResponse.OK {
-			let data = NSKeyedArchiver.archivedData(withRootObject: players![currentPlayer])
 			var res = true
 			do {
+				let data = NSKeyedArchiver.archivedData(withRootObject: players![currentPlayer])
 				try data.write(to: panel.url!)
 			} catch {
 				res = false

@@ -34,6 +34,7 @@ class TankCreator: NSView {
 
 	@IBOutlet weak var isCCTank: NSButton!
 	@IBOutlet weak var tankAILevel: NSSegmentedControl!
+	@IBOutlet weak var tankAIStyle: NSSegmentedControl!
 	
 	@IBOutlet weak var loadButton: NSButton!
 	@IBOutlet weak var unloadButton: NSButton!
@@ -83,7 +84,10 @@ class TankCreator: NSView {
 		tankName.isEnabled = state && !isLoaded
 		tankColor.isEnabled = state
 		isCCTank.isEnabled = state
+		// AI specific controls
 		tankAILevel.isEnabled = state && isCCTank.state == NSControl.StateValue.on
+		tankAIStyle.isEnabled = tankAILevel.isEnabled
+		// disk loading control
 		loadButton.isEnabled = state && !isLoaded
 		unloadButton.isEnabled = state && isLoaded
 	}
@@ -98,6 +102,7 @@ class TankCreator: NSView {
 	@IBAction func toggleCC(_ sender: NSButton) {
 		let state = sender.state == NSControl.StateValue.on
 		tankAILevel.isEnabled = state
+		tankAIStyle.isEnabled = state
 	}
 
 	/**
@@ -171,6 +176,7 @@ class TankCreator: NSView {
 				color: tankColor.color,
 				pNum: 0,
 				lvl: AILevel(rawValue: tankAILevel.selectedSegment)!,
+				style: AIStyle(rawValue: UInt32(tankAIStyle.selectedSegment))!,
 				name: name)
 		} else {
 			return Player(

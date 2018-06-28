@@ -55,10 +55,10 @@ class Ammo: Item {
 	}
 
 	override func encode(with aCoder: NSCoder) {
-		super.encode(with: aCoder)
 		aCoder.encode(blastRadius, forKey: "BlastRadius")
 		aCoder.encode(damage, forKey: "Dmg")
 		aCoder.encode(soundFile, forKey: "Sound")
+		super.encode(with: aCoder)
 	}
 
 	required init?(coder aDecoder: NSCoder) {

@@ -33,9 +33,10 @@ enum AILevel: Int {
 /**
 Represents the AI "personality" and strategy
 */
-enum AIStyle {
+enum AIStyle : UInt32 {
 	case DEFENSIVE
 	case AGGRESSIVE
+	case RANDOM
 }
 
 /**
