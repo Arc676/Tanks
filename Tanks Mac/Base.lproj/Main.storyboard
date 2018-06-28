@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14019"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -580,8 +580,8 @@
                         </subviews>
                         <connections>
                             <outlet property="player1" destination="Ur4-Vt-UbH" id="yW6-cF-jWw"/>
-                            <outlet property="player2" destination="5hq-za-krH" id="DRI-Wb-nq7"/>
-                            <outlet property="player3" destination="le6-Xh-9W6" id="dim-P0-Rfl"/>
+                            <outlet property="player2" destination="le6-Xh-9W6" id="3Ga-vz-h6d"/>
+                            <outlet property="player3" destination="5hq-za-krH" id="Pe2-E4-bZb"/>
                             <outlet property="player4" destination="Gt4-eI-JOU" id="DEt-jg-IfI"/>
                             <outlet property="terrainSelection" destination="KPC-tu-rcx" id="f94-ch-G3R"/>
                         </connections>

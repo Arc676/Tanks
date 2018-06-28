@@ -5,13 +5,14 @@ Tanks is an online flash game originally hosted on 2dplay.com. It does not appea
 Between 2 and 4 players (any number of which can be computer controlled) control tanks of any color and must destroy all other tanks. Successful attacks on other players earn money that can be used to purchase better ammunition and tank upgrades.
 
 ### Controls
-- Up/Down to turn cannon CCW/CW
+- Up/Down to turn cannon CW/CCW
 - Left/Right to move tank
 - Space to fire
 - PgUp/PgDn to increase/decrease firepower (Fn+Up/Fn+Down if you don't have an extended keyboard)
 
 ### Other features
-- You can save your Tank data to continue from a previously saved state between sessions
+- Saving tank data to disk between sessions
+- Different strategies and combat styles for computer controlled tanks
 
 ### Legal
 Project available under GPLv3 with the exception that linking proprietary Apple libraries (Foundation, Cocoa, etc) is allowed to the extent to which this is necessary for compilation. See `CREDITS` for details regarding assets and `LICENSE` for full GPL text.
