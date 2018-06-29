@@ -64,6 +64,7 @@ class Store: View {
 	var viewController: ViewController?
 
 	var players: [Tank]?
+	var hasHumans = true
 	var currentPlayer = -1
 	var saveAIs = false
 
@@ -83,6 +84,7 @@ class Store: View {
 		self.players = players
 		self.viewController = viewController
 		currentPlayer = -1
+		hasHumans = players.contains(where: { return $0 is Player })
 		nextPlayer()
 	}
 
@@ -94,6 +96,9 @@ class Store: View {
 		- index: Index of the desired item to buy
 	*/
 	func purchaseItem(_ index: Int) {
+		if players![currentPlayer] is CCTank {
+			return
+		}
 		if 0 <= index && index < storeItems.count {
 			players![currentPlayer].purchaseItem(storeItems[index])
 		}
@@ -113,7 +118,7 @@ class Store: View {
 			viewController?.startGame()
 		} else {
 			currentPlayer++
-			if players![currentPlayer] is CCTank {
+			if players![currentPlayer] is CCTank && (hasHumans || currentPlayer != 0) {
 				(players![currentPlayer] as! CCTank).makePurchases(self)
 				if saveAIs {
 					savePlayer()

@@ -76,7 +76,7 @@ class Terrain : NSView {
 			var newHeight = terrainControlHeights[i - 1] + CGFloat(
 				Int(arc4random_uniform(UInt32(deviation))) - deviation / 2
 			)
-			newHeight = min(max(newHeight, 0), CGFloat(height) * 0.75)
+			newHeight = min(max(newHeight, CGFloat(height) * 0.05), CGFloat(height) * 0.75)
 			terrainControlHeights[i] = newHeight
 		}
 
