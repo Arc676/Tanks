@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		710F24F1207DDF32009AE1EE /* Target.png in Resources */ = {isa = PBXBuildFile; fileRef = 710F24F0207DDF32009AE1EE /* Target.png */; };
 		710F24F4207DE60C009AE1EE /* Hailfire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F24F3207DE60C009AE1EE /* Hailfire.swift */; };
+		7110C6AF20FCE21D00FC7110 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110C6AE20FCE21D00FC7110 /* Shield.swift */; };
 		7112ABB1208D782000FBDB1F /* Airstrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7112ABB0208D782000FBDB1F /* Airstrike.swift */; };
 		7112ABB3208DB53E00FBDB1F /* bomber.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7112ABB2208DB53E00FBDB1F /* bomber.wav */; };
 		712100041F27861D00EB48D8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712100031F27861D00EB48D8 /* MenuView.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		710F24F0207DDF32009AE1EE /* Target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Target.png; sourceTree = "<group>"; };
 		710F24F3207DE60C009AE1EE /* Hailfire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hailfire.swift; sourceTree = "<group>"; };
+		7110C6AE20FCE21D00FC7110 /* Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		7112ABB0208D782000FBDB1F /* Airstrike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airstrike.swift; sourceTree = "<group>"; };
 		7112ABB2208DB53E00FBDB1F /* bomber.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bomber.wav; sourceTree = "<group>"; };
 		712100031F27861D00EB48D8 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 		7130A27C209F003700C8B702 /* TankCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankCreator.swift; sourceTree = "<group>"; };
 		7130A27F209F009C00C8B702 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TankCreator.xib; sourceTree = "<group>"; };
 		713D1DB01F5BF1BC00FE576D /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = Backend/Store.swift; sourceTree = "<group>"; };
-		713D1DB21F5BF31600FE576D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Backend/Item.swift; sourceTree = "<group>"; };
+		713D1DB21F5BF31600FE576D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		713D1DB41F5BF3AA00FE576D /* Ammo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ammo.swift; sourceTree = "<group>"; };
 		713D1DB61F5BF94500FE576D /* StoreViewMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewMac.swift; sourceTree = "<group>"; };
 		715602D320B911DF00D48CDB /* Exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Exit.png; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 		71F061DA1F2671ED004F0EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71F061DE1F267360004F0EF5 /* GameViewMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewMac.swift; sourceTree = "<group>"; };
 		71F061E21F269377004F0EF5 /* Tank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tank.swift; sourceTree = "<group>"; };
-		71FA92881F7B9781006CDC14 /* Upgrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Upgrade.swift; path = Backend/Upgrade.swift; sourceTree = "<group>"; };
+		71FA92881F7B9781006CDC14 /* Upgrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
 		71FCE3F8208F2BAA008CEA24 /* LaserWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserWeapon.swift; sourceTree = "<group>"; };
 		71FCE3FA208F2FC4008CEA24 /* LaserBeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserBeam.swift; sourceTree = "<group>"; };
 		71FE08C11F39F40E00E708F7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -140,6 +142,16 @@
 				71CB0B4C20B40739000B21EE /* SeparationWeapon.swift */,
 			);
 			path = Ammo;
+			sourceTree = "<group>";
+		};
+		7110C6AD20FCE1F900FC7110 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				713D1DB21F5BF31600FE576D /* Item.swift */,
+				71FA92881F7B9781006CDC14 /* Upgrade.swift */,
+				7110C6AE20FCE21D00FC7110 /* Shield.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 		7122E013206C906C00105C05 /* Sprites */ = {
@@ -200,8 +212,6 @@
 				71D7B0211F2A36B600B93124 /* Extensions.swift */,
 				71B0847F1F2E2F4D008F690D /* GameMgr.swift */,
 				713D1DB01F5BF1BC00FE576D /* Store.swift */,
-				713D1DB21F5BF31600FE576D /* Item.swift */,
-				71FA92881F7B9781006CDC14 /* Upgrade.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -215,6 +225,7 @@
 				71B0847A1F2E2EA1008F690D /* Entities */,
 				71D388AA20900BD200014BAB /* Projectiles */,
 				710F24F2207DE5F8009AE1EE /* Ammo */,
+				7110C6AD20FCE1F900FC7110 /* Items */,
 				71D7B0201F2A36A700B93124 /* Backend */,
 				71F061D01F2671ED004F0EF5 /* Tanks Mac */,
 				71F061CF1F2671ED004F0EF5 /* Products */,
@@ -375,6 +386,7 @@
 				71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */,
 				713D1DB71F5BF94500FE576D /* StoreViewMac.swift in Sources */,
 				71B0847D1F2E2F1E008F690D /* Terrain.swift in Sources */,
+				7110C6AF20FCE21D00FC7110 /* Shield.swift in Sources */,
 				71F061DF1F267360004F0EF5 /* GameViewMac.swift in Sources */,
 				71BC8578208F3065006D3C5D /* LaserStrike.swift in Sources */,
 				71F061D21F2671ED004F0EF5 /* AppDelegate.swift in Sources */,
