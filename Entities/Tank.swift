@@ -67,13 +67,20 @@ class Tank : NSObject, NSCoding {
 	var money: Int = 0
 	var score: Int = 0
 
-	//combat mechanics
+	//weapons
 	var selectedWeapon = 0
 	var weapons: [Ammo] = [
 		Ammo("Tank Shell", price: 0, radius: 20, damage: 50, sound: Store.smallEx)
 	]
 	var weaponCount: [String : Int] = [:]
+
+	//upgrades
 	var upgradeCount: [Int] = [Int](repeating: 0, count: 4)
+
+	//shields
+	var activeShield: Shield?
+	var shields: [Shield] = []
+	var shieldCount: [String : Int] = [:]
 
 	//physics
 	var maxHillClimb: CGFloat = 1
@@ -123,6 +130,8 @@ class Tank : NSObject, NSCoding {
 		aCoder.encode(weapons, forKey: "Weapons")
 		aCoder.encode(weaponCount, forKey: "WeaponCount")
 		aCoder.encode(upgradeCount, forKey: "UpgradeCount")
+		aCoder.encode(shields, forKey: "Shields")
+		aCoder.encode(shieldCount, forKey: "ShieldCount")
 		aCoder.encode(maxHillClimb, forKey: "MaxHillClimb")
 		aCoder.encode(engineEfficiency, forKey: "EngineEfficiency")
 		aCoder.encode(startingFuel, forKey: "StartingFuel")
@@ -137,6 +146,8 @@ class Tank : NSObject, NSCoding {
 		weapons = aDecoder.decodeObject(forKey: "Weapons") as! [Ammo]
 		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as! [String : Int]
 		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as! [Int]
+		shields = aDecoder.decodeObject(forKey: "Shields") as! [Shield]
+		shieldCount = aDecoder.decodeObject(forKey: "ShieldCount") as! [String : Int]
 		maxHillClimb = aDecoder.decodeObject(forKey: "MaxHillClimb") as! CGFloat
 		engineEfficiency = aDecoder.decodeObject(forKey: "EngineEfficiency") as! CGFloat
 		startingFuel = aDecoder.decodeObject(forKey: "StartingFuel") as! CGFloat
@@ -222,7 +233,31 @@ class Tank : NSObject, NSCoding {
 		- dmg: Damage dealt by ammunition
 	*/
 	func takeDamage(_ dmg: CGFloat) {
-		hp -= dmg / armor
+		if activeShield == nil {
+			hp -= dmg / armor
+		} else {
+			if activeShield!.absorbDamage(dmg) {
+				activeShield = nil
+			}
+		}
+	}
+
+	/**
+	Activates the given shield and updates tank properties appropriately
+
+	- parameters:
+		- index: Index of shield to activate
+	*/
+	func activateShield(index: Int) {
+		// can't activate a shield until the active one is destroyed
+		if activeShield == nil {
+			activeShield = shields[index].copy()
+			shieldCount[activeShield!.name]!--
+			if shieldCount[activeShield!.name]! == 0 {
+				shields.remove(at: index)
+				shieldCount.removeValue(forKey: activeShield!.name)
+			}
+		}
 	}
 
 	/**
@@ -249,8 +284,9 @@ class Tank : NSObject, NSCoding {
 		path = transform.transform(path)
 		path.fill()
 
-		//draw projectiles, if present
+		// draw projectiles and shield, if present
 		selectedAmmo?.drawInRect(rect)
+		activeShield?.draw(at: position)
 	}
 
 	/**
@@ -423,6 +459,13 @@ class Tank : NSObject, NSCoding {
 					startingFuel += upgrade.upgradeQty
 				}
 				upgradeCount[upgrade.type.rawValue]++
+			} else if item is Shield {
+				if !shields.contains(where: { element in
+					return element.name == item.name
+				}) {
+					shields.append(item as! Shield)
+				}
+				shieldCount[item.name] = (shieldCount[item.name] ?? 0) + 1
 			}
 		}
 	}

@@ -13,6 +13,7 @@ Between 2 and 4 players (any number of which can be computer controlled) control
 ### Other features
 - Saving tank data to disk between sessions
 - Different strategies and combat styles for computer controlled tanks
+- Tanks can activate shields that persist across matches (the shield level also persists)
 
 ### Legal
 Project available under GPLv3 with the exception that linking proprietary Apple libraries (Foundation, Cocoa, etc) is allowed to the extent to which this is necessary for compilation. See `CREDITS` for details regarding assets and `LICENSE` for full GPL text.

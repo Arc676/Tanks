@@ -58,7 +58,11 @@ class Store: View {
 		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),
-		Upgrade("Hill Climbing", 1.2, price: 500, type: .HILL_CLIMB)
+		Upgrade("Hill Climbing", 1.2, price: 500, type: .HILL_CLIMB),
+		Shield("Weak Shield", price: 100, dmgLimit: 50, color: Color.yellow),
+		Shield("Medium Shield", price: 500, dmgLimit: 200, color: Color.green),
+		Shield("Strong Shield", price: 1000, dmgLimit: 1000, color: Color.blue),
+		Shield("Ultimate Shield", price: 8000, dmgLimit: 10000, color: Color.purple)
 	]
 
 	var viewController: ViewController?
@@ -71,6 +75,7 @@ class Store: View {
 	static let upgradeColor = Color.blue
 	static let targetedColor = Color.red
 	static let untargetedColor = Color(red:0.00, green:0.51, blue:0.21, alpha:1.00)
+	static let shieldColor = Color.purple
 
 	/**
 	Initialize the store view with the given game

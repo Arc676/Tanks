@@ -32,6 +32,10 @@ class Shield: Item {
 		self.color = color
 		super.init(name, price: price)
 	}
+	
+	func copy() -> Shield {
+		return Shield(name, price: price, dmgLimit: dmgLimit, color: color)
+	}
 
 	required init?(coder aDecoder: NSCoder) {
 		dmgLimit = aDecoder.decodeObject(forKey: "DmgLimit") as! CGFloat
@@ -46,13 +50,19 @@ class Shield: Item {
 	}
 
 	func draw(at point: NSPoint) {
-		color.set()
-		let path = NSBezierPath(ovalIn: NSMakeRect(point.x - 5, point.y - 5, 10, 10))
+		color.withAlphaComponent(getShieldPercentage()).set()
+		let path = NSBezierPath(ovalIn: NSMakeRect(point.x - 30, point.y - 25, 60, 60))
+		path.lineWidth = 5
 		path.stroke()
 	}
 
 	func getShieldPercentage() -> CGFloat {
 		return 1 - absorbed / dmgLimit
+	}
+
+	func absorbDamage(_ dmg: CGFloat) -> Bool {
+		absorbed += dmg
+		return absorbed >= dmgLimit
 	}
 
 }

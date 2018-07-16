@@ -54,6 +54,9 @@ class StoreViewMac: Store {
 			} else if item is Upgrade {
 				color = Store.upgradeColor
 				count = player.upgradeCount[(item as! Upgrade).type.rawValue]
+			} else if item is Shield {
+				color = Store.shieldColor
+				count = player.shieldCount[item.name] ?? 0
 			}
 			let text = NSAttributedString(string:
 				"\(item.name) (\(item.price)) (\(count) owned)")
