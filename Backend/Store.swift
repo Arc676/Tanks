@@ -41,28 +41,28 @@ class Store: View {
 	let targetingWeapons = 11
 
 	let storeItems: [Item] = [
-		Ammo("Missile", price: 10, radius: 20, damage: 80, sound: Store.smallEx),
-		Ammo("Armor Piercing Shell", price: 40, radius: 20, damage: 180, sound: Store.smallEx),
-		ShrapnelShot("Shrapnel Round", price: 80, radius: 30, damage: 50, sound: Store.smallEx),
-		Hailfire("Hailfire I", price: 500, radius: 15, damage: 60, sound: Store.smallEx, projCount: 3),
+		Ammo("Missile", price: 10, radius: 10, damage: 80, sound: Store.smallEx),
+		Ammo("Armor Piercing Shell", price: 20, radius: 20, damage: 180, sound: Store.smallEx),
+		ShrapnelShot("Shrapnel Round", price: 50, radius: 30, damage: 50, sound: Store.smallEx),
+		Hailfire("Hailfire I", price: 200, radius: 15, damage: 60, sound: Store.smallEx, projCount: 3),
 		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000, sound: Store.largeEx),
-		Hailfire("Hailfire II", price: 1500, radius: 20, damage: 80, sound: Store.smallEx, projCount: 4),
-		LaserBeam("Laser Beam I", price: 1300, radius: 0, damage: 800, sound: Store.noSound),
-		Ammo("Hydrogen Bomb", price: 5000, radius: 120, damage: 2000, sound: Store.largeEx),
-		Hailfire("Hailfire III", price: 7000, radius: 30, damage: 100, sound: Store.largeEx, projCount: 6),
-		LaserBeam("Laser Beam II", price: 2600, radius: 30, damage: 1000, sound: Store.noSound),
-		Hailfire("Hailfire IV", price: 12000, radius: 50, damage: 500, sound: Store.largeEx, projCount: 10),
-		Airstrike("Airstrike I", price: 9000, radius: 30, damage: 400, sound: Store.largeEx, projCount: 5),
-		Airstrike("Airstrike II", price: 15000, radius: 50, damage: 800, sound: Store.largeEx, projCount: 11),
-		LaserStrike("Space Laser", price: 10000, radius: 40, damage: 1000, sound: Store.noSound),
-		Upgrade("Engine Efficiency", 1.1, price: 400, type: .ENGINE),
-		Upgrade("Armor", 1.1, price: 600, type: .ARMOR),
-		Upgrade("Extra Fuel", 20, price: 300, type: .START_FUEL),
-		Upgrade("Hill Climbing", 1.2, price: 500, type: .HILL_CLIMB),
+		Hailfire("Hailfire II", price: 500, radius: 20, damage: 80, sound: Store.smallEx, projCount: 4),
+		LaserBeam("Laser Beam I", price: 600, radius: 0, damage: 800, sound: Store.noSound),
+		Ammo("Hydrogen Bomb", price: 1400, radius: 120, damage: 2000, sound: Store.largeEx),
+		Hailfire("Hailfire III", price: 1500, radius: 30, damage: 100, sound: Store.largeEx, projCount: 6),
+		LaserBeam("Laser Beam II", price: 1600, radius: 30, damage: 1000, sound: Store.noSound),
+		Hailfire("Hailfire IV", price: 1800, radius: 50, damage: 500, sound: Store.largeEx, projCount: 10),
+		Airstrike("Airstrike I", price: 2000, radius: 30, damage: 400, sound: Store.largeEx, projCount: 5),
+		Airstrike("Airstrike II", price: 3000, radius: 50, damage: 800, sound: Store.largeEx, projCount: 11),
+		LaserStrike("Space Laser", price: 3200, radius: 40, damage: 1000, sound: Store.noSound),
+		Upgrade("Engine Efficiency", 1.1, price: 100, type: .ENGINE),
+		Upgrade("Armor", 1.1, price: 200, type: .ARMOR),
+		Upgrade("Extra Fuel", 20, price: 50, type: .START_FUEL),
+		Upgrade("Hill Climbing", 1.2, price: 150, type: .HILL_CLIMB),
 		Shield("Weak Shield", price: 100, dmgLimit: 50, color: Color.yellow),
 		Shield("Medium Shield", price: 500, dmgLimit: 200, color: Color.green),
 		Shield("Strong Shield", price: 1000, dmgLimit: 1000, color: Color.blue),
-		Shield("Ultimate Shield", price: 8000, dmgLimit: 10000, color: Color.purple)
+		Shield("Ultimate Shield", price: 3500, dmgLimit: 10000, color: Color.purple)
 	]
 
 	var viewController: ViewController?

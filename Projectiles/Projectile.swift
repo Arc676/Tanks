@@ -107,8 +107,8 @@ class Projectile : NSObject {
 		for entity in entities!.filter({ $0.hp > 0 }) {
 			let distance = hypot(entity.position.x - position.x, entity.position.y - position.y)
 			if distance <= radius {
-				var score: Int = distance > 0 ? Int(50 * radius / distance) : Int(50 * radius)
-				let dmg = distance > 10 ? ammo.damage / pow(distance / 10, 2) : ammo.damage * 1.5
+				var score: Int = 2 * Int(50 * radius / max(1, distance))
+				let dmg = distance > 10 ? ammo.damage / pow(distance / 20, 2) : ammo.damage * 1.5
 				entity.takeDamage(dmg)
 				if entity.hp <= 0 {
 					score *= 2
@@ -116,9 +116,9 @@ class Projectile : NSObject {
 				if entity.playerNum == sourcePlayer! + 1 {
 					score *= -1
 				} else {
-					entities![sourcePlayer!].money += score
+					entities![sourcePlayer!].money += score + score / 2
 				}
-				entities![sourcePlayer!].score += 2 * score
+				entities![sourcePlayer!].score += score
 			}
 		}
 		impacted = true
