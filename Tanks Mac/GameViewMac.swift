@@ -34,6 +34,8 @@ class GameViewMac : GameMgr {
 	let sfxRect = NSMakeRect(800, 625, 100, 50)
 	let drawRect = NSMakeRect(650, 625, 100, 50)
 
+	let shieldRect = NSMakeRect(330, 610, 120, 20)
+
 	let drawAlert = NSAlert()
 
 	// assets for targeted weapons
@@ -52,7 +54,7 @@ class GameViewMac : GameMgr {
 			NSAttributedString(string: "Firepower") : NSMakePoint(40, bounds.height - 70),
 			NSAttributedString(string: "Wind") 		: NSMakePoint(210, bounds.height - 40),
 			NSAttributedString(string: "Fuel")		: NSMakePoint(210, bounds.height - 70),
-			NSAttributedString(string: "Weapon")	: NSMakePoint(340, bounds.height - 40)
+			NSAttributedString(string: "Weapon")	: NSMakePoint(330, bounds.height - 20)
 		]
 		drawAlert.messageText = "Confirm draw"
 		drawAlert.informativeText = "Immediately declare this game to be a draw?"
@@ -83,12 +85,34 @@ class GameViewMac : GameMgr {
 		//then draw the name
 		playerNames[activePlayer].draw(at: NSMakePoint(50, y))
 
+		//draw static text
 		for (text, point) in uiMarks! {
 			text.draw(at: point)
 		}
-		let text = NSAttributedString(string:
-			"\(active.weapons[active.selectedWeapon].name) (\(active.weaponCount[active.weapons[active.selectedWeapon].name] ?? 99))")
-		text.draw(at: NSMakePoint(340, bounds.height - 60))
+
+		//indicate current weapon
+		let text = "\(active.weapons[active.selectedWeapon].name) (\(active.weaponCount[active.weapons[active.selectedWeapon].name] ?? 99))"
+		text.draw(at: NSMakePoint(330, bounds.height - 40))
+
+		if let shield = active.activeShield {
+			let text = "\(shield.name) at \(Int(shield.getShieldPercentage() * 100))%"
+			text.draw(at: NSMakePoint(330, bounds.height - 60))
+		} else {
+			var x: CGFloat = 330
+			let y = bounds.height - 90
+			for shield in active.shields {
+				let rect = NSMakeRect(x, y, 20, 20)
+				let path = NSBezierPath(ovalIn: rect)
+				shield.color.set()
+				path.lineWidth = 3
+				path.stroke()
+				if NSPointInRect(mouseLocation, rect) {
+					let text = "Activate \(shield.name)"
+					text.draw(at: NSMakePoint(330, y + 30))
+				}
+				x += 30
+			}
+		}
 
 		var scoreY = bounds.height - 30
 		for tank in players {
@@ -145,7 +169,8 @@ class GameViewMac : GameMgr {
 		}
 
 		if active is Player && active.isTargeting {
-			targetSprite?.draw(at: mouseLocation, from: NSZeroRect, operation: .sourceOver, fraction: 1.0)
+			targetSprite?.draw(at: NSMakePoint(mouseLocation.x - 20, mouseLocation.y - 20),
+							   from: NSZeroRect, operation: .sourceOver, fraction: 1.0)
 		}
 	}
 
@@ -158,6 +183,11 @@ class GameViewMac : GameMgr {
 			}
 		} else if players[activePlayer].isTargeting && event.locationInWindow.y < 600 {
 			players[activePlayer].fireProjectile(at: event.locationInWindow)
+		} else if players[activePlayer].shields.count > 0 && NSPointInRect(event.locationInWindow, shieldRect) {
+			let index = Int((event.locationInWindow.x - 330) / 30)
+			if index >= 0 && index < players[activePlayer].shieldCount.count {
+				players[activePlayer].activateShield(index: index)
+			}
 		} else {
 			super.mouseUp(with: event)
 		}
@@ -181,8 +211,6 @@ class GameViewMac : GameMgr {
 
 	override func mouseMoved(with event: NSEvent) {
 		mouseLocation = event.locationInWindow
-		mouseLocation.x -= 20
-		mouseLocation.y -= 20
 	}
 
 	override func update() {
