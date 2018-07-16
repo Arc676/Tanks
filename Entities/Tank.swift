@@ -130,6 +130,7 @@ class Tank : NSObject, NSCoding {
 		aCoder.encode(weapons, forKey: "Weapons")
 		aCoder.encode(weaponCount, forKey: "WeaponCount")
 		aCoder.encode(upgradeCount, forKey: "UpgradeCount")
+		aCoder.encode(activeShield, forKey: "ActiveShield")
 		aCoder.encode(shields, forKey: "Shields")
 		aCoder.encode(shieldCount, forKey: "ShieldCount")
 		aCoder.encode(maxHillClimb, forKey: "MaxHillClimb")
@@ -146,6 +147,7 @@ class Tank : NSObject, NSCoding {
 		weapons = aDecoder.decodeObject(forKey: "Weapons") as! [Ammo]
 		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as! [String : Int]
 		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as! [Int]
+		activeShield = aDecoder.decodeObject(forKey: "ActiveShield") as? Shield
 		shields = aDecoder.decodeObject(forKey: "Shields") as! [Shield]
 		shieldCount = aDecoder.decodeObject(forKey: "ShieldCount") as! [String : Int]
 		maxHillClimb = aDecoder.decodeObject(forKey: "MaxHillClimb") as! CGFloat

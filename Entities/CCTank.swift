@@ -56,7 +56,7 @@ class CCTank : Tank {
 
 	required init?(coder aDecoder: NSCoder) {
 		aiLevel = AILevel(rawValue: aDecoder.decodeInteger(forKey: "AILvl"))
-		aiStyle = AIStyle(rawValue: UInt32(aDecoder.decodeInteger(forKey: "AIStyle")))
+		aiStyle = AIStyle(rawValue: aDecoder.decodeObject(forKey: "AIStyle") as! UInt32)
 		super.init(coder: aDecoder)
 	}
 

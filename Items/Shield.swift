@@ -39,6 +39,7 @@ class Shield: Item {
 
 	required init?(coder aDecoder: NSCoder) {
 		dmgLimit = aDecoder.decodeObject(forKey: "DmgLimit") as! CGFloat
+		absorbed = aDecoder.decodeObject(forKey: "Absorbed") as! CGFloat
 		color = aDecoder.decodeObject(forKey: "Color") as! NSColor
 		super.init(coder: aDecoder)
 	}
@@ -46,6 +47,7 @@ class Shield: Item {
 	override func encode(with aCoder: NSCoder) {
 		super.encode(with: aCoder)
 		aCoder.encode(dmgLimit, forKey: "DmgLimit")
+		aCoder.encode(absorbed, forKey: "Absorbed")
 		aCoder.encode(color, forKey: "Color")
 	}
 
