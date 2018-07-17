@@ -80,10 +80,20 @@ class TankCreator: NSView {
 	*/
 	@IBAction func togglePlayerEnabled(_ sender: NSButton) {
 		let state = sender.state == NSControl.StateValue.on
+		setPlayerEnabled(state)
+	}
+
+	/**
+	Toggles the state of all UI elements to match whether the player's properties are editable
+
+	- parameters:
+		- state: Whether the player's properties can be modified
+	*/
+	func setPlayerEnabled(_ state: Bool) {
 		let isLoaded = tank != nil
 		tankName.isEnabled = state && !isLoaded
-		tankColor.isEnabled = state
-		isCCTank.isEnabled = state
+		tankColor.isEnabled = state && !isLoaded
+		isCCTank.isEnabled = state && !isLoaded
 		// AI specific controls
 		tankAILevel.isEnabled = state && isCCTank.state == NSControl.StateValue.on
 		tankAIStyle.isEnabled = tankAILevel.isEnabled
@@ -97,7 +107,7 @@ class TankCreator: NSView {
 	and enable or disable UI elements accordingly
 
 	- parameters:
-	- sender: Button clicked
+		- sender: Button clicked
 	*/
 	@IBAction func toggleCC(_ sender: NSButton) {
 		let state = sender.state == NSControl.StateValue.on
@@ -122,10 +132,10 @@ class TankCreator: NSView {
 				let data = try Data(contentsOf: panel.url!)
 				if let tank = NSKeyedUnarchiver.unarchiveObject(with: data) as? Tank {
 					self.tank = tank
-					tankName.stringValue = "(Player to be loaded from file)"
-					tankName.isEnabled = false
+					tankName.stringValue = tank.name!
+					tankColor.color = tank.tankColor!
+					setPlayerEnabled(false)
 					unloadButton.isEnabled = true
-					loadButton.isEnabled = false
 					failed = false
 				}
 			} catch {}
@@ -147,10 +157,7 @@ class TankCreator: NSView {
 	*/
 	@IBAction func unloadTank(_ sender: Any) {
 		tank = nil
-		tankName.stringValue = ""
-		tankName.isEnabled = true
-		unloadButton.isEnabled = false
-		loadButton.isEnabled = true
+		setPlayerEnabled(true)
 	}
 
 	/**

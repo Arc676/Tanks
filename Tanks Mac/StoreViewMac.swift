@@ -34,19 +34,6 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 
 	@IBOutlet weak var contentView: NSView?
 
-	let continueRect = NSMakeRect(100, 100, 100, 50)
-	let saveRect = NSMakeRect(300, 100, 100, 50)
-	let saveAIsRect = NSMakeRect(500, 100, 100, 50)
-	let exitRect = NSMakeRect(700, 100, 100, 50)
-
-	let continueButton = NSImage(named: NSImage.Name(rawValue: "Next.png"))
-	let saveButton = NSImage(named: NSImage.Name(rawValue: "Save.png"))
-
-	let saveAIsOff = NSImage(named: NSImage.Name(rawValue: "SaveAIsOff.png"))
-	let saveAIsOn = NSImage(named: NSImage.Name(rawValue: "SaveAIsOn.png"))
-
-	let exitButton = NSImage(named: NSImage.Name(rawValue: "Exit.png"))
-
 	required init?(coder decoder: NSCoder) {
 		super.init(coder: decoder)
 		xibSetup()
@@ -66,6 +53,9 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		contentView?.frame = self.bounds
 	}
 
+	/**
+	Reloads tank properties for the current player and updates the UI
+	*/
 	func refresh() {
 		let player = players![currentPlayer]
 
@@ -118,7 +108,8 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		savePlayer()
 	}
 
-	@IBAction func saveAITanks(_ sender: Any) {
+	@IBAction func saveAITanks(_ sender: NSButton) {
+		saveAIs = sender.state == NSControl.StateValue.on
 	}
 
 	@IBAction func exitToMain(_ sender: Any) {
@@ -128,6 +119,18 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	@IBAction func makePurchase(_ sender: Any) {
 		purchaseItem(storeTable.selectedRow)
 		refresh()
+	}
+
+	@IBAction func nameChanged(_ sender: NSTextField) {
+		if players != nil {
+			players![currentPlayer].name = sender.stringValue
+		}
+	}
+
+	@IBAction func colorChanged(_ sender: NSColorWell) {
+		if players != nil {
+			players![currentPlayer].tankColor = sender.color
+		}
 	}
 
 	override func savePlayer() {

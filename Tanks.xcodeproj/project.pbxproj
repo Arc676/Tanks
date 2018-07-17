@@ -17,8 +17,6 @@
 		7121000D1F279C9E00EB48D8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000C1F279C9E00EB48D8 /* Player.swift */; };
 		7121000F1F279CCD00EB48D8 /* CCTank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121000E1F279CCD00EB48D8 /* CCTank.swift */; };
 		712100111F27CB4200EB48D8 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712100101F27CB4200EB48D8 /* Projectile.swift */; };
-		7122E016206C906C00105C05 /* Next.png in Resources */ = {isa = PBXBuildFile; fileRef = 7122E014206C906C00105C05 /* Next.png */; };
-		7122E017206C906C00105C05 /* Save.png in Resources */ = {isa = PBXBuildFile; fileRef = 7122E015206C906C00105C05 /* Save.png */; };
 		712F42A4209056DB00E63AD7 /* LaserBeam.png in Resources */ = {isa = PBXBuildFile; fileRef = 712F42A3209056DB00E63AD7 /* LaserBeam.png */; };
 		712F42A620908A3C00E63AD7 /* Explosion.png in Resources */ = {isa = PBXBuildFile; fileRef = 712F42A520908A3B00E63AD7 /* Explosion.png */; };
 		7130A27D209F003700C8B702 /* TankCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130A27C209F003700C8B702 /* TankCreator.swift */; };
@@ -27,7 +25,6 @@
 		713D1DB31F5BF31600FE576D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB21F5BF31600FE576D /* Item.swift */; };
 		713D1DB51F5BF3AA00FE576D /* Ammo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB41F5BF3AA00FE576D /* Ammo.swift */; };
 		713D1DB71F5BF94500FE576D /* StoreViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D1DB61F5BF94500FE576D /* StoreViewMac.swift */; };
-		715602D420B911DF00D48CDB /* Exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 715602D320B911DF00D48CDB /* Exit.png */; };
 		7167117C20ADC4EA00FE0339 /* Draw.png in Resources */ = {isa = PBXBuildFile; fileRef = 7167117B20ADC4EA00FE0339 /* Draw.png */; };
 		717381FD207891BC0090213A /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 717381FC207891BC0090213A /* CREDITS */; };
 		71840221207B13D700B1C61C /* rotate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021D207B13D700B1C61C /* rotate.wav */; };
@@ -39,8 +36,6 @@
 		71BC8578208F3065006D3C5D /* LaserStrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC8577208F3065006D3C5D /* LaserStrike.swift */; };
 		71BC857A208F31C1006D3C5D /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = 71BC8579208F31C1006D3C5D /* laser.wav */; };
 		71BC857C208F3BFD006D3C5D /* LaserStrike.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BC857B208F3BFD006D3C5D /* LaserStrike.png */; };
-		71CAA509208AED3700592AC0 /* SaveAIsOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CAA507208AED3700592AC0 /* SaveAIsOff.png */; };
-		71CAA50A208AED3700592AC0 /* SaveAIsOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CAA508208AED3700592AC0 /* SaveAIsOn.png */; };
 		71CB0B4D20B40739000B21EE /* SeparationWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB0B4C20B40739000B21EE /* SeparationWeapon.swift */; };
 		71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFE7162077B92100D6DB89 /* WindowController.swift */; };
 		71D388AC20900C0400014BAB /* ShrapnelRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D388AB20900C0400014BAB /* ShrapnelRound.swift */; };
@@ -73,8 +68,6 @@
 		7121000C1F279C9E00EB48D8 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7121000E1F279CCD00EB48D8 /* CCTank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCTank.swift; sourceTree = "<group>"; };
 		712100101F27CB4200EB48D8 /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
-		7122E014206C906C00105C05 /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next.png; sourceTree = "<group>"; };
-		7122E015206C906C00105C05 /* Save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Save.png; sourceTree = "<group>"; };
 		712F42A3209056DB00E63AD7 /* LaserBeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaserBeam.png; sourceTree = "<group>"; };
 		712F42A520908A3B00E63AD7 /* Explosion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Explosion.png; sourceTree = "<group>"; };
 		7130A27C209F003700C8B702 /* TankCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankCreator.swift; sourceTree = "<group>"; };
@@ -83,7 +76,6 @@
 		713D1DB21F5BF31600FE576D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		713D1DB41F5BF3AA00FE576D /* Ammo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ammo.swift; sourceTree = "<group>"; };
 		713D1DB61F5BF94500FE576D /* StoreViewMac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewMac.swift; sourceTree = "<group>"; };
-		715602D320B911DF00D48CDB /* Exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Exit.png; sourceTree = "<group>"; };
 		7167117B20ADC4EA00FE0339 /* Draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Draw.png; sourceTree = "<group>"; };
 		717381FC207891BC0090213A /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		7184021D207B13D700B1C61C /* rotate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rotate.wav; sourceTree = "<group>"; };
@@ -95,8 +87,6 @@
 		71BC8577208F3065006D3C5D /* LaserStrike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserStrike.swift; sourceTree = "<group>"; };
 		71BC8579208F31C1006D3C5D /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
 		71BC857B208F3BFD006D3C5D /* LaserStrike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaserStrike.png; sourceTree = "<group>"; };
-		71CAA507208AED3700592AC0 /* SaveAIsOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAIsOff.png; sourceTree = "<group>"; };
-		71CAA508208AED3700592AC0 /* SaveAIsOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAIsOn.png; sourceTree = "<group>"; };
 		71CB0B4C20B40739000B21EE /* SeparationWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparationWeapon.swift; sourceTree = "<group>"; };
 		71CFE7162077B92100D6DB89 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		71D388AB20900C0400014BAB /* ShrapnelRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrapnelRound.swift; sourceTree = "<group>"; };
@@ -159,7 +149,6 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				715602D320B911DF00D48CDB /* Exit.png */,
 				7167117B20ADC4EA00FE0339 /* Draw.png */,
 				712F42A520908A3B00E63AD7 /* Explosion.png */,
 				712F42A3209056DB00E63AD7 /* LaserBeam.png */,
@@ -167,10 +156,6 @@
 				71D7D414208C242700D67D50 /* SFXOff.png */,
 				71D7D413208C242700D67D50 /* SFXOn.png */,
 				710F24F0207DDF32009AE1EE /* Target.png */,
-				7122E014206C906C00105C05 /* Next.png */,
-				7122E015206C906C00105C05 /* Save.png */,
-				71CAA507208AED3700592AC0 /* SaveAIsOff.png */,
-				71CAA508208AED3700592AC0 /* SaveAIsOn.png */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -332,9 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7122E016206C906C00105C05 /* Next.png in Resources */,
 				71FE08C51F39F40E00E708F7 /* README.md in Resources */,
-				7122E017206C906C00105C05 /* Save.png in Resources */,
 				712F42A4209056DB00E63AD7 /* LaserBeam.png in Resources */,
 				7112ABB3208DB53E00FBDB1F /* bomber.wav in Resources */,
 				7110C6B420FDD78B00FC7110 /* Store.xib in Resources */,
@@ -345,14 +328,11 @@
 				7167117C20ADC4EA00FE0339 /* Draw.png in Resources */,
 				71840222207B13D700B1C61C /* ex_small.wav in Resources */,
 				71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */,
-				715602D420B911DF00D48CDB /* Exit.png in Resources */,
 				71D7D416208C242700D67D50 /* SFXOff.png in Resources */,
 				71BC857C208F3BFD006D3C5D /* LaserStrike.png in Resources */,
 				712F42A620908A3C00E63AD7 /* Explosion.png in Resources */,
-				71CAA509208AED3700592AC0 /* SaveAIsOff.png in Resources */,
 				71840221207B13D700B1C61C /* rotate.wav in Resources */,
 				71D7D415208C242700D67D50 /* SFXOn.png in Resources */,
-				71CAA50A208AED3700592AC0 /* SaveAIsOn.png in Resources */,
 				717381FD207891BC0090213A /* CREDITS in Resources */,
 				7130A280209F009C00C8B702 /* TankCreator.xib in Resources */,
 				710F24F1207DDF32009AE1EE /* Target.png in Resources */,

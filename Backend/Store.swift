@@ -72,11 +72,6 @@ class Store: View {
 	var currentPlayer = -1
 	var saveAIs = false
 
-	static let upgradeColor = Color.blue
-	static let targetedColor = Color.red
-	static let untargetedColor = Color(red:0.00, green:0.51, blue:0.21, alpha:1.00)
-	static let shieldColor = Color.purple
-
 	/**
 	Initialize the store view with the given game
 	properties

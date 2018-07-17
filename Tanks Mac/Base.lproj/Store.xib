@@ -141,17 +141,6 @@
                         <action selector="exitToMain:" target="-2" id="V4K-JJ-ZJa"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvf-pH-MpW">
-                    <rect key="frame" x="240" y="13" width="284" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Save Computer Controlled Tanks to Disk" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oKe-F0-KDz">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="saveAITanks:" target="-2" id="9uK-R0-lKQ"/>
-                    </connections>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygv-PA-MY3">
                     <rect key="frame" x="18" y="663" width="81" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -169,6 +158,9 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <action selector="nameChanged:" target="-2" id="mIS-At-9gk"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SAx-zD-MBr">
                     <rect key="frame" x="18" y="638" width="48" height="17"/>
@@ -201,6 +193,9 @@
                     <rect key="frame" x="419" y="663" width="175" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="colorChanged:" target="-2" id="80d-LI-ksi"/>
+                    </connections>
                 </colorWell>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWG-G8-vNM">
                     <rect key="frame" x="14" y="46" width="972" height="32"/>
@@ -214,6 +209,17 @@ DQ
                     </buttonCell>
                     <connections>
                         <action selector="makePurchase:" target="-2" id="5dK-gh-fql"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvf-pH-MpW">
+                    <rect key="frame" x="240" y="18" width="276" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Save Computer Controlled Tanks to Disk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="oKe-F0-KDz">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="saveAITanks:" target="-2" id="9uK-R0-lKQ"/>
                     </connections>
                 </button>
             </subviews>
