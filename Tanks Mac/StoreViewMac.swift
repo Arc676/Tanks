@@ -24,7 +24,15 @@ import Cocoa
 /**
 View for store control on Mac
 */
-class StoreViewMac: Store {
+class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
+
+	@IBOutlet weak var playerName: NSTextField!
+	@IBOutlet weak var playerCredits: NSTextField!
+	@IBOutlet weak var playerColor: NSColorWell!
+
+	@IBOutlet weak var storeTable: NSTableView!
+
+	@IBOutlet weak var contentView: NSView?
 
 	let continueRect = NSMakeRect(100, 100, 100, 50)
 	let saveRect = NSMakeRect(300, 100, 100, 50)
@@ -39,66 +47,87 @@ class StoreViewMac: Store {
 
 	let exitButton = NSImage(named: NSImage.Name(rawValue: "Exit.png"))
 
-	override func draw(_ rect: NSRect) {
-		let player = players![currentPlayer]
-		let text = NSAttributedString(string: "\(player.name!) (\(player.money) credits)")
-		text.draw(at: NSMakePoint(80, bounds.height - 50))
-		var y = bounds.height - 100
-		var x: CGFloat = 100
-		for item in storeItems {
-			var count = 0
-			var color: NSColor?
-			if item is Ammo {
-				color = (item as! Ammo).isTargeted ? Store.targetedColor : Store.untargetedColor
-				count = player.weaponCount[item.name] ?? 0
-			} else if item is Upgrade {
-				color = Store.upgradeColor
-				count = player.upgradeCount[(item as! Upgrade).type.rawValue]
-			} else if item is Shield {
-				color = Store.shieldColor
-				count = player.shieldCount[item.name] ?? 0
-			}
-			let text = NSAttributedString(string:
-				"\(item.name) (\(item.price)) (\(count) owned)")
-			text.draw(at: NSMakePoint(x, y))
-			color?.set()
-			NSMakeRect(x - 2, y - 2, 290, text.size().height + 4).frame()
-			y -= 20
-			if (y < 160) {
-				x += 300
-				y = bounds.height - 100
-			}
-		}
-
-		continueButton?.draw(in: continueRect)
-		saveButton?.draw(in: saveRect)
-		if saveAIs {
-			saveAIsOn?.draw(in: saveAIsRect)
-		} else {
-			saveAIsOff?.draw(in: saveAIsRect)
-		}
-		exitButton?.draw(in: exitRect)
+	required init?(coder decoder: NSCoder) {
+		super.init(coder: decoder)
+		xibSetup()
 	}
 
-	override func mouseUp(with event: NSEvent) {
-		if continueRect.contains(event.locationInWindow) {
-			nextPlayer()
-		} else if saveRect.contains(event.locationInWindow) {
-			savePlayer()
-		} else if saveAIsRect.contains(event.locationInWindow) {
-			saveAIs = !saveAIs
-		} else if exitRect.contains(event.locationInWindow) {
-			viewController?.exitToMain()
-		} else {
-			let y = Int(ceil((bounds.height - 100 - event.locationInWindow.y) / 20))
-			if y >= 0 && y < 22 {
-				let x = Int((event.locationInWindow.x - 100) / 300)
-				if x >= 0 {
-					purchaseItem(x * 22 + y);
-				}
-			}
+	override init(frame frameRect: NSRect) {
+		super.init(frame: frameRect)
+		xibSetup()
+	}
+
+	/**
+	Load the view from the XIB file
+	*/
+	func xibSetup() {
+		Bundle.main.loadNibNamed(NSNib.Name("Store"), owner: self, topLevelObjects: nil)
+		addSubview(contentView!)
+		contentView?.frame = self.bounds
+	}
+
+	func refresh() {
+		let player = players![currentPlayer]
+
+		playerName.stringValue = player.name!
+		playerCredits.integerValue = player.money
+		playerColor.color = player.tankColor!
+
+		storeTable.reloadData()
+	}
+
+	func numberOfRows(in tableView: NSTableView) -> Int {
+		return storeItems.count
+	}
+
+	func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+		let item = storeItems[row]
+		let player = players![currentPlayer]
+		var type = ""
+		var count = 0
+		if item is Ammo {
+			type = "Ammo"
+			count = player.weaponCount[item.name] ?? 0
+		} else if item is Upgrade {
+			type = "Upgrade"
+			count = player.upgradeCount[(item as! Upgrade).type.rawValue]
+		} else if item is Shield {
+			type = "Shield"
+			count = player.shieldCount[item.name] ?? 0
 		}
-		needsDisplay = true;
+		switch tableColumn?.title {
+		case "Item Name":
+			return item.name
+		case "Item Type":
+			return type
+		case "Price":
+			return item.price
+		case "Amount owned":
+			return count
+		default:
+			return ""
+		}
+	}
+
+	@IBAction func moveToNext(_ sender: Any) {
+		nextPlayer()
+		refresh()
+	}
+
+	@IBAction func savePlayerToDisk(_ sender: Any) {
+		savePlayer()
+	}
+
+	@IBAction func saveAITanks(_ sender: Any) {
+	}
+
+	@IBAction func exitToMain(_ sender: Any) {
+		viewController?.exitToMain()
+	}
+
+	@IBAction func makePurchase(_ sender: Any) {
+		purchaseItem(storeTable.selectedRow)
+		refresh()
 	}
 
 	override func savePlayer() {

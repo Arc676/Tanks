@@ -104,7 +104,7 @@ class GameViewController : NSViewController {
 	func goToStore() {
 		setView(storeView!)
 		storeView?.initialize(gameView!.players, viewController: self)
-		storeView?.needsDisplay = true
+		storeView?.refresh()
 	}
 
 	/**

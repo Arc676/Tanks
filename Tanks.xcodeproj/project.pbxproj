@@ -10,6 +10,7 @@
 		710F24F1207DDF32009AE1EE /* Target.png in Resources */ = {isa = PBXBuildFile; fileRef = 710F24F0207DDF32009AE1EE /* Target.png */; };
 		710F24F4207DE60C009AE1EE /* Hailfire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F24F3207DE60C009AE1EE /* Hailfire.swift */; };
 		7110C6AF20FCE21D00FC7110 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110C6AE20FCE21D00FC7110 /* Shield.swift */; };
+		7110C6B420FDD78B00FC7110 /* Store.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7110C6B220FDD78A00FC7110 /* Store.xib */; };
 		7112ABB1208D782000FBDB1F /* Airstrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7112ABB0208D782000FBDB1F /* Airstrike.swift */; };
 		7112ABB3208DB53E00FBDB1F /* bomber.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7112ABB2208DB53E00FBDB1F /* bomber.wav */; };
 		712100041F27861D00EB48D8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712100031F27861D00EB48D8 /* MenuView.swift */; };
@@ -65,6 +66,7 @@
 		710F24F0207DDF32009AE1EE /* Target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Target.png; sourceTree = "<group>"; };
 		710F24F3207DE60C009AE1EE /* Hailfire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hailfire.swift; sourceTree = "<group>"; };
 		7110C6AE20FCE21D00FC7110 /* Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
+		7110C6B320FDD78A00FC7110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Store.xib; sourceTree = "<group>"; };
 		7112ABB0208D782000FBDB1F /* Airstrike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airstrike.swift; sourceTree = "<group>"; };
 		7112ABB2208DB53E00FBDB1F /* bomber.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bomber.wav; sourceTree = "<group>"; };
 		712100031F27861D00EB48D8 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				71F061DA1F2671ED004F0EF5 /* Info.plist */,
 				712100031F27861D00EB48D8 /* MenuView.swift */,
 				713D1DB61F5BF94500FE576D /* StoreViewMac.swift */,
+				7110C6B220FDD78A00FC7110 /* Store.xib */,
 				71CFE7162077B92100D6DB89 /* WindowController.swift */,
 				7130A27C209F003700C8B702 /* TankCreator.swift */,
 				7130A27E209F009C00C8B702 /* TankCreator.xib */,
@@ -334,6 +337,7 @@
 				7122E017206C906C00105C05 /* Save.png in Resources */,
 				712F42A4209056DB00E63AD7 /* LaserBeam.png in Resources */,
 				7112ABB3208DB53E00FBDB1F /* bomber.wav in Resources */,
+				7110C6B420FDD78B00FC7110 /* Store.xib in Resources */,
 				71BC857A208F31C1006D3C5D /* laser.wav in Resources */,
 				71840227207B159700B1C61C /* firing.mp3 in Resources */,
 				71840223207B13D700B1C61C /* ex_large.wav in Resources */,
@@ -397,6 +401,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7110C6B220FDD78A00FC7110 /* Store.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7110C6B320FDD78A00FC7110 /* Base */,
+			);
+			name = Store.xib;
+			sourceTree = "<group>";
+		};
 		7130A27E209F009C00C8B702 /* TankCreator.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
