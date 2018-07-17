@@ -36,7 +36,7 @@ class GameMgr: View {
 	//physics
 	static let timeScaleFactor: CGFloat = 15
 
-	//key codes for Q, W, PgUp, PgDn, arrow keys, space
+	//key codes for Q, W, PgUp, PgDn, arrow keys, space, ESC
 	static let qKey: UInt16 = 12
 	static let wKey: UInt16 = 13
 	static let pgUpKey: UInt16 = 116
@@ -46,6 +46,7 @@ class GameMgr: View {
 	static let leftArrow: UInt16 = 123
 	static let rightArrow: UInt16 = 124
 	static let spaceBar: UInt16 = 49
+	static let escKey: UInt16 = 53
 
 	let relevantKeys: [UInt16] = [
 		GameMgr.qKey,
@@ -56,7 +57,8 @@ class GameMgr: View {
 		GameMgr.downArrow,
 		GameMgr.leftArrow,
 		GameMgr.rightArrow,
-		GameMgr.spaceBar
+		GameMgr.spaceBar,
+		GameMgr.escKey
 	]
 
 	var terrain: Terrain = Terrain()

@@ -169,6 +169,9 @@ class Tank : NSObject, NSCoding {
 	/**
 	Fires the currently selected weapon using the current
 	firing properties
+
+	- parameters:
+		- target: Reference point for ammo (tank position if not targeted, target location otherwise)
 	*/
 	func fireProjectile(at target: NSPoint) {
 		selectedAmmo = weapons[selectedWeapon]
