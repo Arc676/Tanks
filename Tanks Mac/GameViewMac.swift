@@ -97,7 +97,7 @@ class GameViewMac : GameMgr {
 		if let shield = active.activeShield {
 			let text = "\(shield.name) at \(Int(shield.getShieldPercentage() * 100))%"
 			text.draw(at: NSMakePoint(330, bounds.height - 60))
-		} else {
+		} else if active is Player {
 			var x: CGFloat = 330
 			let y = bounds.height - 90
 			for shield in active.shields {

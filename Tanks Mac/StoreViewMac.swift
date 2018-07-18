@@ -30,8 +30,15 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	@IBOutlet weak var playerCredits: NSTextField!
 	@IBOutlet weak var playerColor: NSColorWell!
 
+	@IBOutlet weak var purchaseButton: NSButton!
 	@IBOutlet weak var storeTable: NSTableView!
 
+	@IBOutlet weak var useSamePath: NSButton!
+	@IBOutlet weak var path: NSPathControl!
+	var savePaths: [URL?] = [
+		nil, nil, nil, nil
+	]
+	
 	@IBOutlet weak var contentView: NSView?
 
 	required init?(coder decoder: NSCoder) {
@@ -60,8 +67,17 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		let player = players![currentPlayer]
 
 		playerName.stringValue = player.name!
-		playerCredits.integerValue = player.money
+		if player is Player {
+			playerCredits.integerValue = player.money
+		} else {
+			playerCredits.stringValue = "Unknown"
+		}
 		playerColor.color = player.tankColor!
+
+		useSamePath.isEnabled = savePaths[currentPlayer] != nil
+		path.url = savePaths[currentPlayer]
+
+		purchaseButton.isEnabled = players![currentPlayer] is Player
 
 		storeTable.reloadData()
 	}
@@ -93,7 +109,10 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		case "Price":
 			return item.price
 		case "Amount owned":
-			return count
+			if player is Player {
+				return count
+			}
+			return "Unknown"
 		default:
 			return ""
 		}
@@ -106,10 +125,6 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 
 	@IBAction func savePlayerToDisk(_ sender: Any) {
 		savePlayer()
-	}
-
-	@IBAction func saveAITanks(_ sender: NSButton) {
-		saveAIs = sender.state == NSControl.StateValue.on
 	}
 
 	@IBAction func exitToMain(_ sender: Any) {
@@ -134,21 +149,27 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	}
 
 	override func savePlayer() {
-		let panel = NSSavePanel()
-		panel.allowedFileTypes = ["plist"]
-		panel.message = "Select save location for Player \(currentPlayer + 1) (\(players![currentPlayer].name!))"
-		if panel.runModal() == NSApplication.ModalResponse.OK {
-			var res = true
-			do {
-				let data = NSKeyedArchiver.archivedData(withRootObject: players![currentPlayer])
-				try data.write(to: panel.url!)
-			} catch {
-				res = false
+		if useSamePath.state == NSControl.StateValue.off || savePaths[currentPlayer] == nil {
+			let panel = NSSavePanel()
+			panel.allowedFileTypes = ["plist"]
+			panel.message = "Select save location for Player \(currentPlayer + 1) (\(players![currentPlayer].name!))"
+			if panel.runModal() == NSApplication.ModalResponse.OK {
+				savePaths[currentPlayer] = panel.url!
+			} else {
+				return
 			}
-			let alert = NSAlert()
-			alert.messageText = res ? "Saved" : "Save failed"
-			alert.runModal()
 		}
+		var res = true
+		do {
+			let data = NSKeyedArchiver.archivedData(withRootObject: players![currentPlayer])
+			try data.write(to: savePaths[currentPlayer]!)
+			path.url = savePaths[currentPlayer]
+		} catch {
+			res = false
+		}
+		let alert = NSAlert()
+		alert.messageText = res ? "Saved" : "Save failed"
+		alert.runModal()
 	}
 	
 }
