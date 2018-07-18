@@ -66,6 +66,11 @@ class CCTank : Tank {
 		super.encode(with: aCoder)
 	}
 
+	override func reset() {
+		super.reset()
+		target = nil
+	}
+
 	/**
 	Return the uncertainty in aiming angle based on the
 	desired level of difficulty for the AI
@@ -99,24 +104,31 @@ class CCTank : Tank {
 	func makePurchases(_ store: Store) {
 		// AIs on LOW don't buy items
 		if aiLevel.rawValue > AILevel.LOW.rawValue {
-			// only HIGH level DEFENSIVE AIs buy armor upgrades
-			if aiLevel == .HIGH &&
-				aiStyle == .DEFENSIVE {
-				purchaseItem(store.storeItems[store.armorIndex])
+			// only HIGH level DEFENSIVE AIs know to save money
+			if aiStyle == .DEFENSIVE && aiLevel == .HIGH && money < 3000 {
+				return
 			}
-			// AGGRESSIVE AIs buy all the top projectile-based weapons
-			if aiStyle == .AGGRESSIVE {
-				for i in (0..<store.targetingWeapons).reversed() {
-					let item = store.storeItems[i] as! Ammo
-					if !item.isProjectile {
-						continue
-					}
+
+			// only DEFENSIVE AIs buy armor upgrades and then shields
+			if aiStyle == .DEFENSIVE {
+				purchaseItem(store.storeItems[store.armorIndex])
+
+				// shields always last 4 items
+				for item in store.storeItems.suffix(4).reversed() {
 					while money > item.price {
 						purchaseItem(item)
 					}
 				}
-			} else {
-				//
+			}
+			// Buy all the top projectile-based weapons
+			for i in (0..<store.targetingWeapons).reversed() {
+				let item = store.storeItems[i] as! Ammo
+				if !item.isProjectile {
+					continue
+				}
+				while money > item.price {
+					purchaseItem(item)
+				}
 			}
 		}
 	}
@@ -149,7 +161,7 @@ class CCTank : Tank {
 		let y = ty - position.y
 
 		let b = (y / -x) - x
-		var a1: CGFloat = 0.01
+		var a1: CGFloat = 0.001
 
 		var range: CountableClosedRange<Int>?
 		let posChunk = Int(position.x) / terrain!.chunkSize
@@ -208,6 +220,9 @@ class CCTank : Tank {
 	override func fireProjectile() {
 		super.fireProjectile()
 		needsRecalc = true
+		if activeShield == nil && shields.count > 0 {
+			activateShield(index: shields.count - 1)
+		}
 	}
 
 	override func update(keys: [UInt16 : Bool]) {

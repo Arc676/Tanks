@@ -136,7 +136,7 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	override func savePlayer() {
 		let panel = NSSavePanel()
 		panel.allowedFileTypes = ["plist"]
-		panel.message = "Select save location for Player \(currentPlayer + 1)"
+		panel.message = "Select save location for Player \(currentPlayer + 1) (\(players![currentPlayer].name!))"
 		if panel.runModal() == NSApplication.ModalResponse.OK {
 			var res = true
 			do {
