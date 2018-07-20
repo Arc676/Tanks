@@ -220,8 +220,12 @@ class CCTank : Tank {
 	override func fireProjectile() {
 		super.fireProjectile()
 		needsRecalc = true
-		if activeShield == nil && shields.count > 0 {
-			activateShield(index: shields.count - 1)
+		if activeShield == nil {
+			let shields = items.filter{ $0 is Shield }
+			if shields.count > 0 {
+				let index = items.index(of: shields.last!)
+				useItem(index: index!)
+			}
 		}
 	}
 

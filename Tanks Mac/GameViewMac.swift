@@ -100,14 +100,17 @@ class GameViewMac : GameMgr {
 		} else if active is Player {
 			var x: CGFloat = 330
 			let y = bounds.height - 90
-			for shield in active.shields {
+			var text = ""
+			for item in active.items {
 				let rect = NSMakeRect(x, y, 20, 20)
-				let path = NSBezierPath(ovalIn: rect)
-				shield.color.set()
-				path.lineWidth = 3
-				path.stroke()
+				if item is Shield {
+					let path = NSBezierPath(ovalIn: rect)
+					(item as! Shield).color.set()
+					path.lineWidth = 3
+					path.stroke()
+					text = "Activate \(item.name)"
+				}
 				if NSPointInRect(mouseLocation, rect) {
-					let text = "Activate \(shield.name)"
 					text.draw(at: NSMakePoint(330, y + 30))
 				}
 				x += 30
@@ -183,10 +186,10 @@ class GameViewMac : GameMgr {
 			}
 		} else if players[activePlayer].isTargeting && event.locationInWindow.y < 600 {
 			players[activePlayer].fireProjectile(at: event.locationInWindow)
-		} else if players[activePlayer].shields.count > 0 && NSPointInRect(event.locationInWindow, shieldRect) {
+		} else if players[activePlayer].items.count > 0 && NSPointInRect(event.locationInWindow, shieldRect) {
 			let index = Int((event.locationInWindow.x - 330) / 30)
-			if index >= 0 && index < players[activePlayer].shieldCount.count {
-				players[activePlayer].activateShield(index: index)
+			if index >= 0 && index < players[activePlayer].items.count {
+				players[activePlayer].useItem(index: index)
 			}
 		} else {
 			super.mouseUp(with: event)

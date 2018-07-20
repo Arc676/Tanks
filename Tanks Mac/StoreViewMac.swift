@@ -97,9 +97,9 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		} else if item is Upgrade {
 			type = "Upgrade"
 			count = player.upgradeCount[(item as! Upgrade).type.rawValue]
-		} else if item is Shield {
+		} else {
 			type = "Shield"
-			count = player.shieldCount[item.name] ?? 0
+			count = player.itemCount[item.name] ?? 0
 		}
 		switch tableColumn?.title {
 		case "Item Name":

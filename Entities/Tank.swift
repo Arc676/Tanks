@@ -79,8 +79,8 @@ class Tank : NSObject, NSCoding {
 
 	//shields
 	var activeShield: Shield?
-	var shields: [Shield] = []
-	var shieldCount: [String : Int] = [:]
+	var items: [Item] = []
+	var itemCount: [String : Int] = [:]
 
 	//physics
 	var maxHillClimb: CGFloat = 1
@@ -131,8 +131,8 @@ class Tank : NSObject, NSCoding {
 		aCoder.encode(weaponCount, forKey: "WeaponCount")
 		aCoder.encode(upgradeCount, forKey: "UpgradeCount")
 		aCoder.encode(activeShield, forKey: "ActiveShield")
-		aCoder.encode(shields, forKey: "Shields")
-		aCoder.encode(shieldCount, forKey: "ShieldCount")
+		aCoder.encode(items, forKey: "Items")
+		aCoder.encode(itemCount, forKey: "ItemCount")
 		aCoder.encode(maxHillClimb, forKey: "MaxHillClimb")
 		aCoder.encode(engineEfficiency, forKey: "EngineEfficiency")
 		aCoder.encode(startingFuel, forKey: "StartingFuel")
@@ -148,8 +148,8 @@ class Tank : NSObject, NSCoding {
 		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as! [String : Int]
 		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as! [Int]
 		activeShield = aDecoder.decodeObject(forKey: "ActiveShield") as? Shield
-		shields = aDecoder.decodeObject(forKey: "Shields") as! [Shield]
-		shieldCount = aDecoder.decodeObject(forKey: "ShieldCount") as! [String : Int]
+		items = aDecoder.decodeObject(forKey: "Items") as! [Item]
+		itemCount = aDecoder.decodeObject(forKey: "ItemCount") as! [String : Int]
 		maxHillClimb = aDecoder.decodeObject(forKey: "MaxHillClimb") as! CGFloat
 		engineEfficiency = aDecoder.decodeObject(forKey: "EngineEfficiency") as! CGFloat
 		startingFuel = aDecoder.decodeObject(forKey: "StartingFuel") as! CGFloat
@@ -248,19 +248,22 @@ class Tank : NSObject, NSCoding {
 	}
 
 	/**
-	Activates the given shield and updates tank properties appropriately
+	Uses the desired item
 
 	- parameters:
-		- index: Index of shield to activate
+		- index: Index of item to use
 	*/
-	func activateShield(index: Int) {
-		// can't activate a shield until the active one is destroyed
-		if activeShield == nil {
-			activeShield = shields[index].copy()
-			shieldCount[activeShield!.name]!--
-			if shieldCount[activeShield!.name]! == 0 {
-				shields.remove(at: index)
-				shieldCount.removeValue(forKey: activeShield!.name)
+	func useItem(index: Int) {
+		let item = items[index]
+		if item is Shield {
+			// can't activate a shield until the active one is destroyed
+			if activeShield == nil {
+				activeShield = (items[index] as! Shield).copy()
+				itemCount[item.name]!--
+				if itemCount[item.name]! == 0 {
+					items.remove(at: index)
+					itemCount.removeValue(forKey: item.name)
+				}
 			}
 		}
 	}
@@ -464,13 +467,13 @@ class Tank : NSObject, NSCoding {
 					startingFuel += upgrade.upgradeQty
 				}
 				upgradeCount[upgrade.type.rawValue]++
-			} else if item is Shield {
-				if !shields.contains(where: { element in
+			} else {
+				if !items.contains(where: { element in
 					return element.name == item.name
 				}) {
-					shields.append(item as! Shield)
+					items.append(item)
 				}
-				shieldCount[item.name] = (shieldCount[item.name] ?? 0) + 1
+				itemCount[item.name] = (itemCount[item.name] ?? 0) + 1
 			}
 		}
 	}
