@@ -98,7 +98,11 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 			type = "Upgrade"
 			count = player.upgradeCount[(item as! Upgrade).type.rawValue]
 		} else {
-			type = "Shield"
+			if item is Shield {
+				type = "Shield"
+			} else {
+				type = "Item"
+			}
 			count = player.itemCount[item.name] ?? 0
 		}
 		switch tableColumn?.title {
@@ -128,8 +132,9 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	}
 
 	@IBAction func saveAndNext(_ sender: Any) {
-		savePlayerToDisk(nil)
-		moveToNext(nil)
+		if savePlayer() {
+			moveToNext(nil)
+		}
 	}
 
 	@IBAction func exitToMain(_ sender: Any) {
@@ -153,7 +158,7 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		}
 	}
 
-	override func savePlayer() {
+	override func savePlayer() -> Bool {
 		if useSamePath.state == NSControl.StateValue.off || savePaths[currentPlayer] == nil {
 			let panel = NSSavePanel()
 			panel.allowedFileTypes = ["plist"]
@@ -161,7 +166,7 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 			if panel.runModal() == NSApplication.ModalResponse.OK {
 				savePaths[currentPlayer] = panel.url!
 			} else {
-				return
+				return false
 			}
 		}
 		var res = true
@@ -172,9 +177,12 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		} catch {
 			res = false
 		}
-		let alert = NSAlert()
-		alert.messageText = res ? "Saved" : "Save failed"
-		alert.runModal()
+		if !res {
+			let alert = NSAlert()
+			alert.messageText = "Save failed"
+			alert.runModal()
+		}
+		return res
 	}
 	
 }

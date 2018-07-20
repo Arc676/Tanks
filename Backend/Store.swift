@@ -59,6 +59,7 @@ class Store: View {
 		Upgrade("Armor", 1.1, price: 200, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 50, type: .START_FUEL),
 		Upgrade("Hill Climbing", 1.2, price: 150, type: .HILL_CLIMB),
+		RepairKit(price: 50),
 		Shield("Weak Shield", price: 100, dmgLimit: 50, color: Color.yellow),
 		Shield("Medium Shield", price: 500, dmgLimit: 200, color: Color.green),
 		Shield("Strong Shield", price: 1000, dmgLimit: 1000, color: Color.blue),
@@ -103,8 +104,13 @@ class Store: View {
 
 	/**
 	Save the current player to disk. To be overriden for each platform.
+
+	- returns:
+	Whether the save succeeded.
 	*/
-	func savePlayer() {}
+	func savePlayer() -> Bool {
+		return false
+	}
 
 	/**
 	Prepares the view for the next player or starts the next

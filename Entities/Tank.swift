@@ -260,11 +260,14 @@ class Tank : NSObject, NSCoding {
 			if activeShield == nil {
 				activeShield = (items[index] as! Shield).copy()
 				itemCount[item.name]!--
-				if itemCount[item.name]! == 0 {
-					items.remove(at: index)
-					itemCount.removeValue(forKey: item.name)
-				}
 			}
+		} else if item is RepairKit {
+			hp += (item as! RepairKit).HPGain
+			itemCount[item.name]!--
+		}
+		if itemCount[item.name]! == 0 {
+			items.remove(at: index)
+			itemCount.removeValue(forKey: item.name)
 		}
 	}
 

@@ -31,6 +31,8 @@
 		71840222207B13D700B1C61C /* ex_small.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021E207B13D700B1C61C /* ex_small.wav */; };
 		71840223207B13D700B1C61C /* ex_large.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021F207B13D700B1C61C /* ex_large.wav */; };
 		71840227207B159700B1C61C /* firing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 71840226207B159700B1C61C /* firing.mp3 */; };
+		71A054072101CB1000BC0A44 /* RepairKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A054062101CB1000BC0A44 /* RepairKit.swift */; };
+		71A054092101D4D800BC0A44 /* RepairKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A054082101D4D800BC0A44 /* RepairKit.png */; };
 		71B0847D1F2E2F1E008F690D /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847C1F2E2F1E008F690D /* Terrain.swift */; };
 		71B084801F2E2F4D008F690D /* GameMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0847F1F2E2F4D008F690D /* GameMgr.swift */; };
 		71BC8578208F3065006D3C5D /* LaserStrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BC8577208F3065006D3C5D /* LaserStrike.swift */; };
@@ -82,6 +84,8 @@
 		7184021E207B13D700B1C61C /* ex_small.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ex_small.wav; sourceTree = "<group>"; };
 		7184021F207B13D700B1C61C /* ex_large.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ex_large.wav; sourceTree = "<group>"; };
 		71840226207B159700B1C61C /* firing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firing.mp3; sourceTree = "<group>"; };
+		71A054062101CB1000BC0A44 /* RepairKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairKit.swift; sourceTree = "<group>"; };
+		71A054082101D4D800BC0A44 /* RepairKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RepairKit.png; sourceTree = "<group>"; };
 		71B0847C1F2E2F1E008F690D /* Terrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Terrain.swift; path = Backend/Terrain.swift; sourceTree = "<group>"; };
 		71B0847F1F2E2F4D008F690D /* GameMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameMgr.swift; path = Backend/GameMgr.swift; sourceTree = "<group>"; };
 		71BC8577208F3065006D3C5D /* LaserStrike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserStrike.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				713D1DB21F5BF31600FE576D /* Item.swift */,
 				71FA92881F7B9781006CDC14 /* Upgrade.swift */,
 				7110C6AE20FCE21D00FC7110 /* Shield.swift */,
+				71A054062101CB1000BC0A44 /* RepairKit.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				71A054082101D4D800BC0A44 /* RepairKit.png */,
 				7167117B20ADC4EA00FE0339 /* Draw.png */,
 				712F42A520908A3B00E63AD7 /* Explosion.png */,
 				712F42A3209056DB00E63AD7 /* LaserBeam.png */,
@@ -318,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71FE08C51F39F40E00E708F7 /* README.md in Resources */,
+				71A054092101D4D800BC0A44 /* RepairKit.png in Resources */,
 				712F42A4209056DB00E63AD7 /* LaserBeam.png in Resources */,
 				7112ABB3208DB53E00FBDB1F /* bomber.wav in Resources */,
 				7110C6B420FDD78B00FC7110 /* Store.xib in Resources */,
@@ -365,6 +372,7 @@
 				71B084801F2E2F4D008F690D /* GameMgr.swift in Sources */,
 				713D1DB31F5BF31600FE576D /* Item.swift in Sources */,
 				7121000D1F279C9E00EB48D8 /* Player.swift in Sources */,
+				71A054072101CB1000BC0A44 /* RepairKit.swift in Sources */,
 				712100111F27CB4200EB48D8 /* Projectile.swift in Sources */,
 				71FCE3F9208F2BAA008CEA24 /* LaserWeapon.swift in Sources */,
 				71CFE7172077B92100D6DB89 /* WindowController.swift in Sources */,

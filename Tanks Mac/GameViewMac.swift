@@ -34,12 +34,15 @@ class GameViewMac : GameMgr {
 	let sfxRect = NSMakeRect(800, 625, 100, 50)
 	let drawRect = NSMakeRect(650, 625, 100, 50)
 
-	let shieldRect = NSMakeRect(330, 610, 120, 20)
+	// item UI
+	let repairKit = NSImage(named: NSImage.Name("RepairKit.png"))
+	let itemsRect = NSMakeRect(330, 610, 180, 20)
 
 	let drawAlert = NSAlert()
 
 	// assets for targeted weapons
 	let targetSprite = NSImage(named: NSImage.Name(rawValue: "Target.png"))
+
 	var mouseLocation = NSMakePoint(0, 0)
 
 	// Touch Bar controls
@@ -97,7 +100,8 @@ class GameViewMac : GameMgr {
 		if let shield = active.activeShield {
 			let text = "\(shield.name) at \(Int(shield.getShieldPercentage() * 100))%"
 			text.draw(at: NSMakePoint(330, bounds.height - 60))
-		} else if active is Player {
+		}
+		if active is Player {
 			var x: CGFloat = 330
 			let y = bounds.height - 90
 			var text = ""
@@ -108,10 +112,13 @@ class GameViewMac : GameMgr {
 					(item as! Shield).color.set()
 					path.lineWidth = 3
 					path.stroke()
-					text = "Activate \(item.name)"
+					text = active.activeShield == nil ? "Activate \(item.name)" : "Can't activate shield now"
+				} else if item is RepairKit {
+					repairKit?.draw(in: rect)
+					text = "Use repair kit (\(active.itemCount["Repair Kit"]!))"
 				}
 				if NSPointInRect(mouseLocation, rect) {
-					text.draw(at: NSMakePoint(330, y + 30))
+					text.draw(at: NSMakePoint(330, y - 30))
 				}
 				x += 30
 			}
@@ -121,7 +128,7 @@ class GameViewMac : GameMgr {
 		for tank in players {
 			tank.tankColor?.set()
 			let text = NSAttributedString(string: "\(tank.name!): \(tank.score)")
-			text.draw(at: NSMakePoint(470, scoreY))
+			text.draw(at: NSMakePoint(540, scoreY))
 			scoreY -= 20
 		}
 
@@ -186,7 +193,7 @@ class GameViewMac : GameMgr {
 			}
 		} else if players[activePlayer].isTargeting && event.locationInWindow.y < 600 {
 			players[activePlayer].fireProjectile(at: event.locationInWindow)
-		} else if players[activePlayer].items.count > 0 && NSPointInRect(event.locationInWindow, shieldRect) {
+		} else if players[activePlayer].items.count > 0 && NSPointInRect(event.locationInWindow, itemsRect) {
 			let index = Int((event.locationInWindow.x - 330) / 30)
 			if index >= 0 && index < players[activePlayer].items.count {
 				players[activePlayer].useItem(index: index)
