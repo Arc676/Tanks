@@ -90,14 +90,25 @@ class GameMgr: View {
 		drawDeclared = false
 		terrain.generateNewTerrain(terrainType, height: UInt32(bounds.height), width: Int(bounds.width))
 		viewController = controller
+		playerNames.removeAll()
 
 		if players != nil {
 			self.players = players!
 		}
 
-		var i = 0
-		for player in self.players {
+		// shuffle starting positions so players don't always spawn in the same place
+		var positions: [Int] = []
+		for i in 0..<self.players.count {
 			let pos = (i + 1) * terrain.pointCount / (self.players.count + 1)
+			if arc4random_uniform(100) < 50 {
+				positions.append(pos)
+			} else {
+				positions.insert(pos, at: 0)
+			}
+		}
+
+		for player in self.players {
+			let pos = positions.popLast()!
 			player.reset()
 			player.terrain = terrain
 			player.tanks = self.players
@@ -106,8 +117,6 @@ class GameMgr: View {
 				terrain.terrainControlHeights[pos])
 
 			playerNames.append(NSAttributedString(string: player.name!))
-
-			i++
 		}
 
 		for key in relevantKeys {

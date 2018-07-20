@@ -122,6 +122,21 @@ class MenuView : NSView {
 	}
 
 	/**
+	Gets a list of URLs indicating whence the tanks were loaded
+
+	- returns:
+	A list containing optional URLs indicating the original save location of each tank, if any
+	*/
+	func getPaths() -> [URL?] {
+		return [
+			player1.tankWasLoadedFromDisk(),
+			player2.tankWasLoadedFromDisk(),
+			player3.tankWasLoadedFromDisk(),
+			player4.tankWasLoadedFromDisk()
+		]
+	}
+
+	/**
 	Pick a random name that hasn't already been used by another tank
 
 	- returns:

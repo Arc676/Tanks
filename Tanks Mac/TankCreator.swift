@@ -40,6 +40,7 @@ class TankCreator: NSView {
 	@IBOutlet weak var unloadButton: NSButton!
 
 	private var tank: Tank?
+	private var loadPath: URL?
 
 	@IBOutlet weak var contentView: NSView?
 
@@ -136,6 +137,7 @@ class TankCreator: NSView {
 					tankColor.color = tank.tankColor!
 					setPlayerEnabled(false)
 					unloadButton.isEnabled = true
+					loadPath = panel.url
 					failed = false
 				}
 			} catch {}
@@ -157,6 +159,7 @@ class TankCreator: NSView {
 	*/
 	@IBAction func unloadTank(_ sender: Any) {
 		tank = nil
+		loadPath = nil
 		setPlayerEnabled(true)
 	}
 
@@ -191,6 +194,16 @@ class TankCreator: NSView {
 				pNum: 0,
 				name: name)
 		}
+	}
+
+	/**
+	Indicates whether the tank was loaded from disk
+
+	- returns:
+	The URL from which the tank was loaded, nil if the tank wasn't loaded from disk
+	*/
+	func tankWasLoadedFromDisk() -> URL? {
+		return loadPath
 	}
 	
 }

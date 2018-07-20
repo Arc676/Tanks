@@ -55,8 +55,12 @@ class GameViewController : NSViewController {
 		- players: The entities to be in the game
 	*/
 	func initialize(terrainType: TerrainType) {
-		gameView = GameViewMac(frame: view.frame)
-		storeView = StoreViewMac(frame: view.frame)
+		if gameView == nil {
+			gameView = GameViewMac(frame: view.frame)
+		}
+		if storeView == nil {
+			storeView = StoreViewMac(frame: view.frame)
+		}
 
 		chosenTerrain = terrainType
 	}
@@ -82,6 +86,8 @@ class GameViewController : NSViewController {
 
 		gameView?.touchBarAngleSlider = windowController?.touchBarAngleSlider
 		gameView?.touchBarFirepowerSlider = windowController?.touchBarFirepowerSlider
+
+		storeView?.savePaths = menuView.getPaths()
 	}
 
 	/**
