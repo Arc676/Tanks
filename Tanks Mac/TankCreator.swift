@@ -126,26 +126,30 @@ class TankCreator: NSView {
 		- sender: Button clicked
 	*/
 	@IBAction func loadTank(_ sender: Any) {
-		var failed = true
 		let panel = NSOpenPanel()
 		if panel.runModal() == NSApplication.ModalResponse.OK {
-			do {
-				let data = try Data(contentsOf: panel.url!)
-				if let tank = NSKeyedUnarchiver.unarchiveObject(with: data) as? Tank {
-					self.tank = tank
-					tankName.stringValue = tank.name!
-					tankColor.color = tank.tankColor!
-					setPlayerEnabled(false)
-					unloadButton.isEnabled = true
-					loadPath = panel.url
-					failed = false
-				}
-			} catch {}
-			if failed {
-				let alert = NSAlert()
-				alert.messageText = "Failed to load tank data"
-				alert.runModal()
+			loadTank(from: panel.url!)
+		}
+	}
+
+	func loadTank(from url: URL) {
+		var failed = true
+		do {
+			let data = try Data(contentsOf: url)
+			if let tank = NSKeyedUnarchiver.unarchiveObject(with: data) as? Tank {
+				self.tank = tank
+				tankName.stringValue = tank.name!
+				tankColor.color = tank.tankColor!
+				setPlayerEnabled(false)
+				unloadButton.isEnabled = true
+				loadPath = url
+				failed = false
 			}
+		} catch {}
+		if failed {
+			let alert = NSAlert()
+			alert.messageText = "Failed to load tank data"
+			alert.runModal()
 		}
 	}
 

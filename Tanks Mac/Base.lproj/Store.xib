@@ -123,7 +123,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hm9-by-9EO">
-                    <rect key="frame" x="84" y="13" width="156" height="32"/>
+                    <rect key="frame" x="210" y="13" width="156" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Save Player to Disk" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MlU-92-76Q">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -131,6 +131,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="savePlayerToDisk:" target="-2" id="QrJ-gZ-mXf"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cof-N2-i4c">
+                    <rect key="frame" x="875" y="13" width="111" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Exit to Main" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hhe-Od-ytg">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="exitToMain:" target="-2" id="V4K-JJ-ZJa"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygv-PA-MY3">
@@ -203,16 +214,8 @@ DQ
                         <action selector="makePurchase:" target="-2" id="5dK-gh-fql"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvf-pH-MpW">
-                    <rect key="frame" x="240" y="18" width="247" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Write to same path as previous save" bezelStyle="regularSquare" imagePosition="left" inset="2" id="oKe-F0-KDz">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-jW-f10">
-                    <rect key="frame" x="484" y="20" width="389" height="22"/>
+                    <rect key="frame" x="509" y="20" width="364" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <pathCell key="cell" selectable="YES" alignment="left" id="mGn-lX-xiT">
                         <font key="font" metaFont="system"/>
@@ -220,16 +223,24 @@ DQ
                         <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
                     </pathCell>
                 </pathControl>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cof-N2-i4c">
-                    <rect key="frame" x="875" y="13" width="111" height="32"/>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hhv-1n-14c">
+                    <rect key="frame" x="83" y="13" width="127" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Exit to Main" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hhe-Od-ytg">
+                    <buttonCell key="cell" type="push" title="Save and Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zsr-fk-YKN">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="exitToMain:" target="-2" id="V4K-JJ-ZJa"/>
+                        <action selector="saveAndNext:" target="-2" id="JCP-Il-QA1"/>
                     </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvf-pH-MpW">
+                    <rect key="frame" x="366" y="18" width="137" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Write to same path" bezelStyle="regularSquare" imagePosition="left" inset="2" id="oKe-F0-KDz">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
                 </button>
             </subviews>
         </customView>

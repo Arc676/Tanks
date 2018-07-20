@@ -87,7 +87,9 @@ class GameViewController : NSViewController {
 		gameView?.touchBarAngleSlider = windowController?.touchBarAngleSlider
 		gameView?.touchBarFirepowerSlider = windowController?.touchBarFirepowerSlider
 
-		storeView?.savePaths = menuView.getPaths()
+		if players != nil {
+			storeView?.savePaths = menuView.getPaths()
+		}
 	}
 
 	/**

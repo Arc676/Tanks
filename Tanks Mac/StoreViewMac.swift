@@ -118,13 +118,18 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		}
 	}
 
-	@IBAction func moveToNext(_ sender: Any) {
+	@IBAction func moveToNext(_ sender: NSButton?) {
 		nextPlayer()
 		refresh()
 	}
 
-	@IBAction func savePlayerToDisk(_ sender: Any) {
+	@IBAction func savePlayerToDisk(_ sender: NSButton?) {
 		savePlayer()
+	}
+
+	@IBAction func saveAndNext(_ sender: Any) {
+		savePlayerToDisk(nil)
+		moveToNext(nil)
 	}
 
 	@IBAction func exitToMain(_ sender: Any) {

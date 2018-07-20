@@ -121,6 +121,29 @@ class MenuView : NSView {
 		viewController?.startGame(players)
 	}
 
+	@IBAction func loadMultipleTanks(_ sender: Any) {
+		let panel = NSOpenPanel()
+		panel.allowsMultipleSelection = true
+		if panel.runModal() == NSApplication.ModalResponse.OK {
+			var i = 0
+			for url in panel.urls {
+				switch (i) {
+				case 0:
+					player1.loadTank(from: url)
+				case 1:
+					player2.loadTank(from: url)
+				case 2:
+					player3.loadTank(from: url)
+				case 3:
+					player4.loadTank(from: url)
+				default:
+					break
+				}
+				i++
+			}
+		}
+	}
+
 	/**
 	Gets a list of URLs indicating whence the tanks were loaded
 
