@@ -128,7 +128,7 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	}
 
 	@IBAction func savePlayerToDisk(_ sender: NSButton?) {
-		savePlayer()
+		let _ = savePlayer()
 	}
 
 	@IBAction func saveAndNext(_ sender: Any) {
@@ -174,10 +174,14 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 			let data = NSKeyedArchiver.archivedData(withRootObject: players![currentPlayer])
 			try data.write(to: savePaths[currentPlayer]!)
 			path.url = savePaths[currentPlayer]
+			useSamePath.isEnabled = true
 		} catch {
 			res = false
 		}
-		if !res {
+		if res {
+			Store.saveSuccess.play()
+		} else {
+			Store.saveFailed.play()
 			let alert = NSAlert()
 			alert.messageText = "Save failed"
 			alert.runModal()

@@ -36,6 +36,9 @@ class Store: View {
 	static let largeEx = NSSound(named: NSSound.Name("ex_large.wav"))!
 	static let noSound = NSSound()
 
+	static let saveSuccess = NSSound(named: NSSound.Name("success.wav"))!
+	static let saveFailed = NSSound(named: NSSound.Name("failure.wav"))!
+
 	// indices of various items to be purchased by computer controlled tanks
 	let armorIndex = 15
 	let targetingWeapons = 11
