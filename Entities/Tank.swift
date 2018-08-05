@@ -101,8 +101,8 @@ class Tank : NSObject, NSCoding {
 	var isTargeting = false
 
 	//tank properties
-	var name: String?
-	var tankColor: NSColor?
+	var name: String
+	var tankColor: NSColor
 	var playerNum = 0
 	var selectedAmmo: Ammo?
 
@@ -144,18 +144,18 @@ class Tank : NSObject, NSCoding {
 	required init?(coder aDecoder: NSCoder) {
 		money = aDecoder.decodeInteger(forKey: "Money")
 		score = aDecoder.decodeInteger(forKey: "Score")
-		weapons = aDecoder.decodeObject(forKey: "Weapons") as! [Ammo]
-		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as! [String : Int]
-		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as! [Int]
+		weapons = aDecoder.decodeObject(forKey: "Weapons") as? [Ammo] ?? []
+		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as? [String : Int] ?? [:]
+		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as? [Int] ?? []
 		activeShield = aDecoder.decodeObject(forKey: "ActiveShield") as? Shield
-		items = aDecoder.decodeObject(forKey: "Items") as! [Item]
-		itemCount = aDecoder.decodeObject(forKey: "ItemCount") as! [String : Int]
+		items = aDecoder.decodeObject(forKey: "Items") as? [Item] ?? []
+		itemCount = aDecoder.decodeObject(forKey: "ItemCount") as? [String : Int] ?? [:]
 		maxHillClimb = aDecoder.decodeObject(forKey: "MaxHillClimb") as! CGFloat
 		engineEfficiency = aDecoder.decodeObject(forKey: "EngineEfficiency") as! CGFloat
 		startingFuel = aDecoder.decodeObject(forKey: "StartingFuel") as! CGFloat
 		armor = aDecoder.decodeObject(forKey: "Armor") as! CGFloat
-		name = aDecoder.decodeObject(forKey: "Name") as? String
-		tankColor = aDecoder.decodeObject(forKey: "Color") as? NSColor
+		name = aDecoder.decodeObject(forKey: "Name") as! String
+		tankColor = aDecoder.decodeObject(forKey: "Color") as! NSColor
 	}
 
 	/**
@@ -278,7 +278,7 @@ class Tank : NSObject, NSCoding {
 		- rect: The view rectangle
 	*/
 	func drawInRect(_ rect: NSRect) {
-		tankColor?.set()
+		tankColor.set()
 		tankRect().fill()
 
 		NSColor.black.set()

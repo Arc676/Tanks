@@ -138,8 +138,8 @@ class TankCreator: NSView {
 			let data = try Data(contentsOf: url)
 			if let tank = NSKeyedUnarchiver.unarchiveObject(with: data) as? Tank {
 				self.tank = tank
-				tankName.stringValue = tank.name!
-				tankColor.color = tank.tankColor!
+				tankName.stringValue = tank.name
+				tankColor.color = tank.tankColor
 				setPlayerEnabled(false)
 				unloadButton.isEnabled = true
 				loadPath = url

@@ -82,7 +82,7 @@ class GameViewMac : GameMgr {
 
 		//draw the little box indicating player color
 		let y = bounds.height - playerNames[activePlayer].size().height - 20
-		active.tankColor?.set()
+		active.tankColor.set()
 		NSMakeRect(35, y, 10, 10).fill()
 
 		//then draw the name
@@ -126,8 +126,8 @@ class GameViewMac : GameMgr {
 
 		var scoreY = bounds.height - 30
 		for tank in players {
-			tank.tankColor?.set()
-			let text = NSAttributedString(string: "\(tank.name!): \(tank.score)")
+			tank.tankColor.set()
+			let text = NSAttributedString(string: "\(tank.name): \(tank.score)")
 			text.draw(at: NSMakePoint(540, scoreY))
 			scoreY -= 20
 		}

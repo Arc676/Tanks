@@ -66,13 +66,13 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	func refresh() {
 		let player = players![currentPlayer]
 
-		playerName.stringValue = player.name!
+		playerName.stringValue = player.name
 		if player is Player {
 			playerCredits.integerValue = player.money
 		} else {
 			playerCredits.stringValue = "Unknown"
 		}
-		playerColor.color = player.tankColor!
+		playerColor.color = player.tankColor
 
 		useSamePath.isEnabled = savePaths[currentPlayer] != nil
 		path.url = savePaths[currentPlayer]
@@ -162,7 +162,7 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		if useSamePath.state == NSControl.StateValue.off || savePaths[currentPlayer] == nil {
 			let panel = NSSavePanel()
 			panel.allowedFileTypes = ["plist"]
-			panel.message = "Select save location for Player \(currentPlayer + 1) (\(players![currentPlayer].name!))"
+			panel.message = "Select save location for Player \(currentPlayer + 1) (\(players![currentPlayer].name))"
 			if panel.runModal() == NSApplication.ModalResponse.OK {
 				savePaths[currentPlayer] = panel.url!
 			} else {

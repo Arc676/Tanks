@@ -116,7 +116,7 @@ class GameMgr: View {
 				CGFloat(pos * terrain.chunkSize),
 				terrain.terrainControlHeights[pos])
 
-			playerNames.append(NSAttributedString(string: player.name!))
+			playerNames.append(NSAttributedString(string: player.name))
 		}
 
 		for key in relevantKeys {
