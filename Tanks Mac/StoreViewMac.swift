@@ -29,6 +29,8 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	@IBOutlet weak var playerName: NSTextField!
 	@IBOutlet weak var playerCredits: NSTextField!
 	@IBOutlet weak var playerColor: NSColorWell!
+	@IBOutlet weak var aiLvl: NSSegmentedControl!
+	@IBOutlet weak var aiStyle: NSSegmentedControl!
 
 	@IBOutlet weak var purchaseButton: NSButton!
 	@IBOutlet weak var storeTable: NSTableView!
@@ -69,7 +71,13 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 		playerName.stringValue = player.name
 		if player is Player {
 			playerCredits.integerValue = player.money
+			aiLvl.isEnabled = false
+			aiStyle.isEnabled = false
 		} else {
+			aiLvl.isEnabled = true
+			aiLvl.selectedSegment = (player as! CCTank).aiLevel.rawValue
+			aiStyle.isEnabled = true
+			aiStyle.selectedSegment = Int((player as! CCTank).aiStyle.rawValue)
 			playerCredits.stringValue = "Unknown"
 		}
 		playerColor.color = player.tankColor
@@ -155,6 +163,18 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	@IBAction func colorChanged(_ sender: NSColorWell) {
 		if players != nil {
 			players![currentPlayer].tankColor = sender.color
+		}
+	}
+
+	@IBAction func aiLvlChanged(_ sender: NSSegmentedControl) {
+		if players != nil {
+			(players![currentPlayer] as! CCTank).aiLevel = AILevel(rawValue: sender.indexOfSelectedItem)
+		}
+	}
+
+	@IBAction func aiStyleChanged(_ sender: NSSegmentedControl) {
+		if players != nil {
+			(players![currentPlayer] as! CCTank).aiStyle = AIStyle(rawValue: UInt32(sender.indexOfSelectedItem))
 		}
 	}
 

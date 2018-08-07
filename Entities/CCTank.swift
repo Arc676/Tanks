@@ -157,8 +157,9 @@ class CCTank : Tank {
 		- a: Wind acceleration
 	*/
 	private func recalculate(tx: CGFloat, ty: CGFloat, a: CGFloat) {
-		let x = tx - position.x
-		let y = ty - position.y
+		let nozzle = getNozzlePosition()
+		let x = tx - nozzle.x
+		let y = ty - nozzle.y
 
 		let b = (y / -x) - x
 		var a1: CGFloat = 0.001

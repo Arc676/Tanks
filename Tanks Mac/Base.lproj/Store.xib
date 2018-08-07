@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="StoreViewMac" customModule="Tanks" customModuleProvider="target">
             <connections>
+                <outlet property="aiLvl" destination="TxS-zo-50X" id="QmL-JJ-nbh"/>
+                <outlet property="aiStyle" destination="uHT-7U-2gH" id="dYf-RJ-ANX"/>
                 <outlet property="contentView" destination="c22-O7-iKe" id="olC-DX-lpO"/>
                 <outlet property="path" destination="bPA-jW-f10" id="6EQ-CZ-2S8"/>
                 <outlet property="playerColor" destination="sW4-Sb-x3c" id="H29-eD-nWf"/>
@@ -220,7 +222,7 @@ DQ
                     <pathCell key="cell" selectable="YES" alignment="left" id="mGn-lX-xiT">
                         <font key="font" metaFont="system"/>
                         <url key="url" string="file://localhost/Applications/"/>
-                        <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                     </pathCell>
                 </pathControl>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hhv-1n-14c">
@@ -242,6 +244,53 @@ DQ
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TxS-zo-50X">
+                    <rect key="frame" x="677" y="662" width="187" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pp3-Cp-aUo">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Easy"/>
+                            <segment label="Medium" selected="YES" tag="1"/>
+                            <segment label="Hard"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="aiLvlChanged:" target="-2" id="m3B-rH-ocd"/>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Zg-fi-oI0">
+                    <rect key="frame" x="621" y="666" width="52" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="AI Level" id="s8i-zh-hlg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8sM-fc-c0Y">
+                    <rect key="frame" x="621" y="638" width="51" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="AI Style" id="dQO-EC-dUG">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uHT-7U-2gH">
+                    <rect key="frame" x="680" y="634" width="181" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pLk-by-6Rc">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Defensive"/>
+                            <segment label="Aggressive" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="aiStyleChanged:" target="-2" id="09B-R8-BiU"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
         </customView>
     </objects>
