@@ -199,9 +199,9 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 			res = false
 		}
 		if res {
-			Store.saveSuccess.play()
+			(Store.saveSuccess.copy() as! NSSound).play()
 		} else {
-			Store.saveFailed.play()
+			(Store.saveFailed.copy() as! NSSound).play()
 			let alert = NSAlert()
 			alert.messageText = "Save failed"
 			alert.runModal()
