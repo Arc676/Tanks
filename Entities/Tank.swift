@@ -61,6 +61,9 @@ class Tank : NSObject, NSCoding {
 	static let firingSound = NSSound(named: NSSound.Name("firing.mp3"))!
 	static let rotateSound = NSSound(named: NSSound.Name("rotate.wav"))!
 
+	static let tankBodyCG = NSImage(named: NSImage.Name("TankBody.png"))!.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+	static let tankBarrel = NSImage(named: NSImage.Name("TankBarrel.png"))!
+
 	//gameplay properties
 	var hp: CGFloat = 100
 	var fuel: CGFloat = 100
@@ -279,7 +282,10 @@ class Tank : NSObject, NSCoding {
 	*/
 	func drawInRect(_ rect: NSRect) {
 		tankColor.set()
-		tankRect().fill()
+		let context = NSGraphicsContext.current?.cgContext
+		context?.clip(to: tankRect(), mask: Tank.tankBodyCG)
+		context?.fill(tankRect())
+		context?.resetClip()
 
 		NSColor.black.set()
 
@@ -310,7 +316,7 @@ class Tank : NSObject, NSCoding {
 	to the tank in the world
 	*/
 	func tankRect() -> NSRect {
-		return NSMakeRect(position.x - 10, position.y, 20, 10)
+		return NSMakeRect(position.x - 15, position.y, 30, 15)
 	}
 
 	/**

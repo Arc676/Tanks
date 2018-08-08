@@ -28,6 +28,7 @@
 		7167117C20ADC4EA00FE0339 /* Draw.png in Resources */ = {isa = PBXBuildFile; fileRef = 7167117B20ADC4EA00FE0339 /* Draw.png */; };
 		716DA25321174CAE0053342F /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 716DA25121174CAE0053342F /* success.wav */; };
 		716DA25421174CAE0053342F /* failure.wav in Resources */ = {isa = PBXBuildFile; fileRef = 716DA25221174CAE0053342F /* failure.wav */; };
+		716DA256211AE79B0053342F /* TankBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 716DA255211AE79A0053342F /* TankBody.png */; };
 		717381FD207891BC0090213A /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 717381FC207891BC0090213A /* CREDITS */; };
 		71840221207B13D700B1C61C /* rotate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021D207B13D700B1C61C /* rotate.wav */; };
 		71840222207B13D700B1C61C /* ex_small.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021E207B13D700B1C61C /* ex_small.wav */; };
@@ -83,6 +84,7 @@
 		7167117B20ADC4EA00FE0339 /* Draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Draw.png; sourceTree = "<group>"; };
 		716DA25121174CAE0053342F /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
 		716DA25221174CAE0053342F /* failure.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = failure.wav; sourceTree = "<group>"; };
+		716DA255211AE79A0053342F /* TankBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TankBody.png; sourceTree = "<group>"; };
 		717381FC207891BC0090213A /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		7184021D207B13D700B1C61C /* rotate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rotate.wav; sourceTree = "<group>"; };
 		7184021E207B13D700B1C61C /* ex_small.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ex_small.wav; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				716DA255211AE79A0053342F /* TankBody.png */,
 				71A054082101D4D800BC0A44 /* RepairKit.png */,
 				7167117B20ADC4EA00FE0339 /* Draw.png */,
 				712F42A520908A3B00E63AD7 /* Explosion.png */,
@@ -342,6 +345,7 @@
 				7167117C20ADC4EA00FE0339 /* Draw.png in Resources */,
 				71840222207B13D700B1C61C /* ex_small.wav in Resources */,
 				71D7B0241F2A3AA600B93124 /* Credits.rtf in Resources */,
+				716DA256211AE79B0053342F /* TankBody.png in Resources */,
 				71D7D416208C242700D67D50 /* SFXOff.png in Resources */,
 				71BC857C208F3BFD006D3C5D /* LaserStrike.png in Resources */,
 				712F42A620908A3C00E63AD7 /* Explosion.png in Resources */,
