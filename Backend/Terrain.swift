@@ -89,10 +89,7 @@ class Terrain : NSView {
 	Set the wind speed to a new random value
 	*/
 	func newWindSpeed() {
-		windAcceleration = Float(arc4random_uniform(1000)) / 500
-		if arc4random_uniform(100) < 50 {
-			windAcceleration *= -1
-		}
+		windAcceleration = Float(arc4random_uniform(2001)) / 500 - 2
 	}
 
 	/**
@@ -103,8 +100,8 @@ class Terrain : NSView {
 		- xPos: The X coordinate of the impact point
 	*/
 	func deform(radius: Int, xPos: Int) {
-		let min = (xPos - radius) / chunkSize
-		let max = (xPos + radius) / chunkSize
+		let min = Int(round(Float(xPos - radius) / Float(chunkSize)))
+		let max = Int(round(Float(xPos + radius) / Float(chunkSize)))
 		let radiusf2 = pow(CGFloat(radius), 2)
 
 		var dx = min - xPos / chunkSize

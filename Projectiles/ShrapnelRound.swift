@@ -61,8 +61,8 @@ class ShrapnelRound: Projectile {
 				let projectile = Projectile(
 					terrain: terrain!,
 					entities: entities!,
-					vx: CGFloat(arc4random_uniform(20)),
-					vy: CGFloat(arc4random_uniform(20)),
+					vx: CGFloat(arc4random_uniform(41)) - 20,
+					vy: CGFloat(arc4random_uniform(41)) - 20,
 					pos: NSMakePoint(position.x, position.y + 5),
 					src: sourcePlayer!,
 					ammo: ammo)

@@ -98,8 +98,8 @@ class GameMgr: View {
 
 		// shuffle starting positions so players don't always spawn in the same place
 		var positions: [Int] = []
-		for i in 0..<self.players.count {
-			let pos = (i + 1) * terrain.pointCount / (self.players.count + 1)
+		for _ in 0..<self.players.count {
+			let pos = Int(arc4random_uniform(UInt32(terrain.pointCount - 7))) + 4
 			if arc4random_uniform(100) < 50 {
 				positions.append(pos)
 			} else {
