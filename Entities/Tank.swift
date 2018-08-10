@@ -242,8 +242,10 @@ class Tank : NSObject, NSCoding {
 		if activeShield == nil {
 			hp -= dmg / armor
 		} else {
-			if activeShield!.absorbDamage(dmg) {
+			let excess = activeShield!.absorbDamage(dmg)
+			if excess >= 0.0 {
 				activeShield = nil
+				takeDamage(excess)
 			}
 		}
 	}

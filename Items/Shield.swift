@@ -58,13 +58,29 @@ class Shield: Item {
 		path.stroke()
 	}
 
+	/**
+	Determines the shield's integrity as a percentage (based on
+	how much damage has been taken and how much can be taken)
+
+	- returns:
+	Shield level
+	*/
 	func getShieldPercentage() -> CGFloat {
 		return 1 - absorbed / dmgLimit
 	}
 
-	func absorbDamage(_ dmg: CGFloat) -> Bool {
+	/**
+	Absorbs as much of the damage dealt to the tank as possible
+
+	- parameters:
+		- dmg: Incoming damage
+
+	- returns:
+	Amount of damage not absorbed (negative unless the shield's damage limit has been reached)
+	*/
+	func absorbDamage(_ dmg: CGFloat) -> CGFloat {
 		absorbed += dmg
-		return absorbed >= dmgLimit
+		return absorbed - dmgLimit
 	}
 
 }
