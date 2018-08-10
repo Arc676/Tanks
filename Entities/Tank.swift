@@ -75,7 +75,9 @@ class Tank : NSObject, NSCoding {
 	var weapons: [Ammo] = [
 		Ammo("Tank Shell", price: 0, radius: 20, damage: 50, sound: Store.smallEx)
 	]
-	var weaponCount: [String : Int] = [:]
+	var weaponCount: [String : Int] = [
+		"Tank Shell" : 99
+	]
 
 	//upgrades
 	var upgradeCount: [Int] = [Int](repeating: 0, count: 4)
@@ -149,6 +151,7 @@ class Tank : NSObject, NSCoding {
 		score = aDecoder.decodeInteger(forKey: "Score")
 		weapons = aDecoder.decodeObject(forKey: "Weapons") as? [Ammo] ?? []
 		weaponCount = aDecoder.decodeObject(forKey: "WeaponCount") as? [String : Int] ?? [:]
+		weaponCount["Tank Shell"] = 99
 		upgradeCount = aDecoder.decodeObject(forKey: "UpgradeCount") as? [Int] ?? []
 		activeShield = aDecoder.decodeObject(forKey: "ActiveShield") as? Shield
 		items = aDecoder.decodeObject(forKey: "Items") as? [Item] ?? []
@@ -192,11 +195,6 @@ class Tank : NSObject, NSCoding {
 		let name = selectedAmmo!.name
 		if name != "Tank Shell" {
 			weaponCount[name]! -= 1
-			if weaponCount[name]! == 0 {
-				weaponCount.removeValue(forKey: name)
-				weapons.remove(at: selectedWeapon)
-				selectedWeapon = 0
-			}
 		}
 		hasFired = true
 		isTargeting = false
@@ -351,6 +349,16 @@ class Tank : NSObject, NSCoding {
 	func endTurn() {
 		turnEnded = true
 		selectedAmmo?.reset()
+		var i = 0
+		for w in weapons {
+			if weaponCount[w.name]! == 0 {
+				weaponCount.removeValue(forKey: w.name)
+				weapons.remove(at: i)
+				selectedWeapon = 0
+			} else {
+				i++
+			}
+		}
 	}
 
 	/**

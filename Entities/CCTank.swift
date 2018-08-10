@@ -142,9 +142,15 @@ class CCTank : Tank {
 		if possibleTargets.count == 0 {
 			return;
 		}
-		target = possibleTargets[Int(arc4random_uniform(UInt32(possibleTargets.count)))]
-
-		recalculate(tx: target!.position.x, ty: target!.position.y, a: CGFloat(terrain!.windAcceleration))
+		repeat {
+			let idx = Int(arc4random_uniform(UInt32(possibleTargets.count)))
+			target = possibleTargets[idx]
+			if recalculate(tx: target!.position.x, ty: target!.position.y, a: CGFloat(terrain!.windAcceleration))
+				|| possibleTargets.count == 1 {
+				break
+			}
+			possibleTargets.remove(at: idx)
+		} while true
 	}
 
 	/**
@@ -155,8 +161,11 @@ class CCTank : Tank {
 		- tx: X coordinate of target
 		- ty: Y coordinate of target
 		- a: Wind acceleration
+
+	- returns:
+	Whether the target can be hit from the tank's current position
 	*/
-	private func recalculate(tx: CGFloat, ty: CGFloat, a: CGFloat) {
+	private func recalculate(tx: CGFloat, ty: CGFloat, a: CGFloat) -> Bool {
 		let nozzle = getNozzlePosition()
 		let x = tx - nozzle.x
 		let y = ty - nozzle.y
@@ -211,11 +220,13 @@ class CCTank : Tank {
 		}
 		if targetFirepower > 100 {
 			targetFirepower = 100
+			return false
 		}
 
 		selectedWeapon = weapons.count - 1;
 
 		needsRecalc = false
+		return true
 	}
 
 	override func fireProjectile() {
@@ -248,7 +259,9 @@ class CCTank : Tank {
 		}
 		//needs to recalculate firepower and cannon angle?
 		if needsRecalc {
-			recalculate(tx: target!.position.x, ty: target!.position.y, a: CGFloat(terrain!.windAcceleration))
+			if !recalculate(tx: target!.position.x, ty: target!.position.y, a: CGFloat(terrain!.windAcceleration)) {
+				chooseNewTarget()
+			}
 		}
 
 		if abs(targetAngle - cannonAngle) <= Tank.radian * 2 {

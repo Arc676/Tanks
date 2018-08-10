@@ -94,7 +94,7 @@ class GameViewMac : GameMgr {
 		}
 
 		//indicate current weapon
-		let text = "\(active.weapons[active.selectedWeapon].name) (\(active.weaponCount[active.weapons[active.selectedWeapon].name] ?? 99))"
+		let text = "\(active.weapons[active.selectedWeapon].name) (\(active.weaponCount[active.weapons[active.selectedWeapon].name]!))"
 		text.draw(at: NSMakePoint(330, bounds.height - 40))
 
 		if let shield = active.activeShield {
