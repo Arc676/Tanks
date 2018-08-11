@@ -88,6 +88,7 @@ class GameMgr: View {
 	*/
 	func initialize(terrainType: TerrainType, players: [Tank]?, controller: ViewController) {
 		drawDeclared = false
+		activePlayer = 0
 		terrain.generateNewTerrain(terrainType, height: UInt32(bounds.height), width: Int(bounds.width))
 		viewController = controller
 		playerNames.removeAll()
@@ -211,7 +212,7 @@ class GameMgr: View {
 	override func draw(_ rect: NSRect) {
 		terrain.draw(rect)
 
-		for tank in players.filter({ $0.hp > 0 }) {
+		for tank in players {
 			tank.drawInRect(rect)
 		}
 	}

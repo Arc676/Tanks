@@ -28,10 +28,7 @@ determined by the ammo type
 */
 class Projectile : NSObject {
 
-	let explosionSprite = NSImage(named: NSImage.Name("Explosion.png"))!
-	var explosionRect: NSRect?
-	var explosionTicks: Float = 0
-	var explosionLimit: Float = 0
+	var explosion: Explosion?
 
 	var position = NSMakePoint(0, 0)
 	var vx: CGFloat = 0
@@ -66,7 +63,6 @@ class Projectile : NSObject {
 		self.position = pos
 
 		self.ammo = ammo
-		explosionLimit = Float(ammo.blastRadius)
 		sourcePlayer = src
 	}
 
@@ -81,8 +77,8 @@ class Projectile : NSObject {
 		if invalidated {
 			return
 		}
-		if impacted && explosionRect != nil {
-			explosionSprite.draw(in: explosionRect!)
+		if impacted {
+			explosion?.draw()
 		} else {
 			NSColor.black.set()
 			NSBezierPath(ovalIn: NSMakeRect(position.x, position.y, 5, 5)).fill()
@@ -122,6 +118,7 @@ class Projectile : NSObject {
 			}
 		}
 		impacted = true
+		explosion = Explosion(Float(self.ammo.blastRadius), pos: position)
 	}
 
 	/**
@@ -143,15 +140,9 @@ class Projectile : NSObject {
 		}
 
 		if impacted {
-			explosionTicks += explosionLimit / 30
-			if explosionTicks > explosionLimit {
+			explosion?.update()
+			if explosion?.isDone() ?? false {
 				despawn()
-			} else {
-				let ds = explosionTicks > explosionLimit / 2 ?
-					CGFloat(2 * (explosionLimit - explosionTicks)) :
-					CGFloat(2 * explosionTicks)
-				let size = 2 * ds
-				explosionRect = NSMakeRect(position.x - ds, position.y - ds, size, size)
 			}
 		} else {
 			//update position

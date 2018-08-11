@@ -60,6 +60,7 @@ class Tank : NSObject, NSCoding {
 
 	static let firingSound = NSSound(named: NSSound.Name("firing.mp3"))!
 	static let rotateSound = NSSound(named: NSSound.Name("rotate.wav"))!
+	static let explodeSound = NSSound(named: NSSound.Name("tankExplosion.wav"))!
 
 	static let tankBodyCG = NSImage(named: NSImage.Name("TankBody.png"))!.cgImage(forProposedRect: nil, context: nil, hints: nil)!
 	static let tankBarrel = NSImage(named: NSImage.Name("TankBarrel.png"))!
@@ -110,6 +111,7 @@ class Tank : NSObject, NSCoding {
 	var tankColor: NSColor
 	var playerNum = 0
 	var selectedAmmo: Ammo?
+	var explosion: Explosion?
 
 	//environment
 	var terrain: Terrain?
@@ -248,6 +250,10 @@ class Tank : NSObject, NSCoding {
 				takeDamage(excess)
 			}
 		}
+		if hp <= 0 {
+			GameMgr.playSound(Tank.explodeSound, copy: true)
+			explosion = Explosion(40, pos: position)
+		}
 	}
 
 	/**
@@ -281,6 +287,10 @@ class Tank : NSObject, NSCoding {
 		- rect: The view rectangle
 	*/
 	func drawInRect(_ rect: NSRect) {
+		if hp <= 0 {
+			explosion?.draw()
+			return
+		}
 		tankColor.set()
 		let context = NSGraphicsContext.current?.cgContext
 		context?.clip(to: tankRect(), mask: Tank.tankBodyCG)
@@ -370,6 +380,7 @@ class Tank : NSObject, NSCoding {
 		selectedAmmo = nil
 		turnEnded = false
 		hasFired = false
+		explosion = nil
 	}
 
 	/**
@@ -377,7 +388,11 @@ class Tank : NSObject, NSCoding {
 	cannot modify its state
 	*/
 	func passiveUpdate() {
-		if hp <= 0 {
+		explosion?.update()
+		if explosion?.isDone() ?? false {
+			explosion = nil
+		}
+		if hp <= 0 && explosion == nil {
 			endTurn()
 			return
 		}
@@ -388,7 +403,7 @@ class Tank : NSObject, NSCoding {
 		if position.y <= 0 {
 			hp = 0
 		}
-		if selectedAmmo?.invalidated() ?? false {
+		if (selectedAmmo?.invalidated() ?? false) && explosion == nil {
 			endTurn()
 		}
 		isFalling = lastY != position.y
@@ -402,12 +417,11 @@ class Tank : NSObject, NSCoding {
 		- keys: A dictionary indicating which keys are pressed
 	*/
 	func update(keys: [UInt16: Bool]) {
+		passiveUpdate()
 		if hp <= 0 {
-			endTurn()
 			return
 		}
 		selectedAmmo?.update()
-		passiveUpdate()
 	}
 
 	/**
