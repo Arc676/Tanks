@@ -20,8 +20,11 @@
 //See README and LICENSE for more details
 
 import Foundation
+import AppKit
 
 class Teleport: Item {
+
+	static let teleportSound = NSSound(named: NSSound.Name("teleport.wav"))!
 
 	init(price: Int) {
 		super.init("Teleport", price: price)

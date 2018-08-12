@@ -89,7 +89,7 @@ class Ammo: Item {
 		- position: The position of the firing tank
 		- terrain: The current terrain
 		- tanks: A list of the entities on the battlefield
-		- src: The player number of the firing tank
+		- src: The index of the firing tank in the player list
 	*/
 	func fire(angle: Float, firepower: Int, position: NSPoint, terrain: Terrain, tanks: [Tank], src: Int) {
 		let c = CGFloat(cos(Double(angle)))

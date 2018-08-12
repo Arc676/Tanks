@@ -105,6 +105,7 @@ class Tank : NSObject, NSCoding {
 	var turnEnded = false
 	var hasFired = false
 	var isTargeting = false
+	var isTeleporting = false
 
 	//tank properties
 	var name: String
@@ -182,21 +183,28 @@ class Tank : NSObject, NSCoding {
 		- target: Reference point for ammo (tank position if not targeted, target location otherwise)
 	*/
 	func fireProjectile(at target: NSPoint) {
-		selectedAmmo = weapons[selectedWeapon]
-		selectedAmmo?.fire(angle: cannonAngle,
-						 firepower: firepower,
-						 position: target,
-						 terrain: terrain!,
-						 tanks: tanks!,
-						 src: playerNum - 1)
+		if isTeleporting {
+			GameMgr.playSound(Teleport.teleportSound)
+			position = target
+			isTeleporting = false
+			endTurn()
+		} else {
+			selectedAmmo = weapons[selectedWeapon]
+			selectedAmmo?.fire(angle: cannonAngle,
+							   firepower: firepower,
+							   position: target,
+							   terrain: terrain!,
+							   tanks: tanks!,
+							   src: playerNum - 1)
 
-		if !selectedAmmo!.hasSound {
-			GameMgr.playSound(Tank.firingSound)
-		}
+			if !selectedAmmo!.hasSound {
+				GameMgr.playSound(Tank.firingSound)
+			}
 
-		let name = selectedAmmo!.name
-		if name != "Tank Shell" {
-			weaponCount[name]! -= 1
+			let name = selectedAmmo!.name
+			if name != "Tank Shell" {
+				weaponCount[name]! -= 1
+			}
 		}
 		hasFired = true
 		isTargeting = false
@@ -263,15 +271,22 @@ class Tank : NSObject, NSCoding {
 		- index: Index of item to use
 	*/
 	func useItem(index: Int) {
+		var used = true
 		let item = items[index]
 		if item is Shield {
 			// can't activate a shield until the active one is destroyed
 			if activeShield == nil {
 				activeShield = (items[index] as! Shield).copy()
-				itemCount[item.name]!--
+			} else {
+				used = false
 			}
 		} else if item is RepairKit {
 			hp += (item as! RepairKit).HPGain
+		} else if item is Teleport {
+			isTargeting = true
+			isTeleporting = true
+		}
+		if used {
 			itemCount[item.name]!--
 		}
 		if itemCount[item.name]! == 0 {
