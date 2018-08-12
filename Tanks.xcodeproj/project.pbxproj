@@ -34,6 +34,7 @@
 		716DA26F212070AB0053342F /* Teleport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716DA26E212070AB0053342F /* Teleport.swift */; };
 		716DA271212078D20053342F /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = 716DA270212078D20053342F /* teleport.wav */; };
 		716DA273212084AB0053342F /* Teleport.png in Resources */ = {isa = PBXBuildFile; fileRef = 716DA272212084AB0053342F /* Teleport.png */; };
+		716DA275212089070053342F /* TeleportSphere.png in Resources */ = {isa = PBXBuildFile; fileRef = 716DA274212089070053342F /* TeleportSphere.png */; };
 		717381FD207891BC0090213A /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 717381FC207891BC0090213A /* CREDITS */; };
 		71840221207B13D700B1C61C /* rotate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021D207B13D700B1C61C /* rotate.wav */; };
 		71840222207B13D700B1C61C /* ex_small.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021E207B13D700B1C61C /* ex_small.wav */; };
@@ -95,6 +96,7 @@
 		716DA26E212070AB0053342F /* Teleport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teleport.swift; sourceTree = "<group>"; };
 		716DA270212078D20053342F /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
 		716DA272212084AB0053342F /* Teleport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Teleport.png; sourceTree = "<group>"; };
+		716DA274212089070053342F /* TeleportSphere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeleportSphere.png; sourceTree = "<group>"; };
 		717381FC207891BC0090213A /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		7184021D207B13D700B1C61C /* rotate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rotate.wav; sourceTree = "<group>"; };
 		7184021E207B13D700B1C61C /* ex_small.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ex_small.wav; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				716DA274212089070053342F /* TeleportSphere.png */,
 				716DA272212084AB0053342F /* Teleport.png */,
 				716DA255211AE79A0053342F /* TankBody.png */,
 				71A054082101D4D800BC0A44 /* RepairKit.png */,
@@ -374,6 +377,7 @@
 				7130A280209F009C00C8B702 /* TankCreator.xib in Resources */,
 				710F24F1207DDF32009AE1EE /* Target.png in Resources */,
 				71F061D91F2671ED004F0EF5 /* Main.storyboard in Resources */,
+				716DA275212089070053342F /* TeleportSphere.png in Resources */,
 				71FE08C41F39F40E00E708F7 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

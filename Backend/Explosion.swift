@@ -22,26 +22,42 @@ import Foundation
 import AppKit
 
 /**
-Encapsulates the drawing and internal calculations of explosion animations
+The type of expanding circle to be animated
+*/
+enum ExplosionType {
+	case EXPLOSION
+	case TELEPORTATION
+}
+
+/**
+Encapsulates the drawing and internal calculations of animations involving expanding
+and contracting circles i.e. teleportation and explosions
 */
 class Explosion: NSObject {
 
 	static let explosionSprite = NSImage(named: NSImage.Name("Explosion.png"))!
+	static let teleportationSprite = NSImage(named: NSImage.Name("TeleportSphere.png"))!
 
 	var position: NSPoint
 	var explosionRect: NSRect?
 	var explosionTicks: Float
 	var explosionLimit: Float
+	var type: ExplosionType
 
-	init(_ limit: Float, pos: NSPoint) {
+	init(_ limit: Float, pos: NSPoint, type: ExplosionType = .EXPLOSION) {
 		explosionTicks = 0
 		explosionLimit = limit
 		position = pos
+		self.type = type
 	}
 
 	func draw() {
 		if explosionRect != nil {
-			Explosion.explosionSprite.draw(in: explosionRect!)
+			if type == .EXPLOSION {
+				Explosion.explosionSprite.draw(in: explosionRect!)
+			} else if type == .TELEPORTATION {
+				Explosion.teleportationSprite.draw(in: explosionRect!)
+			}
 		}
 	}
 

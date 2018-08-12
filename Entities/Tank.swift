@@ -105,7 +105,11 @@ class Tank : NSObject, NSCoding {
 	var turnEnded = false
 	var hasFired = false
 	var isTargeting = false
+
+	// teleporting
 	var isTeleporting = false
+	var srcTP: Explosion?
+	var dstTP: Explosion?
 
 	//tank properties
 	var name: String
@@ -187,6 +191,8 @@ class Tank : NSObject, NSCoding {
 			if terrain!.terrainPath!.contains(target) {
 				return
 			}
+			srcTP = Explosion(40, pos: position, type: .TELEPORTATION)
+			dstTP = Explosion(40, pos: target, type: .TELEPORTATION)
 			GameMgr.playSound(Teleport.teleportSound)
 			position = target
 			isTeleporting = false
@@ -341,6 +347,11 @@ class Tank : NSObject, NSCoding {
 		// draw projectiles and shield, if present
 		selectedAmmo?.drawInRect(rect)
 		activeShield?.draw(at: position)
+
+		if srcTP != nil {
+			srcTP?.draw()
+			dstTP?.draw()
+		}
 	}
 
 	/**
@@ -418,6 +429,14 @@ class Tank : NSObject, NSCoding {
 		explosion?.update()
 		if explosion?.isDone() ?? false {
 			explosion = nil
+		}
+		if srcTP != nil {
+			srcTP?.update()
+			dstTP?.update()
+			if srcTP?.isDone() ?? false {
+				srcTP = nil
+				dstTP = nil
+			}
 		}
 		if hp <= 0 && explosion == nil {
 			endTurn()
