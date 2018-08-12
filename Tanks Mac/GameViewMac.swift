@@ -36,6 +36,7 @@ class GameViewMac : GameMgr {
 
 	// item UI
 	let repairKit = NSImage(named: NSImage.Name("RepairKit.png"))
+	let teleport = NSImage(named: NSImage.Name("Teleport.png"))
 	let itemsRect = NSMakeRect(330, 610, 180, 20)
 
 	let drawAlert = NSAlert()
@@ -116,6 +117,9 @@ class GameViewMac : GameMgr {
 				} else if item is RepairKit {
 					repairKit?.draw(in: rect)
 					text = "Use repair kit (\(active.itemCount["Repair Kit"]!))"
+				} else if item is Teleport {
+					teleport?.draw(in: rect)
+					text = "Teleport (\(active.itemCount["Teleport"]!))"
 				}
 				if NSPointInRect(mouseLocation, rect) {
 					text.draw(at: NSMakePoint(330, y - 30))

@@ -44,6 +44,7 @@ class Store: View {
 	let targetingWeapons = 11
 
 	let storeItems: [Item] = [
+		// normal weapons
 		Ammo("Missile", price: 10, radius: 10, damage: 80, sound: Store.smallEx),
 		Ammo("Armor Piercing Shell", price: 20, radius: 20, damage: 180, sound: Store.smallEx),
 		ShrapnelShot("Shrapnel Round", price: 50, radius: 30, damage: 50, sound: Store.smallEx),
@@ -55,14 +56,21 @@ class Store: View {
 		Hailfire("Hailfire III", price: 1500, radius: 30, damage: 100, sound: Store.largeEx, projCount: 6),
 		LaserBeam("Laser Beam II", price: 1600, radius: 30, damage: 1000, sound: Store.noSound),
 		Hailfire("Hailfire IV", price: 1800, radius: 50, damage: 500, sound: Store.largeEx, projCount: 10),
+
+		// targeted weapons
 		Airstrike("Airstrike I", price: 2000, radius: 30, damage: 400, sound: Store.largeEx, projCount: 5),
 		Airstrike("Airstrike II", price: 3000, radius: 50, damage: 800, sound: Store.largeEx, projCount: 11),
 		LaserStrike("Space Laser", price: 3200, radius: 40, damage: 1000, sound: Store.noSound),
+
+		// upgrades
 		Upgrade("Engine Efficiency", 1.1, price: 100, type: .ENGINE),
 		Upgrade("Armor", 1.1, price: 200, type: .ARMOR),
 		Upgrade("Extra Fuel", 20, price: 50, type: .START_FUEL),
 		Upgrade("Hill Climbing", 1.2, price: 150, type: .HILL_CLIMB),
+
+		// items
 		RepairKit(price: 50),
+		Teleport(price: 3000),
 		Shield("Weak Shield", price: 100, dmgLimit: 50, color: Color.yellow),
 		Shield("Medium Shield", price: 500, dmgLimit: 200, color: Color.green),
 		Shield("Strong Shield", price: 1000, dmgLimit: 1000, color: Color.blue),
