@@ -33,6 +33,7 @@
 		716DA26D211EC54A0053342F /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716DA26C211EC54A0053342F /* Explosion.swift */; };
 		716DA26F212070AB0053342F /* Teleport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716DA26E212070AB0053342F /* Teleport.swift */; };
 		716DA271212078D20053342F /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = 716DA270212078D20053342F /* teleport.wav */; };
+		716DA273212084AB0053342F /* Teleport.png in Resources */ = {isa = PBXBuildFile; fileRef = 716DA272212084AB0053342F /* Teleport.png */; };
 		717381FD207891BC0090213A /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 717381FC207891BC0090213A /* CREDITS */; };
 		71840221207B13D700B1C61C /* rotate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021D207B13D700B1C61C /* rotate.wav */; };
 		71840222207B13D700B1C61C /* ex_small.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7184021E207B13D700B1C61C /* ex_small.wav */; };
@@ -93,6 +94,7 @@
 		716DA26C211EC54A0053342F /* Explosion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Explosion.swift; path = Backend/Explosion.swift; sourceTree = "<group>"; };
 		716DA26E212070AB0053342F /* Teleport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teleport.swift; sourceTree = "<group>"; };
 		716DA270212078D20053342F /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
+		716DA272212084AB0053342F /* Teleport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Teleport.png; sourceTree = "<group>"; };
 		717381FC207891BC0090213A /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		7184021D207B13D700B1C61C /* rotate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rotate.wav; sourceTree = "<group>"; };
 		7184021E207B13D700B1C61C /* ex_small.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ex_small.wav; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		7122E013206C906C00105C05 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				716DA272212084AB0053342F /* Teleport.png */,
 				716DA255211AE79A0053342F /* TankBody.png */,
 				71A054082101D4D800BC0A44 /* RepairKit.png */,
 				7167117B20ADC4EA00FE0339 /* Draw.png */,
@@ -346,6 +349,7 @@
 			files = (
 				71FE08C51F39F40E00E708F7 /* README.md in Resources */,
 				71A054092101D4D800BC0A44 /* RepairKit.png in Resources */,
+				716DA273212084AB0053342F /* Teleport.png in Resources */,
 				712F42A4209056DB00E63AD7 /* LaserBeam.png in Resources */,
 				7112ABB3208DB53E00FBDB1F /* bomber.wav in Resources */,
 				7110C6B420FDD78B00FC7110 /* Store.xib in Resources */,

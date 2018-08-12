@@ -46,7 +46,7 @@ class Player : Tank {
 		if keys[GameMgr.spaceBar]! {
 			fireProjectile()
 		} else if isTargeting && keys[GameMgr.escKey]! {
-			isTargeting = false
+			cancelTargeting()
 		}
 		if keys[GameMgr.rightArrow]! {
 			move(1)

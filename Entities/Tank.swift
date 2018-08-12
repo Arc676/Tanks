@@ -184,6 +184,9 @@ class Tank : NSObject, NSCoding {
 	*/
 	func fireProjectile(at target: NSPoint) {
 		if isTeleporting {
+			if terrain!.terrainPath!.contains(target) {
+				return
+			}
 			GameMgr.playSound(Teleport.teleportSound)
 			position = target
 			isTeleporting = false
@@ -220,6 +223,15 @@ class Tank : NSObject, NSCoding {
 		} else {
 			fireProjectile(at: position)
 		}
+	}
+
+	/**
+	If the tank is currently targeting for a targeted weapon or
+	teleportation, cancel it
+	*/
+	func cancelTargeting() {
+		isTargeting = false
+		isTeleporting = false
 	}
 
 	/**
