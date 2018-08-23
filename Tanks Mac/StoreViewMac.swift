@@ -29,6 +29,7 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	@IBOutlet weak var playerName: NSTextField!
 	@IBOutlet weak var playerCredits: NSTextField!
 	@IBOutlet weak var playerColor: NSColorWell!
+	@IBOutlet weak var playerTeam: NSTextField!
 	@IBOutlet weak var aiLvl: NSSegmentedControl!
 	@IBOutlet weak var aiStyle: NSSegmentedControl!
 
@@ -157,6 +158,12 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 	@IBAction func nameChanged(_ sender: NSTextField) {
 		if players != nil {
 			players![currentPlayer].name = sender.stringValue
+		}
+	}
+
+	@IBAction func teamChanged(_ sender: NSTextField) {
+		if players != nil {
+			players![currentPlayer].team = sender.stringValue
 		}
 	}
 

@@ -149,7 +149,19 @@ class GameMgr: View {
 	Whether the game is over
 	*/
 	func gameOver() -> Bool {
-		return drawDeclared || players.filter{ $0.hp > 0 }.count < 2
+		if drawDeclared {
+			return true
+		}
+		let survivors = players.filter{ $0.hp > 0 }
+		if survivors.count < 2 {
+			return true
+		}
+		for i in 1..<survivors.count {
+			if !survivors[0].isTeammate(survivors[i]) {
+				return false
+			}
+		}
+		return true
 	}
 
 	/**

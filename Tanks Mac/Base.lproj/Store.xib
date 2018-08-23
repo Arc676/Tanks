@@ -15,6 +15,7 @@
                 <outlet property="playerColor" destination="sW4-Sb-x3c" id="H29-eD-nWf"/>
                 <outlet property="playerCredits" destination="cVX-Nr-VgX" id="8n6-bf-gYl"/>
                 <outlet property="playerName" destination="lUq-cp-pqA" id="EMU-jA-Eus"/>
+                <outlet property="playerTeam" destination="dLN-ka-wXG" id="wiH-Ky-Ob1"/>
                 <outlet property="purchaseButton" destination="gWG-G8-vNM" id="cmH-o9-UJL"/>
                 <outlet property="storeTable" destination="sig-YB-37z" id="KCU-jU-6E4"/>
                 <outlet property="useSamePath" destination="fvf-pH-MpW" id="DHO-WP-cBh"/>
@@ -156,7 +157,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lUq-cp-pqA">
-                    <rect key="frame" x="105" y="663" width="235" height="22"/>
+                    <rect key="frame" x="105" y="663" width="158" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="TQx-pC-xOu">
                         <font key="font" metaFont="system"/>
@@ -185,17 +186,8 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-ad-Ifc">
-                    <rect key="frame" x="346" y="663" width="67" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tank color" id="AnC-a2-oNi">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sW4-Sb-x3c">
-                    <rect key="frame" x="419" y="663" width="175" height="23"/>
+                    <rect key="frame" x="271" y="663" width="69" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -291,6 +283,27 @@ DQ
                         <action selector="aiStyleChanged:" target="-2" id="09B-R8-BiU"/>
                     </connections>
                 </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tTs-0d-Nqm">
+                    <rect key="frame" x="354" y="666" width="37" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Team" id="Rda-nW-RJO">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dLN-ka-wXG">
+                    <rect key="frame" x="397" y="663" width="218" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="uj5-k7-IhW">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="teamChanged:" target="-2" id="9RK-ew-NAS"/>
+                    </connections>
+                </textField>
             </subviews>
         </customView>
     </objects>
