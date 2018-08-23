@@ -139,7 +139,7 @@ class CCTank : Tank {
 	when the tank doesn't have a target or when the target dies.
 	*/
 	func chooseNewTarget() {
-		var possibleTargets = tanks!.filter { $0.hp > 0 && $0.playerNum != playerNum }
+		var possibleTargets = tanks!.filter { $0.hp > 0 && $0.playerNum != playerNum && !isTeammate($0) }
 		if possibleTargets.count == 0 {
 			return;
 		}
@@ -257,11 +257,20 @@ class CCTank : Tank {
 		//if no target chosen or previous target is dead, retarget
 		if target == nil || target!.hp <= 0 {
 			chooseNewTarget()
+			//if no valid targets, end turn
+			if target == nil {
+				endTurn()
+				return
+			}
 		}
 		//needs to recalculate firepower and cannon angle?
 		if needsRecalc {
 			if !recalculate(tx: target!.position.x, ty: target!.position.y, a: CGFloat(terrain!.windAcceleration)) {
 				chooseNewTarget()
+				if target == nil {
+					endTurn()
+					return
+				}
 			}
 		}
 

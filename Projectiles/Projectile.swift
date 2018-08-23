@@ -109,7 +109,7 @@ class Projectile : NSObject {
 				if entity.hp <= 0 {
 					score *= 2
 				}
-				if entity.playerNum == sourcePlayer! + 1 {
+				if entity.playerNum == sourcePlayer! + 1 || entity.isTeammate(entities![sourcePlayer!]) {
 					score *= -1
 				} else {
 					entities![sourcePlayer!].money += score + score / 2
