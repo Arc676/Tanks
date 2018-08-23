@@ -70,6 +70,7 @@ class Tank : NSObject, NSCoding {
 	var fuel: CGFloat = 100
 	var money: Int = 0
 	var score: Int = 0
+	var team = ""
 
 	//weapons
 	var selectedWeapon = 0
@@ -129,11 +130,13 @@ class Tank : NSObject, NSCoding {
 		- color: Color of tank
 		- pNum: The player number assigned to the tank
 		- name: The name assigned to the tank
+		- team: The name of the tank's team, if any
 	*/
-	init(color: NSColor, pNum: Int, name: String) {
+	init(color: NSColor, pNum: Int, name: String, team: String?) {
 		tankColor = color
 		playerNum = pNum
 		self.name = name
+		self.team = team ?? ""
 	}
 
 	func encode(with aCoder: NSCoder) {
@@ -557,6 +560,22 @@ class Tank : NSObject, NSCoding {
 				itemCount[item.name] = (itemCount[item.name] ?? 0) + 1
 			}
 		}
+	}
+
+	/**
+	Determine whether a tank is on the same team as this one
+
+	- parameters:
+		- tank: The other tank
+
+	- returns:
+	Whether the tanks are on different teams (false if either tank doesn't have a team)
+	*/
+	func isTeammate(_ tank: Tank) -> Bool {
+		if team == "" || tank.team == "" {
+			return false
+		}
+		return team == tank.team
 	}
 
 }

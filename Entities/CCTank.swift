@@ -44,14 +44,15 @@ class CCTank : Tank {
 		- pNum: Player number assigned to tank
 		- lvl: Level of AI to control this tank
 		- name: Name assigned to tank
+		- team: The name of the tank's team, if any
 	*/
-	init(color: NSColor, pNum: Int, lvl: AILevel, style: AIStyle, name: String) {
+	init(color: NSColor, pNum: Int, lvl: AILevel, style: AIStyle, name: String, team: String?) {
 		aiLevel = lvl
 		aiStyle = style
 		if style == .RANDOM {
 			aiStyle = AIStyle(rawValue: arc4random_uniform(AIStyle.RANDOM.rawValue))!
 		}
-		super.init(color: color, pNum: pNum, name: name)
+		super.init(color: color, pNum: pNum, name: name, team: team)
 	}
 
 	required init?(coder aDecoder: NSCoder) {

@@ -31,7 +31,8 @@ class TankCreator: NSView {
 	
 	@IBOutlet weak var tankName: NSTextField!
 	@IBOutlet weak var tankColor: NSColorWell!
-
+	@IBOutlet weak var tankTeam: NSTextField!
+	
 	@IBOutlet weak var isCCTank: NSButton!
 	@IBOutlet weak var tankAILevel: NSSegmentedControl!
 	@IBOutlet weak var tankAIStyle: NSSegmentedControl!
@@ -94,6 +95,7 @@ class TankCreator: NSView {
 		let isLoaded = tank != nil
 		tankName.isEnabled = state && !isLoaded
 		tankColor.isEnabled = state && !isLoaded
+		tankTeam.isEditable = enablePlayer.state == NSControl.StateValue.on
 		isCCTank.isEnabled = state && !isLoaded
 		// AI specific controls
 		tankAILevel.isEnabled = state && isCCTank.state == NSControl.StateValue.on
@@ -181,6 +183,7 @@ class TankCreator: NSView {
 		}
 		// if tank has been loaded from file, return loaded tank
 		if tank != nil {
+			tank?.team = tankTeam.stringValue
 			return tank
 		}
 		// otherwise create a new tank with the given properties
@@ -191,12 +194,14 @@ class TankCreator: NSView {
 				pNum: 0,
 				lvl: AILevel(rawValue: tankAILevel.selectedSegment)!,
 				style: AIStyle(rawValue: UInt32(tankAIStyle.selectedSegment))!,
-				name: name)
+				name: name,
+				team: tankTeam.stringValue)
 		} else {
 			return Player(
 				color: tankColor.color,
 				pNum: 0,
-				name: name)
+				name: name,
+				team: tankTeam.stringValue)
 		}
 	}
 

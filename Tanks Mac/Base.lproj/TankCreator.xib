@@ -18,6 +18,7 @@
                 <outlet property="tankColor" destination="iS3-S7-Ejh" id="C3W-q9-Bjz"/>
                 <outlet property="tankDesignBox" destination="Vt6-Gf-427" id="s3q-D8-Tve"/>
                 <outlet property="tankName" destination="WFR-0c-GxU" id="clf-MW-snk"/>
+                <outlet property="tankTeam" destination="lrJ-1s-HCa" id="8BO-HU-8HE"/>
                 <outlet property="unloadButton" destination="wPT-ek-Gmc" id="lJg-F1-z4p"/>
             </connections>
         </customObject>
@@ -44,7 +45,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WFR-0c-GxU">
-                                <rect key="frame" x="64" y="122" width="242" height="22"/>
+                                <rect key="frame" x="64" y="122" width="167" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="VbZ-Kn-3RW">
                                     <font key="font" metaFont="system"/>
@@ -55,17 +56,12 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl6-Sl-OA5">
                                 <rect key="frame" x="18" y="100" width="37" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Color" id="89U-EC-bhn">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Team" id="89U-EC-bhn">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iS3-S7-Ejh">
-                                <rect key="frame" x="64" y="97" width="242" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </colorWell>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PJf-j3-teB">
                                 <rect key="frame" x="18" y="71" width="83" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -134,6 +130,20 @@
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lrJ-1s-HCa">
+                                <rect key="frame" x="64" y="95" width="242" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="oJi-9e-2lB">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iS3-S7-Ejh">
+                                <rect key="frame" x="239" y="122" width="67" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </colorWell>
                         </subviews>
                     </view>
                 </box>
