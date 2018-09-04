@@ -202,6 +202,7 @@ class GameMgr: View {
 		if turnEnded && gameOver() {
 			terminate()
 		}
+		terrain.update()
 	}
 
 	/**

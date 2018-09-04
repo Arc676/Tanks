@@ -42,11 +42,13 @@ class Terrain : NSView {
 
 	var terrainControlHeights: [CGFloat] = []
 	var terrainWidth: Int = 0
+	var terrainHeight: UInt32 = 0
 	var chunkSize = 0
 	var terrainPath: NSBezierPath?
 
 	var terrainType: TerrainType = .DESERT
 	var windAcceleration: Float = 0
+	var clouds: [NSRect] = []
 
 	/**
 	Generate a new map with the desired properties
@@ -65,6 +67,7 @@ class Terrain : NSView {
 		terrainControlHeights[0] = CGFloat(arc4random_uniform(height / 4) + height / 4)
 
 		terrainWidth = width
+		terrainHeight = height
 		terrainType = type
 
 		terrainBounds = NSMakeRect(0, 0, CGFloat(width), CGFloat(height))
@@ -90,6 +93,15 @@ class Terrain : NSView {
 	*/
 	func newWindSpeed() {
 		windAcceleration = Float(arc4random_uniform(2001)) / 500 - 2
+
+		clouds.removeAll()
+		for _ in 0..<arc4random_uniform(5) {
+			let cloud = NSMakeRect(CGFloat(arc4random_uniform(UInt32(terrainWidth))),
+								   CGFloat(arc4random_uniform(25) + terrainHeight - 150),
+								   CGFloat(arc4random_uniform(150) + 50),
+								   CGFloat(arc4random_uniform(20) + 20))
+			clouds.append(cloud)
+		}
 	}
 
 	/**
@@ -183,6 +195,26 @@ class Terrain : NSView {
 
 		colorForTerrain(terrainType).set()
 		terrainPath?.fill()
+
+		NSColor.white.withAlphaComponent(0.5).set()
+		for cloud in clouds {
+			cloud.fill()
+		}
+	}
+
+	func update() {
+		for i in 0..<clouds.count {
+			var x = clouds[i].origin.x
+			let cloudWidth = clouds[i].size.width
+
+			x += CGFloat(windAcceleration)
+			if x > CGFloat(terrainWidth) {
+				x = -cloudWidth
+			} else if x < -cloudWidth {
+				x = CGFloat(terrainWidth)
+			}
+			clouds[i].origin.x = x
+		}
 	}
 
 }
