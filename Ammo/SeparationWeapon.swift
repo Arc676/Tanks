@@ -34,12 +34,12 @@ class SeparationWeapon: Ammo {
 	Create a new object representing a separating weapon
 
 	- parameters:
-	- name: Name of ammunition type
-	- price: Price of the ammunition
-	- radius: Blast radius for this type of ammunition
-	- damage: Damage dealt by the ammunition at zero range
-	- sound: The sound file to be played on impact
-	- projCount: The number of sub-projectiles to spawn when firing
+		- name: Name of ammunition type
+		- price: Price of the ammunition
+		- radius: Blast radius for this type of ammunition
+		- damage: Damage dealt by the ammunition at zero range
+		- sound: The sound file to be played on impact
+		- projCount: The number of sub-projectiles to spawn when firing
 	*/
 	init(_ name: String, price: Int, radius: Int, damage: CGFloat, sound: NSSound, projCount: Int) {
 		self.projCount = projCount

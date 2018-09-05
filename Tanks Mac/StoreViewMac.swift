@@ -82,6 +82,7 @@ class StoreViewMac: Store, NSTableViewDelegate, NSTableViewDataSource {
 			playerCredits.stringValue = "Unknown"
 		}
 		playerColor.color = player.tankColor
+		playerTeam.stringValue = player.team
 
 		useSamePath.isEnabled = savePaths[currentPlayer] != nil
 		path.url = savePaths[currentPlayer]

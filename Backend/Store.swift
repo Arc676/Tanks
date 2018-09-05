@@ -40,8 +40,8 @@ class Store: View {
 	static let saveFailed = NSSound(named: NSSound.Name("failure.wav"))!
 
 	// indices of various items to be purchased by computer controlled tanks
-	let armorIndex = 15
-	let targetingWeapons = 11
+	let armorIndex = 16
+	let targetingWeapons = 12
 
 	let storeItems: [Item] = [
 		// normal weapons
@@ -51,11 +51,12 @@ class Store: View {
 		Hailfire("Hailfire I", price: 200, radius: 15, damage: 60, sound: Store.smallEx, projCount: 3),
 		Ammo("Atom Bomb", price: 1000, radius: 60, damage: 1000, sound: Store.largeEx),
 		Hailfire("Hailfire II", price: 500, radius: 20, damage: 80, sound: Store.smallEx, projCount: 4),
-		LaserBeam("Laser Beam I", price: 600, radius: 0, damage: 800, sound: Store.noSound),
+		LaserBeam("Laser Beam I", price: 600, radius: 0, damage: 800, ticks: 30, sound: Store.noSound),
 		Ammo("Hydrogen Bomb", price: 1400, radius: 120, damage: 2000, sound: Store.largeEx),
 		Hailfire("Hailfire III", price: 1500, radius: 30, damage: 100, sound: Store.largeEx, projCount: 6),
-		LaserBeam("Laser Beam II", price: 1600, radius: 30, damage: 1000, sound: Store.noSound),
+		LaserBeam("Laser Beam II", price: 1600, radius: 30, damage: 1000, ticks: 30, sound: Store.noSound),
 		Hailfire("Hailfire IV", price: 1800, radius: 50, damage: 500, sound: Store.largeEx, projCount: 10),
+		LaserBeam("Laser Beam III", price: 2000, radius: 40, damage: 1100, ticks: 60, sound: Store.noSound),
 
 		// targeted weapons
 		Airstrike("Airstrike I", price: 2000, radius: 30, damage: 400, sound: Store.largeEx, projCount: 5),

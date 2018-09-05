@@ -25,7 +25,8 @@ class LaserBeam: LaserWeapon {
 
 	let laserSprite = NSImage(named: NSImage.Name("LaserBeam.png"))!
 
-	override var tickLimit: Int { return 30 }
+	var ticks = 30
+	override var tickLimit: Int { return ticks }
 
 	var transform = NSAffineTransform()
 	var inverse = NSAffineTransform()
@@ -38,6 +39,21 @@ class LaserBeam: LaserWeapon {
 	var basisNozzlePos: NSPoint?
 	var grad: CGFloat = 0
 	var cosine: CGFloat = 0
+
+	init(_ name: String, price: Int, radius: Int, damage: CGFloat, ticks: Int, sound: NSSound) {
+		self.ticks = ticks
+		super.init(name, price: price, radius: radius, damage: damage, sound: sound)
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		self.ticks = aDecoder.decodeInteger(forKey: "Ticks")
+		super.init(coder: aDecoder)
+	}
+
+	override func encode(with aCoder: NSCoder) {
+		aCoder.encode(ticks, forKey: "Ticks")
+		super.encode(with: aCoder)
+	}
 
 	override func drawInRect(_ rect: NSRect) {
 		if !invalidated() {
