@@ -146,6 +146,13 @@ class TankCreator: NSView {
 				unloadButton.isEnabled = true
 				loadPath = url
 				failed = false
+				if let cc = tank as? CCTank {
+					isCCTank.state = NSControl.StateValue.on
+					tankAILevel.selectedSegment = cc.aiLevel.rawValue
+					tankAIStyle.selectedSegment = Int(cc.aiStyle.rawValue)
+				} else {
+					isCCTank.state = NSControl.StateValue.off
+				}
 			}
 		} catch {}
 		if failed {
