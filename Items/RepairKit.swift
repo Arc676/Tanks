@@ -4,7 +4,7 @@
 //
 //  Created by Alessandro Vinciguerra on 20/07/2018.
 //	<alesvinciguerra@gmail.com>
-//Copyright (C) 2018 Arc676/Alessandro Vinciguerra
+//Copyright (C) 2018-9 Arc676/Alessandro Vinciguerra
 
 //This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
